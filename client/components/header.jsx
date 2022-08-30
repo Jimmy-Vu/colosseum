@@ -2,12 +2,12 @@ import React from "react";
 
 function Header(props) {
   return (
-    <header className="">
+    <header>
       <div className="topbar">
         <button type="button">
           <i className="fa-solid fa-bars"></i>
         </button>
-        <h1>COLLOSSEUM</h1>
+        <h1 className="header-title">COLLOSSEUM</h1>
       </div>
     </header>
   );

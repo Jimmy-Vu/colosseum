@@ -3,7 +3,9 @@ import Header from "../components/header";
 
 function Home(props) {
   return (
-    <Header></Header>
+    <div className="main-container">
+      <Header></Header>
+    </div>
   );
 }
 
