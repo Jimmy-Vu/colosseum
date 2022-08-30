@@ -10,13 +10,23 @@ button {
   background-repeat: no-repeat;
 }
 
-.topbar {
+.header {
   display: flex;
-  justify-content: space-around;
+  align-items: center;
   width: 100%;
+  padding: 0 2rem;
+}
+.header .menu-button {
+  font-size: 3rem;
+  color: #D2B85A;
+  margin-top: 0.23em;
+  text-shadow: 1px 1px 1px black;
+}
+.header__title {
+  font-family: "Oswald", sans-serif;
+  font-size: 4rem;
+  color: white;
+  text-shadow: 0 4px 4px black;
 }
 
-.header-title {
-  font-size: 4rem;
-  margin-top: 1rem;
-}
+/*# sourceMappingURL=styles.css.map */

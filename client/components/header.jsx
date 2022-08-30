@@ -3,11 +3,11 @@ import React from "react";
 function Header(props) {
   return (
     <header>
-      <div className="topbar">
+      <div className="header">
         <button type="button">
-          <i className="fa-solid fa-bars"></i>
+          <i className="menu-button fa-solid fa-bars"></i>
         </button>
-        <h1 className="header-title">COLLOSSEUM</h1>
+        <h1 className="header__title">COLLOSSEUM</h1>
       </div>
     </header>
   );

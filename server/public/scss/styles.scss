@@ -1,0 +1,35 @@
+$primary: #D2B85A;
+
+button {
+  all: unset;
+}
+
+.main-container {
+  height: 100vh;
+  background-image: url(./images/colloseum_color.jpg);
+  background-size: cover;
+  background-position: center center;
+  background-repeat: no-repeat;
+}
+
+.header {
+  display: flex;
+  // justify-content: space-between;
+  align-items: center;
+  width: 100%;
+  padding: 0 2rem;
+
+  .menu-button {
+    font-size: 3rem;
+    color: $primary;
+    margin-top: .23em;
+    text-shadow: 1px 1px 1px black;
+  }
+
+  &__title {
+    font-family: 'Oswald', sans-serif;
+    font-size: 4rem;
+    color: white;
+    text-shadow: 0 4px 4px black;
+  }
+}
