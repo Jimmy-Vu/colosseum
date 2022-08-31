@@ -3,7 +3,7 @@ import Header from "../components/header";
 
 function Home(props) {
   return (
-    <div className="main-container">
+    <div className="home-container">
       <Header></Header>
     </div>
   );
