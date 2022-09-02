@@ -11,19 +11,16 @@ app.use(staticMiddleware);
 
 app.get('/api/gyms', (req, res, next) => {
   const sql = `
-  select "gymId",
-         "name",
-         "imageUrl",
-         "shortDescription",
-         "longDescription"
-    from "gyms"
+  select *
+      from "gyms"
+    returning "gymId", "name", "address", "type"
   `;
 })
 
 app.use(jsonMiddleware);
 
 app.post('/api/gyms', (req, res, next) => {
-  const { name, address, type } =  req.body;
+  const { name, address, type } = req.body;
   const sql = `
   insert into "gyms" (
     "name",
@@ -36,10 +33,10 @@ app.post('/api/gyms', (req, res, next) => {
   const params = [name, address, type];
 
   db.query(sql, params)
-  .then(result => {
-    res.status(201).json({message: 'Looks good'});
-  })
-  .catch(err => console.error('sucks', err));
+    .then(result => {
+      res.status(201).json(result.rows);
+    })
+    .catch(err => next(err));
 });
 
 app.use(errorMiddleware);

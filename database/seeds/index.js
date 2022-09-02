@@ -8,7 +8,7 @@ const { descriptors, nouns, types } = require('./nameSeeds');
 
 const sample = array => array[Math.floor(Math.random() * array.length)];
 const seedData = async () => {
-  for (let i = 0; i < 50; i++) {
+  for (let i = 0; i < 100; i++) {
     const random = Math.floor(Math.random() * 1000);
 
     fetch('http://localhost:3001/api/gyms', {
@@ -20,7 +20,7 @@ const seedData = async () => {
         type: `${sample(types)}`
       })
     })
-      .catch(err => console.error('Looks bad!!!', err));
+      .catch(err => console.error('Error:', err));
   }
 }
 

@@ -1,11 +1,12 @@
 {
   "name": "colosseum",
   "version": "1.0.0",
-  "description": "",
+  "description": "A full stack web application for self betterment enthusiasts to find gyms of all types to improve on their physical capabilities",
   "main": "server/index.js",
   "scripts": {
     "build": "webpack --mode=production",
     "start": "node server/index.js",
+    "seed": "node database/seeds/index.js",
     "dev": "npm-run-all --silent --parallel dev:*",
     "dev:client": "webpack serve --mode=development",
     "dev:sass": "sass --watch server/public/scss:server/public",
@@ -14,12 +15,16 @@
     "prepare": "husky install",
     "test": "echo \"Error: no test specified\" && exit 1"
   },
+  "scriptComments": {
+    "seed": "Seeds the gyms table in the database with dummy data",
+    "db:import": "Drops the tables and import the schema and initial data"
+  },
   "repository": {
     "type": "git",
     "url": "git+https://github.com/Jimmy-Vu/colosseum.git"
   },
   "keywords": [],
-  "author": "",
+  "author": "Jimmy Vu",
   "license": "ISC",
   "bugs": {
     "url": "https://github.com/Jimmy-Vu/colosseum/issues"
