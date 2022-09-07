@@ -13,10 +13,13 @@ app.get('/api/gyms', (req, res, next) => {
   const sql = `
   select *
       from "gyms"
-    returning "gymId", "name", "address", "type"
   `;
-})
 
+  db.query(sql)
+  .then(result => res.json(result.rows))
+  .catch(err => next(err));
+})
+// Mounting middleware for express app to be able to parse json requests
 app.use(jsonMiddleware);
 
 app.post('/api/gyms', (req, res, next) => {
@@ -40,6 +43,7 @@ app.post('/api/gyms', (req, res, next) => {
 });
 
 app.use(errorMiddleware);
+
 app.listen(process.env.PORT, () => {
   console.log(`Express listening on port ${process.env.PORT}`);
 })
