@@ -18,7 +18,25 @@ app.get('/api/gyms', (req, res, next) => {
   db.query(sql)
   .then(result => res.json(result.rows))
   .catch(err => next(err));
-})
+});
+
+app.get('/api/gyms/:gymId', (req, res, next) => {
+  const gymId = parseInt(req.params.gymId, 10);
+  if (!gymId) {
+    throw new ClientError(400, 'gradeId must be a postive integer');
+  }
+  const sql = `
+  select *
+      from "gyms"
+      where "gymId" = $1
+  `;
+  const params = [gymId];
+
+  db.query(sql, params)
+    .then(result => res.json(result.rows))
+    .catch(err => next(err));
+});
+
 // Mounting middleware for express app to be able to parse json requests
 app.use(jsonMiddleware);
 
