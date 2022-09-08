@@ -154,8 +154,23 @@
 button {
   all: unset;
 }
+button:hover {
+  cursor: pointer;
+}
+
+a {
+  text-decoration: none;
+}
+a:visited {
+  color: inherit;
+}
+a:hover {
+  cursor: pointer;
+}
 
 .home-container {
+  display: flex;
+  flex-direction: column;
   height: 100vh;
   background-image: url(./images/colloseum_color.jpg);
   background-size: cover;
@@ -163,12 +178,34 @@ button {
   background-repeat: no-repeat;
 }
 
+.home-main {
+  height: 100%;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+.home-main .home-search-btn {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  margin-bottom: 20rem;
+  border-radius: 14px;
+  width: 250px;
+  height: 60px;
+  background-color: #D2B85A;
+  color: white;
+  font-family: "Oswald", sans-serif;
+  font-size: 2rem;
+  font-weight: 500;
+  text-shadow: 0 0 2px black;
+}
+
 .header {
   display: flex;
   justify-content: space-between;
   align-items: center;
   width: 100%;
-  padding: 0 2rem;
+  padding: 0.4rem 1rem;
 }
 .header .menu-button {
   font-size: 3rem;
@@ -176,11 +213,26 @@ button {
   margin-top: 0.23em;
   text-shadow: 1px 1px 1px black;
 }
+@media (min-width: 720px) {
+  .header .menu-button {
+    font-size: 3rem;
+  }
+}
 .header__title {
   font-family: "Oswald", sans-serif;
-  font-size: 4rem;
+  font-size: 3.5rem;
   color: white;
   text-shadow: 0 4px 4px black;
+}
+@media (min-width: 720px) {
+  .header__title {
+    font-size: 4rem;
+  }
+}
+@media (min-width: 960px) {
+  .header__title {
+    font-size: 5rem;
+  }
 }
 
 /*# sourceMappingURL=styles.css.map */

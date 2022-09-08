@@ -1,12 +1,38 @@
-@use "./breakpoints";
+@use "./breakpoints" as *;
 @use "./grid";
+
+// "xs": 0,
+// "sm": 480px,
+// "md": 720px,
+// "lg": 960px,
+// "xl": 1200px
+
+// colors
 $primary: #D2B85A;
 
 button {
   all: unset;
+
+  &:hover {
+    cursor: pointer;
+  }
+}
+
+a {
+  text-decoration: none;
+  &:visited {
+    color: inherit;
+  }
+
+  &:hover {
+    cursor: pointer;
+  }
 }
 
 .home-container {
+  display: flex;
+  flex-direction: column;
+
   height: 100vh;
   background-image: url(./images/colloseum_color.jpg);
   background-size: cover;
@@ -14,24 +40,61 @@ button {
   background-repeat: no-repeat;
 }
 
+.home-main {
+  height: 100%;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+
+  .home-search-btn {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    margin-bottom: 20rem;
+    border-radius: 14px;
+    width: 250px;
+    height: 60px;
+
+    background-color: $primary;
+    color: white;
+    font-family: 'Oswald', sans-serif;
+    font-size: 2rem;
+    font-weight: 500;
+    text-shadow: 0 0 2px black;
+  }
+}
+
 .header {
   display: flex;
   justify-content: space-between;
   align-items: center;
   width: 100%;
-  padding: 0 2rem;
+  padding: 0.4rem 1rem;
 
   .menu-button {
     font-size: 3rem;
     color: $primary;
     margin-top: .23em;
     text-shadow: 1px 1px 1px black;
+
+    @include md {
+      font-size: 3rem;
+    }
   }
 
   &__title {
     font-family: 'Oswald', sans-serif;
-    font-size: 4rem;
+    font-size: 3.5rem;
     color: white;
     text-shadow: 0 4px 4px black;
+
+    @include md {
+      font-size: 4rem;
+    }
+
+    @include lg {
+      font-size: 5rem;
+    }
+
   }
 }

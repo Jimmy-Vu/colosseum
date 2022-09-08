@@ -7,7 +7,7 @@ function Header(props) {
         <button type="button">
           <i className="menu-button fa-solid fa-bars"></i>
         </button>
-        <h1 className="header__title">COLOSSEUM</h1>
+        <h1 className="header__title"><a href="">COLOSSEUM</a></h1>
       </div>
     </header>
   );
