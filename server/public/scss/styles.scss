@@ -20,6 +20,7 @@ button {
 
 a {
   text-decoration: none;
+
   &:visited {
     color: inherit;
   }
@@ -40,36 +41,13 @@ a {
   background-repeat: no-repeat;
 }
 
-.home-main {
-  height: 100%;
-  display: flex;
-  justify-content: center;
-  align-items: center;
-
-  .home-search-btn {
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    margin-bottom: 20rem;
-    border-radius: 14px;
-    width: 250px;
-    height: 60px;
-
-    background-color: $primary;
-    color: white;
-    font-family: 'Oswald', sans-serif;
-    font-size: 2rem;
-    font-weight: 500;
-    text-shadow: 0 0 2px black;
-  }
-}
-
 .header {
   display: flex;
   justify-content: space-between;
   align-items: center;
   width: 100%;
   padding: 0.4rem 1rem;
+  color: white;
 
   .menu-button {
     font-size: 3rem;
@@ -90,11 +68,63 @@ a {
 
     @include md {
       font-size: 4rem;
+      width: fit-content;
+      margin-left: 1.5em;
     }
 
     @include lg {
       font-size: 5rem;
+      margin-left: 1em;
+    }
+  }
+
+  &__sign-in {
+    display: none;
+
+    @include md {
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      width: 150px;
+      height: 3rem;
+
+      background-color: $primary;
+      color: white;
+      font-family: 'Oswald', sans-serif;
+      font-size: 1rem;
+      font-weight: 500;
+      text-shadow: 0 0 2px black;
+    }
+  }
+}
+
+.home-main {
+  height: 100%;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+
+  .home-search-btn {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    margin-bottom: 20rem;
+    border-radius: 14px;
+    padding: 0.25em 0.5em;
+
+    background-color: $primary;
+    color: white;
+    font-family: 'Oswald', sans-serif;
+    font-size: 2rem;
+    font-weight: 500;
+    text-shadow: 0 0 2px black;
+
+    @include sm {
+      margin-bottom: 10rem;
     }
 
+    @include md {
+      font-size: 2.5rem;
+    }
   }
 }
