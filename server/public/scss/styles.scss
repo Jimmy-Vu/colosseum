@@ -1,5 +1,6 @@
 @use "./breakpoints" as *;
 @use "./grid";
+@use "./components/app-drawer.scss";
 
 // "xs": 0,
 // "sm": 480px,
@@ -9,6 +10,10 @@
 
 // colors
 $primary: #D2B85A;
+
+header {
+  position: relative;
+}
 
 button {
   all: unset;

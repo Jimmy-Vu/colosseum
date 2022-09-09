@@ -151,6 +151,34 @@
     color: green;
   }
 }
+.app-drawer {
+  display: flex;
+  width: 100%;
+  position: fixed;
+}
+.app-drawer .menu {
+  background-color: white;
+  width: 90%;
+  height: 100vh;
+}
+@media (min-width: 720px) {
+  .app-drawer .menu {
+    width: 30%;
+  }
+}
+.app-drawer .drawer-tint {
+  width: 100%;
+  height: 100vh;
+  background-color: rgba(0, 0, 0, 0.7);
+}
+.app-drawer__hidden {
+  display: none;
+}
+
+header {
+  position: relative;
+}
+
 button {
   all: unset;
 }
