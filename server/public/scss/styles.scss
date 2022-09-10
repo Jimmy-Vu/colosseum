@@ -1,0 +1,137 @@
+@use "./breakpoints" as *;
+@use "./grid";
+@use "./components/app-drawer.scss";
+@use "./components/footer.scss";
+
+// "xs": 0,
+// "sm": 480px,
+// "md": 720px,
+// "lg": 960px,
+// "xl": 1200px
+
+// colors
+$primary: #D2B85A;
+
+header {
+  position: relative;
+}
+
+button {
+  all: unset;
+
+  &:hover {
+    cursor: pointer;
+  }
+}
+
+a {
+  text-decoration: none;
+
+  &:visited {
+    color: inherit;
+  }
+
+  &:hover {
+    cursor: pointer;
+  }
+}
+
+.home-container {
+  display: flex;
+  flex-direction: column;
+
+  height: 100vh;
+  background-image: url(./images/colloseum_color.jpg);
+  background-size: cover;
+  background-position: center center;
+  background-repeat: no-repeat;
+}
+
+.header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  width: 100%;
+  padding: 0.4rem 1rem;
+  color: white;
+
+  .menu-button {
+    font-size: 3rem;
+    color: $primary;
+    margin-top: .23em;
+    text-shadow: 1px 1px 1px black;
+
+    @include md {
+      font-size: 3rem;
+    }
+  }
+
+  &__title {
+    font-family: 'Oswald', sans-serif;
+    font-size: 3.5rem;
+    color: white;
+    text-shadow: 0 4px 4px black;
+
+    @include md {
+      font-size: 4rem;
+      width: fit-content;
+      margin-left: 1.5em;
+    }
+
+    @include lg {
+      font-size: 5rem;
+      margin-left: 1em;
+    }
+  }
+
+  &__sign-in {
+    display: none;
+
+    @include md {
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      width: 150px;
+      height: 3rem;
+      border-radius: 6px;
+
+      background-color: $primary;
+      color: white;
+      font-family: 'Oswald', sans-serif;
+      font-size: 1.5rem;
+      font-weight: 500;
+      text-shadow: 0 0 2px black;
+    }
+  }
+}
+
+.home-main {
+  height: 100%;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+
+  .home-search-btn {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    margin-bottom: 12rem;
+    border-radius: 14px;
+    padding: 0.25em 0.5em;
+
+    background-color: $primary;
+    color: white;
+    font-family: 'Oswald', sans-serif;
+    font-size: 2.5rem;
+    font-weight: 500;
+    text-shadow: 0 0 2px black;
+
+    @include sm {
+      margin-bottom: 8rem;
+    }
+
+    @include md {
+      font-size: 2.5rem;
+    }
+  }
+}
