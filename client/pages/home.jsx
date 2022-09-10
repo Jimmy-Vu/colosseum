@@ -6,7 +6,7 @@ function Home(props) {
     <div className="home-container">
       <Header></Header>
       <main className="home-main">
-        <a className="home-search-btn">Search Arenas</a>
+        <a className="home-search-btn">Find Your Arena</a>
       </main>
     </div>
   );

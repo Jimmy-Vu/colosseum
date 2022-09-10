@@ -2,11 +2,11 @@ import React, { useState } from "react";
 import AppDrawer from "./app-drawer";
 
 function Header(props) {
-  const [drawerIsOpen, setDrawerIsOpen] = useState(false);
+  const [drawerIsOpen, setDrawerIsOpen] = useState(true);
 
   return (
     <header>
-      <AppDrawer isOpen={drawerIsOpen}></AppDrawer>
+      <AppDrawer isOpen={drawerIsOpen} setDrawerIsOpen={setDrawerIsOpen}></AppDrawer>
       <div className="header">
         <button onClick={() => setDrawerIsOpen(prevState => !prevState)} type="button">
           <i className="menu-button fa-solid fa-bars"></i>

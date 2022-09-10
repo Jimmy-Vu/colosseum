@@ -1,27 +1,71 @@
 @use "../breakpoints" as *;
 
+// colors
+$primary: #D2B85A;
+
 .app-drawer {
   display: flex;
   width: 100%;
   position: fixed;
 
+  &--hidden {
+    display: none;
+  }
+
   .menu {
-    background-color: white;
-    width: 90%;
+    background-color: rgba(0, 0, 0, 0.95);
+    width: 100%;
     height: 100vh;
+    flex-grow: 2;
+    padding-left: 1rem;
+    padding-right: 1rem;
 
     @include md {
-      width: 30%;
+      max-width: 35%;
+    }
+
+    .close-button {
+      cursor: pointer;
+      font-size: 4rem;
+      color: $primary;
+      margin-top: .6rem;
+      text-shadow: 1px 1px 1px black;
+
+      @include md {
+        font-size: 4rem;
+        margin-top: 1.27rem;
+      }
+    }
+
+    &__nav {
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      color: white;
+
+      width: 100%;
+      margin-top: 3em;
+      padding-left: 3rem;
+      padding-right: 3rem;
+      font-family: 'Oswald', sans-serif;
+
+      ul {
+        border-top: white solid 1px;
+        width: 100%;
+        padding-top: 0.5em;
+        padding-bottom: 0.5em;
+
+        font-size: 2.5em;
+        text-align: center;
+      }
     }
   }
 
   .drawer-tint {
-    width: 100%;
-    height: 100vh;
-    background-color: rgb(0, 0, 0, 0.7);
-  }
-
-  &__hidden {
-    display: none;
+    @include md {
+      height: 100vh;
+      background-color: rgb(0, 0, 0, 0.05);
+      flex-grow: 1;
+    }
   }
 }

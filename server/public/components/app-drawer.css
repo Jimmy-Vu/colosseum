@@ -3,23 +3,60 @@
   width: 100%;
   position: fixed;
 }
+.app-drawer--hidden {
+  display: none;
+}
 .app-drawer .menu {
-  background-color: white;
-  width: 90%;
+  background-color: rgba(0, 0, 0, 0.95);
+  width: 100%;
   height: 100vh;
+  flex-grow: 2;
+  padding-left: 1rem;
+  padding-right: 1rem;
 }
 @media (min-width: 720px) {
   .app-drawer .menu {
-    width: 30%;
+    max-width: 35%;
   }
 }
-.app-drawer .drawer-tint {
-  width: 100%;
-  height: 100vh;
-  background-color: rgba(0, 0, 0, 0.7);
+.app-drawer .menu .close-button {
+  cursor: pointer;
+  font-size: 4rem;
+  color: #D2B85A;
+  margin-top: 0.6rem;
+  text-shadow: 1px 1px 1px black;
 }
-.app-drawer__hidden {
-  display: none;
+@media (min-width: 720px) {
+  .app-drawer .menu .close-button {
+    font-size: 4rem;
+    margin-top: 1.27rem;
+  }
+}
+.app-drawer .menu__nav {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  color: white;
+  width: 100%;
+  margin-top: 3em;
+  padding-left: 3rem;
+  padding-right: 3rem;
+  font-family: "Oswald", sans-serif;
+}
+.app-drawer .menu__nav ul {
+  border-top: white solid 1px;
+  width: 100%;
+  padding-top: 0.5em;
+  padding-bottom: 0.5em;
+  font-size: 2.5em;
+  text-align: center;
+}
+@media (min-width: 720px) {
+  .app-drawer .drawer-tint {
+    height: 100vh;
+    background-color: rgba(0, 0, 0, 0.05);
+    flex-grow: 1;
+  }
 }
 
 /*# sourceMappingURL=app-drawer.css.map */
