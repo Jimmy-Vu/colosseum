@@ -10,6 +10,7 @@ A mobile responsive full stack web application for self betterment enthusiasts t
 * Webpack
 * Babel
 * Sass
+* react-spring
 * JavaScript (ES5/ES6)
 * HTML5
 * CSS3
