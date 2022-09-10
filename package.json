@@ -31,6 +31,7 @@
   },
   "homepage": "https://github.com/Jimmy-Vu/colosseum#readme",
   "dependencies": {
+    "@react-spring/web": "^9.5.2",
     "argon2": "^0.29.1",
     "dotenv": "^16.0.1",
     "express": "^4.18.1",

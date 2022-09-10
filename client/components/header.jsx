@@ -2,7 +2,7 @@ import React, { useState } from "react";
 import AppDrawer from "./app-drawer";
 
 function Header(props) {
-  const [drawerIsOpen, setDrawerIsOpen] = useState(true);
+  const [drawerIsOpen, setDrawerIsOpen] = useState(false);
 
   return (
     <header>
