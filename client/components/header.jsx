@@ -11,8 +11,8 @@ function Header(props) {
         <button onClick={() => setDrawerIsOpen(prevState => !prevState)} type="button">
           <i className="menu-button fa-solid fa-bars"></i>
         </button>
-        <h1 className="header__title"><a href="">COLOSSEUM</a></h1>
-        <a className="header__sign-in" href="">Sign In</a>
+        <h1 className="header__title"><a href="#">COLOSSEUM</a></h1>
+        <a className="header__sign-in" href="#">Sign In</a>
       </div>
     </header>
   );
