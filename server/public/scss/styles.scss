@@ -26,9 +26,8 @@ button {
 
 a {
   text-decoration: none;
-  color: inherit;
 
-  &:visited, &:active {
+  &:visited, &:active, &:link {
     color: inherit;
   }
 
