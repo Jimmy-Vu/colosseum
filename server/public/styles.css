@@ -237,9 +237,10 @@ button:hover {
 }
 
 a {
-  text-decoration: none !important;
+  text-decoration: none;
+  color: inherit;
 }
-a:visited, a:active {
+a:visited, a:active, a:link {
   color: inherit;
 }
 a:hover {
@@ -280,6 +281,9 @@ a:hover {
   font-size: 3.5rem;
   color: white;
   text-shadow: 0 4px 4px black;
+}
+.header__title a {
+  color: white;
 }
 @media (min-width: 720px) {
   .header__title {
