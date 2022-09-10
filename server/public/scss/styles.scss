@@ -27,7 +27,7 @@ button {
 a {
   text-decoration: none;
 
-  &:visited {
+  &:visited, &:active {
     color: inherit;
   }
 
@@ -71,6 +71,10 @@ a {
     font-size: 3.5rem;
     color: white;
     text-shadow: 0 4px 4px black;
+
+    a {
+      color: inherit;
+    }
 
     @include md {
       font-size: 4rem;

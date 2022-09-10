@@ -237,9 +237,9 @@ button:hover {
 }
 
 a {
-  text-decoration: none;
+  text-decoration: none !important;
 }
-a:visited {
+a:visited, a:active {
   color: inherit;
 }
 a:hover {
