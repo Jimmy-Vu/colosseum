@@ -9,18 +9,16 @@ function Listings(props) {
   useEffect(() => {
     fetch('/api/gyms', { method: 'get' })
       .then(result => result.json())
-      .then(gyms => setState({ gyms: gyms }))
+      .then(items => setState({ gyms: items }))
       .catch(err => console.error(err));
-  }, [])
+  }, []);
+
   return (
     <>
-      <h1 className="listings-title">Listings</h1>
       <main className="listings-main">
         {
           state.gyms.map(gym => (
-            <div key={gym.gymId}>
-              <ListingCard gym={gym} />
-            </div>
+              <ListingCard key={gym.gymId} gym={gym} />
           ))
         }
       </main>

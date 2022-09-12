@@ -4,6 +4,7 @@
 @use "./components/app-drawer.scss";
 @use "./components/footer.scss";
 @use "./components/listing-card.scss";
+@use "./pages/not-found.scss";
 
 // "xs": 0,
 // "sm": 480px,
@@ -89,7 +90,7 @@ a {
     }
 
     @include lg {
-      font-size: 5rem;
+      font-size: 6rem;
       margin-left: 1em;
     }
   }

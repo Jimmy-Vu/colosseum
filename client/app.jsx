@@ -38,7 +38,11 @@ function App(props) {
       );
     default:
       return (
-        <NotFound />
+        <div className="main-container">
+          <Header />
+          <NotFound />
+          <Footer />
+        </div>
       );
   }
 

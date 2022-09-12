@@ -41,17 +41,18 @@ app.get('/api/gyms/:gymId', (req, res, next) => {
 app.use(jsonMiddleware);
 
 app.post('/api/gyms', (req, res, next) => {
-  const { name, address, type } = req.body;
+  const { name, address, type, imageURL } = req.body;
   const sql = `
   insert into "gyms" (
     "name",
     "address",
-    "type"
-    ) values ($1, $2, $3)
-  returning "gymId", "name", "address", "type"
+    "type",
+    "imageURL"
+    ) values ($1, $2, $3, $4)
+  returning "gymId", "name", "address", "type", "imageURL"
   `;
 
-  const params = [name, address, type];
+  const params = [name, address, type, imageURL];
 
   db.query(sql, params)
     .then(result => {
