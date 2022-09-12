@@ -19,7 +19,7 @@ Try the application live at [colosseum.fly.dev](colosseum.fly.dev)
 * CSS3
 
 #### Features
-- [ ] 1. Users can see the home page
+- [x] 1. Users can see the home page
 - [ ] 2. Users can browse gym listings
 - [ ] 3. Users can login
 - [ ] 4. Users can add a gym listing
