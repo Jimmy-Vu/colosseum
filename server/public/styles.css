@@ -225,6 +225,33 @@ footer {
   color: white;
 }
 
+.listings-main {
+  width: 100%;
+  height: 100%;
+  padding-left: 2em;
+  padding-right: 2em;
+  text-align: center;
+  overflow-y: scroll;
+}
+
+.listings-title {
+  text-align: center;
+}
+
+.card-body {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  width: 100%;
+  margin-bottom: 1rem;
+  background-color: darkgrey;
+  border: solid 1px #D2B85A;
+}
+.card-body .card-title {
+  color: white;
+  font-size: 2em;
+}
+
 header {
   position: relative;
 }
@@ -250,6 +277,17 @@ a:hover {
 .home-container {
   display: flex;
   flex-direction: column;
+  height: 100vh;
+  background-image: url(./images/colloseum_color.jpg);
+  background-size: cover;
+  background-position: center center;
+  background-repeat: no-repeat;
+}
+
+.listings-container {
+  display: flex;
+  flex-direction: column;
+  width: 100%;
   height: 100vh;
   background-image: url(./images/colloseum_color.jpg);
   background-size: cover;

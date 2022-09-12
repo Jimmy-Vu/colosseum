@@ -1,0 +1,30 @@
+@use "../global/colors" as *;
+
+.listings-main {
+  width: 100%;
+  height: 100%;
+  padding-left: 2em;
+  padding-right: 2em;
+  text-align: center;
+  overflow-y: scroll;
+}
+
+.listings-title {
+  text-align: center;
+}
+
+.card-body {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+
+  width: 100%;
+  margin-bottom: 1rem;
+  background-color: darkgrey;
+  border: solid 1px $primary;
+
+  .card-title {
+    color: white;
+    font-size: 2em;
+  }
+}

@@ -1,23 +1,37 @@
 import React, { useEffect, useState } from "react";
 import ReactDOM from "react-dom/client";
+import parseRoute from "./lib/parseRoute";
 import Home from "./pages/home";
 import NotFound from "./pages/not-found";
+import Listings from "./pages/listings";
 
 function App(props) {
-  const [view, setView] = useState('');
+  const [stateRoute, setStateRoute] = useState({
+    route: parseRoute(window.location.hash)
+  });
+
   useEffect(() => {
-    setView(window.location.hash);
+    window.addEventListener('hashchange', event => {
+      setStateRoute({ route: parseRoute(window.location.hash) })
+    });
   }, []);
 
-  if (view === '') {
-    return (
-      <Home />
-    );
-  } else {
-    return (
-      <NotFound />
-    )
+  const { route } = stateRoute;
+  switch (route.path) {
+    case '':
+      return (
+        <Home />
+      );
+    case 'listings':
+      return (
+        <Listings></Listings>
+      );
+    default:
+      return (
+        <NotFound />
+      );
   }
+
 }
 
 export default App;
