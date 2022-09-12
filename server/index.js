@@ -33,7 +33,7 @@ app.get('/api/gyms/:gymId', (req, res, next) => {
   const params = [gymId];
 
   db.query(sql, params)
-    .then(result => res.json(result.rows))
+    .then(result => res.json(result.rows[0]))
     .catch(err => next(err));
 });
 

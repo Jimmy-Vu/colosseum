@@ -4,6 +4,7 @@ import parseRoute from "./lib/parseRoute";
 import Home from "./pages/home";
 import NotFound from "./pages/not-found";
 import Listings from "./pages/listings";
+import Gym from "./pages/gym";
 import Header from "./components/header";
 import Footer from "./components/footer";
 
@@ -28,7 +29,7 @@ function App(props) {
           <Footer />
         </div>
       );
-    case 'listings':
+    case "listings":
       return (
         <div className="main-container">
           <Header />
@@ -36,6 +37,15 @@ function App(props) {
           <Footer />
         </div>
       );
+    case "gyms":
+      const gymId = route.params.get('gymId');
+      return (
+        <div className="main-container">
+          <Header />
+          <Gym gymId={gymId} />
+          <Footer />
+        </div>
+      )
     default:
       return (
         <div className="main-container">
