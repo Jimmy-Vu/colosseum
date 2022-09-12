@@ -9,7 +9,7 @@ Try the application live at [colosseum.fly.dev](colosseum.fly.dev)
 * Node.js
 * PostgreSQL
 * Express.js
-* Argon2 / JWT
+* Argon2 / JWT (Not yet implemented)
 * Webpack
 * Babel
 * Sass
@@ -19,11 +19,11 @@ Try the application live at [colosseum.fly.dev](colosseum.fly.dev)
 * CSS3
 
 #### Features
-1. Users can see the home page
-2. Users can browse gym listings
-3. Users can login
-4. Users can add a gym listing
-5. Users can leave a review
+- [ ] 1. Users can see the home page
+- [ ] 2. Users can browse gym listings
+- [ ] 3. Users can login
+- [ ] 4. Users can add a gym listing
+- [ ] 5. Users can leave a review
 
 #### Stretch Features
 1. User can see location of gym on a map
