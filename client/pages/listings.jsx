@@ -13,8 +13,7 @@ function Listings(props) {
       .catch(err => console.error(err));
   }, [])
   return (
-    <div className="listings-container">
-      <Header></Header>
+    <>
       <h1 className="listings-title">Listings</h1>
       <main className="listings-main">
         {
@@ -25,8 +24,7 @@ function Listings(props) {
           ))
         }
       </main>
-      <Footer></Footer>
-    </div>
+    </>
   );
 }
 

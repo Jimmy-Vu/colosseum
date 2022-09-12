@@ -4,6 +4,8 @@ import parseRoute from "./lib/parseRoute";
 import Home from "./pages/home";
 import NotFound from "./pages/not-found";
 import Listings from "./pages/listings";
+import Header from "./components/header";
+import Footer from "./components/footer";
 
 function App(props) {
   const [stateRoute, setStateRoute] = useState({
@@ -20,11 +22,19 @@ function App(props) {
   switch (route.path) {
     case '':
       return (
-        <Home />
+        <div className="main-container">
+          <Header />
+          <Home />
+          <Footer />
+        </div>
       );
     case 'listings':
       return (
-        <Listings></Listings>
+        <div className="main-container">
+          <Header />
+          <Listings></Listings>
+          <Footer />
+        </div>
       );
     default:
       return (
