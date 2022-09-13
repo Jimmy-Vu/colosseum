@@ -13,18 +13,32 @@
 
   height: 100%;
   background-color: rgba(255, 255, 255, 0.5);
-  padding-top: 1em;
+  padding: 1em;
 
+  @include lg {
+    flex-direction: row;
+    align-items: flex-start;
+  }
 }
 
 .gym-image {
-  object-fit: cover;
-  object-position: 50% 50%;
   width: 95%;
   max-height: 300px;
-  border-radius: 15px;
-  @include md {
+  border: solid $primary 3px;
+  border-radius: 18px;
+
+  @include lg {
     max-height: 500px;
+    height: 500px;
+    width: 40%;
+  }
+
+  img {
+    height: 100%;
+    width: 100%;
+    object-fit: cover;
+    object-position: 50% 50%;
+    border-radius: 15px;
   }
 }
 
@@ -36,14 +50,25 @@
   margin-bottom: 1em;
   padding: 1em;
   border-radius: 15px;
+  border: solid $primary 3px;
 
   width: 95%;
   height: 100%;
   background-color: rgba(255, 255, 255, 0.9);
 
+  @include lg {
+    margin: 0 0 0 1em;
+    height: 500px;
+    width: 60%;
+  }
+
   .gym-title {
     color: black;
     font-size: 2em;
+  }
+
+  .gym-address {
+    margin-bottom: 1em;
   }
 
 }

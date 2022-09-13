@@ -26,7 +26,9 @@ function Gym(props) {
 
   return (
     <main className="gym-main">
-      <img className="gym-image" src={`${gymState.imageURL}`} alt="" />
+      <div className="gym-image">
+        <img src={`${gymState.imageURL}`} alt="" />
+        </div>
       <div className="gym-details">
         <h3 className="gym-title">{gymState.name}</h3>
         <p className="gym-address">{gymState.address}</p>
