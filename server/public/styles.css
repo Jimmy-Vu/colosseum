@@ -225,6 +225,10 @@ footer {
   color: white;
 }
 
+.listings-container {
+  height: 100%;
+}
+
 .listings-main {
   display: flex;
   flex-direction: column;
@@ -286,6 +290,7 @@ footer {
   height: 100%;
   background-color: rgba(255, 255, 255, 0.5);
   padding: 1em;
+  overflow-y: scroll;
 }
 @media (min-width: 960px) {
   .gym-main {
@@ -351,7 +356,7 @@ footer {
 }
 
 header {
-  position: relative;
+  position: sticky;
 }
 
 button {
@@ -378,18 +383,15 @@ a:hover {
   background-size: cover;
   background-position: center center;
   background-repeat: no-repeat;
-  overflow: scroll;
 }
 
 .main-container {
   display: flex;
   flex-direction: column;
   height: 100%;
-  overflow: scroll;
 }
 
-.home-container,
-.listings-container {
+.home-container {
   height: 100%;
 }
 

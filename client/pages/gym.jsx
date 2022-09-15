@@ -34,6 +34,9 @@ function Gym(props) {
         <p className="gym-address">{gymState.address}</p>
         <div className="gym-body">
           <p>Lorem ipsum dolor sit, amet consectetur adipisicing elit. Repellat in est neque cupiditate distinctio accusantium alias blanditiis sunt harum illo.</p>
+          <br></br>
+          <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Nisi perferendis maiores aliquid quos numquam cum, sit, labore suscipit est dolore impedit accusamus ipsam cumque laboriosam error molestias repellendus adipisci modi.</p>
+          <br></br>
           <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Nisi perferendis maiores aliquid quos numquam cum, sit, labore suscipit est dolore impedit accusamus ipsam cumque laboriosam error molestias repellendus adipisci modi.</p>
         </div>
       </div>

@@ -3,6 +3,7 @@
 @use "./global/colors" as *;
 @use "./components/app-drawer.scss";
 @use "./components/footer.scss";
+@use "./pages/listings-page.scss";
 @use "./components/listing-card.scss";
 @use "./pages/gym.scss";
 @use "./pages/not-found.scss";
@@ -14,7 +15,7 @@
 // "xl": 1200px
 
 header {
-  position: relative;
+  position: sticky;
 }
 
 button {
@@ -46,19 +47,17 @@ a {
   background-size: cover;
   background-position: center center;
   background-repeat: no-repeat;
-  overflow: scroll;
 }
 
 .main-container {
   display: flex;
   flex-direction: column;
   height: 100%;
-  overflow: scroll;
+  // overflow-y: auto;
 }
 
 
-.home-container,
-.listings-container {
+.home-container {
   height: 100%;
 }
 
