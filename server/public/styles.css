@@ -373,16 +373,19 @@ a:hover {
 }
 
 #root {
+  height: 100%;
   background-image: url(./images/colloseum_color.jpg);
   background-size: cover;
   background-position: center center;
   background-repeat: no-repeat;
+  overflow: scroll;
 }
 
 .main-container {
-  flex-direction: column;
   display: flex;
+  flex-direction: column;
   height: 100%;
+  overflow: scroll;
 }
 
 .home-container,
