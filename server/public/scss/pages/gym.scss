@@ -1,0 +1,79 @@
+@use "../global/colors" as *;
+@use "../global/breakpoints" as *;
+// "xs": 0,
+// "sm": 480px,
+// "md": 720px,
+// "lg": 960px,
+// "xl": 1200px
+
+.gym-main {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+
+  height: 100%;
+  background-color: rgba(255, 255, 255, 0.5);
+  padding: 1em;
+  overflow-y: scroll;
+
+  @include lg {
+    flex-direction: row;
+    align-items: flex-start;
+  }
+}
+
+.gym-image {
+  width: 95%;
+  max-height: 300px;
+  border: solid $primary 3px;
+  border-radius: 18px;
+
+  @include lg {
+    max-height: 500px;
+    height: 500px;
+    width: 40%;
+  }
+
+  img {
+    height: 100%;
+    width: 100%;
+    object-fit: cover;
+    object-position: 50% 50%;
+    border-radius: 15px;
+  }
+}
+
+.gym-details {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  margin-top: 1em;
+  margin-bottom: 1em;
+  padding: 1em;
+  border-radius: 15px;
+  border: solid $primary 3px;
+
+  width: 95%;
+  height: 100%;
+  background-color: rgba(255, 255, 255, 0.9);
+
+  @include lg {
+    margin: 0 0 0 1em;
+    height: 500px;
+    width: 60%;
+  }
+
+  .gym-title {
+    color: black;
+    font-size: 2em;
+  }
+
+  .gym-body {
+    // height: 100%;
+  }
+
+  .gym-address {
+    margin-bottom: 1em;
+  }
+
+}

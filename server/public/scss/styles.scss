@@ -1,7 +1,12 @@
-@use "./breakpoints" as *;
-@use "./grid";
+@use "./global/breakpoints" as *;
+@use "./global/grid";
+@use "./global/colors" as *;
 @use "./components/app-drawer.scss";
 @use "./components/footer.scss";
+@use "./pages/listings-page.scss";
+@use "./components/listing-card.scss";
+@use "./pages/gym.scss";
+@use "./pages/not-found.scss";
 
 // "xs": 0,
 // "sm": 480px,
@@ -9,11 +14,8 @@
 // "lg": 960px,
 // "xl": 1200px
 
-// colors
-$primary: #D2B85A;
-
 header {
-  position: relative;
+  position: sticky;
 }
 
 button {
@@ -28,7 +30,9 @@ a {
   text-decoration: none;
   color: inherit;
 
-  &:visited, &:active, &:link {
+  &:visited,
+  &:active,
+  &:link {
     color: inherit;
   }
 
@@ -37,15 +41,23 @@ a {
   }
 }
 
-.home-container {
-  display: flex;
-  flex-direction: column;
-
-  height: 100vh;
+#root {
+  height: 100%;
   background-image: url(./images/colloseum_color.jpg);
   background-size: cover;
   background-position: center center;
   background-repeat: no-repeat;
+}
+
+.main-container {
+  display: flex;
+  flex-direction: column;
+  height: 100%;
+}
+
+
+.home-container {
+  height: 100%;
 }
 
 .header {
@@ -84,7 +96,7 @@ a {
     }
 
     @include lg {
-      font-size: 5rem;
+      font-size: 6rem;
       margin-left: 1em;
     }
   }

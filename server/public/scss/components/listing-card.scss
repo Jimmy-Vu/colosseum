@@ -1,0 +1,54 @@
+@use "../global/colors" as *;
+@use "../global/breakpoints" as *;
+
+// "xs": 0,
+// "sm": 480px,
+// "md": 720px,
+// "lg": 960px,
+// "xl": 1200px
+
+.card-anchor {
+  display: flex;
+  justify-content: center;
+  width: 95%;
+  height: 150px;
+  margin-bottom: 1rem;
+}
+
+.card {
+  display: flex;
+  align-items: center;
+
+  background-color: white;
+  border: solid 5px $primary;
+  border-radius: 15px;
+  height: 100%;
+  width: 100%;
+  padding: 1em;
+
+  @include sm {
+    width: 75%;
+  }
+
+  &-image {
+    object-fit: cover;
+    height: 100px;
+    width: 100px;
+    border-radius: 15px;
+  }
+
+  &-body {
+    display: flex;
+    flex-direction: column;
+    margin-left: 3rem;
+
+    @include md {
+      margin-left: 10rem;
+    }
+  }
+
+  &-title {
+    color: black;
+    font-size: 2em;
+  }
+}
