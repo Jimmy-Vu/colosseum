@@ -18,7 +18,8 @@ function AppDrawer(props) {
             <animated.div style={style} className="menu">
               <i onClick={() => setDrawerIsOpen(false)} className="close-button fa-solid fa-xmark"></i>
               <nav className="menu__nav">
-                <ul><a onClick={() => setDrawerIsOpen(false)} href="#listings">Gyms</a></ul>
+                <ul><a onClick={() => setDrawerIsOpen(false)} href="#listings">Arenas</a></ul>
+                <ul><a onClick={() => setDrawerIsOpen(false)} href="#create">Add An Arena</a></ul>
                 <ul><a href="#">Favorites</a></ul>
                 <ul><a href="#">My Account</a></ul>
               </nav>

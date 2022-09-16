@@ -355,6 +355,18 @@ footer {
   height: 100%;
 }
 
+fieldset {
+  border: 0;
+}
+
+.create-main {
+  height: 100%;
+}
+.create-main form {
+  display: flex;
+  flex-direction: column;
+}
+
 header {
   position: sticky;
 }
