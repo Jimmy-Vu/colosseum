@@ -397,6 +397,7 @@ footer {
 }
 .create-form .specialization-fieldset {
   margin-top: 2em;
+  margin-bottom: 1em;
   border: 0;
   overflow-y: auto;
 }
