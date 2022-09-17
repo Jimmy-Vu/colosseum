@@ -14,7 +14,7 @@
   height: 100%;
   background-color: rgba(255, 255, 255, 0.5);
   padding: 1em;
-  overflow-y: scroll;
+  overflow-y: auto;
 
   @include lg {
     flex-direction: row;
@@ -69,11 +69,7 @@
   }
 
   .gym-body {
-    // height: 100%;
-  }
-
-  .gym-address {
-    margin-bottom: 1em;
+    margin-top: 1em;
   }
 
 }

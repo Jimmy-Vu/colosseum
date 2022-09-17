@@ -32,6 +32,7 @@ function Gym(props) {
       <div className="gym-details">
         <h3 className="gym-title">{gymState.name}</h3>
         <p className="gym-address">{gymState.address}</p>
+        <p className="gym-type">{`Type: ${gymState.type}`}</p>
         <div className="gym-body">
           <p>Lorem ipsum dolor sit, amet consectetur adipisicing elit. Repellat in est neque cupiditate distinctio accusantium alias blanditiis sunt harum illo.</p>
           <br></br>

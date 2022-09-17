@@ -9,6 +9,7 @@ function ListingCard(props) {
         <div className="card-body">
           <h5 className="card-title">{name}</h5>
           <p className="card-address">{address}</p>
+          <p className="card-type">{`Type: ${type}`}</p>
         </div>
       </div>
     </a>

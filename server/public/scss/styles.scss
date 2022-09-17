@@ -54,6 +54,7 @@ a {
   display: flex;
   flex-direction: column;
   height: 100%;
+  font-family: 'Roboto', sans-serif;
 }
 
 
@@ -91,13 +92,13 @@ a {
     }
 
     @include md {
-      font-size: 4rem;
+      font-size: 3rem;
       width: fit-content;
       margin-left: 1.5em;
     }
 
     @include lg {
-      font-size: 6rem;
+      font-size: 5rem;
       margin-left: 1em;
     }
   }

@@ -1,13 +1,102 @@
-fieldset {
-  border: 0;
-}
-
 .create-main {
   height: 100%;
+  display: flex;
+  justify-content: center;
+  align-items: center;
 }
-.create-main form {
+
+.create-form {
   display: flex;
   flex-direction: column;
+  padding: 1em;
+  margin: 1em;
+  background-color: rgba(255, 255, 255, 0.9);
+  border-radius: 15px;
+}
+@media (min-width: 720px) {
+  .create-form {
+    width: 90%;
+    height: 80%;
+  }
+}
+.create-form .text-inputs {
+  display: flex;
+  flex-direction: column;
+}
+@media (min-width: 720px) {
+  .create-form .text-inputs {
+    width: 100%;
+  }
+}
+.create-form .text-inputs .name-label,
+.create-form .text-inputs .address-label {
+  font-weight: 600;
+  margin-left: 0.15em;
+}
+.create-form .text-inputs .name-input,
+.create-form .text-inputs .address-input {
+  margin-bottom: 1em;
+}
+.create-form .specialization-fieldset {
+  margin-top: 2em;
+  border: 0;
+  overflow-y: auto;
+}
+@media (min-width: 720px) {
+  .create-form .specialization-fieldset {
+    display: flex;
+    flex-direction: column;
+    margin-top: 0;
+    width: 100%;
+  }
+}
+.create-form .specialization-fieldset legend {
+  font-weight: 600;
+}
+.create-form .upload-submit-container {
+  display: flex;
+  flex-direction: column;
+  width: 100%;
+}
+@media (min-width: 720px) {
+  .create-form .upload-submit-container {
+    align-items: center;
+  }
+}
+.create-form .upload-submit-container label {
+  display: block;
+  font-weight: 600;
+}
+.create-form .upload-submit-container input::file-selector-button {
+  margin: 0.25em 0.5em 0.25em 0.1em;
+  background-color: #D2B85A;
+  color: white;
+  box-shadow: 0 0 1px black;
+  border: solid white 1px;
+  border-radius: 15px;
+  padding-left: 1em;
+  padding-right: 1em;
+  padding-top: 0.25em;
+  padding-bottom: 0.25em;
+}
+.create-form .upload-submit-container .submit-button {
+  align-self: center;
+  text-align: center;
+  margin: 1em 0.5em 0.25em 0.1em;
+  width: 85px;
+  background-color: #D2B85A;
+  color: white;
+  box-shadow: 0 0 1px black;
+  border: solid white 1px;
+  border-radius: 15px;
+  padding-left: 1em;
+  padding-right: 1em;
+  padding-top: 0.25em;
+  padding-bottom: 0.25em;
+}
+
+.checkbox-option label {
+  margin-left: 0.5em;
 }
 
 /*# sourceMappingURL=create-listing.css.map */
