@@ -1,6 +1,9 @@
 require('dotenv/config');
 const express = require('express');
 const db = require('./db');
+const multer = require('multer');
+const { storage } = require('./cloudinary');
+const upload = multer({ storage }).single('image');
 const ClientError = require('./client-error');
 const errorMiddleware = require('./error-middleware');
 const staticMiddleware = require('./static-middleware');
@@ -16,8 +19,8 @@ app.get('/api/gyms', (req, res, next) => {
   `;
 
   db.query(sql)
-  .then(result => res.json(result.rows))
-  .catch(err => next(err));
+    .then(result => res.json(result.rows))
+    .catch(err => next(err));
 });
 
 app.get('/api/gyms/:gymId', (req, res, next) => {
@@ -40,25 +43,29 @@ app.get('/api/gyms/:gymId', (req, res, next) => {
 // Mounting middleware for express app to be able to parse json requests
 app.use(jsonMiddleware);
 
-app.post('/api/gyms', (req, res, next) => {
-  const { name, address, type, imageURL } = req.body;
-  const sql = `
-  insert into "gyms" (
-    "name",
-    "address",
-    "type",
-    "imageURL"
-    ) values ($1, $2, $3, $4)
-  returning "gymId", "name", "address", "type", "imageURL"
-  `;
+app.post('/api/gyms', upload, (req, res, next) => {
+  const { name, address, type } = req.body;
+  const imageURL = req.file;
+  console.log('req body:', req.body);
+  console.log('req file:', req.file);
+  res.status(201);
+  // const sql = `
+  // insert into "gyms" (
+  //   "name",
+  //   "address",
+  //   "type",
+  //   "imageURL"
+  //   ) values ($1, $2, $3, $4)
+  // returning "gymId", "name", "address", "type", "imageURL"
+  // `;
 
-  const params = [name, address, type, imageURL];
+  // const params = [name, address, type, imageURL];
 
-  db.query(sql, params)
-    .then(result => {
-      res.status(201).json(result.rows);
-    })
-    .catch(err => next(err));
+  // db.query(sql, params)
+  //   .then(result => {
+  //     res.status(201).json(result.rows);
+  //   })
+  //   .catch(err => next(err));
 });
 
 app.use(errorMiddleware);

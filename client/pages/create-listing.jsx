@@ -18,13 +18,21 @@ function CreateListing(props) {
     image: ''
   });
 
-  // useEffect(() => {
-  //   console.log(inputs);
-  // }, [inputs]);
-
   function handleSubmit(e) {
     e.preventDefault();
-    console.log(inputs);
+
+    const formData = new FormData();
+
+    for (let i in inputs) {
+      formData.set(i, inputs[i]);
+    }
+
+    fetch('/api/gyms', {
+      method: 'POST',
+      body: formData
+    })
+      .then(res => console.log('Success!'))
+      .catch(err => console.error(err));
   }
 
   function handleChange(e) {
@@ -39,6 +47,10 @@ function CreateListing(props) {
         [event.target.id]: event.target.checked
       }
     }));
+  }
+
+  function handleUpload(e) {
+    setInputs(prev => ({ ...prev, [e.target.id]: e.target.files[0] }));
   }
 
   return (
@@ -91,7 +103,7 @@ function CreateListing(props) {
         </fieldset>
         <div className="upload-submit-container">
           <label htmlFor="image">Choose an image for the gym</label>
-          <input onChange={handleChange} id="image" type="file" accept="image/*" />
+          <input onChange={handleUpload} id="image" type="file" accept="image/*" />
           <button className="submit-button" type="submit">Submit</button>
         </div>
       </form>
