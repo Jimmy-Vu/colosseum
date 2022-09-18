@@ -1,4 +1,5 @@
 require('dotenv/config');
+const util = require('util');
 const express = require('express');
 const db = require('./db');
 const multer = require('multer');
@@ -44,10 +45,17 @@ app.get('/api/gyms/:gymId', (req, res, next) => {
 app.use(jsonMiddleware);
 
 app.post('/api/gyms', upload, (req, res, next) => {
-  const { name, address, type } = req.body;
-  const imageURL = req.file;
-  console.log('req body:', req.body);
-  console.log('req file:', req.file);
+  const { name, address } = req.body;
+  // const imageURL = req.file.path;
+  const type = JSON.parse(req.body.type);
+  // for (let i in req.body.type) {
+  //   if (req.body.type[i] === true) {
+  //     type.push(i);
+  //   }
+  // }
+  console.log(req.body.type);
+  console.log(type);
+
   res.status(201);
   // const sql = `
   // insert into "gyms" (
@@ -60,7 +68,7 @@ app.post('/api/gyms', upload, (req, res, next) => {
   // `;
 
   // const params = [name, address, type, imageURL];
-
+  // console.log(type);
   // db.query(sql, params)
   //   .then(result => {
   //     res.status(201).json(result.rows);

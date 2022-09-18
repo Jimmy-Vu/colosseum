@@ -9,8 +9,10 @@ cloudinary.config({
 
 const storage = new CloudinaryStorage({
   cloudinary,
-  folder: 'Colosseum',
-  allowedFormats: ['jpg', 'jpeg', 'png']
+  params: {
+    folder: 'Colosseum',
+    allowedFormats: ['jpg', 'jpeg', 'png']
+  }
 });
 
 module.exports = {

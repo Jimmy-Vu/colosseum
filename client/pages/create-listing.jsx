@@ -18,23 +18,6 @@ function CreateListing(props) {
     image: ''
   });
 
-  function handleSubmit(e) {
-    e.preventDefault();
-
-    const formData = new FormData();
-
-    for (let i in inputs) {
-      formData.set(i, inputs[i]);
-    }
-
-    fetch('/api/gyms', {
-      method: 'POST',
-      body: formData
-    })
-      .then(res => console.log('Success!'))
-      .catch(err => console.error(err));
-  }
-
   function handleChange(e) {
     setInputs(prev => ({ ...prev, [e.target.id]: e.target.value }));
   }
@@ -51,6 +34,23 @@ function CreateListing(props) {
 
   function handleUpload(e) {
     setInputs(prev => ({ ...prev, [e.target.id]: e.target.files[0] }));
+  }
+
+  function handleSubmit(e) {
+    e.preventDefault();
+    inputs.type = JSON.stringify(inputs.type);
+    const formData = new FormData();
+
+    for (let i in inputs) {
+      formData.set(i, inputs[i]);
+    }
+
+    fetch('/api/gyms', {
+      method: 'POST',
+      body: formData
+    })
+      .then(res => console.log('Success!'))
+      .catch(err => console.error(err));
   }
 
   return (
