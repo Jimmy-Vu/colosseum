@@ -6,7 +6,7 @@ function NotFound(props) {
   return (
     <>
       <div className="not-found-container">
-        <h1>Under Construction</h1>
+        <h1>Not Found</h1>
       </div>
     </>
   );

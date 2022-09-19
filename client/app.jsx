@@ -55,6 +55,7 @@ function App(props) {
           <Footer />
         </div>
       );
+    case "not-found":
     default:
       return (
         <div className="main-container">

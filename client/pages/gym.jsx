@@ -11,15 +11,20 @@ function Gym(props) {
 
 
   fetch(`/api/gyms/${gymState.gymId}`, { method: 'GET' })
-    .then(res => res.json())
+    .then(res => {
+      if (res.status === 404) {
+        window.location.hash = '#not-found';
+      }
+      return res.json();
+    })
     .then(data => {
-      setGymState({
-        gymId: data.gymId,
-        name: data.name,
-        address: data.address,
-        type: data.type.replace(/[\{\}"]/g, "").replace(',', ', '),
-        imageURL: data.imageURL
-      });
+        setGymState({
+          gymId: data.gymId,
+          name: data.name,
+          address: data.address,
+          type: data.type.replace(/[\{\}"]/g, "").replace(',', ', '),
+          imageURL: data.imageURL
+        });
     })
     .catch(err => console.error(err));
 

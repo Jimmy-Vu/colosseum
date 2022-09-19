@@ -13,6 +13,7 @@ $primary: #D2B85A;
   display: flex;
   width: 100%;
   position: fixed;
+
   &--hidden {
     display: none;
   }
@@ -57,6 +58,11 @@ $primary: #D2B85A;
       padding-left: 3rem;
       padding-right: 3rem;
       font-family: 'Oswald', sans-serif;
+
+      @include md {
+        padding-left: 2rem;
+        padding-right: 2rem;
+      }
 
       ul {
         border-top: solid white 1px;

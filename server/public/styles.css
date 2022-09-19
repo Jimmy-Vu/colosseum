@@ -201,6 +201,12 @@
   padding-right: 3rem;
   font-family: "Oswald", sans-serif;
 }
+@media (min-width: 720px) {
+  .app-drawer .menu__nav {
+    padding-left: 2rem;
+    padding-right: 2rem;
+  }
+}
 .app-drawer .menu__nav ul {
   border-top: solid white 1px;
   width: 100%;

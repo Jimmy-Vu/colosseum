@@ -37,7 +37,12 @@ app.get('/api/gyms/:gymId', (req, res, next) => {
   const params = [gymId];
 
   db.query(sql, params)
-    .then(result => res.json(result.rows[0]))
+    .then(result => {
+      if (!result.rows[0]) {
+        throw new ClientError(404, 'gradeId cannot be found');
+      }
+      return res.json(result.rows[0]);
+      })
     .catch(err => next(err));
 });
 
@@ -64,7 +69,7 @@ app.post('/api/gyms/dev', (req, res, next) => {
   const params = [name, address, type, imageURL];
   db.query(sql, params)
     .then(result => {
-      res.status(201).json(result.rows);
+      res.status(201).json(result.rows[0]);
     })
     .catch(err => next(err));
 });
@@ -94,7 +99,7 @@ app.post('/api/gyms', upload, (req, res, next) => {
   const params = [name, address, typeArray, imageURL];
   db.query(sql, params)
     .then(result => {
-      res.status(201).json(result.rows);
+      res.status(201).json(result.rows[0]);
     })
     .catch(err => next(err));
 });

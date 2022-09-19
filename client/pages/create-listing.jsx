@@ -50,7 +50,10 @@ function CreateListing(props) {
       method: 'POST',
       body: formData
     })
-      .then(res => console.log('Success!'))
+      .then(res => res.json())
+      .then(data => {
+        window.location.hash = `#gyms?gymId=${data.gymId}`;
+      })
       .catch(err => console.error(err));
   }
 
