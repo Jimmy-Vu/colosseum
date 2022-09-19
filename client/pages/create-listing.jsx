@@ -33,11 +33,12 @@ function CreateListing(props) {
   }
 
   function handleUpload(e) {
-    setInputs(prev => ({ ...prev, [e.target.id]: e.target.files[0] }));
+    setInputs(prev => ({ ...prev, image: e.target.files[0] }));
   }
 
   function handleSubmit(e) {
     e.preventDefault();
+
     inputs.type = JSON.stringify(inputs.type);
     const formData = new FormData();
 

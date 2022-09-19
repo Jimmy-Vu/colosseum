@@ -44,12 +44,24 @@
     margin-left: 3rem;
 
     @include md {
+      margin-left: 6rem;
+    }
+
+    @include lg {
+      margin-left: 8rem;
+    }
+
+    @include xl {
       margin-left: 10rem;
     }
   }
 
   &-title {
     color: black;
-    font-size: 2em;
+    font-size: 1.5em;
+  }
+
+  &-address {
+    margin-bottom: 0.25rem;
   }
 }

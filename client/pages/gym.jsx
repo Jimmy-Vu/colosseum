@@ -17,18 +17,17 @@ function Gym(props) {
         gymId: data.gymId,
         name: data.name,
         address: data.address,
-        type: data.type,
+        type: data.type.replace(/[\{\}"]/g, "").replace(',', ', '),
         imageURL: data.imageURL
       });
     })
     .catch(err => console.error(err));
 
-
   return (
     <main className="gym-main">
-      <div className="gym-image">
-        <img src={`${gymState.imageURL}`} alt="" />
-        </div>
+      <a className="gym-image" href={`${gymState.imageURL}`}>
+        <img src={`${gymState.imageURL}`} alt="main gym image" />
+      </a>
       <div className="gym-details">
         <h3 className="gym-title">{gymState.name}</h3>
         <p className="gym-address">{gymState.address}</p>

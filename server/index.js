@@ -43,37 +43,60 @@ app.get('/api/gyms/:gymId', (req, res, next) => {
 
 // Mounting middleware for express app to be able to parse json requests
 app.use(jsonMiddleware);
+// Post route for dev database
+app.post('/api/gyms/dev', (req, res, next) => {
+  const { name, address, type, imageURL } = req.body;
+  if (!name || !address || !type || !imageURL) {
+    throw new ClientError(400, 'Please provide a name, address, type(s), and an image');
+    console.error('Missing name, address, type, and/or image');
+  }
+
+  const sql = `
+  insert into "gyms" (
+    "name",
+    "address",
+    "type",
+    "imageURL"
+    ) values ($1, $2, $3, $4)
+  returning "gymId", "name", "address", "type", "imageURL"
+  `;
+
+  const params = [name, address, type, imageURL];
+  db.query(sql, params)
+    .then(result => {
+      res.status(201).json(result.rows);
+    })
+    .catch(err => next(err));
+});
 
 app.post('/api/gyms', upload, (req, res, next) => {
   const { name, address } = req.body;
-  // const imageURL = req.file.path;
-  const type = JSON.parse(req.body.type);
-  // for (let i in req.body.type) {
-  //   if (req.body.type[i] === true) {
-  //     type.push(i);
-  //   }
-  // }
+  const imageURL = req.file.path;
   console.log(req.body.type);
-  console.log(type);
+  const parsedType = JSON.parse(req.body.type);
+  const typeArray = [];
+  for (let i in parsedType) {
+    if (parsedType[i] === true) {
+      typeArray.push(i);
+    }
+  }
 
-  res.status(201);
-  // const sql = `
-  // insert into "gyms" (
-  //   "name",
-  //   "address",
-  //   "type",
-  //   "imageURL"
-  //   ) values ($1, $2, $3, $4)
-  // returning "gymId", "name", "address", "type", "imageURL"
-  // `;
+  const sql = `
+  insert into "gyms" (
+    "name",
+    "address",
+    "type",
+    "imageURL"
+    ) values ($1, $2, $3, $4)
+  returning "gymId", "name", "address", "type", "imageURL"
+  `;
 
-  // const params = [name, address, type, imageURL];
-  // console.log(type);
-  // db.query(sql, params)
-  //   .then(result => {
-  //     res.status(201).json(result.rows);
-  //   })
-  //   .catch(err => next(err));
+  const params = [name, address, typeArray, imageURL];
+  db.query(sql, params)
+    .then(result => {
+      res.status(201).json(result.rows);
+    })
+    .catch(err => next(err));
 });
 
 app.use(errorMiddleware);

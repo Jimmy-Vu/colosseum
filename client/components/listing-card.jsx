@@ -1,7 +1,10 @@
 import React from "react";
 
 function ListingCard(props) {
-  const { gymId, name, address, type, imageURL } = props.gym;
+  const { gymId, name, address, imageURL } = props.gym;
+  let { type } = props.gym;
+  type = type.replace(/[\{\}"]/g, "").replace(',', ', ');
+
   return (
     <a className="card-anchor" href={`#gyms?gymId=${gymId}`}>
       <div className="card">

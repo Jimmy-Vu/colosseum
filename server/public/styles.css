@@ -276,12 +276,25 @@ footer {
 }
 @media (min-width: 720px) {
   .card-body {
+    margin-left: 6rem;
+  }
+}
+@media (min-width: 960px) {
+  .card-body {
+    margin-left: 8rem;
+  }
+}
+@media (min-width: 1200px) {
+  .card-body {
     margin-left: 10rem;
   }
 }
 .card-title {
   color: black;
-  font-size: 2em;
+  font-size: 1.5em;
+}
+.card-address {
+  margin-bottom: 0.25rem;
 }
 
 .gym-main {
@@ -291,7 +304,7 @@ footer {
   height: 100%;
   background-color: rgba(255, 255, 255, 0.5);
   padding: 1em;
-  overflow-y: auto;
+  overflow-y: scroll;
 }
 @media (min-width: 960px) {
   .gym-main {

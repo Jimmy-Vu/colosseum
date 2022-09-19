@@ -2,12 +2,11 @@ import React, { useEffect, useState } from "react";
 import Header from "../components/header";
 import Footer from "../components/footer";
 import ListingCard from "../components/listing-card";
-
 function Listings(props) {
   const [state, setState] = useState({ gyms: [] });
 
   useEffect(() => {
-    fetch('/api/gyms', { method: 'get' })
+    fetch('/api/gyms', { method: 'GET' })
       .then(result => result.json())
       .then(items => setState({ gyms: items }))
       .catch(err => console.error(err));

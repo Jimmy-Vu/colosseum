@@ -6,7 +6,8 @@
   "scripts": {
     "build": "webpack --mode=production",
     "start": "node server/index.js; npm run db:import; npm run seed",
-    "seed": "node database/seeds/index.js",
+    "seed:dev": "node database/seeds/index.js dev",
+    "seed:live": "node database/seeds/index.js live",
     "dev": "npm-run-all --silent --parallel dev:*",
     "dev:client": "webpack serve --mode=development",
     "dev:sass": "sass --watch server/public/scss:server/public",
