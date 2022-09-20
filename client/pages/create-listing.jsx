@@ -10,7 +10,7 @@ function CreateListing(props) {
       weightlifting: false,
       climbing: false,
       boxing: false,
-      muaythai: false,
+      [muay-thai]: false,
       taekwondo: false,
       karate: false,
       bjj: false
@@ -89,7 +89,7 @@ function CreateListing(props) {
             <label htmlFor="boxing">Boxing</label>
           </div>
           <div className="checkbox-option">
-            <input type="checkbox" name="muaythai" id="muaythai" />
+            <input type="checkbox" name="muay-thai" id="muay-thai" />
             <label htmlFor="muay-thai">Muay Thai</label>
           </div>
           <div className="checkbox-option">

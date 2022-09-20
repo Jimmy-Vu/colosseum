@@ -1,4 +1,5 @@
 import React, { useState } from "react";
+import typeAdjust from "../lib/typeAdjust";
 
 function Gym(props) {
   const [gymState, setGymState] = useState({
@@ -22,7 +23,7 @@ function Gym(props) {
           gymId: data.gymId,
           name: data.name,
           address: data.address,
-          type: data.type.replace(/[\{\}"]/g, "").replace(',', ', '),
+          type: typeAdjust(data.type),
           imageURL: data.imageURL
         });
     })

@@ -1,9 +1,10 @@
 import React from "react";
+import typeAdjust from "../lib/typeAdjust";
 
 function ListingCard(props) {
   const { gymId, name, address, imageURL } = props.gym;
   let { type } = props.gym;
-  type = type.replace(/[\{\}"]/g, "").replace(',', ', ');
+  type = typeAdjust(type);
 
   return (
     <a className="card-anchor" href={`#gyms?gymId=${gymId}`}>
