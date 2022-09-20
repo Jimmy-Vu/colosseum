@@ -286,7 +286,7 @@ footer {
   border-radius: 15px;
   border: solid #D2B85A 3px;
   width: 95%;
-  height: 100%;
+  height: fit-content;
   background-color: rgba(255, 255, 255, 0.9);
 }
 @media (min-width: 960px) {
@@ -449,12 +449,12 @@ a:hover {
   background-size: cover;
   background-position: center center;
   background-repeat: no-repeat;
+  overflow-y: auto;
 }
 
 .main-container {
   display: flex;
   flex-direction: column;
-  overflow-y: auto;
   height: 100%;
   font-family: "Roboto", sans-serif;
 }

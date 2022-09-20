@@ -54,7 +54,7 @@
   border: solid $primary 3px;
 
   width: 95%;
-  height: 100%;
+  height: fit-content;
   background-color: rgba(255, 255, 255, 0.9);
 
   @include lg {
