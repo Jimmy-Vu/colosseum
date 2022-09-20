@@ -10,7 +10,7 @@
 .card-anchor {
   display: flex;
   justify-content: center;
-  width: 90%;
+  width: 100%;
   height: fit-content;
   max-height: 200px;
   margin-bottom: 1rem;
@@ -28,7 +28,7 @@
   padding: 1em;
 
   @include sm {
-    width: 75%;
+    width: 100%;
   }
 
   &-image {

@@ -10,10 +10,10 @@ function CreateListing(props) {
       weightlifting: false,
       climbing: false,
       boxing: false,
-      [muay-thai]: false,
+      ['muay-thai']: false,
       taekwondo: false,
       karate: false,
-      bjj: false
+      ['brazilian-ji-jijutsu']: false
     },
     image: ''
   });

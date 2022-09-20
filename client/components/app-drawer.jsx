@@ -20,8 +20,8 @@ function AppDrawer(props) {
               <nav className="menu__nav">
                 <ul><a onClick={() => setDrawerIsOpen(false)} href="#listings">Arenas</a></ul>
                 <ul><a onClick={() => setDrawerIsOpen(false)} href="#create">Add An Arena</a></ul>
-                <ul><a href="#">Favorites</a></ul>
-                <ul><a href="#">My Account</a></ul>
+                {/* <ul><a href="#">Favorites</a></ul>
+                <ul><a href="#">My Account</a></ul> */}
               </nav>
             </animated.div>
             <div onClick={() => setDrawerIsOpen(false)} className="drawer-overlay"></div>

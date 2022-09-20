@@ -1,8 +1,14 @@
 function typeAdjust(string) {
   const splitString = string.replace(/[\{\}"]/g, "").split(',');
   for (let i = 0; i < splitString.length; i++) {
-    splitString[i] = capitalize(splitString[i]);
-  }
+    if (splitString[i].includes('-')) {
+      const subArray = [];
+      splitString[i].split('-').forEach(word => subArray.push(capitalize(word)));
+      splitString[i] = subArray.join(' ');
+    } else {
+      splitString[i] = capitalize(splitString[i]);
+    }
+    }
   return splitString.join(', ');
 }
 

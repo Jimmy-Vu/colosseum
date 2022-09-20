@@ -15,6 +15,7 @@ function Listings(props) {
   return (
     <>
       <main className="listings-main">
+        <a className="listings-add-btn" href="#create">Add an Arena</a>
         {
           state.gyms.map(gym => (
               <ListingCard key={gym.gymId} gym={gym} />
