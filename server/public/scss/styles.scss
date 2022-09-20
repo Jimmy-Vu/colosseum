@@ -1,6 +1,6 @@
 @use "./global/breakpoints" as *;
-@use "./global/grid";
 @use "./global/colors" as *;
+@use "./components/header.scss";
 @use "./components/app-drawer.scss";
 @use "./components/footer.scss";
 @use "./pages/listings-page.scss";
@@ -60,68 +60,6 @@ a {
 
 .home-container {
   height: 100%;
-}
-
-.header {
-  display: flex;
-  justify-content: space-between;
-  align-items: center;
-  width: 100%;
-  padding: 0.4rem 1rem;
-  color: white;
-
-  .menu-button {
-    font-size: 3rem;
-    color: $primary;
-    margin-top: .23em;
-    text-shadow: 1px 1px 1px black;
-
-    @include md {
-      font-size: 3rem;
-    }
-  }
-
-  &__title {
-    font-family: 'Oswald', sans-serif;
-    font-size: 3.5rem;
-    color: white;
-    text-shadow: 0 4px 4px black;
-
-    a {
-      color: white;
-    }
-
-    @include md {
-      font-size: 3rem;
-      width: fit-content;
-      margin-left: 1.5em;
-    }
-
-    @include lg {
-      font-size: 5rem;
-      margin-left: 1em;
-    }
-  }
-
-  &__sign-in {
-    display: none;
-
-    @include md {
-      display: flex;
-      justify-content: center;
-      align-items: center;
-      width: 150px;
-      height: 3rem;
-      border-radius: 6px;
-
-      background-color: $primary;
-      color: white;
-      font-family: 'Oswald', sans-serif;
-      font-size: 1.5rem;
-      font-weight: 500;
-      text-shadow: 0 0 2px black;
-    }
-  }
 }
 
 .home-main {

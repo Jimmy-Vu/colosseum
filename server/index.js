@@ -50,7 +50,7 @@ app.get('/api/gyms/:gymId', (req, res, next) => {
 app.use(jsonMiddleware);
 // Post route for dev database
 app.post('/api/gyms/dev', (req, res, next) => {
-  const { name, address, type, imageURL } = req.body;
+  const { name, address, type, imageURL, description } = req.body;
   if (!name || !address || !type || !imageURL) {
     throw new ClientError(400, 'Please provide a name, address, type(s), and an image');
     console.error('Missing name, address, type, and/or image');
@@ -61,12 +61,13 @@ app.post('/api/gyms/dev', (req, res, next) => {
     "name",
     "address",
     "type",
-    "imageURL"
-    ) values ($1, $2, $3, $4)
-  returning "gymId", "name", "address", "type", "imageURL"
+    "imageURL",
+    "description"
+    ) values ($1, $2, $3, $4, $5)
+  returning "gymId", "name", "address", "type", "imageURL", "description"
   `;
 
-  const params = [name, address, type, imageURL];
+  const params = [name, address, type, imageURL, description];
   db.query(sql, params)
     .then(result => {
       res.status(201).json(result.rows[0]);
@@ -75,9 +76,8 @@ app.post('/api/gyms/dev', (req, res, next) => {
 });
 
 app.post('/api/gyms', upload, (req, res, next) => {
-  const { name, address } = req.body;
+  const { name, address, description } = req.body;
   const imageURL = req.file.path;
-  console.log(req.body.type);
   const parsedType = JSON.parse(req.body.type);
   const typeArray = [];
   for (let i in parsedType) {
@@ -91,12 +91,13 @@ app.post('/api/gyms', upload, (req, res, next) => {
     "name",
     "address",
     "type",
-    "imageURL"
-    ) values ($1, $2, $3, $4)
-  returning "gymId", "name", "address", "type", "imageURL"
+    "imageURL",
+    "description"
+    ) values ($1, $2, $3, $4, $5)
+  returning "gymId", "name", "address", "type", "imageURL", "description"
   `;
 
-  const params = [name, address, typeArray, imageURL];
+  const params = [name, address, typeArray, imageURL, description];
   db.query(sql, params)
     .then(result => {
       res.status(201).json(result.rows[0]);

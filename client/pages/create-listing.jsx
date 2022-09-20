@@ -15,7 +15,8 @@ function CreateListing(props) {
       karate: false,
       ['brazilian-ji-jijutsu']: false
     },
-    image: ''
+    image: '',
+    description: ''
   });
 
   function handleChange(e) {
@@ -65,6 +66,8 @@ function CreateListing(props) {
           <input className="name-input" onChange={handleChange} type="text" name="name" id="name" />
           <label className="address-label" htmlFor="address">Address</label>
           <input className="address-input" onChange={handleChange} type="text" name="address" id="address" />
+          <label className="description-label" htmlFor="description">Description</label>
+          <textarea className="description-input" onChange={handleChange} name="description" id="description" cols="30" rows="5"></textarea>
         </div>
         <fieldset onChange={handleCheckboxes} id="type" className="specialization-fieldset">
           <legend>Choose the type of specialization(s) of the arena:</legend>
@@ -101,8 +104,8 @@ function CreateListing(props) {
             <label htmlFor="karate">Karate</label>
           </div>
           <div className="checkbox-option">
-            <input type="checkbox" name="bjj" id="bjj" />
-            <label htmlFor="bjj">Brazilian Ji Jijutsu</label>
+            <input type="checkbox" name="brazilian-ji-jijutsu" id="brazilian-ji-jijutsu" />
+            <label htmlFor="brazilian-ji-jijutsu">Brazilian Ji Jijutsu</label>
           </div>
         </fieldset>
         <div className="upload-submit-container">

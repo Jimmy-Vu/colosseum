@@ -7,7 +7,8 @@ function Gym(props) {
     name: '',
     address: '',
     type: '',
-    imageURL: ''
+    imageURL: '',
+    description: ''
   });
 
 
@@ -24,30 +25,50 @@ function Gym(props) {
           name: data.name,
           address: data.address,
           type: typeAdjust(data.type),
-          imageURL: data.imageURL
+          imageURL: data.imageURL,
+          description: data.description
         });
     })
     .catch(err => console.error(err));
 
-  return (
-    <main className="gym-main">
-      <a className="gym-image" href={`${gymState.imageURL}`}>
-        <img src={`${gymState.imageURL}`} alt="main gym image" />
-      </a>
-      <div className="gym-details">
-        <h3 className="gym-title">{gymState.name}</h3>
-        <p className="gym-address">{gymState.address}</p>
-        <p className="gym-type">{`Type: ${gymState.type}`}</p>
-        <div className="gym-body">
-          <p>Lorem ipsum dolor sit, amet consectetur adipisicing elit. Repellat in est neque cupiditate distinctio accusantium alias blanditiis sunt harum illo.</p>
-          <br></br>
-          <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Nisi perferendis maiores aliquid quos numquam cum, sit, labore suscipit est dolore impedit accusamus ipsam cumque laboriosam error molestias repellendus adipisci modi.</p>
-          <br></br>
-          <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Nisi perferendis maiores aliquid quos numquam cum, sit, labore suscipit est dolore impedit accusamus ipsam cumque laboriosam error molestias repellendus adipisci modi.</p>
-        </div>
-      </div>
-    </main>
-  );
+    if (gymState.description) {
+      return (
+        <main className="gym-main">
+          <a className="gym-image" href={`${gymState.imageURL}`}>
+            <img src={`${gymState.imageURL}`} alt="main gym image" />
+          </a>
+          <div className="gym-details">
+            <h3 className="gym-title">{gymState.name}</h3>
+            <p className="gym-address">{gymState.address}</p>
+            <p className="gym-type">{`Type: ${gymState.type}`}</p>
+            <div className="gym-body">
+              <p className="gym-description">{gymState.description}</p>
+            </div>
+          </div>
+        </main>
+      );
+    } else {
+      return (
+        <main className="gym-main">
+          <a className="gym-image" href={`${gymState.imageURL}`}>
+            <img src={`${gymState.imageURL}`} alt="main gym image" />
+          </a>
+          <div className="gym-details">
+            <h3 className="gym-title">{gymState.name}</h3>
+            <p className="gym-address">{gymState.address}</p>
+            <p className="gym-type">{`Type: ${gymState.type}`}</p>
+            <div className="gym-body">
+              <p>Lorem ipsum dolor sit, amet consectetur adipisicing elit. Repellat in est neque cupiditate distinctio accusantium alias blanditiis sunt harum illo.</p>
+              <br></br>
+              <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Nisi perferendis maiores aliquid quos numquam cum, sit, labore suscipit est dolore impedit accusamus ipsam cumque laboriosam error molestias repellendus adipisci modi.</p>
+              <br></br>
+              <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Nisi perferendis maiores aliquid quos numquam cum, sit, labore suscipit est dolore impedit accusamus ipsam cumque laboriosam error molestias repellendus adipisci modi.</p>
+            </div>
+          </div>
+        </main>
+      );
+    }
+
 }
 
 export default Gym;

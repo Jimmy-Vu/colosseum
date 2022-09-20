@@ -36,7 +36,8 @@
   }
 }
 .create-form .text-inputs .name-label,
-.create-form .text-inputs .address-label {
+.create-form .text-inputs .address-label,
+.create-form .text-inputs .description-label {
   font-weight: 600;
   margin-left: 0.15em;
 }

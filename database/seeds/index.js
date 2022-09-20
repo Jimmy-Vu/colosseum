@@ -40,7 +40,8 @@ const seedData = async () => {
               name: `${sample(descriptors)} ${sample(nouns)}`,
               address: `${cities[random].city}, ${cities[random].state}`,
               type: `${sample(types)}`,
-              imageURL: `${image}`
+              imageURL: `${image}`,
+              description: ''
             })
           })
             .then(response => console.log(response.json()))
