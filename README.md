@@ -14,6 +14,7 @@ Try the application live at [colosseum.fly.dev](colosseum.fly.dev)
 * Babel
 * Sass
 * react-spring
+* Cloudinary
 * JavaScript (ES5/ES6)
 * HTML5
 * CSS3
