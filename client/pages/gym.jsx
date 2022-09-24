@@ -1,4 +1,4 @@
-import React, { useState } from "react";
+import React, { useEffect, useState } from "react";
 import typeAdjust from "../lib/typeAdjust";
 
 function Gym(props) {
@@ -8,18 +8,18 @@ function Gym(props) {
     address: '',
     type: '',
     imageURL: '',
-    description: ''
+    description: null
   });
 
-
-  fetch(`/api/gyms/${gymState.gymId}`, { method: 'GET' })
-    .then(res => {
-      if (res.status === 404) {
-        window.location.hash = '#not-found';
-      }
-      return res.json();
-    })
-    .then(data => {
+  useEffect(() => {
+    fetch(`/api/gyms/${gymState.gymId}`, { method: 'GET' })
+      .then(res => {
+        if (res.status === 404) {
+          window.location.hash = '#not-found';
+        }
+        return res.json();
+      })
+      .then(data => {
         setGymState({
           gymId: data.gymId,
           name: data.name,
@@ -28,46 +28,49 @@ function Gym(props) {
           imageURL: data.imageURL,
           description: data.description
         });
-    })
-    .catch(err => console.error(err));
+      })
+      .catch(err => console.error(err));
+  }, [])
 
-    if (gymState.description) {
-      return (
-        <main className="gym-main">
-          <a className="gym-image" href={`${gymState.imageURL}`}>
-            <img src={`${gymState.imageURL}`} alt="main gym image" />
-          </a>
-          <div className="gym-details">
-            <h3 className="gym-title">{gymState.name}</h3>
-            <p className="gym-address">{gymState.address}</p>
-            <p className="gym-type">{`Type: ${gymState.type}`}</p>
-            <div className="gym-body">
-              <p className="gym-description">{gymState.description}</p>
-            </div>
+  if (gymState.description) {
+    return (
+      <main className="gym-main">
+        <a className="gym-image" href={`${gymState.imageURL}`}>
+          <img src={`${gymState.imageURL}`} alt="main gym image" />
+        </a>
+        <div className="gym-details">
+          <h3 className="gym-title">{gymState.name}</h3>
+          <p className="gym-address">{gymState.address}</p>
+          <p className="gym-type">{`Type: ${gymState.type}`}</p>
+          <div className="gym-body">
+            <p className="gym-description">{gymState.description}</p>
           </div>
-        </main>
-      );
-    } else {
-      return (
-        <main className="gym-main">
-          <a className="gym-image" href={`${gymState.imageURL}`}>
-            <img src={`${gymState.imageURL}`} alt="main gym image" />
-          </a>
-          <div className="gym-details">
-            <h3 className="gym-title">{gymState.name}</h3>
-            <p className="gym-address">{gymState.address}</p>
-            <p className="gym-type">{`Type: ${gymState.type}`}</p>
-            <div className="gym-body">
-              <p>Lorem ipsum dolor sit, amet consectetur adipisicing elit. Repellat in est neque cupiditate distinctio accusantium alias blanditiis sunt harum illo.</p>
-              <br></br>
-              <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Nisi perferendis maiores aliquid quos numquam cum, sit, labore suscipit est dolore impedit accusamus ipsam cumque laboriosam error molestias repellendus adipisci modi.</p>
-              <br></br>
-              <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Nisi perferendis maiores aliquid quos numquam cum, sit, labore suscipit est dolore impedit accusamus ipsam cumque laboriosam error molestias repellendus adipisci modi.</p>
-            </div>
+        </div>
+      </main>
+    );
+  } else if (gymState.description === null) {
+    return null;
+  } else {
+    return (
+      <main className="gym-main">
+        <a className="gym-image" href={`${gymState.imageURL}`}>
+          <img src={`${gymState.imageURL}`} alt="main gym image" />
+        </a>
+        <div className="gym-details">
+          <h3 className="gym-title">{gymState.name}</h3>
+          <p className="gym-address">{gymState.address}</p>
+          <p className="gym-type">{`Type: ${gymState.type}`}</p>
+          <div className="gym-body">
+            <p>Lorem ipsum dolor sit, amet consectetur adipisicing elit. Repellat in est neque cupiditate distinctio accusantium alias blanditiis sunt harum illo.</p>
+            <br></br>
+            <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Nisi perferendis maiores aliquid quos numquam cum, sit, labore suscipit est dolore impedit accusamus ipsam cumque laboriosam error molestias repellendus adipisci modi.</p>
+            <br></br>
+            <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Nisi perferendis maiores aliquid quos numquam cum, sit, labore suscipit est dolore impedit accusamus ipsam cumque laboriosam error molestias repellendus adipisci modi.</p>
           </div>
-        </main>
-      );
-    }
+        </div>
+      </main>
+    );
+  }
 
 }
 
