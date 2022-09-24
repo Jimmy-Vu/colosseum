@@ -251,7 +251,7 @@ footer {
 @media (min-width: 960px) {
   .gym-main {
     flex-direction: row;
-    align-items: flex-start;
+    align-items: center;
   }
 }
 
