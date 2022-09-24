@@ -23,8 +23,8 @@ Try the application live at [colosseum.fly.dev](colosseum.fly.dev)
 #### Features
 - [x] 1. Users can see the home page
 - [ ] 2. Users can browse gym listings
-- [ ] 3. Users can login
-- [ ] 4. Users can add a gym listing
+- [ ] 3. Users can add a gym listing
+- [ ] 4. Users can login
 - [ ] 5. Users can leave a review
 
 #### Stretch Features
