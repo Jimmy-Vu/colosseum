@@ -13,7 +13,7 @@ let fetchURL = '';
 if (environment === 'dev') {
   fetchURL = 'http://localhost:3001/api/gyms/dev';
 } else {
-  fetchURL = 'https://colosseum.fly.dev/api/gyms'
+  fetchURL = 'https://colosseum.fly.dev/api/gyms/dev'
 }
 
 const cities = require('./cities');

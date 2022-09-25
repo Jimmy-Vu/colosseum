@@ -1,5 +1,10 @@
 @use "../global/colors" as *;
 @use "../global/breakpoints" as *;
+// "xs": 0,
+// "sm": 480px,
+// "md": 720px,
+// "lg": 960px,
+// "xl": 1200px
 
 .listings-main {
   display: flex;
@@ -23,11 +28,16 @@
     padding-left: 10rem;
     padding-right: 10rem;
   }
+
+  @include xl {
+    padding-left: 20rem;
+    padding-right: 20rem;
+  }
 }
 
 .listings-add-btn {
   align-self: flex-end;
-  margin: 1em .5em 1rem 0.1em;
+  margin: 1rem 0.1rem 1rem 0.1rem;
   width: fit-content;
 
   background-color: $primary;
