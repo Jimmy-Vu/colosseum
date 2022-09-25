@@ -1,6 +1,10 @@
 require('dotenv/config');
+const util = require('util');
 const express = require('express');
 const db = require('./db');
+const multer = require('multer');
+const { storage } = require('./cloudinary');
+const upload = multer({ storage }).single('image');
 const ClientError = require('./client-error');
 const errorMiddleware = require('./error-middleware');
 const staticMiddleware = require('./static-middleware');
@@ -16,8 +20,8 @@ app.get('/api/gyms', (req, res, next) => {
   `;
 
   db.query(sql)
-  .then(result => res.json(result.rows))
-  .catch(err => next(err));
+    .then(result => res.json(result.rows))
+    .catch(err => next(err));
 });
 
 app.get('/api/gyms/:gymId', (req, res, next) => {
@@ -33,30 +37,75 @@ app.get('/api/gyms/:gymId', (req, res, next) => {
   const params = [gymId];
 
   db.query(sql, params)
-    .then(result => res.json(result.rows[0]))
+    .then(result => {
+      if (!result.rows[0]) {
+        throw new ClientError(404, 'gradeId cannot be found');
+      }
+      return res.json(result.rows[0]);
+      })
     .catch(err => next(err));
 });
 
 // Mounting middleware for express app to be able to parse json requests
 app.use(jsonMiddleware);
+// Post route for dev database
+app.post('/api/gyms/dev', (req, res, next) => {
+  const { name, address, type, imageURL, description } = req.body;
+  if (!name || !address || !type || !imageURL) {
+    throw new ClientError(400, 'Please provide a name, address, type(s), and an image');
+    console.error('Missing name, address, type, and/or image');
+  }
 
-app.post('/api/gyms', (req, res, next) => {
-  const { name, address, type, imageURL } = req.body;
   const sql = `
   insert into "gyms" (
     "name",
     "address",
     "type",
-    "imageURL"
-    ) values ($1, $2, $3, $4)
-  returning "gymId", "name", "address", "type", "imageURL"
+    "imageURL",
+    "description"
+    ) values ($1, $2, $3, $4, $5)
+  returning "gymId", "name", "address", "type", "imageURL", "description"
   `;
 
-  const params = [name, address, type, imageURL];
-
+  const params = [name, address, type, imageURL, description];
   db.query(sql, params)
     .then(result => {
-      res.status(201).json(result.rows);
+      res.status(201).json(result.rows[0]);
+    })
+    .catch(err => next(err));
+});
+// Post route for production database
+app.post('/api/gyms', upload, (req, res, next) => {
+  const { name, address, type, description } = req.body;
+  const imageURL = req.file.path;
+  if (!name || !address || !type || !imageURL) {
+    throw new ClientError(400, 'Please provide a name, address, type(s), and an image');
+    console.error('Missing name, address, type, and/or image');
+  }
+
+  const parsedType = JSON.parse(type);
+  const typeArray = [];
+  for (let i in parsedType) {
+    if (parsedType[i] === true) {
+      typeArray.push(i);
+    }
+  }
+
+  const sql = `
+  insert into "gyms" (
+    "name",
+    "address",
+    "type",
+    "imageURL",
+    "description"
+    ) values ($1, $2, $3, $4, $5)
+  returning "gymId", "name", "address", "type", "imageURL", "description"
+  `;
+
+  const params = [name, address, typeArray, imageURL, description];
+  db.query(sql, params)
+    .then(result => {
+      res.status(201).json(result.rows[0]);
     })
     .catch(err => next(err));
 });

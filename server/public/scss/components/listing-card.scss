@@ -10,8 +10,9 @@
 .card-anchor {
   display: flex;
   justify-content: center;
-  width: 95%;
-  height: 150px;
+  width: 100%;
+  height: fit-content;
+  max-height: 200px;
   margin-bottom: 1rem;
 }
 
@@ -27,7 +28,7 @@
   padding: 1em;
 
   @include sm {
-    width: 75%;
+    width: 100%;
   }
 
   &-image {
@@ -43,12 +44,24 @@
     margin-left: 3rem;
 
     @include md {
+      margin-left: 6rem;
+    }
+
+    @include lg {
+      margin-left: 8rem;
+    }
+
+    @include xl {
       margin-left: 10rem;
     }
   }
 
   &-title {
     color: black;
-    font-size: 2em;
+    font-size: 1.5em;
+  }
+
+  &-address {
+    margin-bottom: 0.25rem;
   }
 }

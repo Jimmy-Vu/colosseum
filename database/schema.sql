@@ -12,5 +12,6 @@ create table "public"."gyms" (
   "address"           text  not null,
   "type"              text  not null,
   "imageURL"          text  not null,
+  "description"       text  not null,
   primary key ("gymId")
 )

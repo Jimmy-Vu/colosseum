@@ -5,12 +5,12 @@
   height: 100%;
   background-color: rgba(255, 255, 255, 0.5);
   padding: 1em;
-  overflow-y: scroll;
+  overflow-y: auto;
 }
 @media (min-width: 960px) {
   .gym-main {
     flex-direction: row;
-    align-items: flex-start;
+    align-items: center;
   }
 }
 
@@ -45,7 +45,7 @@
   border-radius: 15px;
   border: solid #D2B85A 3px;
   width: 95%;
-  height: 100%;
+  height: fit-content;
   background-color: rgba(255, 255, 255, 0.9);
 }
 @media (min-width: 960px) {
@@ -59,8 +59,8 @@
   color: black;
   font-size: 2em;
 }
-.gym-details .gym-address {
-  margin-bottom: 1em;
+.gym-details .gym-body {
+  margin-top: 1em;
 }
 
 /*# sourceMappingURL=gym.css.map */

@@ -14,11 +14,11 @@
   height: 100%;
   background-color: rgba(255, 255, 255, 0.5);
   padding: 1em;
-  overflow-y: scroll;
+  overflow-y: auto;
 
   @include lg {
     flex-direction: row;
-    align-items: flex-start;
+    align-items: center;
   }
 }
 
@@ -54,7 +54,7 @@
   border: solid $primary 3px;
 
   width: 95%;
-  height: 100%;
+  height: fit-content;
   background-color: rgba(255, 255, 255, 0.9);
 
   @include lg {
@@ -69,11 +69,7 @@
   }
 
   .gym-body {
-    // height: 100%;
-  }
-
-  .gym-address {
-    margin-bottom: 1em;
+    margin-top: 1em;
   }
 
 }

@@ -5,6 +5,7 @@ import Home from "./pages/home";
 import NotFound from "./pages/not-found";
 import Listings from "./pages/listings";
 import Gym from "./pages/gym";
+import CreateListing from "./pages/create-listing";
 import Header from "./components/header";
 import Footer from "./components/footer";
 
@@ -45,7 +46,16 @@ function App(props) {
           <Gym gymId={gymId} />
           <Footer />
         </div>
-      )
+      );
+    case "create":
+      return (
+        <div className="main-container">
+          <Header />
+          <CreateListing />
+          <Footer />
+        </div>
+      );
+    case "not-found":
     default:
       return (
         <div className="main-container">
