@@ -2,7 +2,7 @@
 A mobile responsive full stack web application for self betterment enthusiasts to find gyms of all types to improve on their physical capabilities
 
 #### Live Demo
-Try the application live at [colosseum.fly.dev](colosseum.fly.dev)
+Try the application live at [colosseum.fly.dev](https://colosseum.fly.dev)
 
 #### Technologies
 * React JS
