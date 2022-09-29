@@ -78,7 +78,7 @@ app.post('/api/gyms/dev', (req, res, next) => {
 app.post('/api/gyms', upload, (req, res, next) => {
   const { name, address, type, description } = req.body;
   const imageURL = req.file.path;
-  if (!name || !address || !type || !imageURL) {
+  if (!name || !address || !type || !imageURL || !description) {
     throw new ClientError(400, 'Please provide a name, address, type(s), and an image');
     console.error('Missing name, address, type, and/or image');
   }
@@ -108,6 +108,29 @@ app.post('/api/gyms', upload, (req, res, next) => {
       res.status(201).json(result.rows[0]);
     })
     .catch(err => next(err));
+});
+
+// PATCH route for updating listing
+app.patch('/api/gyms/:gradeId', (req, res) => {
+  const { gymId, name, address, type, imageURL, description } = req.body;
+  if (!gymId || !name || !address || !type || !imageURL || !description) {
+    throw new ClientError(401, 'Please provide a name, address, type(s), and an image');
+    console.error('Missing name, address, type, image and/or description');
+  }
+
+  const sql = `
+  update "gyms"
+    set "name" = $2,
+        "address" = $3,
+        "type" = $4,
+        "imageURL" = $5,
+        "description" = $6
+    where "gymId" = $1
+    returning *
+  `;
+
+  const params = [gymId, name, address, type, imageURL, description];
+  //Need a db.query here
 });
 
 app.use(errorMiddleware);

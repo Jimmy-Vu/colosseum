@@ -46,6 +46,7 @@ function Gym(props) {
             <p className="gym-description">{gymState.description}</p>
           </div>
         </div>
+        <a href={`#edit?gymId=${gymState.gymId}`} className="gym-edit-btn">Edit Arena</a>
       </main>
     );
   } else if (gymState.description === null) {

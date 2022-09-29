@@ -8,6 +8,7 @@ import Gym from "./pages/gym";
 import CreateListing from "./pages/create-listing";
 import Header from "./components/header";
 import Footer from "./components/footer";
+import EditListing from "./pages/edit-listing";
 
 function App(props) {
   const [stateRoute, setStateRoute] = useState({
@@ -21,6 +22,7 @@ function App(props) {
   }, []);
 
   const { route } = stateRoute;
+  let gymId = '';
   switch (route.path) {
     case '':
       return (
@@ -39,7 +41,7 @@ function App(props) {
         </div>
       );
     case "gyms":
-      const gymId = route.params.get('gymId');
+      gymId = route.params.get('gymId');
       return (
         <div className="main-container">
           <Header />
@@ -52,6 +54,15 @@ function App(props) {
         <div className="main-container">
           <Header />
           <CreateListing />
+          <Footer />
+        </div>
+      );
+    case "edit":
+      gymId = route.params.get('gymId');
+      return (
+        <div className="main-container">
+          <Header />
+          <EditListing gymId={gymId}  />
           <Footer />
         </div>
       );
