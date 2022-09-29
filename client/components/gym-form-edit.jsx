@@ -27,10 +27,6 @@ export default function GymFormEdit(props) {
       .catch(err => console.error('Error during fetch get route:', err))
   }, []);
 
-  useEffect(() => {
-    console.log(inputs);
-  }, [inputs]);
-
   function handleChange(e) {
     setInputs(prev => ({ ...prev, [e.target.id]: e.target.value }));
   }
@@ -125,8 +121,13 @@ export default function GymFormEdit(props) {
         </div>
       </fieldset>
       <div className="upload-submit-container">
-        <label htmlFor="image">Choose an image for the gym</label>
-        <input onChange={handleUpload} id="image" type="file" accept="image/*" filename={inputs.image} />
+        <div className="edit-img-container">
+          <div className="edit-img-input">
+            <label htmlFor="image">Choose an image for the gym</label>
+            <input onChange={handleUpload} id="image" type="file" accept="image/*" filename={inputs.image} />
+          </div>
+          <img className="edit-img-preview" src={inputs.image} alt="Main gym image" />
+        </div>
         <button className="submit-button" type="submit">Submit</button>
       </div>
     </form>

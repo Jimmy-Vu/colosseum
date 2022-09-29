@@ -1,0 +1,26 @@
+@use "../global/breakpoints" as *;
+
+.edit-img-container {
+  width: 100%;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+
+  @include md {
+    flex-direction: row;
+    justify-content: center;
+  }
+
+  .edit-img-input {
+    margin-bottom: 1rem;
+    margin-left: -2rem;
+  }
+
+  .edit-img-preview {
+    max-height: 100px;
+
+    @include md {
+      max-height: 150px;
+    }
+  }
+}

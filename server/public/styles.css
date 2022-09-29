@@ -386,6 +386,7 @@ footer {
   margin-bottom: 1em;
   border: 0;
   overflow-y: auto;
+  min-height: 100px;
 }
 @media (min-width: 720px) {
   .create-form .specialization-fieldset {
@@ -442,6 +443,31 @@ footer {
 
 .checkbox-option label {
   margin-left: 0.5em;
+}
+
+.edit-img-container {
+  width: 100%;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+@media (min-width: 720px) {
+  .edit-img-container {
+    flex-direction: row;
+    justify-content: center;
+  }
+}
+.edit-img-container .edit-img-input {
+  margin-bottom: 1rem;
+  margin-left: -2rem;
+}
+.edit-img-container .edit-img-preview {
+  max-height: 100px;
+}
+@media (min-width: 720px) {
+  .edit-img-container .edit-img-preview {
+    max-height: 150px;
+  }
 }
 
 header {
