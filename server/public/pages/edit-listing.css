@@ -14,12 +14,28 @@
   margin-bottom: 1rem;
   margin-left: -2rem;
 }
-.edit-img-container .edit-img-preview {
-  max-height: 100px;
+@media (min-width: 480px) {
+  .edit-img-container .edit-img-input {
+    margin-left: 0rem;
+  }
+}
+.edit-img-container figure {
+  text-align: center;
+}
+.edit-img-container figure .edit-img-caption {
+  font-weight: bold;
+}
+.edit-img-container figure .edit-img-preview {
+  max-height: 150px;
 }
 @media (min-width: 720px) {
-  .edit-img-container .edit-img-preview {
-    max-height: 150px;
+  .edit-img-container figure .edit-img-preview {
+    max-height: 200px;
+  }
+}
+@media (min-width: 1200px) {
+  .edit-img-container figure .edit-img-preview {
+    max-height: 250px;
   }
 }
 

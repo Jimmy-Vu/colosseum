@@ -291,6 +291,7 @@ footer {
   padding: 1em;
   border-radius: 15px;
   border: solid #D2B85A 3px;
+  width: 100%;
   height: fit-content;
   background-color: rgba(255, 255, 255, 0.9);
 }
@@ -348,18 +349,17 @@ footer {
   margin: 1em;
   background-color: rgba(255, 255, 255, 0.9);
   border-radius: 15px;
-  overflow: auto;
+  overflow-y: auto;
 }
 @media (min-width: 720px) {
   .create-form {
     width: 80%;
-    height: 80%;
+    height: 90%;
   }
 }
 @media (min-width: 960px) {
   .create-form {
     width: 60%;
-    height: 80%;
   }
 }
 .create-form .text-inputs {
@@ -386,7 +386,7 @@ footer {
   margin-bottom: 1em;
   border: 0;
   overflow-y: auto;
-  min-height: 100px;
+  min-height: 150px;
 }
 @media (min-width: 720px) {
   .create-form .specialization-fieldset {
@@ -461,12 +461,28 @@ footer {
   margin-bottom: 1rem;
   margin-left: -2rem;
 }
-.edit-img-container .edit-img-preview {
-  max-height: 100px;
+@media (min-width: 480px) {
+  .edit-img-container .edit-img-input {
+    margin-left: 0rem;
+  }
+}
+.edit-img-container figure {
+  text-align: center;
+}
+.edit-img-container figure .edit-img-caption {
+  font-weight: bold;
+}
+.edit-img-container figure .edit-img-preview {
+  max-height: 150px;
 }
 @media (min-width: 720px) {
-  .edit-img-container .edit-img-preview {
-    max-height: 150px;
+  .edit-img-container figure .edit-img-preview {
+    max-height: 200px;
+  }
+}
+@media (min-width: 1200px) {
+  .edit-img-container figure .edit-img-preview {
+    max-height: 250px;
   }
 }
 

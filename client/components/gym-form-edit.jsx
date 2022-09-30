@@ -1,4 +1,5 @@
 import React, { useEffect, useState } from "react";
+import editTypeAdjust from "../lib/editTypeAdjust";
 
 export default function GymFormEdit(props) {
   const setIsLoading = props.setIsLoading;
@@ -7,7 +8,7 @@ export default function GymFormEdit(props) {
     gymId: props.gymId,
     name: '',
     address: '',
-    type: '',
+    type: {},
     image: '',
     description: ''
   });
@@ -19,13 +20,17 @@ export default function GymFormEdit(props) {
         setInputs({
           name: data.name,
           address: data.address,
-          type: data.type,
+          type: editTypeAdjust(data.type),
           image: data.imageURL,
           description: data.description
         });
       })
       .catch(err => console.error('Error during fetch get route:', err))
   }, []);
+
+  useEffect(() => {
+    console.log(inputs.type);
+  }, [inputs.type]);
 
   function handleChange(e) {
     setInputs(prev => ({ ...prev, [e.target.id]: e.target.value }));
@@ -62,8 +67,8 @@ export default function GymFormEdit(props) {
       .then(res => res.json())
       .then(data => {
         setIsLoading(false);
-        if (!data.gymId) {
-          window.location.hash = "not-found";
+        if (!data.gymId || data.gymId === undefined) {
+          window.location.hash = "#not-found";
         } else {
           window.location.hash = `#gyms?gymId=${data.gymId}`;
         }
@@ -88,35 +93,35 @@ export default function GymFormEdit(props) {
           <label htmlFor="commercial">Commercial</label>
         </div>
         <div className="checkbox-option">
-          <input type="checkbox" name="powerlifting" id="powerlifting" />
+          <input type="checkbox" name="powerlifting" id="powerlifting" defaultChecked={inputs.type.powerlifting} />
           <label htmlFor="powerlifting">Powerlifting</label>
         </div>
         <div className="checkbox-option">
-          <input type="checkbox" name="weightlifting" id="weightlifting" />
+          <input type="checkbox" name="weightlifting" id="weightlifting" defaultChecked={inputs.type.weightlifting} />
           <label htmlFor="weightlifting">Olympic Weightlifting</label>
         </div>
         <div className="checkbox-option">
-          <input type="checkbox" name="climbing" id="climbing" />
+          <input type="checkbox" name="climbing" id="climbing" defaultChecked={inputs.type.climbing} />
           <label htmlFor="climbing">Climbing</label>
         </div>
         <div className="checkbox-option">
-          <input type="checkbox" name="boxing" id="boxing" />
+          <input type="checkbox" name="boxing" id="boxing" defaultChecked={inputs.type.boxing} />
           <label htmlFor="boxing">Boxing</label>
         </div>
         <div className="checkbox-option">
-          <input type="checkbox" name="muay-thai" id="muay-thai" />
+          <input type="checkbox" name="muay-thai" id="muay-thai" defaultChecked={inputs.type['muay-thai']} />
           <label htmlFor="muay-thai">Muay Thai</label>
         </div>
         <div className="checkbox-option">
-          <input type="checkbox" name="taekwondo" id="taekwondo" />
+          <input type="checkbox" name="taekwondo" id="taekwondo" defaultChecked={inputs.type.taekwondo} />
           <label htmlFor="taekwondo">Taekwondo</label>
         </div>
         <div className="checkbox-option">
-          <input type="checkbox" name="karate" id="karate" />
+          <input type="checkbox" name="karate" id="karate" defaultChecked={inputs.type.karate} />
           <label htmlFor="karate">Karate</label>
         </div>
         <div className="checkbox-option">
-          <input type="checkbox" name="brazilian-ji-jijutsu" id="brazilian-ji-jijutsu" />
+          <input type="checkbox" name="brazilian-ji-jijutsu" id="brazilian-ji-jijutsu" defaultChecked={inputs.type['brazilian-ji-jijutsu']} />
           <label htmlFor="brazilian-ji-jijutsu">Brazilian Ji Jijutsu</label>
         </div>
       </fieldset>
@@ -126,7 +131,10 @@ export default function GymFormEdit(props) {
             <label htmlFor="image">Choose an image for the gym</label>
             <input onChange={handleUpload} id="image" type="file" accept="image/*" filename={inputs.image} />
           </div>
-          <img className="edit-img-preview" src={inputs.image} alt="Main gym image" />
+          <figure>
+            <figcaption className="edit-img-caption">Original Photo</figcaption>
+            <img className="edit-img-preview" src={inputs.image} alt="Main gym image" />
+          </figure>
         </div>
         <button className="submit-button" type="submit">Submit</button>
       </div>

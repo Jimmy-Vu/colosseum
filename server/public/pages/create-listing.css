@@ -13,18 +13,17 @@
   margin: 1em;
   background-color: rgba(255, 255, 255, 0.9);
   border-radius: 15px;
-  overflow: auto;
+  overflow-y: auto;
 }
 @media (min-width: 720px) {
   .create-form {
     width: 80%;
-    height: 80%;
+    height: 90%;
   }
 }
 @media (min-width: 960px) {
   .create-form {
     width: 60%;
-    height: 80%;
   }
 }
 .create-form .text-inputs {
@@ -51,7 +50,7 @@
   margin-bottom: 1em;
   border: 0;
   overflow-y: auto;
-  min-height: 100px;
+  min-height: 150px;
 }
 @media (min-width: 720px) {
   .create-form .specialization-fieldset {

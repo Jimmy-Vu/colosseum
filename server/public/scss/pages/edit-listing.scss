@@ -14,13 +14,29 @@
   .edit-img-input {
     margin-bottom: 1rem;
     margin-left: -2rem;
+
+    @include sm {
+      margin-left: 0rem;
+    }
   }
 
-  .edit-img-preview {
-    max-height: 100px;
+  figure {
+    text-align: center;
 
-    @include md {
+    .edit-img-caption {
+      font-weight: bold;
+    }
+
+    .edit-img-preview {
       max-height: 150px;
+
+      @include md {
+        max-height: 200px;
+      }
+
+      @include xl {
+        max-height: 250px;
+      }
     }
   }
 }

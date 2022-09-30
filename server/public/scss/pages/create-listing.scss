@@ -22,16 +22,15 @@
   margin: 1em;
   background-color: rgba(255, 255, 255, 0.9);
   border-radius: 15px;
-  overflow: auto;
+  overflow-y: auto;
 
   @include md {
     width: 80%;
-    height: 80%;
+    height: 90%;
   }
 
   @include lg {
     width: 60%;
-      height: 80%;
   }
 
   .text-inputs {
@@ -60,7 +59,7 @@
     margin-bottom: 1em;
     border: 0;
     overflow-y: auto;
-    min-height: 100px;
+    min-height: 150px;
 
     @include md {
       display: flex;
