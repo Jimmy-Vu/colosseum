@@ -42,7 +42,7 @@ app.get('/api/gyms/:gymId', (req, res, next) => {
         throw new ClientError(404, 'gradeId cannot be found');
       }
       return res.json(result.rows[0]);
-      })
+    })
     .catch(err => next(err));
 });
 
@@ -111,12 +111,15 @@ app.post('/api/gyms', upload, (req, res, next) => {
 });
 
 // PATCH route for updating listing
-app.patch('/api/gyms/:gradeId', (req, res) => {
-  const { gymId, name, address, type, imageURL, description } = req.body;
-  if (!gymId || !name || !address || !type || !imageURL || !description) {
-    throw new ClientError(401, 'Please provide a name, address, type(s), and an image');
-    console.error('Missing name, address, type, image and/or description');
-  }
+app.patch('/api/gyms/:gymId', (req, res, next) => {
+  const { name, address, type, imageURL, description } = req.body;
+  const gymId = parseInt(req.params.gymId, 10);
+  console.log('gymId', gymId);
+  console.log('name', name);
+  // if (!gymId || !name || !address || !type || !imageURL || !description) {
+  //   throw new ClientError(401, 'Please provide a name, address, type(s), and an image');
+  //   console.error('Missing name, address, type, image and/or description');
+  // }
 
   const sql = `
   update "gyms"
@@ -126,11 +129,16 @@ app.patch('/api/gyms/:gradeId', (req, res) => {
         "imageURL" = $5,
         "description" = $6
     where "gymId" = $1
-    returning *
+    returning "gymId", "name", "address", "type", "imageURL", "description"
   `;
 
   const params = [gymId, name, address, type, imageURL, description];
-  //Need a db.query here
+  db.query(sql, params)
+    .then(result => {
+      console.log(result.rows[0]);
+      res.status(200).json(result.rows[0]);
+    })
+    .catch(err => next(err));
 });
 
 app.use(errorMiddleware);

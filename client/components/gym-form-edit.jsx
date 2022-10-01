@@ -5,7 +5,6 @@ export default function GymFormEdit(props) {
   const setIsLoading = props.setIsLoading;
 
   const [inputs, setInputs] = useState({
-    gymId: props.gymId,
     name: '',
     address: '',
     type: {},
@@ -14,7 +13,7 @@ export default function GymFormEdit(props) {
   });
 
   useEffect(() => {
-    fetch(`/api/gyms/${inputs.gymId}`, { method: 'GET' })
+    fetch(`/api/gyms/${props.gymId}`, { method: 'GET' })
       .then(res => res.json())
       .then(data => {
         setInputs({
@@ -51,12 +50,14 @@ export default function GymFormEdit(props) {
     setIsLoading(true);
     inputs.type = JSON.stringify(inputs.type);
     const formData = new FormData();
-
+    console.log('inputs', inputs);
     for (let i in inputs) {
       formData.set(i, inputs[i]);
     }
 
-    fetch('/api/gyms', {
+    console.log('formData', formData);
+
+    fetch(`/api/gyms/${props.gymId}`, {
       method: 'PATCH',
       body: formData
     })
@@ -136,8 +137,8 @@ export default function GymFormEdit(props) {
       <div className="upload-submit-container">
         <div className="edit-img-container">
           <div className="edit-img-input">
-            <label htmlFor="image">Choose an image for the gym</label>
-            <input onChange={handleUpload} id="image" type="file" accept="image/*" filename={inputs.image} />
+            <label htmlFor="image">Choose a new image for the gym</label>
+            <input onChange={handleUpload} id="image" type="file" accept="image/*" defaultValue={inputs.image} />
           </div>
           <figure>
             <figcaption className="edit-img-caption">Original Photo</figcaption>

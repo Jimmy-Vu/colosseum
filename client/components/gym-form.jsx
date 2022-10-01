@@ -61,7 +61,7 @@ export default function GymForm(props) {
         if (!data.gymId) {
           window.location.hash = "not-found";
         } else {
-          window.location.hash = `#gyms?gymId=${data.gymId}`;
+          window.location.hash = `#gyms?gymId=${inputs.gymId}`;
         }
       })
       .catch(err => console.error(err));
