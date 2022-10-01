@@ -8,7 +8,10 @@ export default function editTypeAdjust(string) {
     ['muay-thai']: false,
     taekwondo: false,
     karate: false,
-    ['brazilian-ji-jijutsu']: false
+    ['brazilian-ji-jijutsu']: false,
+    ['krav-maga']: false,
+    wrestling: false,
+    kickboxing: false
   };
 
   const splitString = string.replace(/[\{\}"]/g, "").split(',');

@@ -44,6 +44,10 @@ a {
   }
 }
 
+textarea {
+  resize: none;
+}
+
 #root {
   height: 100vh;
   background-image: url(./images/colloseum_color.jpg);

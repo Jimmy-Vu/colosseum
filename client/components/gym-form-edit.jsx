@@ -28,10 +28,6 @@ export default function GymFormEdit(props) {
       .catch(err => console.error('Error during fetch get route:', err))
   }, []);
 
-  useEffect(() => {
-    console.log(inputs.type);
-  }, [inputs.type]);
-
   function handleChange(e) {
     setInputs(prev => ({ ...prev, [e.target.id]: e.target.value }));
   }
@@ -109,6 +105,10 @@ export default function GymFormEdit(props) {
           <label htmlFor="boxing">Boxing</label>
         </div>
         <div className="checkbox-option">
+          <input type="checkbox" name="kickboxing" id="kickboxing" defaultChecked={inputs.type.kickboxing} />
+          <label htmlFor="kickboxing">Kickboxing</label>
+        </div>
+        <div className="checkbox-option">
           <input type="checkbox" name="muay-thai" id="muay-thai" defaultChecked={inputs.type['muay-thai']} />
           <label htmlFor="muay-thai">Muay Thai</label>
         </div>
@@ -123,6 +123,14 @@ export default function GymFormEdit(props) {
         <div className="checkbox-option">
           <input type="checkbox" name="brazilian-ji-jijutsu" id="brazilian-ji-jijutsu" defaultChecked={inputs.type['brazilian-ji-jijutsu']} />
           <label htmlFor="brazilian-ji-jijutsu">Brazilian Ji Jijutsu</label>
+        </div>
+        <div className="checkbox-option">
+          <input type="checkbox" name="krav-maga" id="krav-maga" defaultChecked={inputs.type['krav-maga']} />
+          <label htmlFor="krav-maga">Krav Maga</label>
+        </div>
+        <div className="checkbox-option">
+          <input type="checkbox" name="wrestling" id="wrestling" defaultChecked={inputs.type.wrestling} />
+          <label htmlFor="wrestling">Wrestling</label>
         </div>
       </fieldset>
       <div className="upload-submit-container">
