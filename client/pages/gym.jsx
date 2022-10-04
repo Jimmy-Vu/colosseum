@@ -32,6 +32,16 @@ function Gym(props) {
       .catch(err => console.error(err));
   }, [])
 
+  function gymDelete(e) {
+    fetch(`/api/gyms/${gymState.gymId}`, { method: 'delete' })
+      .then(res => {
+        if (res.status === 204) {
+          window.location.hash = "#listings";
+        }
+      })
+      .catch(err => console.error(err));
+  }
+
   if (gymState.description) {
     return (
       <main className="gym-main">
@@ -46,7 +56,10 @@ function Gym(props) {
             <p className="gym-description">{gymState.description}</p>
           </div>
         </div>
-        <a href={`#edit?gymId=${gymState.gymId}`} className="gym-edit-btn">Edit Arena</a>
+        <div className="gym-buttons-container">
+          <a href={`#edit?gymId=${gymState.gymId}`} className="gym-edit-btn">Edit Arena</a>
+          <button onClick={gymDelete} className="gym-delete-btn">Delete Arena</button>
+        </div>
       </main>
     );
   } else if (gymState.description === null) {
@@ -69,7 +82,10 @@ function Gym(props) {
             <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Nisi perferendis maiores aliquid quos numquam cum, sit, labore suscipit est dolore impedit accusamus ipsam cumque laboriosam error molestias repellendus adipisci modi.</p>
           </div>
         </div>
-        <a href={`#edit?gymId=${gymState.gymId}`} className="gym-edit-btn">Edit Arena</a>
+        <div className="gym-buttons-container">
+          <a href={`#edit?gymId=${gymState.gymId}`} className="gym-edit-btn">Edit Arena</a>
+          <button onClick={gymDelete} className="gym-delete-btn">Delete Arena</button>
+        </div>
       </main>
     );
   }

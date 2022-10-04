@@ -50,12 +50,14 @@ export default function GymFormEdit(props) {
     setIsLoading(true);
     inputs.type = JSON.stringify(inputs.type);
     const formData = new FormData();
-    console.log('inputs', inputs);
+    console.log('Inputs after submit:', inputs);
     for (let i in inputs) {
       formData.set(i, inputs[i]);
     }
 
-    console.log('formData', formData);
+    for (const value of formData.entries()) {
+      console.log('formData entry:', value);
+    }
 
     fetch(`/api/gyms/${props.gymId}`, {
       method: 'PATCH',

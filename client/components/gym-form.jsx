@@ -59,7 +59,7 @@ export default function GymForm(props) {
       .then(data => {
         setIsLoading(false);
         if (!data.gymId) {
-          window.location.hash = "not-found";
+          window.location.hash = "#not-found";
         } else {
           window.location.hash = `#gyms?gymId=${inputs.gymId}`;
         }

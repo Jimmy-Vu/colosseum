@@ -63,11 +63,30 @@
   margin-top: 1em;
 }
 
-.gym-edit-btn {
-  align-self: flex-end;
+.gym-buttons-container {
+  display: flex;
+  justify-content: space-between;
+  width: 100%;
+}
+.gym-buttons-container .gym-edit-btn {
   margin: 1rem 0.1rem 1rem 0.1rem;
   width: fit-content;
   background-color: #D2B85A;
+  color: white !important;
+  box-shadow: 0 0 1px black;
+  border: solid white 1px;
+  border-radius: 15px;
+  padding-left: 1em;
+  padding-right: 1em;
+  padding-top: 0.25em;
+  padding-bottom: 0.25em;
+  font-size: 1.25rem;
+  font-weight: 500;
+}
+.gym-buttons-container .gym-delete-btn {
+  margin: 1rem 0.1rem 1rem 0.1rem;
+  width: fit-content;
+  background-color: red;
   color: white !important;
   box-shadow: 0 0 1px black;
   border: solid white 1px;

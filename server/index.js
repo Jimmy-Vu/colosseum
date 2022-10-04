@@ -111,15 +111,28 @@ app.post('/api/gyms', upload, (req, res, next) => {
 });
 
 // PATCH route for updating listing
-app.patch('/api/gyms/:gymId', (req, res, next) => {
-  const { name, address, type, imageURL, description } = req.body;
+app.patch('/api/gyms/:gymId', upload, (req, res, next) => {
+  const { name, address, type, description } = req.body;
   const gymId = parseInt(req.params.gymId, 10);
+  let { imageURL } = req.body;
+  if (!imageURL) {
+    imageURL = req.file.path;
+  }
+
+  if (!gymId || !name || !address || !type || !imageURL || !description) {
+    throw new ClientError(401, 'Please provide a name, address, type(s), and an image');
+    console.error('Missing name, address, type, image and/or description');
+  }
+  const parsedType = JSON.parse(type);
+  const typeArray = [];
+  for (let i in parsedType) {
+    if (parsedType[i] === true) {
+      typeArray.push(i);
+    }
+  }
+
   console.log('gymId', gymId);
   console.log('name', name);
-  // if (!gymId || !name || !address || !type || !imageURL || !description) {
-  //   throw new ClientError(401, 'Please provide a name, address, type(s), and an image');
-  //   console.error('Missing name, address, type, image and/or description');
-  // }
 
   const sql = `
   update "gyms"
@@ -132,11 +145,26 @@ app.patch('/api/gyms/:gymId', (req, res, next) => {
     returning "gymId", "name", "address", "type", "imageURL", "description"
   `;
 
-  const params = [gymId, name, address, type, imageURL, description];
+  const params = [gymId, name, address, typeArray, imageURL, description];
   db.query(sql, params)
     .then(result => {
       console.log(result.rows[0]);
       res.status(200).json(result.rows[0]);
+    })
+    .catch(err => next(err));
+});
+
+app.delete('/api/gyms/:gymId', (req, res, next) => {
+  const gymId = req.params.gymId;
+  const sql = `
+    delete from "gyms"
+      where "gymId" = $1
+  `;
+  const params = [gymId];
+
+  db.query(sql, params)
+    .then(result => {
+      res.sendStatus(204);
     })
     .catch(err => next(err));
 });
