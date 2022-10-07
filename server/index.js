@@ -119,9 +119,9 @@ app.patch('/api/gyms/:gymId', upload, (req, res, next) => {
     imageURL = req.file.path;
   }
 
-  if (!gymId || !name || !address || !type || !description) {
+  if (!gymId || !name || !address || !type) {
     throw new ClientError(401, 'Please provide a name, address, type(s), and an image');
-    console.error('Missing name, address, type, image and/or description');
+    console.error('Missing name, address, type, and/or image');
   }
   const parsedType = JSON.parse(type);
   const typeArray = [];

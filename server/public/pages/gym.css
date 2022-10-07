@@ -7,12 +7,6 @@
   padding: 1em;
   overflow-y: auto;
 }
-@media (min-width: 960px) {
-  .gym-main {
-    flex-direction: row;
-    align-items: center;
-  }
-}
 
 .gym-image {
   width: 100%;

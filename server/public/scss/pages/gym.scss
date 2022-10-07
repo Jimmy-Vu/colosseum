@@ -16,10 +16,10 @@
   padding: 1em;
   overflow-y: auto;
 
-  @include lg {
-    flex-direction: row;
-    align-items: center;
-  }
+  // @include lg {
+  //   flex-direction: row;
+  //   align-items: center;
+  // }
 }
 
 .gym-image {
