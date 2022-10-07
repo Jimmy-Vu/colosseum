@@ -115,11 +115,11 @@ app.patch('/api/gyms/:gymId', upload, (req, res, next) => {
   const { name, address, type, description } = req.body;
   const gymId = parseInt(req.params.gymId, 10);
   let { imageURL } = req.body;
-  if (!imageURL) {
+  if (!imageURL && req.file) {
     imageURL = req.file.path;
   }
 
-  if (!gymId || !name || !address || !type || !imageURL || !description) {
+  if (!gymId || !name || !address || !type || !description) {
     throw new ClientError(401, 'Please provide a name, address, type(s), and an image');
     console.error('Missing name, address, type, image and/or description');
   }
@@ -133,19 +133,32 @@ app.patch('/api/gyms/:gymId', upload, (req, res, next) => {
 
   console.log('gymId', gymId);
   console.log('name', name);
-
-  const sql = `
-  update "gyms"
-    set "name" = $2,
-        "address" = $3,
-        "type" = $4,
-        "imageURL" = $5,
-        "description" = $6
-    where "gymId" = $1
-    returning "gymId", "name", "address", "type", "imageURL", "description"
-  `;
-
-  const params = [gymId, name, address, typeArray, imageURL, description];
+  let sql = '';
+  let params = [];
+  if (!imageURL) {
+    sql = `
+      update "gyms"
+        set "name" = $2,
+            "address" = $3,
+            "type" = $4,
+            "description" = $5
+        where "gymId" = $1
+        returning "gymId", "name", "address", "type", "description"
+    `;
+    params = [gymId, name, address, typeArray, description];
+  } else {
+    sql = `
+      update "gyms"
+        set "name" = $2,
+            "address" = $3,
+            "type" = $4,
+            "imageURL" = $5,
+            "description" = $6
+        where "gymId" = $1
+        returning "gymId", "name", "address", "type", "imageURL", "description"
+    `;
+    params = [gymId, name, address, typeArray, imageURL, description];
+  }
   db.query(sql, params)
     .then(result => {
       console.log(result.rows[0]);
