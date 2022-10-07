@@ -24,8 +24,9 @@ Try the application live at [colosseum.fly.dev](https://colosseum.fly.dev)
 - [x] 1. Users can see the home page
 - [x] 2. Users can browse gym listings
 - [x] 3. Users can add a gym listing
-- [ ] 4. Users can login
-- [ ] 5. Users can leave a review
+- [ ] 4. Users can edit a listing
+- [ ] 5. Users can login
+- [ ] 6. Users can leave a review
 
 #### Stretch Features
 1. User can see location of gym on a map
