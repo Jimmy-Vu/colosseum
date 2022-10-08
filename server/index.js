@@ -182,6 +182,11 @@ app.delete('/api/gyms/:gymId', (req, res, next) => {
     .catch(err => next(err));
 });
 
+//Routes for user authentications
+app.post('/api/users/sign-up', (req, res, next) => {
+
+})
+
 app.use(errorMiddleware);
 
 app.listen(process.env.PORT, () => {
