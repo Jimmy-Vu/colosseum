@@ -8,14 +8,13 @@
 @use "./pages/gym.scss";
 @use "./pages/not-found.scss";
 @use "./pages/create-listing.scss";
+@use "./pages/edit-listing.scss";
 
 // "xs": 0,
 // "sm": 480px,
 // "md": 720px,
 // "lg": 960px,
 // "xl": 1200px
-
-
 header {
   position: sticky;
 }
@@ -41,6 +40,10 @@ a {
   &:hover {
     cursor: pointer;
   }
+}
+
+textarea {
+  resize: none;
 }
 
 #root {

@@ -12,26 +12,27 @@
   display: flex;
   justify-content: center;
   align-items: center;
+  padding-top: 1rem;
+  // padding-top: 100px;
 }
 
 .create-form {
   display: flex;
   flex-direction: column;
-  height: 90%;
+  height: 100%;
+  max-height: fit-content;
   padding: 1em;
   margin: 1em;
   background-color: rgba(255, 255, 255, 0.9);
   border-radius: 15px;
-  overflow: auto;
+  overflow-y: auto;
 
   @include md {
     width: 80%;
-    height: 80%;
   }
 
   @include lg {
     width: 60%;
-      height: 80%;
   }
 
   .text-inputs {
@@ -60,6 +61,7 @@
     margin-bottom: 1em;
     border: 0;
     overflow-y: auto;
+    min-height: 150px;
 
     @include md {
       display: flex;

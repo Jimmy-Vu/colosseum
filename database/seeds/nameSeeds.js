@@ -38,17 +38,17 @@ module.exports.nouns = [
 ]
 
 module.exports.types = [
-  'Powerlifting',
-  'Commercial',
-  'Climbing',
-  'Crossfit',
-  'Olympic Weightlifting',
-  'Boxing',
-  'Muay Thai',
-  'Taekwondo',
-  'Karate',
-  'Brazilian Ji Jijutsu',
-  'Krav Maga',
-  'Wrestling',
-  'Kickboxing'
+  'powerlifting',
+  'commercial',
+  'climbing',
+  'crossfit',
+  'weightlifting',
+  'boxing',
+  'muay-thai',
+  'taekwondo',
+  'karate',
+  'brazilian-ji-jijutsu',
+  'krav-maga',
+  'wrestling',
+  'kickboxing'
 ]

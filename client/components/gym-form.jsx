@@ -14,7 +14,10 @@ export default function GymForm(props) {
       ['muay-thai']: false,
       taekwondo: false,
       karate: false,
-      ['brazilian-ji-jijutsu']: false
+      ['brazilian-ji-jijutsu']: false,
+      ['krav-maga']: false,
+      wrestling: false,
+      kickboxing: false
     },
     image: '',
     description: ''
@@ -56,9 +59,9 @@ export default function GymForm(props) {
       .then(data => {
         setIsLoading(false);
         if (!data.gymId) {
-          window.location.hash = "not-found";
+          window.location.hash = "#not-found";
         } else {
-          window.location.hash = `#gyms?gymId=${data.gymId}`;
+          window.location.hash = `#gyms?gymId=${inputs.gymId}`;
         }
       })
       .catch(err => console.error(err));
@@ -97,6 +100,10 @@ export default function GymForm(props) {
           <label htmlFor="boxing">Boxing</label>
         </div>
         <div className="checkbox-option">
+          <input type="checkbox" name="kickboxing" id="kickboxing" />
+          <label htmlFor="kickboxing">Kickboxing</label>
+        </div>
+        <div className="checkbox-option">
           <input type="checkbox" name="muay-thai" id="muay-thai" />
           <label htmlFor="muay-thai">Muay Thai</label>
         </div>
@@ -111,6 +118,14 @@ export default function GymForm(props) {
         <div className="checkbox-option">
           <input type="checkbox" name="brazilian-ji-jijutsu" id="brazilian-ji-jijutsu" />
           <label htmlFor="brazilian-ji-jijutsu">Brazilian Ji Jijutsu</label>
+        </div>
+        <div className="checkbox-option">
+          <input type="checkbox" name="krav-maga" id="krav-maga" />
+          <label htmlFor="krav-maga">Krav Maga</label>
+        </div>
+        <div className="checkbox-option">
+          <input type="checkbox" name="wrestling" id="wrestling" />
+          <label htmlFor="wrestling">Wrestling</label>
         </div>
       </fieldset>
       <div className="upload-submit-container">

@@ -42,7 +42,7 @@ app.get('/api/gyms/:gymId', (req, res, next) => {
         throw new ClientError(404, 'gradeId cannot be found');
       }
       return res.json(result.rows[0]);
-      })
+    })
     .catch(err => next(err));
 });
 
@@ -78,7 +78,7 @@ app.post('/api/gyms/dev', (req, res, next) => {
 app.post('/api/gyms', upload, (req, res, next) => {
   const { name, address, type, description } = req.body;
   const imageURL = req.file.path;
-  if (!name || !address || !type || !imageURL) {
+  if (!name || !address || !type || !imageURL || !description) {
     throw new ClientError(400, 'Please provide a name, address, type(s), and an image');
     console.error('Missing name, address, type, and/or image');
   }
@@ -106,6 +106,78 @@ app.post('/api/gyms', upload, (req, res, next) => {
   db.query(sql, params)
     .then(result => {
       res.status(201).json(result.rows[0]);
+    })
+    .catch(err => next(err));
+});
+
+// PATCH route for updating listing
+app.patch('/api/gyms/:gymId', upload, (req, res, next) => {
+  const { name, address, type, description } = req.body;
+  const gymId = parseInt(req.params.gymId, 10);
+  let { imageURL } = req.body;
+  if (!imageURL && req.file) {
+    imageURL = req.file.path;
+  }
+
+  if (!gymId || !name || !address || !type) {
+    throw new ClientError(401, 'Please provide a name, address, type(s), and an image');
+    console.error('Missing name, address, type, and/or image');
+  }
+  const parsedType = JSON.parse(type);
+  const typeArray = [];
+  for (let i in parsedType) {
+    if (parsedType[i] === true) {
+      typeArray.push(i);
+    }
+  }
+
+  console.log('gymId', gymId);
+  console.log('name', name);
+  let sql = '';
+  let params = [];
+  if (!imageURL) {
+    sql = `
+      update "gyms"
+        set "name" = $2,
+            "address" = $3,
+            "type" = $4,
+            "description" = $5
+        where "gymId" = $1
+        returning "gymId", "name", "address", "type", "description"
+    `;
+    params = [gymId, name, address, typeArray, description];
+  } else {
+    sql = `
+      update "gyms"
+        set "name" = $2,
+            "address" = $3,
+            "type" = $4,
+            "imageURL" = $5,
+            "description" = $6
+        where "gymId" = $1
+        returning "gymId", "name", "address", "type", "imageURL", "description"
+    `;
+    params = [gymId, name, address, typeArray, imageURL, description];
+  }
+  db.query(sql, params)
+    .then(result => {
+      console.log(result.rows[0]);
+      res.status(200).json(result.rows[0]);
+    })
+    .catch(err => next(err));
+});
+
+app.delete('/api/gyms/:gymId', (req, res, next) => {
+  const gymId = req.params.gymId;
+  const sql = `
+    delete from "gyms"
+      where "gymId" = $1
+  `;
+  const params = [gymId];
+
+  db.query(sql, params)
+    .then(result => {
+      res.sendStatus(204);
     })
     .catch(err => next(err));
 });
