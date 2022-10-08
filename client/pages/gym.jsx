@@ -45,7 +45,7 @@ function Gym(props) {
   if (gymState.description) {
     return (
       <main className="gym-main">
-        <div>
+        <div className="gym-info-container">
           <a className="gym-image" href={`${gymState.imageURL}`}>
             <img src={`${gymState.imageURL}`} alt="main gym image" />
           </a>
@@ -69,7 +69,7 @@ function Gym(props) {
   } else {
     return (
       <main className="gym-main">
-        <div>
+        <div className="gym-info-container">
           <a className="gym-image" href={`${gymState.imageURL}`}>
             <img src={`${gymState.imageURL}`} alt="main gym image" />
           </a>

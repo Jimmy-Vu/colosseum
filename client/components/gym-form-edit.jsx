@@ -27,17 +27,11 @@ export default function GymFormEdit(props) {
       .catch(err => console.error('Error during fetch get route:', err))
   }, []);
 
-  useEffect(() => {
-    console.log(inputs.type);
-  }, [inputs.type])
-
   function handleChange(e) {
     setInputs(prev => ({ ...prev, [e.target.id]: e.target.value }));
   }
 
   function handleCheckboxes(e) {
-    console.log('e.target.checked', e.target.checked);
-
     setInputs(prev => ({
       ...prev,
       type: {
