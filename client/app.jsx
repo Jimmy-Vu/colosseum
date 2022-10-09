@@ -9,6 +9,7 @@ import CreateListing from "./pages/create-listing";
 import Header from "./components/header";
 import Footer from "./components/footer";
 import EditListing from "./pages/edit-listing";
+import SignIn from "./pages/sign-in";
 
 function App(props) {
   const [stateRoute, setStateRoute] = useState({
@@ -36,7 +37,7 @@ function App(props) {
       return (
         <div className="main-container">
           <Header />
-          <Listings></Listings>
+          <Listings />
           <Footer />
         </div>
       );
@@ -63,6 +64,14 @@ function App(props) {
         <div className="main-container">
           <Header />
           <EditListing gymId={gymId}  />
+          <Footer />
+        </div>
+      );
+    case "sign-in":
+      return (
+        <div className="main-container">
+          <Header />
+          <SignIn />
           <Footer />
         </div>
       );
