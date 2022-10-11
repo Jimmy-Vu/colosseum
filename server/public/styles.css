@@ -557,7 +557,7 @@ footer {
   display: block;
   width: 100%;
 }
-.sign-in-container .sign-in-form .submit-button {
+.sign-in-container .sign-in-form .sign-in-btn {
   align-self: center;
   text-align: center;
   margin: 1em 0.5em 0.25em 0.1em;
@@ -571,6 +571,7 @@ footer {
   padding-right: 1em;
   padding-top: 0.25em;
   padding-bottom: 0.25em;
+  font-size: 1.25rem;
 }
 
 header {
