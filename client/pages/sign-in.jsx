@@ -1,20 +1,53 @@
-import React from "react";
+import React, { useEffect, useState } from "react";
 
 export default function SignIn(props) {
+  const [userState, setUserState] = useState({
+    username: '',
+    password: ''
+  });
+
+  function handleChange(e) {
+    setUserState(prev => ({
+      ...prev,
+      [e.target.id]: e.target.value
+    }));
+  }
+
+  function handleSubmit(e) {
+    e.preventDefault();
+
+    fetch('/api/users/sign-up', {
+      method: 'POST',
+      headers: {
+        'Content-Type': 'application/json'
+      },
+      body: JSON.stringify(userState)
+    })
+      .then(res => res.json())
+      .then(result => {
+
+      })
+      .catch(err => console.error(err));
+  }
+
+
+
   return (
     <main className="sign-in-main">
       <div className="sign-in-container">
-        {/* <h2 className="sign-in-title">SIGN IN</h2> */}
-        <form className="sign-in-form">
+        <form onSubmit={handleSubmit} className="sign-in-form">
           <div>
             <label htmlFor="username">Username</label>
-            <input type="text" id="username" />
+            <input onChange={handleChange} type="text" id="username" />
           </div>
           <div>
             <label htmlFor="username">Password</label>
-            <input type="password" id="password" />
+            <input onChange={handleChange} type="password" id="password" />
           </div>
-          <button className="sign-in-btn" type="submit">Sign In</button>
+          <button>
+            <p>Looking to sign up instead? Click here.</p>
+          </button>
+          <button className="sign-btn" type="submit">Sign In</button>
         </form>
       </div>
     </main>

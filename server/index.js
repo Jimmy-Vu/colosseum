@@ -9,6 +9,7 @@ const ClientError = require('./client-error');
 const errorMiddleware = require('./error-middleware');
 const staticMiddleware = require('./static-middleware');
 const jsonMiddleware = express.json();
+const argon2 = require('argon2');
 
 const app = express();
 app.use(staticMiddleware);
@@ -184,7 +185,24 @@ app.delete('/api/gyms/:gymId', (req, res, next) => {
 
 //Routes for user authentications
 app.post('/api/users/sign-up', (req, res, next) => {
-
+  const { username, password } = req.body;
+  argon2
+    .hash(password)
+    .then(hashedPassword => {
+      const params = [username, hashedPassword];
+      const sql = `
+      insert into "users"
+      ("username", "hashedPassword")
+      values ($1, $2)
+      returning "userId", "username"
+    `;
+      db.query(sql, params)
+        .then(result => {
+          const newCredentials = result.rows[0];
+          res.status(201).json(newCredentials);
+        })
+        .catch(err => next(err))
+    })
 })
 
 app.use(errorMiddleware);

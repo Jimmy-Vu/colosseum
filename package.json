@@ -33,6 +33,7 @@
   "homepage": "https://github.com/Jimmy-Vu/colosseum#readme",
   "dependencies": {
     "@react-spring/web": "^9.5.2",
+    "@reduxjs/toolkit": "^1.8.6",
     "argon2": "^0.29.1",
     "dotenv": "^16.0.1",
     "express": "^4.18.1",
@@ -42,6 +43,7 @@
     "pg": "^8.8.0",
     "react": "^18.2.0",
     "react-dom": "^18.2.0",
+    "react-redux": "^8.0.4",
     "react-spinners": "^0.13.4",
     "unsplash-js": "^7.0.15"
   },
