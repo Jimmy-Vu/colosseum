@@ -1,6 +1,7 @@
 import React, { useEffect, useState } from "react";
 
 export default function SignIn(props) {
+  const { handleSignIn } = props;
   const [userState, setUserState] = useState({
     username: '',
     password: ''
@@ -24,9 +25,9 @@ export default function SignIn(props) {
       body: JSON.stringify(userState)
     })
       .then(res => res.json())
-      // .then(result => {
-
-      // })
+      .then(result => {
+        handleSignIn(result);
+      })
       .catch(err => console.error(err));
   }
 

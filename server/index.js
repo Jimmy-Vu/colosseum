@@ -220,7 +220,7 @@ app.post('/api/users/sign-in', (req, res, next) => {
     `;
       db.query(sql, params)
         .then(result => {
-          const { hashedPassword } = result.rows[0];
+          const { hashedPassword, userId } = result.rows[0];
           argon2
             .verify(hashedPassword, password)
             .then(isMatching => {

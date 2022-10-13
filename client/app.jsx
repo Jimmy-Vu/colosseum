@@ -10,6 +10,7 @@ import Header from "./components/header";
 import Footer from "./components/footer";
 import EditListing from "./pages/edit-listing";
 import SignIn from "./pages/sign-in";
+import { useSelector, useDispatch } from 'react-redux';
 
 function App(props) {
   const [stateRoute, setStateRoute] = useState({
@@ -21,6 +22,15 @@ function App(props) {
       setStateRoute({ route: parseRoute(window.location.hash) })
     });
   }, []);
+
+  function handleSignIn(result) {
+    const { user, token } = result;
+    localStorage.setItem('access-token', token);
+  }
+
+  function handleSignOut() {
+    localStorage.removeItem('access-token');
+  }
 
   const { route } = stateRoute;
   let gymId = '';
@@ -63,7 +73,7 @@ function App(props) {
       return (
         <div className="main-container">
           <Header />
-          <EditListing gymId={gymId}  />
+          <EditListing gymId={gymId} />
           <Footer />
         </div>
       );
@@ -71,7 +81,7 @@ function App(props) {
       return (
         <div className="main-container">
           <Header />
-          <SignIn />
+          <SignIn handleSignIn={handleSignIn} />
           <Footer />
         </div>
       );
