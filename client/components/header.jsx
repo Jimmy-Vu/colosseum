@@ -1,10 +1,17 @@
-import React, { useState } from "react";
+import React, { useEffect, useState } from "react";
 import AppDrawer from "./app-drawer";
-import { useSelector } from 'react-redux';
+import parseRoute from "../lib/parseRoute";
+import { useSelector, useDispatch } from 'react-redux';
 
 function Header(props) {
   const [drawerIsOpen, setDrawerIsOpen] = useState(false);
-  const loggedIn = useSelector(state => state.app.loggedIn);
+  const isLoggedIn = useSelector(state => state.app.isLoggedIn);
+  const handleSignOut = props.handleSignOut;
+  const setStateRoute = props.setStateRoute;
+
+  function handleSignInClick() {
+    setStateRoute({ route: parseRoute('#sign-in') });
+  }
 
   return (
     <header>
@@ -14,7 +21,10 @@ function Header(props) {
           <i className="menu-button fa-solid fa-bars"></i>
         </button>
         <h1 className="header__title"><a href="#">COLOSSEUM</a></h1>
-        <a className="header__sign-in" href="#sign-in">{loggedIn ? 'Sign Out' : 'Sign In'}</a>
+        {isLoggedIn
+          ? <a onClick={handleSignOut} className="header__sign-in">Sign Out</a>
+          : <a onClick={handleSignInClick} className="header__sign-in">Sign In</a>
+        }
       </div>
     </header>
   );

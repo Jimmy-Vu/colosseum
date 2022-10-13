@@ -2,13 +2,13 @@ import React, { useEffect, useState } from "react";
 
 export default function SignIn(props) {
   const { handleSignIn } = props;
-  const [userState, setUserState] = useState({
+  const [inputState, setInputState] = useState({
     username: '',
     password: ''
   });
 
   function handleChange(e) {
-    setUserState(prev => ({
+    setInputState(prev => ({
       ...prev,
       [e.target.id]: e.target.value
     }));
@@ -22,7 +22,7 @@ export default function SignIn(props) {
       headers: {
         'Content-Type': 'application/json'
       },
-      body: JSON.stringify(userState)
+      body: JSON.stringify(inputState)
     })
       .then(res => res.json())
       .then(result => {

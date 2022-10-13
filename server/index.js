@@ -49,10 +49,68 @@ app.get('/api/gyms/:gymId', (req, res, next) => {
     .catch(err => next(err));
 });
 
-// Mounting middleware for express app to be able to parse json requests
 app.use(jsonMiddleware);
+
+//Routes for user authentications
+app.post('/api/users/sign-up', (req, res, next) => {
+  const { username, password } = req.body;
+  argon2
+    .hash(password)
+    .then(hashedPassword => {
+      const params = [username, hashedPassword];
+      const sql = `
+      insert into "users"
+      ("username", "hashedPassword")
+      values ($1, $2)
+      returning "userId", "username"
+    `;
+      db.query(sql, params)
+        .then(result => {
+          const newCredentials = result.rows[0];
+          res.status(201).json(newCredentials);
+        })
+        .catch(err => next(err))
+    })
+})
+
+app.post('/api/users/sign-in', (req, res, next) => {
+  const { username, password } = req.body;
+  argon2
+    .hash(password)
+    .then(hashedPassword => {
+      const params = [username];
+      const sql = `
+      select *
+        from "users"
+        where "username" = $1
+    `;
+      db.query(sql, params)
+        .then(result => {
+          const { hashedPassword, userId } = result.rows[0];
+          argon2
+            .verify(hashedPassword, password)
+            .then(isMatching => {
+              if (!isMatching) {
+                throw new ClientError(401, 'invalid login');
+              }
+              const payload = {
+                userId: userId,
+                username: username
+              }
+              const token = jwt.sign(payload, process.env.TOKEN_SECRET);
+              res.status(200).json({ "token": token, "user": payload });
+            })
+            .catch(err => next(err));
+        })
+        .catch(err => next(err))
+    })
+})
+
+// Mounting middleware for express app to be able to parse json requests
+app.use(authorizationMiddleware);
 // Post route for dev database
 app.post('/api/gyms/dev', (req, res, next) => {
+  const { userId } = req.user;
   const { name, address, type, imageURL, description } = req.body;
   if (!name || !address || !type || !imageURL) {
     throw new ClientError(400, 'Please provide a name, address, type(s), and an image');
@@ -185,60 +243,6 @@ app.delete('/api/gyms/:gymId', (req, res, next) => {
     .catch(err => next(err));
 });
 
-//Routes for user authentications
-app.post('/api/users/sign-up', (req, res, next) => {
-  const { username, password } = req.body;
-  argon2
-    .hash(password)
-    .then(hashedPassword => {
-      const params = [username, hashedPassword];
-      const sql = `
-      insert into "users"
-      ("username", "hashedPassword")
-      values ($1, $2)
-      returning "userId", "username"
-    `;
-      db.query(sql, params)
-        .then(result => {
-          const newCredentials = result.rows[0];
-          res.status(201).json(newCredentials);
-        })
-        .catch(err => next(err))
-    })
-})
-
-app.post('/api/users/sign-in', (req, res, next) => {
-  const { username, password } = req.body;
-  argon2
-    .hash(password)
-    .then(hashedPassword => {
-      const params = [username];
-      const sql = `
-      select *
-        from "users"
-        where "username" = $1
-    `;
-      db.query(sql, params)
-        .then(result => {
-          const { hashedPassword, userId } = result.rows[0];
-          argon2
-            .verify(hashedPassword, password)
-            .then(isMatching => {
-              if (!isMatching) {
-                throw new ClientError(401, 'invalid login');
-              }
-              const payload = {
-                userId: userId,
-                username: username
-              }
-              const token = jwt.sign(payload, process.env.TOKEN_SECRET);
-              res.status(200).json({ "token": token, "user": payload });
-            })
-            .catch(err => next(err));
-        })
-        .catch(err => next(err))
-    })
-})
 
 app.use(errorMiddleware);
 

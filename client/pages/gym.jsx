@@ -1,8 +1,16 @@
 import React, { useEffect, useState } from "react";
 import typeAdjust from "../lib/typeAdjust";
+import { useSelector } from "react-redux";
 
 function Gym(props) {
+  const isLoggedIn = useSelector(state => state.app.isLoggedIn);
+  const currentUser = useSelector(state => state.user.userInfo);
+  if (isLoggedIn) {
+    console.log('currentUserId', currentUser);
+  }
+
   const [gymState, setGymState] = useState({
+    userId: '',
     gymId: props.gymId,
     name: '',
     address: '',
@@ -21,6 +29,7 @@ function Gym(props) {
       })
       .then(data => {
         setGymState({
+          userId: data.userId,
           gymId: data.gymId,
           name: data.name,
           address: data.address,

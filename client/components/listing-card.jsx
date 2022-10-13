@@ -2,7 +2,7 @@ import React from "react";
 import typeAdjust from "../lib/typeAdjust";
 
 function ListingCard(props) {
-  const { gymId, name, address, imageURL } = props.gym;
+  const { userId, gymId, name, address, imageURL } = props.gym;
   let { type } = props.gym;
   type = typeAdjust(type);
 
