@@ -16,7 +16,7 @@ export default function SignIn(props) {
   function handleSubmit(e) {
     e.preventDefault();
 
-    fetch('/api/users/sign-up', {
+    fetch('/api/users/sign-in', {
       method: 'POST',
       headers: {
         'Content-Type': 'application/json'
@@ -24,9 +24,9 @@ export default function SignIn(props) {
       body: JSON.stringify(userState)
     })
       .then(res => res.json())
-      .then(result => {
+      // .then(result => {
 
-      })
+      // })
       .catch(err => console.error(err));
   }
 
