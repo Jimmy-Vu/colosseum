@@ -1,9 +1,17 @@
 import React, { useEffect, useState } from "react";
 import GymForm from "../components/gym-form";
 import Spinner from "../components/spinner";
+import { useSelector } from 'react-redux';
 
 function CreateListing(props) {
   const [isLoading, setIsLoading] = useState(false);
+  const isLoggedIn = useSelector(state => state.app.isLoggedIn);
+
+  useEffect(() => {
+    if (!isLoggedIn) {
+      window.location.hash = '#auth';
+    }
+  }, []);
 
   return (
     <>

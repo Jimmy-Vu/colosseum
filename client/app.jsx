@@ -10,7 +10,7 @@ import CreateListing from "./pages/create-listing";
 import Header from "./components/header";
 import Footer from "./components/footer";
 import EditListing from "./pages/edit-listing";
-import SignIn from "./pages/sign-in";
+import Auth from "./pages/auth";
 import { useSelector, useDispatch } from 'react-redux';
 import { login, logout } from './redux/appSlice';
 import { setStateUser } from './redux/userSlice';
@@ -42,14 +42,14 @@ function App(props) {
     window.localStorage.setItem('access-token', token);
     dispatch(setStateUser(user));
     dispatch(login());
-    setStateRoute({ route: parseRoute('#listings') });
+    window.location.hash = '#listings';
   }
 
   function handleSignOut() {
     window.localStorage.removeItem('access-token');
     dispatch(setStateUser({}));
     dispatch(logout());
-    setStateRoute({ route: parseRoute('#listings') });
+    window.location.hash = '#listings';
   }
 
   const { route } = stateRoute;
@@ -97,11 +97,11 @@ function App(props) {
           <Footer />
         </div>
       );
-    case "sign-in":
+    case "auth":
       return (
         <div className="main-container">
           <Header handleSignOut={handleSignOut} setStateRoute={setStateRoute} />
-          <SignIn handleSignIn={handleSignIn} />
+          <Auth handleSignIn={handleSignIn} />
           <Footer />
         </div>
       );

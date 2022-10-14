@@ -105,7 +105,7 @@
   align-items: center;
   color: white;
   width: 100%;
-  margin-top: 3em;
+  margin-top: 3rem;
   padding-left: 3rem;
   padding-right: 3rem;
   font-family: "Oswald", sans-serif;
@@ -124,8 +124,28 @@
   font-size: 2em;
   text-align: center;
 }
-.app-drawer .menu__nav ul:last-child {
+.app-drawer .menu__nav ul:last-of-type {
   border-bottom: solid white 1px;
+  margin-bottom: 3rem;
+}
+.app-drawer .menu__nav .nav__sign-in-btn {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  width: 150px;
+  height: 3rem;
+  border-radius: 6px;
+  background-color: #D2B85A;
+  color: white;
+  font-family: "Oswald", sans-serif;
+  font-size: 1.5rem;
+  font-weight: 500;
+  text-shadow: 0 0 2px black;
+}
+@media (min-width: 720px) {
+  .app-drawer .menu__nav .nav__sign-in-btn {
+    display: none;
+  }
 }
 @media (min-width: 720px) {
   .app-drawer .drawer-overlay {

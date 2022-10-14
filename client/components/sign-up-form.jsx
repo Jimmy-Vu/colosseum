@@ -1,7 +1,7 @@
-import React, { useEffect, useState } from "react";
+import React, { useState } from "react";
 
-export default function SignIn(props) {
-  const { handleSignIn } = props;
+export default function SignUpForm(props) {
+  const { switchForm } = props;
   const [inputState, setInputState] = useState({
     username: '',
     password: ''
@@ -17,7 +17,7 @@ export default function SignIn(props) {
   function handleSubmit(e) {
     e.preventDefault();
 
-    fetch('/api/users/sign-in', {
+    fetch('/api/users/sign-up', {
       method: 'POST',
       headers: {
         'Content-Type': 'application/json'
@@ -26,12 +26,10 @@ export default function SignIn(props) {
     })
       .then(res => res.json())
       .then(result => {
-        handleSignIn(result);
+        switchForm('sign-in');
       })
       .catch(err => console.error(err));
   }
-
-
 
   return (
     <main className="sign-in-main">
@@ -45,10 +43,10 @@ export default function SignIn(props) {
             <label htmlFor="username">Password</label>
             <input onChange={handleChange} type="password" id="password" />
           </div>
-          <button>
+          <button onClick={switchForm} type="button">
             <p>Looking to sign up instead? Click here.</p>
           </button>
-          <button className="sign-btn" type="submit">Sign In</button>
+          <button className="sign-btn" type="submit">Sign Up</button>
         </form>
       </div>
     </main>
