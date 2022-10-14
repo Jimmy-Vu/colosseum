@@ -6,6 +6,7 @@ export default function SignUpForm(props) {
     username: '',
     password: ''
   });
+  const [passShowing, setPassShowing] = useState(false);
 
   function handleChange(e) {
     setInputState(prev => ({
@@ -34,16 +35,22 @@ export default function SignUpForm(props) {
   return (
     <main className="sign-in-main">
       <div className="sign-in-container">
-        <h2>Register</h2>
+        <h2 className="sign-in-title">Register</h2>
         <form onSubmit={handleSubmit} className="sign-in-form">
           <div>
             <label htmlFor="username">Username</label>
-            <input onChange={handleChange} type="text" id="username" placeholder=" " minLength={2} required/>
+            <input onChange={handleChange} type="text" id="username" placeholder=" " minLength={2} required />
             <span>Username needs to have a minimum length of 2 characters</span>
           </div>
           <div>
             <label htmlFor="username">Password</label>
-            <input onChange={handleChange} type="password" id="password" placeholder=" " minLength={2} required/>
+            <input onChange={handleChange} type={passShowing ? 'text' : 'password'} id="password" placeholder=" " minLength={2} required />
+            {passShowing &&
+              <i onClick={() => setPassShowing(false)} id="password-toggle" className="fa-solid fa-eye-slash"></i>
+            }
+            {!passShowing &&
+              <i onClick={() => setPassShowing(true)} id="password-toggle" className="fa-solid fa-eye"></i>
+            }
             <span>Password needs to have a minimum length of 2 characters</span>
           </div>
           <button onClick={switchForm} type="button">

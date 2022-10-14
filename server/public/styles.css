@@ -574,7 +574,6 @@ footer {
   font-weight: 500;
 }
 .sign-in-container .sign-in-form input {
-  display: block;
   width: 100%;
 }
 .sign-in-container .sign-in-form span {
@@ -584,6 +583,10 @@ footer {
 }
 .sign-in-container .sign-in-form input:not(:focus):not(:placeholder-shown):invalid ~ span {
   display: block;
+}
+.sign-in-container .sign-in-form #password-toggle {
+  margin-left: -30px;
+  cursor: pointer;
 }
 .sign-in-container .sign-in-form .sign-btn {
   align-self: center;

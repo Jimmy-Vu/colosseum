@@ -6,8 +6,8 @@ export default function SignInForm(props) {
     username: '',
     password: ''
   });
-
   const [errorMessage, setErrorMessage] = useState('');
+  const [passShowing, setPassShowing] = useState(false);
 
   function handleChange(e) {
     setInputState(prev => ({
@@ -38,7 +38,7 @@ export default function SignInForm(props) {
   return (
     <main className="sign-in-main">
       <div className="sign-in-container">
-        <h2>Sign In</h2>
+        <h2 className="sign-in-title">Sign In</h2>
         <form onSubmit={handleSubmit} className="sign-in-form">
           <div>
             <label htmlFor="username">Username</label>
@@ -46,7 +46,13 @@ export default function SignInForm(props) {
           </div>
           <div>
             <label htmlFor="username">Password</label>
-            <input onChange={handleChange} type="password" id="password" required />
+            <input onChange={handleChange} type={passShowing ? 'text' : 'password'} id="password" required />
+            {passShowing &&
+              <i onClick={() => setPassShowing(false)} id="password-toggle" className="fa-solid fa-eye-slash"></i>
+            }
+            {!passShowing &&
+              <i onClick={() => setPassShowing(true)} id="password-toggle" className="fa-solid fa-eye"></i>
+            }
           </div>
           <button onClick={switchForm} type="button">
             <p style={{ textDecoration: 'underline' }}>Don't have an account? Click here to register.</p>

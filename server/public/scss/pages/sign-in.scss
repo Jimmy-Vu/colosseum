@@ -42,7 +42,6 @@
     }
 
     input {
-      display: block;
       width: 100%;
     }
 
@@ -52,8 +51,13 @@
       display: none;
     }
 
-    input:not(:focus):not(:placeholder-shown):invalid ~ span {
+    input:not(:focus):not(:placeholder-shown):invalid~span {
       display: block;
+    }
+
+    #password-toggle {
+      margin-left: -30px;
+      cursor: pointer;
     }
 
     .sign-btn {
