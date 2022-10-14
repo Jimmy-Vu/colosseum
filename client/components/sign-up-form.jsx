@@ -38,11 +38,13 @@ export default function SignUpForm(props) {
         <form onSubmit={handleSubmit} className="sign-in-form">
           <div>
             <label htmlFor="username">Username</label>
-            <input onChange={handleChange} type="text" id="username" required/>
+            <input onChange={handleChange} type="text" id="username" placeholder=" " minLength={2} required/>
+            <span>Username needs to have a minimum length of 2 characters</span>
           </div>
           <div>
             <label htmlFor="username">Password</label>
-            <input onChange={handleChange} type="password" id="password" required/>
+            <input onChange={handleChange} type="password" id="password" placeholder=" " minLength={2} required/>
+            <span>Password needs to have a minimum length of 2 characters</span>
           </div>
           <button onClick={switchForm} type="button">
             <p style={{ textDecoration: 'underline' }}>Have an account? Click here to sign in.</p>

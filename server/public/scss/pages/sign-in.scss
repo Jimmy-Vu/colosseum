@@ -46,6 +46,16 @@
       width: 100%;
     }
 
+    span {
+      font-size: 14px;
+      color: red;
+      display: none;
+    }
+
+    input:not(:focus):not(:placeholder-shown):invalid ~ span {
+      display: block;
+    }
+
     .sign-btn {
       align-self: center;
       text-align: center;

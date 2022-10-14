@@ -33,6 +33,14 @@
   display: block;
   width: 100%;
 }
+.sign-in-container .sign-in-form span {
+  font-size: 14px;
+  color: red;
+  display: none;
+}
+.sign-in-container .sign-in-form input:not(:focus):not(:placeholder-shown):invalid ~ span {
+  display: block;
+}
 .sign-in-container .sign-in-form .sign-btn {
   align-self: center;
   text-align: center;
