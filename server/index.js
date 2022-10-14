@@ -54,6 +54,10 @@ app.use(jsonMiddleware);
 //Routes for user authentications
 app.post('/api/users/sign-up', (req, res, next) => {
   const { username, password } = req.body;
+  if (!username || !password) {
+    throw new ClientError(400, 'Please provide a username and password');
+    console.error('Missing username and or password');
+  }
   argon2
     .hash(password)
     .then(hashedPassword => {
@@ -75,6 +79,10 @@ app.post('/api/users/sign-up', (req, res, next) => {
 
 app.post('/api/users/sign-in', (req, res, next) => {
   const { username, password } = req.body;
+  if (!username || !password) {
+    throw new ClientError(400, 'Please provide a username and password');
+    console.error('Missing username and or password');
+  }
   argon2
     .hash(password)
     .then(hashedPassword => {
@@ -86,12 +94,15 @@ app.post('/api/users/sign-in', (req, res, next) => {
     `;
       db.query(sql, params)
         .then(result => {
+          if (!result.rows.length) {
+            throw new ClientError(401, 'Invalid login. Please check your username and password');
+          }
           const { hashedPassword, userId } = result.rows[0];
           argon2
             .verify(hashedPassword, password)
             .then(isMatching => {
               if (!isMatching) {
-                throw new ClientError(401, 'invalid login');
+                throw new ClientError(401, 'Invalid login. Please check your username and password');
               }
               const payload = {
                 userId: userId,
@@ -111,6 +122,10 @@ app.use(authorizationMiddleware);
 // Post route for dev database
 app.post('/api/gyms/dev', (req, res, next) => {
   const { userId } = req.user;
+  if (!userId) {
+    throw new ClientError(400, 'Missing userId');
+    console.error('Missing userId');
+  }
   const { name, address, type, imageURL, description } = req.body;
   if (!name || !address || !type || !imageURL) {
     throw new ClientError(400, 'Please provide a name, address, type(s), and an image');
@@ -192,8 +207,6 @@ app.patch('/api/gyms/:gymId', upload, (req, res, next) => {
     }
   }
 
-  console.log('gymId', gymId);
-  console.log('name', name);
   let sql = '';
   let params = [];
   if (!imageURL) {
@@ -222,7 +235,6 @@ app.patch('/api/gyms/:gymId', upload, (req, res, next) => {
   }
   db.query(sql, params)
     .then(result => {
-      console.log(result.rows[0]);
       res.status(200).json(result.rows[0]);
     })
     .catch(err => next(err));
@@ -242,7 +254,6 @@ app.delete('/api/gyms/:gymId', (req, res, next) => {
     })
     .catch(err => next(err));
 });
-
 
 app.use(errorMiddleware);
 

@@ -45,7 +45,7 @@ export default function SignUpForm(props) {
             <input onChange={handleChange} type="password" id="password" required/>
           </div>
           <button onClick={switchForm} type="button">
-            <p>Have an account? Click here to sign in.</p>
+            <p style={{ textDecoration: 'underline' }}>Have an account? Click here to sign in.</p>
           </button>
           <button className="sign-btn" type="submit">Submit</button>
         </form>

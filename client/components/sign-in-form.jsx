@@ -2,11 +2,12 @@ import React, { useState } from "react";
 
 export default function SignInForm(props) {
   const { switchForm, handleSignIn } = props;
-
   const [inputState, setInputState] = useState({
     username: '',
     password: ''
   });
+
+  const [errorMessage, setErrorMessage] = useState('');
 
   function handleChange(e) {
     setInputState(prev => ({
@@ -27,7 +28,9 @@ export default function SignInForm(props) {
     })
       .then(res => res.json())
       .then(result => {
-        handleSignIn(result);
+        result.error
+          ? setErrorMessage(result.error)
+          : handleSignIn(result);
       })
       .catch(err => console.error(err));
   }
@@ -39,18 +42,19 @@ export default function SignInForm(props) {
         <form onSubmit={handleSubmit} className="sign-in-form">
           <div>
             <label htmlFor="username">Username</label>
-            <input onChange={handleChange} type="text" id="username" required/>
+            <input onChange={handleChange} type="text" id="username" required />
           </div>
           <div>
             <label htmlFor="username">Password</label>
-            <input onChange={handleChange} type="password" id="password" required/>
+            <input onChange={handleChange} type="password" id="password" required />
           </div>
           <button onClick={switchForm} type="button">
-            <p>Don't have an account? Click here to register.</p>
+            <p style={{ textDecoration: 'underline' }}>Don't have an account? Click here to register.</p>
+            <p style={{ textAlign: 'center', color: 'red' }}>{errorMessage}</p>
           </button>
           <button className="sign-btn" type="submit">Submit</button>
         </form>
       </div>
-    </main>
+    </main >
   );
 }

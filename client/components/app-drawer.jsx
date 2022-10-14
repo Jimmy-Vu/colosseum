@@ -25,7 +25,7 @@ function AppDrawer(props) {
                 {isLoggedIn &&
                   <>
                     {/* <ul><a href="#">Favorites</a></ul> */}
-                    <ul><a href="#">My Account</a></ul>
+                    <ul><a href="#account">My Account</a></ul>
                   </>
                 }
                 {!isLoggedIn &&
