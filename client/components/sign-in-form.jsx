@@ -35,19 +35,20 @@ export default function SignInForm(props) {
   return (
     <main className="sign-in-main">
       <div className="sign-in-container">
+        <h2>Sign In</h2>
         <form onSubmit={handleSubmit} className="sign-in-form">
           <div>
             <label htmlFor="username">Username</label>
-            <input onChange={handleChange} type="text" id="username" />
+            <input onChange={handleChange} type="text" id="username" required/>
           </div>
           <div>
             <label htmlFor="username">Password</label>
-            <input onChange={handleChange} type="password" id="password" />
+            <input onChange={handleChange} type="password" id="password" required/>
           </div>
           <button onClick={switchForm} type="button">
-            <p>Looking to sign up instead? Click here.</p>
+            <p>Don't have an account? Click here to register.</p>
           </button>
-          <button className="sign-btn" type="submit">Sign In</button>
+          <button className="sign-btn" type="submit">Submit</button>
         </form>
       </div>
     </main>

@@ -71,11 +71,11 @@ export default function GymForm(props) {
     <form className="create-form" onSubmit={handleSubmit} encType="multipart/form-data">
       <div className="text-inputs">
         <label className="name-label" htmlFor="name">Name</label>
-        <input className="name-input" onChange={handleChange} type="text" name="name" id="name" />
+        <input className="name-input" onChange={handleChange} type="text" name="name" id="name" required/>
         <label className="address-label" htmlFor="address">Address</label>
-        <input className="address-input" onChange={handleChange} type="text" name="address" id="address" />
+        <input className="address-input" onChange={handleChange} type="text" name="address" id="address" required/>
         <label className="description-label" htmlFor="description">Description</label>
-        <textarea className="description-input" onChange={handleChange} name="description" id="description" cols="30" rows="5"></textarea>
+        <textarea className="description-input" onChange={handleChange} name="description" id="description" cols="30" rows="5" required></textarea>
       </div>
       <fieldset onChange={handleCheckboxes} id="type" className="specialization-fieldset">
         <legend>Choose the type of specialization(s) of the arena:</legend>
@@ -130,7 +130,7 @@ export default function GymForm(props) {
       </fieldset>
       <div className="upload-submit-container">
         <label htmlFor="image">Choose an image for the gym</label>
-        <input onChange={handleUpload} id="image" type="file" accept="image/*" />
+        <input onChange={handleUpload} id="image" type="file" accept="image/*" required/>
         <button className="submit-button" type="submit">Submit</button>
       </div>
     </form>

@@ -4,8 +4,7 @@ import { useSelector } from 'react-redux';
 
 
 function AppDrawer(props) {
-  const isOpen = props.isOpen;
-  const setDrawerIsOpen = props.setDrawerIsOpen;
+  const { isOpen, setDrawerIsOpen, handleSignOut } = props;
   const isLoggedIn = useSelector(state => state.app.isLoggedIn);
   const transition = useTransition(isOpen, {
     from: { x: "-100%" },
@@ -25,7 +24,7 @@ function AppDrawer(props) {
                 <ul><a onClick={() => setDrawerIsOpen(false)} href="#create">Add An Arena</a></ul>
                 {isLoggedIn &&
                   <>
-                    <ul><a href="#">Favorites</a></ul>
+                    {/* <ul><a href="#">Favorites</a></ul> */}
                     <ul><a href="#">My Account</a></ul>
                   </>
                 }
@@ -33,14 +32,15 @@ function AppDrawer(props) {
                   <a onClick={() => setDrawerIsOpen(false)} className="nav__sign-in-btn" href="#auth">Sign In</a>
                 }
                 {isLoggedIn &&
-                  <a onClick={() => setDrawerIsOpen(false)} className="nav__sign-in-btn" href="#auth">Sign Out</a>
+                  <a onClick={() => { setDrawerIsOpen(false); handleSignOut(); }} className="nav__sign-in-btn">Sign Out</a>
                 }
               </nav>
             </animated.div>
             <div onClick={() => setDrawerIsOpen(false)} className="drawer-overlay"></div>
           </>
-        ) : '')}
-    </div>
+        ) : '')
+      }
+    </div >
   );
 }
 

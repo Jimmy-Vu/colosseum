@@ -14,7 +14,7 @@ function Header(props) {
 
   return (
     <header>
-      <AppDrawer isOpen={drawerIsOpen} setDrawerIsOpen={setDrawerIsOpen}></AppDrawer>
+      <AppDrawer handleSignOut={handleSignOut} isOpen={drawerIsOpen} setDrawerIsOpen={setDrawerIsOpen}></AppDrawer>
       <div className="header">
         <button onClick={() => setDrawerIsOpen(prevState => !prevState)} type="button">
           <i className="menu-button fa-solid fa-bars"></i>
