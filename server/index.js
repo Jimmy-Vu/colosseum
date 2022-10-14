@@ -152,9 +152,9 @@ app.post('/api/gyms/dev', (req, res, next) => {
 });
 // Post route for production database
 app.post('/api/gyms', upload, (req, res, next) => {
-  const { name, address, type, description } = req.body;
+  const { userId, name, address, type, description } = req.body;
   const imageURL = req.file.path;
-  if (!name || !address || !type || !imageURL || !description) {
+  if (!userId || !name || !address || !type || !imageURL || !description) {
     throw new ClientError(400, 'Please provide a name, address, type(s), and an image');
     console.error('Missing name, address, type, and/or image');
   }
@@ -169,16 +169,17 @@ app.post('/api/gyms', upload, (req, res, next) => {
 
   const sql = `
   insert into "gyms" (
+    "userId",
     "name",
     "address",
     "type",
     "imageURL",
     "description"
-    ) values ($1, $2, $3, $4, $5)
+    ) values ($1, $2, $3, $4, $5, $6)
   returning "gymId", "name", "address", "type", "imageURL", "description"
   `;
 
-  const params = [name, address, typeArray, imageURL, description];
+  const params = [userId, name, address, typeArray, imageURL, description];
   db.query(sql, params)
     .then(result => {
       res.status(201).json(result.rows[0]);

@@ -4,10 +4,8 @@ import { useSelector } from "react-redux";
 
 function Gym(props) {
   const isLoggedIn = useSelector(state => state.app.isLoggedIn);
-  const currentUser = useSelector(state => state.user.userInfo);
-  if (isLoggedIn) {
-    console.log('currentUserId', currentUser);
-  }
+  const currentUserId = useSelector(state => state.user.userInfo.userId);
+  const [belongsToUser, setBelongsToUser] = useState(false);
 
   const [gymState, setGymState] = useState({
     userId: '',
@@ -41,6 +39,12 @@ function Gym(props) {
       .catch(err => console.error(err));
   }, [])
 
+  useEffect(() => {
+    if (currentUserId === gymState.userId) {
+      setBelongsToUser(true);
+    }
+  }, [gymState.userId])
+
   function gymDelete(e) {
     fetch(`/api/gyms/${gymState.gymId}`, { method: 'delete' })
       .then(res => {
@@ -67,10 +71,12 @@ function Gym(props) {
             </div>
           </div>
         </div>
-        <div className="gym-buttons-container">
-          <a href={`#edit?gymId=${gymState.gymId}`} className="gym-edit-btn">Edit Arena</a>
-          <button onClick={gymDelete} className="gym-delete-btn">Delete Arena</button>
-        </div>
+        {belongsToUser &&
+          <div className="gym-buttons-container">
+            <a href={`#edit?gymId=${gymState.gymId}`} className="gym-edit-btn">Edit Arena</a>
+            <button onClick={gymDelete} className="gym-delete-btn">Delete Arena</button>
+          </div>
+        }
       </main>
     );
   } else if (gymState.description === null) {
