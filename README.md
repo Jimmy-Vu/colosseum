@@ -6,10 +6,11 @@ Try the application live at [colosseum.fly.dev](https://colosseum.fly.dev)
 
 #### Technologies
 * React JS
+* Redux Toolkit
 * Node.js
 * PostgreSQL
 * Express.js
-* Argon2 / JWT (Not yet implemented)
+* Argon2 / JWT
 * Webpack
 * Babel
 * Sass
