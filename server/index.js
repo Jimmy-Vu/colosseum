@@ -49,6 +49,7 @@ app.get('/api/gyms/:gymId', (req, res, next) => {
     .catch(err => next(err));
 });
 
+// Mounting middleware for express app to be able to parse json requests
 app.use(jsonMiddleware);
 
 //Routes for user authentications
@@ -117,8 +118,28 @@ app.post('/api/users/sign-in', (req, res, next) => {
     })
 })
 
-// Mounting middleware for express app to be able to parse json requests
+//Middleware for user authorization. All routes past this point requires an access token
 app.use(authorizationMiddleware);
+
+app.get('/api/:userId/gyms', (req, res, next) => {
+  const userId = req.params.userId;
+  const sql = `
+  select *
+      from "gyms"
+      where "userId" = $1
+  `;
+  const params = [userId];
+  db.query(sql, params)
+    .then(result => {
+      if (!result.rows) {
+        console.error('No matches found');
+        throw new ClientError(404, 'No matches found');
+      }
+      res.status(200).json(result.rows);
+    })
+    .catch(err => next(err));
+})
+
 // Post route for dev database
 app.post('/api/gyms/dev', (req, res, next) => {
   const { userId } = req.user;
@@ -128,8 +149,8 @@ app.post('/api/gyms/dev', (req, res, next) => {
   }
   const { name, address, type, imageURL, description } = req.body;
   if (!name || !address || !type || !imageURL) {
-    throw new ClientError(400, 'Please provide a name, address, type(s), and an image');
     console.error('Missing name, address, type, and/or image');
+    throw new ClientError(400, 'Please provide a name, address, type(s), and an image');
   }
 
   const sql = `

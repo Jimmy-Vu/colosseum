@@ -11,6 +11,7 @@ import Header from "./components/header";
 import Footer from "./components/footer";
 import EditListing from "./pages/edit-listing";
 import Auth from "./pages/auth";
+import AccountPage from "./pages/account-page";
 import { useSelector, useDispatch } from 'react-redux';
 import { login, logout } from './redux/appSlice';
 import { setStateUser } from './redux/userSlice';
@@ -102,6 +103,14 @@ function App(props) {
         <div className="main-container">
           <Header handleSignOut={handleSignOut} setStateRoute={setStateRoute} />
           <Auth handleSignIn={handleSignIn} />
+          <Footer />
+        </div>
+      );
+    case "account":
+      return (
+        <div className="main-container">
+          <Header handleSignOut={handleSignOut} setStateRoute={setStateRoute} />
+          <AccountPage />
           <Footer />
         </div>
       );

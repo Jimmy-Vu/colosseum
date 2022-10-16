@@ -70,6 +70,7 @@
 .gym-main .gym-info-container .gym-details .gym-title {
   color: black;
   font-size: 2em;
+  text-align: center;
 }
 .gym-main .gym-info-container .gym-details .gym-body {
   margin-top: 1em;

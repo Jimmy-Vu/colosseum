@@ -40,7 +40,7 @@ export default function SignUpForm(props) {
           <div>
             <label htmlFor="username">Username</label>
             <input onChange={handleChange} type="text" id="username" placeholder=" " minLength={2} required />
-            <span>Username needs to have a minimum length of 2 characters</span>
+            <span>Usernames needs to have a minimum length of 2 characters</span>
           </div>
           <div>
             <label htmlFor="username">Password</label>
@@ -51,7 +51,7 @@ export default function SignUpForm(props) {
             {!passShowing &&
               <i onClick={() => setPassShowing(true)} id="password-toggle" className="fa-solid fa-eye"></i>
             }
-            <span>Password needs to have a minimum length of 2 characters</span>
+            <span>Passwords needs to have a minimum length of 2 characters</span>
           </div>
           <button onClick={switchForm} type="button">
             <p style={{ textDecoration: 'underline' }}>Have an account? Click here to sign in.</p>

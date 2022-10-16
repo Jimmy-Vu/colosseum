@@ -4,7 +4,7 @@ import { useSelector } from "react-redux";
 
 function Gym(props) {
   const isLoggedIn = useSelector(state => state.app.isLoggedIn);
-  const currentUserId = useSelector(state => state.user.userInfo.userId);
+  const currentUserId = useSelector(state => state.user.userId);
   const [belongsToUser, setBelongsToUser] = useState(false);
 
   const [gymState, setGymState] = useState({
@@ -46,7 +46,12 @@ function Gym(props) {
   }, [gymState.userId])
 
   function gymDelete(e) {
-    fetch(`/api/gyms/${gymState.gymId}`, { method: 'delete' })
+    fetch(`/api/gyms/${gymState.gymId}`, {
+      method: 'delete',
+      headers: {
+        'access-token': window.localStorage.getItem('access-token')
+      }
+    })
       .then(res => {
         if (res.status === 204) {
           window.location.hash = "#listings";

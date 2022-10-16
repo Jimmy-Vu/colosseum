@@ -2,7 +2,7 @@ import React, { useEffect, useState } from "react";
 import { useSelector } from "react-redux";
 
 export default function GymForm(props) {
-  const currentUserId = useSelector(state => state.user.userInfo.userId);
+  const currentUserId = useSelector(state => state.user.userId);
   const setIsLoading = props.setIsLoading;
   const [inputs, setInputs] = useState({
     userId: '',
