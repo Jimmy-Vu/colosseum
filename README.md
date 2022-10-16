@@ -20,6 +20,7 @@ Try the application live at [colosseum.fly.dev](https://colosseum.fly.dev)
 * JavaScript (ES5/ES6)
 * HTML5
 * CSS3
+* Fly.io
 
 #### Features
 - [x] 1. Users can see the home page
