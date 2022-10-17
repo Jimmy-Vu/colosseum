@@ -13,7 +13,7 @@ Try the application live at [colosseum.fly.dev](https://colosseum.fly.dev)
 * Argon2 / JWT
 * Webpack
 * Babel
-* Sass
+* Sass/Scss
 * react-spring
 * react-spinners
 * Cloudinary
