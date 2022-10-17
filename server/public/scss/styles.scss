@@ -3,6 +3,7 @@
 @use "./components/header.scss";
 @use "./components/app-drawer.scss";
 @use "./components/footer.scss";
+@use "./pages/home-page.scss";
 @use "./pages/listings-page.scss";
 @use "./components/listing-card.scss";
 @use "./pages/gym.scss";
@@ -11,12 +12,12 @@
 @use "./pages/edit-listing.scss";
 @use "./pages/sign-in.scss";
 @use "./pages/account-page.scss";
-
 // "xs": 0,
 // "sm": 480px,
 // "md": 720px,
 // "lg": 960px,
 // "xl": 1200px
+
 header {
   position: sticky;
 }
@@ -62,39 +63,4 @@ textarea {
   flex-direction: column;
   height: 100%;
   font-family: 'Roboto', sans-serif;
-}
-
-.home-container {
-  height: 100%;
-}
-
-.home-main {
-  height: 100%;
-  display: flex;
-  justify-content: center;
-  align-items: center;
-
-  .home-search-btn {
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    margin-bottom: 12rem;
-    border-radius: 14px;
-    padding: 0.25em 0.5em;
-
-    background-color: $primary;
-    color: white;
-    font-family: 'Oswald', sans-serif;
-    font-size: 2.5rem;
-    font-weight: 500;
-    text-shadow: 0 0 2px black;
-
-    @include sm {
-      margin-bottom: 8rem;
-    }
-
-    @include md {
-      font-size: 2.5rem;
-    }
-  }
 }
