@@ -1,4 +1,4 @@
-function parseRoute(hashRoute) {
+export default function parseRoute(hashRoute) {
   if (hashRoute.startsWith('#')) {
     hashRoute = hashRoute.replace('#', '');
   }
@@ -6,4 +6,3 @@ function parseRoute(hashRoute) {
   const params = new URLSearchParams(queryString);
   return { path, params };
 }
-export default parseRoute;

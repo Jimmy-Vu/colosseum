@@ -1,9 +1,11 @@
 import React from "react";
 import { useTransition, animated } from '@react-spring/web';
+import { useSelector } from 'react-redux';
+
 
 function AppDrawer(props) {
-  const isOpen = props.isOpen;
-  const setDrawerIsOpen = props.setDrawerIsOpen;
+  const { isOpen, setDrawerIsOpen, handleSignOut } = props;
+  const isLoggedIn = useSelector(state => state.app.isLoggedIn);
   const transition = useTransition(isOpen, {
     from: { x: "-100%" },
     enter: { x: "0" },
@@ -20,14 +22,25 @@ function AppDrawer(props) {
               <nav className="menu__nav">
                 <ul><a onClick={() => setDrawerIsOpen(false)} href="#listings">Arenas</a></ul>
                 <ul><a onClick={() => setDrawerIsOpen(false)} href="#create">Add An Arena</a></ul>
-                {/* <ul><a href="#">Favorites</a></ul>
-                <ul><a href="#">My Account</a></ul> */}
+                {isLoggedIn &&
+                  <>
+                    {/* <ul><a href="#">Favorites</a></ul> */}
+                  <ul><a onClick={() => setDrawerIsOpen(false)} href="#account">My Account</a></ul>
+                  </>
+                }
+                {!isLoggedIn &&
+                  <a onClick={() => setDrawerIsOpen(false)} className="nav__sign-in-btn" href="#auth">Sign In</a>
+                }
+                {isLoggedIn &&
+                  <a onClick={() => { setDrawerIsOpen(false); handleSignOut(); }} className="nav__sign-in-btn">Sign Out</a>
+                }
               </nav>
             </animated.div>
             <div onClick={() => setDrawerIsOpen(false)} className="drawer-overlay"></div>
           </>
-        ) : '')}
-    </div>
+        ) : '')
+      }
+    </div >
   );
 }
 

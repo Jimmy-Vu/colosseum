@@ -1,9 +1,24 @@
+  insert into "users" (
+    "username",
+    "hashedPassword"
+  )
+  values
+  (
+    'admin',
+    'pass321'
+  ),
+  (
+    'demo',
+    '$argon2i$v=19$m=16,t=2,p=1$VElUQU5JVU0xMjNLSU5H$/w4XQQZlghw79NuPQBtDVQ'
+  );
+
 insert into "gyms" (
   "name",
   "address",
   "type",
   "imageURL",
-  "description"
+  "description",
+  "userId"
   )
   values
   (
@@ -11,12 +26,22 @@ insert into "gyms" (
     '2060 S Euclid St Suite K, Anaheim, CA 92802',
     '{"powerlifting","weightlifting"}',
     'https://images.squarespace-cdn.com/content/v1/5f1121d3454d3d642df2c2a0/1594959199899-ZR1KADRBX6O6CCD2I3RR/IMG_8029.jpg?format=1500w',
-    'Our mission at Exceed Performance is to cultivate and inspire individuals in all aspects of strength training, powerlifting, weightlifting, and overall health. We aspire to unlock the potential of our members both mentally and physically. We welcome everyone from novices to world class athletes and to share their journey of endless growth with us.'
+    'Our mission at Exceed Performance is to cultivate and inspire individuals in all aspects of strength training, powerlifting, weightlifting, and overall health. We aspire to unlock the potential of our members both mentally and physically. We welcome everyone from novices to world class athletes and to share their journey of endless growth with us.',
+    1
   ),
   (
     'Bayside Boxing',
     'Torrance, CA',
     'boxing',
     'https://images.unsplash.com/photo-1561532325-7d5231a2dede?ixlib=rb-1.2.1&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=1471&q=80',
-    'Our mission is to train the warriors of tomorrow, no matter the gender, origins, or creed.'
-  )
+    'Our mission is to train the warriors of tomorrow, no matter the gender, origins, or creed.',
+    1
+  ),
+  (
+    'Regal Climbing Gym',
+    'Mankato, MN',
+    'climbing',
+    'https://images.unsplash.com/photo-1543398971-17eea343659e?ixlib=rb-1.2.1&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=987&q=80',
+    'No height is insurmountable. We train those who will reach the peaks of the world. Call us now to start your climb.',
+    2
+  );

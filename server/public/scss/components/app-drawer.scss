@@ -54,7 +54,7 @@ $primary: #D2B85A;
       color: white;
 
       width: 100%;
-      margin-top: 3em;
+      margin-top: 3rem;
       padding-left: 3rem;
       padding-right: 3rem;
       font-family: 'Oswald', sans-serif;
@@ -73,8 +73,29 @@ $primary: #D2B85A;
         font-size: 2em;
         text-align: center;
 
-        &:last-child {
+        &:last-of-type {
           border-bottom: solid white 1px;
+          margin-bottom: 3rem;
+        }
+      }
+
+      .nav__sign-in-btn {
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        width: 150px;
+        height: 3rem;
+        border-radius: 6px;
+
+        background-color: $primary;
+        color: white;
+        font-family: 'Oswald', sans-serif;
+        font-size: 2rem;
+        font-weight: 500;
+        text-shadow: 0 0 2px black;
+
+        @include md {
+          display: none;
         }
       }
     }

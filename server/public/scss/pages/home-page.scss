@@ -1,0 +1,51 @@
+@use "../global/breakpoints" as *;
+@use "../global/colors" as *;
+// "xs": 0,
+// "sm": 480px,
+// "md": 720px,
+// "lg": 960px,
+// "xl": 1200px
+
+.home-container {
+  height: 100%;
+}
+
+.home-main {
+  height: 100%;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+
+  .home-description {
+    margin-bottom: 1rem;
+
+    text-align: center;
+    font-size: 24px;
+    font-weight: 400;
+  }
+
+  .home-search-btn {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    margin-bottom: 12rem;
+    border-radius: 14px;
+    padding: 0.25em 0.5em;
+
+    background-color: $primary;
+    color: white;
+    font-family: 'Oswald', sans-serif;
+    font-size: 2.5rem;
+    font-weight: 500;
+    text-shadow: 0 0 2px black;
+
+    @include sm {
+      margin-bottom: 8rem;
+    }
+
+    @include md {
+      font-size: 2.5rem;
+    }
+  }
+}

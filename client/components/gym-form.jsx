@@ -1,8 +1,11 @@
-import React, { useState } from "react";
+import React, { useEffect, useState } from "react";
+import { useSelector } from "react-redux";
 
 export default function GymForm(props) {
+  const currentUserId = useSelector(state => state.user.userId);
   const setIsLoading = props.setIsLoading;
   const [inputs, setInputs] = useState({
+    userId: '',
     name: '',
     address: '',
     type: {
@@ -22,6 +25,10 @@ export default function GymForm(props) {
     image: '',
     description: ''
   });
+
+  useEffect(() => {
+    setInputs(prev => ({ ...prev, userId: currentUserId }));
+  }, [currentUserId])
 
   function handleChange(e) {
     setInputs(prev => ({ ...prev, [e.target.id]: e.target.value }));
@@ -53,6 +60,9 @@ export default function GymForm(props) {
 
     fetch('/api/gyms', {
       method: 'POST',
+      headers: {
+        'access-token': window.localStorage.getItem('access-token')
+      },
       body: formData
     })
       .then(res => res.json())
@@ -61,7 +71,7 @@ export default function GymForm(props) {
         if (!data.gymId) {
           window.location.hash = "#not-found";
         } else {
-          window.location.hash = `#gyms?gymId=${inputs.gymId}`;
+          window.location.hash = `#gyms?gymId=${data.gymId}`;
         }
       })
       .catch(err => console.error(err));
@@ -71,11 +81,11 @@ export default function GymForm(props) {
     <form className="create-form" onSubmit={handleSubmit} encType="multipart/form-data">
       <div className="text-inputs">
         <label className="name-label" htmlFor="name">Name</label>
-        <input className="name-input" onChange={handleChange} type="text" name="name" id="name" />
+        <input className="name-input" onChange={handleChange} type="text" name="name" id="name" required />
         <label className="address-label" htmlFor="address">Address</label>
-        <input className="address-input" onChange={handleChange} type="text" name="address" id="address" />
+        <input className="address-input" onChange={handleChange} type="text" name="address" id="address" required />
         <label className="description-label" htmlFor="description">Description</label>
-        <textarea className="description-input" onChange={handleChange} name="description" id="description" cols="30" rows="5"></textarea>
+        <textarea className="description-input" onChange={handleChange} name="description" id="description" cols="30" rows="5" required></textarea>
       </div>
       <fieldset onChange={handleCheckboxes} id="type" className="specialization-fieldset">
         <legend>Choose the type of specialization(s) of the arena:</legend>

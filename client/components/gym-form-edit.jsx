@@ -3,8 +3,8 @@ import editTypeAdjust from "../lib/editTypeAdjust";
 
 export default function GymFormEdit(props) {
   const setIsLoading = props.setIsLoading;
-
   const [inputs, setInputs] = useState({
+    userId: '',
     name: '',
     address: '',
     type: {},
@@ -17,6 +17,7 @@ export default function GymFormEdit(props) {
       .then(res => res.json())
       .then(data => {
         setInputs({
+          userId: data.userId,
           name: data.name,
           address: data.address,
           type: editTypeAdjust(data.type),
@@ -56,6 +57,9 @@ export default function GymFormEdit(props) {
 
     fetch(`/api/gyms/${props.gymId}`, {
       method: 'PATCH',
+      headers: {
+        'access-token': window.localStorage.getItem('access-token')
+      },
       body: formData
     })
       .then(res => res.json())
@@ -74,11 +78,11 @@ export default function GymFormEdit(props) {
     <form className="create-form" onSubmit={handleSubmit} encType="multipart/form-data">
       <div className="text-inputs">
         <label className="name-label" htmlFor="name">Name</label>
-        <input className="name-input" onChange={handleChange} type="text" name="name" id="name" value={inputs.name} />
+        <input className="name-input" onChange={handleChange} type="text" name="name" id="name" value={inputs.name} required />
         <label className="address-label" htmlFor="address">Address</label>
-        <input className="address-input" onChange={handleChange} type="text" name="address" id="address" value={inputs.address} />
+        <input className="address-input" onChange={handleChange} type="text" name="address" id="address" value={inputs.address} required />
         <label className="description-label" htmlFor="description">Description</label>
-        <textarea className="description-input" onChange={handleChange} name="description" id="description" value={inputs.description} cols="30" rows="5"></textarea>
+        <textarea className="description-input" onChange={handleChange} name="description" id="description" value={inputs.description} cols="30" rows="5" required></textarea>
       </div>
       <fieldset id="type" className="specialization-fieldset">
         <legend>Choose the type of specialization(s) of the arena:</legend>
