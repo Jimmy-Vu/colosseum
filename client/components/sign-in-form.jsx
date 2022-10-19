@@ -35,6 +35,25 @@ export default function SignInForm(props) {
       .catch(err => console.error(err));
   }
 
+  function handleDemoSignIn(e) {
+    e.preventDefault();
+
+    fetch('/api/users/sign-in/demo', {
+      method: 'POST',
+      headers: {
+        'Content-Type': 'application/json'
+      },
+      body: JSON.stringify({ username: 'demo', password: 'demo' })
+    })
+      .then(res => res.json())
+      .then(result => {
+        result.error
+          ? setErrorMessage(result.error)
+          : handleSignIn(result);
+      })
+      .catch(err => console.error(err));
+  }
+
   return (
     <main className="sign-in-main">
       <div className="sign-in-container">
@@ -60,6 +79,7 @@ export default function SignInForm(props) {
           </button>
           <button className="sign-btn" type="submit">Submit</button>
         </form>
+        <button onClick={handleDemoSignIn} className="demo-btn" type="button">Demo User</button>
       </div>
     </main >
   );

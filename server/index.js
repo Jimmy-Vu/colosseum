@@ -117,6 +117,46 @@ app.post('/api/users/sign-in', (req, res, next) => {
         .catch(err => next(err))
     })
 })
+//Sign in route for demo user
+app.post('/api/users/sign-in/demo', (req, res, next) => {
+  const { username, password } = req.body;
+  if (!username || !password) {
+    throw new ClientError(400, 'Please provide a username and password');
+    console.error('Missing username and or password');
+  }
+  argon2
+    .hash(password)
+    .then(hashedPassword => {
+      const params = [username];
+      const sql = `
+      select *
+        from "users"
+        where "username" = $1
+    `;
+      db.query(sql, params)
+        .then(result => {
+          if (!result.rows.length) {
+            throw new ClientError(401, 'Invalid login. Please check your username and password');
+          }
+          const { hashedPassword, userId } = result.rows[0];
+          argon2
+            .verify(hashedPassword, password)
+            .then(isMatching => {
+              if (!isMatching) {
+                throw new ClientError(401, 'Invalid login. Please check your username and password');
+              }
+              const payload = {
+                userId: userId,
+                username: username
+              }
+              const token = jwt.sign(payload, process.env.TOKEN_SECRET);
+              res.status(200).json({ "token": token, "user": payload });
+            })
+            .catch(err => next(err));
+        })
+        .catch(err => next(err))
+    })
+})
 
 //Middleware for user authorization. All routes past this point requires an access token
 app.use(authorizationMiddleware);

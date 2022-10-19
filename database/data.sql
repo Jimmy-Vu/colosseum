@@ -9,7 +9,7 @@
   ),
   (
     'demo',
-    'demo'
+    '$argon2i$v=19$m=16,t=2,p=1$VElUQU5JVU0xMjNLSU5H$/w4XQQZlghw79NuPQBtDVQ'
   );
 
 insert into "gyms" (
@@ -42,6 +42,6 @@ insert into "gyms" (
     'Mankato, MN',
     'climbing',
     'https://images.unsplash.com/photo-1543398971-17eea343659e?ixlib=rb-1.2.1&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=987&q=80',
-    'No height is insurmountable. We train those who will reach the peaks of the world.',
-    1
+    'No height is insurmountable. We train those who will reach the peaks of the world. Call us now to start your climb.',
+    2
   );

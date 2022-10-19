@@ -60,5 +60,21 @@
   padding-bottom: 0.25em;
   font-size: 1.25rem;
 }
+.sign-in-container .demo-btn {
+  align-self: center;
+  text-align: center;
+  margin: 1em 0.5em 0.25em 0.1em;
+  width: 85px;
+  background-color: black;
+  color: white;
+  box-shadow: 0 0 1px black;
+  border: solid white 1px;
+  border-radius: 15px;
+  padding-left: 1em;
+  padding-right: 1em;
+  padding-top: 0.25em;
+  padding-bottom: 0.25em;
+  font-size: 1rem;
+}
 
 /*# sourceMappingURL=sign-in.css.map */
