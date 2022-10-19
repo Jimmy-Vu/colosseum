@@ -27,7 +27,7 @@ Try the application live at [colosseum.fly.dev](https://colosseum.fly.dev)
 - [x] 2. Users can browse gym listings
 - [x] 3. Users can add a gym listing
 - [x] 4. Users can edit a listing
-- [x] 5. Users can login
+- [x] 5. Users can sign up/login
 - [ ] 6. Users can leave a review
 
 #### Stretch Features
