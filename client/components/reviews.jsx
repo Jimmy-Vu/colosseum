@@ -2,7 +2,7 @@ import React, { useEffect, useState } from "react";
 import ReviewCard from "./review-card";
 
 export default function Reviews(props) {
-  const { gymId, setAddModalIsOpen } = props;
+  const { gymId, belongsToUser, setAddModalIsOpen } = props;
   const [userReviews, setUserReviews] = useState([]);
 
   useEffect(() => {
@@ -16,7 +16,9 @@ export default function Reviews(props) {
     <section className="reviews-container">
       <div className="reviews-top-container">
         <h3 className="reviews-title">Reviews</h3>
-        <button onClick={() => setAddModalIsOpen(true)} className="reviews-add-btn">Add a Review</button>
+        {!belongsToUser &&
+          <button onClick={() => setAddModalIsOpen(true)} className="reviews-add-btn">Add a Review</button>
+        }
       </div>
       {!userReviews &&
         null

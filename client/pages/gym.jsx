@@ -85,7 +85,7 @@ export default function Gym(props) {
             </div>
           </div>
         </div>
-        <Reviews setAddModalIsOpen={setAddModalIsOpen} gymId={gymState.gymId} gymName={gymState.name} />
+        <Reviews setAddModalIsOpen={setAddModalIsOpen} gymId={gymState.gymId} gymName={gymState.name} belongsToUser={belongsToUser} />
         {belongsToUser &&
           <div className="gym-buttons-container">
             <a href={`#edit?gymId=${gymState.gymId}`} className="gym-edit-btn">Edit Arena</a>

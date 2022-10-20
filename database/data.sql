@@ -12,8 +12,20 @@
     '$argon2i$v=19$m=16,t=2,p=1$VElUQU5JVU0xMjNLSU5H$/w4XQQZlghw79NuPQBtDVQ'
   ),
   (
-    'Apollo',
+    'Vin',
     'pass123'
+  ),
+  (
+    'Waxillium',
+    'wax123'
+  ),
+  (
+    'Vivenna',
+    'Vi123'
+  ),
+  (
+    'Shallan',
+    'Shal123'
   );
 
 insert into "gyms" (
@@ -59,7 +71,7 @@ insert into "reviews" (
 )
 values(
   3,
-  'Apollo',
+  'Vin',
   1,
   5,
   'One of the best gyms I have ever been to. A bit small but they have all the equipment that you need.'
@@ -70,6 +82,13 @@ values(
   1,
   4,
   'Pretty nice gym. Could be a bit bigger and cleaner.'
+),
+(
+  6,
+  'Shallan',
+  1,
+  4,
+  'I love the 24 hour access for members!'
 ),
 (
   2,
@@ -86,8 +105,15 @@ values(
   'I got a really good work out here. I definitely am thinking about coming back.'
 ),
 (
+  4,
+  'Waxillium',
+  2,
   3,
-  'Apollo',
+  'I appreciate the work and attention that the coaches put into each fighter here. The only issue is that how much focus they''re putting on the Philly Shell defense. That style is not meant for everyone.'
+),
+(
+  3,
+  'Vin',
   3,
   3,
   'Really nice walls but the front desk really need to work on their customer service.'
@@ -98,4 +124,11 @@ values(
   3,
   5,
   'Great climbs here. Everyone is so friendly.'
+),
+(
+  5,
+  'Vivenna',
+  3,
+  4,
+  'They have really interesting walls. Great place to practice your sends'
 );
