@@ -14,7 +14,7 @@ export default function Reviews(props) {
 
   return (
     <section className="reviews-container">
-      <div className="reviews-top-container">
+      <div className="reviews-container-header">
         <h3 className="reviews-title">Reviews</h3>
         {!belongsToUser &&
           <button onClick={() => setAddModalIsOpen(true)} className="reviews-add-btn">Add a Review</button>
