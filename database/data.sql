@@ -4,12 +4,16 @@
   )
   values
   (
-    'admin',
+    'Kaladin',
     'pass321'
   ),
   (
-    'demo',
+    'Demo',
     '$argon2i$v=19$m=16,t=2,p=1$VElUQU5JVU0xMjNLSU5H$/w4XQQZlghw79NuPQBtDVQ'
+  ),
+  (
+    'Apollo',
+    'pass123'
   );
 
 insert into "gyms" (
@@ -45,3 +49,53 @@ insert into "gyms" (
     'No height is insurmountable. We train those who will reach the peaks of the world. Call us now to start your climb.',
     2
   );
+
+insert into "reviews" (
+  "userId",
+  "username",
+  "gymId",
+  "rating",
+  "description"
+)
+values(
+  3,
+  'Apollo',
+  1,
+  5,
+  'One of the best gyms I have ever been to. A bit small but they have all the equipment that you need.'
+),
+(
+  2,
+  'Demo',
+  1,
+  4,
+  'Pretty nice gym. Could be a bit bigger and cleaner.'
+),
+(
+  2,
+  'Demo',
+  2,
+  4,
+  'Great boxing gym. Coach Booker really knows his stuff!'
+),
+(
+  1,
+  'Kaladin',
+  2,
+  4,
+  'I got a really good work out here. I definitely am thinking about coming back.'
+),
+(
+  3,
+  'Apollo',
+  3,
+  3,
+  'Really nice walls but the front desk really need to work on their customer service.'
+),
+(
+  1,
+  'Kaladin',
+  3,
+  5,
+  'Great climbs here. Everyone is so friendly.'
+);

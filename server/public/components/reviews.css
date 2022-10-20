@@ -1,0 +1,22 @@
+.reviews-container {
+  background-color: rgba(255, 255, 255, 0.9);
+  padding: 1em;
+  border-radius: 15px;
+}
+.reviews-container .reviews-title {
+  font-size: 1.5rem;
+}
+.reviews-container .review-card {
+  border-bottom: 1px solid #D2B85A;
+  padding-bottom: 1rem;
+  margin-bottom: 1rem;
+}
+.reviews-container .review-card:last-of-type {
+  border-bottom: none;
+  margin-bottom: 0;
+}
+.reviews-container .review-card .rating-stars {
+  margin-left: 1rem;
+}
+
+/*# sourceMappingURL=reviews.css.map */

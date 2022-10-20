@@ -1,0 +1,33 @@
+@use "../global/colors" as *;
+@use "../global/breakpoints" as *;
+// "xs": 0,
+// "sm": 480px,
+// "md": 720px,
+// "lg": 960px,
+// "xl": 1200px
+
+.reviews-container {
+  background-color: rgba(255, 255, 255, 0.9);
+  padding: 1em;
+  border-radius: 15px;
+
+  .reviews-title {
+    font-size: 1.5rem;
+  }
+
+  .review-card {
+    border-bottom: 1px solid $primary;
+    padding-bottom: 1rem;
+    margin-bottom: 1rem;
+
+    &:last-of-type {
+      border-bottom: none;
+      margin-bottom: 0;
+    }
+
+    .rating-stars {
+      margin-left: 1rem;
+    }
+  }
+
+}

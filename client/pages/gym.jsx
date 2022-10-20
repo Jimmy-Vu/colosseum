@@ -1,6 +1,8 @@
 import React, { useEffect, useState } from "react";
-import typeAdjust from "../lib/typeAdjust";
 import { useSelector } from "react-redux";
+import typeAdjust from "../lib/typeAdjust";
+import Reviews from "../components/reviews";
+
 
 export default function Gym(props) {
   const isLoggedIn = useSelector(state => state.app.isLoggedIn);
@@ -48,41 +50,44 @@ export default function Gym(props) {
   }, [gymState.gymId])
 
   function gymDelete(e) {
-      fetch(`/api/gyms/${gymState.gymId}`, {
-        method: 'delete',
-        headers: {
-          'access-token': window.localStorage.getItem('access-token')
+    fetch(`/api/gyms/${gymState.gymId}`, {
+      method: 'delete',
+      headers: {
+        'access-token': window.localStorage.getItem('access-token')
+      }
+    })
+      .then(res => {
+        if (res.status === 204) {
+          window.location.hash = "#listings";
         }
       })
-        .then(res => {
-          if (res.status === 204) {
-            window.location.hash = "#listings";
-          }
-        })
-        .catch(err => console.error(err));
-    }
+      .catch(err => console.error(err));
+  }
 
   return (
     <main className="gym-main">
-      <div className="gym-info-container">
-        <a className="gym-image" href={`${gymState.imageURL}`}>
-          <img src={`${gymState.imageURL}`} alt="main gym image" />
-        </a>
-        <div className="gym-details">
-          <h3 className="gym-title">{gymState.name}</h3>
-          <p className="gym-address">{gymState.address}</p>
-          <p className="gym-type">{`Type: ${gymState.type}`}</p>
-          <div className="gym-body">
-            <p className="gym-description">{gymState.description}</p>
+      <div>
+        <div className="gym-info-container">
+          <a className="gym-image-container" href={`${gymState.imageURL}`}>
+            <img className="gym-image" src={`${gymState.imageURL}`} alt="main gym image" />
+          </a>
+          <div className="gym-details">
+            <h3 className="gym-title">{gymState.name}</h3>
+            <p className="gym-address">{gymState.address}</p>
+            <p className="gym-type">{`Type: ${gymState.type}`}</p>
+            <div className="gym-body">
+              <p className="gym-description">{gymState.description}</p>
+            </div>
           </div>
         </div>
+        <Reviews gymId={gymState.gymId} gymName={gymState.name} />
+        {belongsToUser &&
+          <div className="gym-buttons-container">
+            <a href={`#edit?gymId=${gymState.gymId}`} className="gym-edit-btn">Edit Arena</a>
+            <button onClick={gymDelete} className="gym-delete-btn">Delete Arena</button>
+          </div>
+        }
       </div>
-      {belongsToUser &&
-        <div className="gym-buttons-container">
-          <a href={`#edit?gymId=${gymState.gymId}`} className="gym-edit-btn">Edit Arena</a>
-          <button onClick={gymDelete} className="gym-delete-btn">Delete Arena</button>
-        </div>
-      }
     </main>
   );
 }
