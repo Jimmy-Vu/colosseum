@@ -14,10 +14,13 @@ export default function Reviews(props) {
 
   return (
     <section className="reviews-container">
+      <div className="reviews-top-container">
+        <h3 className="reviews-title">Reviews</h3>
+        <button className="reviews-add-btn">Add a Review</button>
+      </div>
       {!userReviews &&
         null
       }
-      <h3 className="reviews-title">Reviews</h3>
       {userReviews &&
         userReviews.map(review => (
           <ReviewCard key={review.reviewId} reviewDetails={review} />
