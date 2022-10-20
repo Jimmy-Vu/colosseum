@@ -39,4 +39,11 @@
   margin-left: 1rem;
 }
 
+.add-review-modal {
+  position: absolute;
+  width: 90%;
+  height: 600px;
+  background-color: white;
+}
+
 /*# sourceMappingURL=reviews.css.map */

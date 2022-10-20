@@ -2,12 +2,14 @@ import React, { useEffect, useState } from "react";
 import { useSelector } from "react-redux";
 import typeAdjust from "../lib/typeAdjust";
 import Reviews from "../components/reviews";
+import AddReviewModal from "../components/add-review-modal";
 
 
 export default function Gym(props) {
   const isLoggedIn = useSelector(state => state.app.isLoggedIn);
   const currentUserId = useSelector(state => state.user.userId);
   const [belongsToUser, setBelongsToUser] = useState(null);
+  const [addModalIsOpen, setAddModalIsOpen] = useState(false);
 
   const [gymState, setGymState] = useState({
     userId: null,
@@ -66,6 +68,9 @@ export default function Gym(props) {
 
   return (
     <main className="gym-main">
+      {addModalIsOpen &&
+        <AddReviewModal gymState={gymState} />
+      }
       <div>
         <div className="gym-info-container">
           <a className="gym-image-container" href={`${gymState.imageURL}`}>
@@ -80,7 +85,7 @@ export default function Gym(props) {
             </div>
           </div>
         </div>
-        <Reviews gymId={gymState.gymId} gymName={gymState.name} />
+        <Reviews setAddModalIsOpen={setAddModalIsOpen} gymId={gymState.gymId} gymName={gymState.name} />
         {belongsToUser &&
           <div className="gym-buttons-container">
             <a href={`#edit?gymId=${gymState.gymId}`} className="gym-edit-btn">Edit Arena</a>
