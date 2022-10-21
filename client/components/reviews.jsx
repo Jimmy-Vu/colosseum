@@ -1,8 +1,10 @@
 import React, { useEffect, useState } from "react";
+import { useSelector } from "react-redux";
 import ReviewCard from "./review-card";
 
 export default function Reviews(props) {
   const { gymId, belongsToUser, setAddModalIsOpen } = props;
+  const isLoggedIn = useSelector(state => state.app.isLoggedIn);
   const [userReviews, setUserReviews] = useState([]);
 
   useEffect(() => {
@@ -12,12 +14,20 @@ export default function Reviews(props) {
       .catch(err => console.error(err));
   }, [])
 
+  function handleReviewBtnClick() {
+    if (isLoggedIn) {
+      setAddModalIsOpen(true);
+    } else {
+      window.location.hash = '#auth';
+    }
+  }
+
   return (
     <section className="reviews-container">
       <div className="reviews-container-header">
         <h3 className="reviews-title">Reviews</h3>
         {!belongsToUser &&
-          <button onClick={() => setAddModalIsOpen(true)} className="reviews-add-btn">Add a Review</button>
+          <button onClick={handleReviewBtnClick} className="reviews-add-btn">Add a Review</button>
         }
       </div>
       {!userReviews &&

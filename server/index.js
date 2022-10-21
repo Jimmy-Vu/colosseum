@@ -338,6 +338,10 @@ app.delete('/api/gyms/:gymId', (req, res, next) => {
     .catch(err => next(err));
 });
 
+app.post('/api/reviews/:gymId', (req, res, next) => {
+  console.log(req.body);
+});
+
 app.use(errorMiddleware);
 
 app.listen(process.env.PORT, () => {

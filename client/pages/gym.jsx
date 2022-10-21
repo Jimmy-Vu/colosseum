@@ -8,8 +8,8 @@ import AddReviewModal from "../components/add-review-modal";
 export default function Gym(props) {
   const isLoggedIn = useSelector(state => state.app.isLoggedIn);
   const currentUserId = useSelector(state => state.user.userId);
-  const [belongsToUser, setBelongsToUser] = useState(null);
-  const [addModalIsOpen, setAddModalIsOpen] = useState(false);
+  const [belongsToUser, setBelongsToUser] = useState(false);
+  const [addModalIsOpen, setAddModalIsOpen] = useState(true);
 
   const [gymState, setGymState] = useState({
     userId: null,
@@ -69,7 +69,7 @@ export default function Gym(props) {
   return (
     <main className="gym-main">
       {addModalIsOpen &&
-        <AddReviewModal gymState={gymState} />
+        <AddReviewModal gymState={gymState} setAddModalIsOpen={setAddModalIsOpen} />
       }
       <div>
         <div className="gym-info-container">
