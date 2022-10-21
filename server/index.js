@@ -363,19 +363,16 @@ app.post('/api/reviews/:gymId', (req, res, next) => {
 });
 
 app.patch('/api/reviews/:reviewId', (req, res, next) => {
-  const { rating, description } = req.body.reviewValues;
+  const { rating, description } = req.body;
   const reviewId = req.params.reviewId;
 
-  console.table({ reviewId, rating, description });
   const sql = `
     update "reviews"
         set "rating" = $2,
             "description" = $3
             where "reviewId" = $1
   `;
-
   const params = [reviewId, rating, description];
-
   db.query(sql, params)
     .then(result => {
       res.status(200).json(result.rows[0]);;
