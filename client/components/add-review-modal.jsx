@@ -1,45 +1,61 @@
 import React, { useEffect, useState } from "react";
+import { useSelector } from "react-redux";
 
 export default function AddReviewModal(props) {
-  const { setAddModalIsOpen } = props;
+  const { setAddModalIsOpen, handleSuccessfulSubmit } = props;
   const { gymId, name } = props.gymState;
-  const [inputValues, setInputValues] = useState({
-    rating: 0,
-    description: ''
+  const currentUser = useSelector(state => state.user)
+  const [review, setReview] = useState({
+    user: '',
+    reviewValues: {
+      rating: 0,
+      description: ''
+    }
   });
 
   useEffect(() => {
-    console.log(inputValues);
-  }, [inputValues])
+    setReview(prev => ({
+      ...prev,
+      user: currentUser
+    }))
+  }, [currentUser])
 
   function handleRating(e) {
-    setInputValues(prev => ({
+    setReview(prev => ({
       ...prev,
-      rating: e.target.value
+      reviewValues: {
+        ...prev.reviewValues,
+        rating: e.target.value
+      }
     }));
   }
 
-
   function handleTextChange(e) {
-    setInputValues(prev => ({
+    setReview(prev => ({
       ...prev,
-      description: e.target.value
+      reviewValues: {
+        ...prev.reviewValues,
+        description: e.target.value
+      }
     }))
   }
 
   function handleSubmit(e) {
     e.preventDefault();
-    console.log('submit');
+
     fetch(`/api/reviews/${gymId}`, {
       method: 'POST',
       headers: {
-        'access-token': window.localStorage.getItem('access-token')
+        'access-token': window.localStorage.getItem('access-token'),
+        'Content-Type': 'application/json'
       },
-      body: JSON.stringify(inputValues)
+      body: JSON.stringify(review)
     })
-      .then(res => res.json())
-      .then(data => {
-        // setAddModalIsOpen(false);
+      .then(res => {
+        if (res.status === 201) {
+          handleSuccessfulSubmit();
+          setAddModalIsOpen(false);
+        }
       })
       .catch(err => console.error(err));
   }

@@ -339,7 +339,30 @@ app.delete('/api/gyms/:gymId', (req, res, next) => {
 });
 
 app.post('/api/reviews/:gymId', (req, res, next) => {
-  console.log(req.body);
+  const { userId, username } = req.body.user;
+  const { rating, description } = req.body.reviewValues;
+  const gymId = req.params.gymId;
+
+  console.table({ gymId, userId, username, rating, description });
+  const sql = `
+    insert into "reviews" (
+      "userId",
+      "username",
+      "gymId",
+      "rating",
+      "description"
+    ) values ($1, $2, $3, $4, $5);
+  `;
+  const params = [userId, username, gymId, rating, description];
+
+  db.query(sql, params)
+    .then(result => {
+      res.sendStatus(201);
+    })
+    .catch(err => next(err));
+
+
+
 });
 
 app.use(errorMiddleware);

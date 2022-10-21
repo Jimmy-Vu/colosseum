@@ -1,10 +1,13 @@
 import React, { useEffect, useState } from "react";
 import { useSelector } from "react-redux";
 import ReviewCard from "./review-card";
+import AddReviewModal from "../components/add-review-modal";
 
 export default function Reviews(props) {
-  const { gymId, belongsToUser, setAddModalIsOpen } = props;
+  const { belongsToUser } = props;
+  const { gymId, name } = props.gymState;
   const isLoggedIn = useSelector(state => state.app.isLoggedIn);
+  const [addModalIsOpen, setAddModalIsOpen] = useState(true);
   const [userReviews, setUserReviews] = useState([]);
 
   useEffect(() => {
@@ -14,6 +17,12 @@ export default function Reviews(props) {
       .catch(err => console.error(err));
   }, [])
 
+  function handleSuccessfulSubmit() {
+    fetch(`/api/reviews/${gymId}`, { method: 'GET' })
+      .then(result => result.json())
+      .then(data => setUserReviews(data))
+      .catch(err => console.error(err));
+  }
   function handleReviewBtnClick() {
     if (isLoggedIn) {
       setAddModalIsOpen(true);
@@ -24,6 +33,9 @@ export default function Reviews(props) {
 
   return (
     <section className="reviews-container">
+      {addModalIsOpen &&
+        <AddReviewModal gymState={{ gymId, name }} setAddModalIsOpen={setAddModalIsOpen} handleSuccessfulSubmit={handleSuccessfulSubmit} />
+      }
       <div className="reviews-container-header">
         <h3 className="reviews-title">Reviews</h3>
         {!belongsToUser &&

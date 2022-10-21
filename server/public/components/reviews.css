@@ -96,8 +96,9 @@
 .review-form-rating span.star-rating {
   margin-right: 0.25rem;
 }
-.review-form-rating span.star-rating i {
-  font-size: 0.8rem;
+.review-form-rating span.star-rating label {
+  font-size: 0.75rem;
+  margin-left: 0.25rem;
 }
 .review-form-description {
   width: 100%;
