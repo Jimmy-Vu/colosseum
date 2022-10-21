@@ -47,7 +47,7 @@ export default function Reviews(props) {
       }
       {userReviews &&
         userReviews.map(review => (
-          <ReviewCard key={review.reviewId} reviewDetails={review} />
+          <ReviewCard key={review.reviewId} reviewDetails={review} gymName={name}  handleSuccessfulSubmit={handleSuccessfulSubmit} />
         ))
       }
     </section>
