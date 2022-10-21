@@ -48,7 +48,7 @@ app.get('/api/gyms/:gymId', (req, res, next) => {
     })
     .catch(err => next(err));
 });
-
+// Get reviews
 app.get('/api/reviews/:gymId', (req, res, next) => {
   const gymId = parseInt(req.params.gymId, 10);
   if (!gymId) {
@@ -338,12 +338,12 @@ app.delete('/api/gyms/:gymId', (req, res, next) => {
     .catch(err => next(err));
 });
 
+//Review routes
 app.post('/api/reviews/:gymId', (req, res, next) => {
   const { userId, username } = req.body.user;
   const { rating, description } = req.body.reviewValues;
   const gymId = req.params.gymId;
 
-  console.table({ gymId, userId, username, rating, description });
   const sql = `
     insert into "reviews" (
       "userId",
@@ -360,9 +360,27 @@ app.post('/api/reviews/:gymId', (req, res, next) => {
       res.sendStatus(201);
     })
     .catch(err => next(err));
+});
 
+app.patch('/api/reviews/:reviewId', (req, res, next) => {
+  const { rating, description } = req.body.reviewValues;
+  const reviewId = req.params.reviewId;
 
+  console.table({ reviewId, rating, description });
+  const sql = `
+    update "reviews"
+        set "rating" = $2,
+            "description" = $3
+            where "reviewId" = $1
+  `;
 
+  const params = [reviewId, rating, description];
+
+  db.query(sql, params)
+    .then(result => {
+      res.status(200).json(result.rows[0]);;
+    })
+    .catch(err => next(err));
 });
 
 app.use(errorMiddleware);

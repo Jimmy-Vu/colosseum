@@ -23,6 +23,7 @@ export default function Reviews(props) {
       .then(data => setUserReviews(data))
       .catch(err => console.error(err));
   }
+
   function handleReviewBtnClick() {
     if (isLoggedIn) {
       setAddModalIsOpen(true);

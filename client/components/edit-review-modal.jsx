@@ -3,25 +3,14 @@ import { useSelector } from "react-redux";
 
 export default function EditReviewModal(props) {
   const { setEditModalIsOpen, handleSuccessfulSubmit } = props;
-  const { gymId, gymName } = props.gymState;
-  const { rating, description } = props.reviewDetails
-  const currentUser = useSelector(state => state.user)
+  const { gymName } = props.gymState;
+  const { reviewId, rating, description } = props.reviewDetails
   const [review, setReview] = useState({
-    user: currentUser,
     reviewValues: {
       rating: rating,
       description: description
     }
   });
-
-
-
-  useEffect(() => {
-    setReview(prev => ({
-      ...prev,
-      user: currentUser
-    }))
-  }, [currentUser])
 
   function handleRating(e) {
     setReview(prev => ({
@@ -46,8 +35,8 @@ export default function EditReviewModal(props) {
   function handleSubmit(e) {
     e.preventDefault();
 
-    fetch(`/api/reviews/${gymId}`, {
-      method: 'POST',
+    fetch(`/api/reviews/${reviewId}`, {
+      method: 'PATCH',
       headers: {
         'access-token': window.localStorage.getItem('access-token'),
         'Content-Type': 'application/json'
@@ -55,9 +44,9 @@ export default function EditReviewModal(props) {
       body: JSON.stringify(review)
     })
       .then(res => {
-        if (res.status === 201) {
+        if (res.status === 200) {
           handleSuccessfulSubmit();
-          setAddModalIsOpen(false);
+          setEditModalIsOpen(false);
         }
       })
       .catch(err => console.error(err));
@@ -69,20 +58,20 @@ export default function EditReviewModal(props) {
       <form onSubmit={handleSubmit} className="review-form">
         <div className="review-form-rating">
           <span className="star-rating">
-            <input onClick={handleRating} type="radio" name="rating" id="one-star" value={1} />
+            <input onClick={handleRating} type="radio" name="rating" id="one-star" value={1} defaultChecked={review.reviewValues.rating === 1}/>
             <label htmlFor="one-star">
               <i className="fa-solid fa-star"></i>
             </label>
           </span>
           <span className="star-rating">
-            <input onClick={handleRating} type="radio" name="rating" id="two-star" value={2} />
+            <input onClick={handleRating} type="radio" name="rating" id="two-star" value={2} defaultChecked={review.reviewValues.rating === 2} />
             <label htmlFor="two-star">
               <i className="fa-solid fa-star"></i>
               <i className="fa-solid fa-star"></i>
             </label>
           </span>
           <span className="star-rating">
-            <input onClick={handleRating} type="radio" name="rating" id="three-star" value={3} />
+            <input onClick={handleRating} type="radio" name="rating" id="three-star" value={3} defaultChecked={review.reviewValues.rating === 3} />
             <label htmlFor="three-star">
               <i className="fa-solid fa-star"></i>
               <i className="fa-solid fa-star"></i>
@@ -90,7 +79,7 @@ export default function EditReviewModal(props) {
             </label>
           </span>
           <span className="star-rating">
-            <input onClick={handleRating} type="radio" name="rating" id="four-star" value={4} />
+            <input onClick={handleRating} type="radio" name="rating" id="four-star" value={4} defaultChecked={review.reviewValues.rating === 4} />
             <label htmlFor="four-star">
               <i className="fa-solid fa-star"></i>
               <i className="fa-solid fa-star"></i>
@@ -99,7 +88,7 @@ export default function EditReviewModal(props) {
             </label>
           </span>
           <span className="star-rating">
-            <input onClick={handleRating} type="radio" name="rating" id="five-star" value={5} />
+            <input onClick={handleRating} type="radio" name="rating" id="five-star" value={5} defaultChecked={review.reviewValues.rating === 5} />
             <label htmlFor="five-star">
               <i className="fa-solid fa-star"></i>
               <i className="fa-solid fa-star"></i>
