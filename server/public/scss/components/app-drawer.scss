@@ -12,7 +12,7 @@ $primary: #D2B85A;
 .app-drawer {
   display: flex;
   width: 100%;
-  position: fixed;
+  position: absolute;
 
   &--hidden {
     display: none;

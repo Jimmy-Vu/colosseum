@@ -1,14 +1,24 @@
 @use "../global/breakpoints" as *;
 @use "../global/colors" as *;
 
+header {
+  position: sticky;
+  top: 0;
+
+  &.scrolled {
+    background-color: black;
+    border-bottom: 2px solid $primary;
+
+    transition: background-color 500ms;
+  }
+}
+
 .header {
   display: flex;
   justify-content: space-between;
   align-items: center;
-  // position: fixed;
 
   width: 100%;
-  max-height: 100px;
   padding: 0.4rem 1rem;
   color: white;
 

@@ -19,10 +19,6 @@
 // "lg": 960px,
 // "xl": 1200px
 
-header {
-  position: sticky;
-}
-
 button {
   all: unset;
 
@@ -50,13 +46,19 @@ textarea {
   resize: none;
 }
 
-#root {
-  height: 100vh;
+body {
   background-image: url(./images/colloseum_color.jpg);
   background-size: cover;
   background-position: center center;
   background-repeat: no-repeat;
-  overflow-y: auto;
+}
+
+#root {
+  // background-image: url(./images/colloseum_color.jpg);
+  // background-size: cover;
+  // background-position: center center;
+  // background-repeat: no-repeat;
+  height: 100%;
 }
 
 .main-container {
