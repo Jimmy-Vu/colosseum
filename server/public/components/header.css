@@ -1,11 +1,12 @@
 header {
   position: sticky;
   top: 0;
+  background-color: transparent;
+  transition: background-color 400ms;
 }
 header.scrolled {
   background-color: black;
   border-bottom: 2px solid #D2B85A;
-  transition: background-color 500ms;
 }
 
 .navbar {

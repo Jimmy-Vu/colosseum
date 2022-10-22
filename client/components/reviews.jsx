@@ -1,12 +1,12 @@
 import React, { useEffect, useState } from "react";
-import { useSelector } from "react-redux";
+import { useSelector, useDispatch } from "react-redux";
 import ReviewCard from "./review-card";
 import AddReviewModal from "../components/add-review-modal";
 
 export default function Reviews(props) {
+  const isLoggedIn = useSelector(state => state.app.isLoggedIn);
   const { belongsToUser } = props;
   const { gymId, name } = props.gymState;
-  const isLoggedIn = useSelector(state => state.app.isLoggedIn);
   const [addModalIsOpen, setAddModalIsOpen] = useState(false);
   const [userReviews, setUserReviews] = useState([]);
   const [reviewsIsEmpty, setReviewsIsEmpty] = useState(true);
@@ -44,7 +44,7 @@ export default function Reviews(props) {
   return (
     <section className="reviews-container">
       {addModalIsOpen &&
-        <AddReviewModal gymState={{ gymId, name }} setAddModalIsOpen={setAddModalIsOpen} handleSuccessfulSubmit={handleSuccessfulSubmit} />
+        <AddReviewModal gymState={{ gymId, name }} setAddModalIsOpen={setAddModalIsOpen} addModalIsOpen={addModalIsOpen} handleSuccessfulSubmit={handleSuccessfulSubmit} />
       }
       <div className="reviews-container-header">
         <h3 className="reviews-title">Reviews</h3>
