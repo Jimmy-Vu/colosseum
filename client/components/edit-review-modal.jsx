@@ -48,8 +48,8 @@ export default function EditReviewModal(props) {
     <>{editModalIsOpen &&
       <div onClick={() => setEditModalIsOpen(false)} className="modal-tint"></div>
     }
-      <div className="add-review-modal">
-        <h2 className="add-review-title">{`Edit your review of ${gymName}`}</h2>
+      <div className="review-add-modal">
+        <h2 className="review-add-title">{`Edit your review of ${gymName}`}</h2>
         <form onSubmit={handleSubmit} className="review-form">
           <div className="review-form-rating">
             <span className="star-rating">

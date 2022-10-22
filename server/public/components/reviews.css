@@ -59,7 +59,7 @@
   margin-left: 1rem;
 }
 
-.add-review-modal {
+.review-add-modal {
   text-align: center;
   position: fixed;
   top: 0;
@@ -71,14 +71,15 @@
   margin-left: auto;
   margin-right: auto;
   width: 90%;
-  height: fit-content;
-  max-height: 500px;
+  max-width: 800px;
+  min-height: fit-content;
+  max-height: 400px;
   padding: 1rem;
   background-color: white;
   border: 2px solid grey;
   border-radius: 15px;
 }
-.add-review-modal .add-review-title {
+.review-add-modal .review-add-title {
   margin-bottom: 1rem;
 }
 
