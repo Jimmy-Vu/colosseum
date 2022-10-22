@@ -27,7 +27,7 @@ export default function ReviewCard(props) {
   return (
     <>
       {editModalIsOpen &&
-        <EditReviewModal gymState={{ gymId, gymName }} reviewDetails={{ reviewId, rating, description }} setEditModalIsOpen={setEditModalIsOpen} handleSuccessfulSubmit={handleSuccessfulSubmit} />
+        <EditReviewModal gymState={{ gymId, gymName }} reviewDetails={{ reviewId, rating, description }} setEditModalIsOpen={setEditModalIsOpen} editModalIsOpen={editModalIsOpen} handleSuccessfulSubmit={handleSuccessfulSubmit} />
       }
       <div className="review-card">
         <div className="review-card-header">
