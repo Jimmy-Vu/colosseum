@@ -30,7 +30,7 @@ app.get('/api/gyms', (req, res, next) => {
 app.get('/api/gyms/:gymId', (req, res, next) => {
   const gymId = parseInt(req.params.gymId, 10);
   if (!gymId) {
-    throw new ClientError(400, 'gradeId must be a postive integer');
+    throw new ClientError(400, 'gymId must be a postive integer');
   }
   const sql = `
   select *
@@ -42,7 +42,7 @@ app.get('/api/gyms/:gymId', (req, res, next) => {
   db.query(sql, params)
     .then(result => {
       if (!result.rows[0]) {
-        throw new ClientError(404, 'gradeId cannot be found');
+        throw new ClientError(404, 'gymId cannot be found');
       }
       return res.json(result.rows[0]);
     })
@@ -52,7 +52,7 @@ app.get('/api/gyms/:gymId', (req, res, next) => {
 app.get('/api/reviews/:gymId', (req, res, next) => {
   const gymId = parseInt(req.params.gymId, 10);
   if (!gymId) {
-    throw new ClientError(400, 'gradeId must be a postive integer');
+    throw new ClientError(400, 'gymId must be a postive integer');
   }
   const sql = `
   select *
@@ -63,7 +63,7 @@ app.get('/api/reviews/:gymId', (req, res, next) => {
   db.query(sql, params)
     .then(result => {
       if (!result.rows[0]) {
-        throw new ClientError(404, 'gradeId cannot be found');
+        throw new ClientError(404, 'no reviews can be found with the provided gymId');
       }
       return res.json(result.rows);
     })

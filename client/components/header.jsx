@@ -32,14 +32,14 @@ function Header(props) {
   return (
     <header className={navBarScrolled ? 'scrolled' : ''}>
       <AppDrawer handleSignOut={handleSignOut} isOpen={drawerIsOpen} setDrawerIsOpen={setDrawerIsOpen}></AppDrawer>
-      <div className="header">
+      <div className="navbar">
         <button onClick={() => setDrawerIsOpen(prevState => !prevState)} type="button">
           <i className="menu-button fa-solid fa-bars"></i>
         </button>
-        <a href="#"><h1 className="header__title">COLOSSEUM</h1></a>
+        <a href="#"><h1 className="navbar__title">COLOSSEUM</h1></a>
         {isLoggedIn
-          ? <a onClick={handleSignOut} className="header__sign-in">Sign Out</a>
-          : <a onClick={handleSignInClick} className="header__sign-in">Sign In</a>
+          ? <a onClick={handleSignOut} className="navbar__sign-in">Sign Out</a>
+          : <a onClick={handleSignInClick} className="navbar__sign-in">Sign In</a>
         }
       </div>
     </header>

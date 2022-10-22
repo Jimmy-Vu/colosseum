@@ -60,6 +60,14 @@ insert into "gyms" (
     'https://images.unsplash.com/photo-1543398971-17eea343659e?ixlib=rb-1.2.1&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=987&q=80',
     'No height is insurmountable. We train those who will reach the peaks of the world. Call us now to start your climb.',
     2
+  ),
+  (
+    'Tiger Taekwondo',
+    'Duluth, GA',
+    'taekwondo',
+    'https://res.cloudinary.com/dueu3vco1/image/upload/v1666406461/Colosseum/assets/tiger-vector-logo-orange_gjxaku.png',
+    'Taekwondo is a discipline that shows ways of enhancing our spirit and life through training our body and mind. Today, it has become a global sport that has gained an international reputation, and stands among the official games in the Olympics. Please stop on by for a free trial class.',
+    1
   );
 
 insert into "reviews" (

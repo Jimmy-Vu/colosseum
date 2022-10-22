@@ -9,18 +9,27 @@ export default function Reviews(props) {
   const isLoggedIn = useSelector(state => state.app.isLoggedIn);
   const [addModalIsOpen, setAddModalIsOpen] = useState(false);
   const [userReviews, setUserReviews] = useState([]);
+  const [reviewsIsEmpty, setReviewsIsEmpty] = useState(true);
 
   useEffect(() => {
     fetch(`/api/reviews/${gymId}`, { method: 'GET' })
       .then(result => result.json())
-      .then(data => setUserReviews(data))
+      .then(data => {
+        if (!Object.keys(data).includes('error')) {
+          setReviewsIsEmpty(false);
+          setUserReviews(data);
+        }
+      })
       .catch(err => console.error(err));
   }, [])
 
   function handleSuccessfulSubmit() {
     fetch(`/api/reviews/${gymId}`, { method: 'GET' })
       .then(result => result.json())
-      .then(data => setUserReviews(data))
+      .then(data => {
+        setReviewsIsEmpty(false);
+        setUserReviews(data);
+      })
       .catch(err => console.error(err));
   }
 
@@ -43,10 +52,10 @@ export default function Reviews(props) {
           <button onClick={handleReviewBtnClick} className="reviews-add-btn">Add a Review</button>
         }
       </div>
-      {!userReviews &&
-        null
+      {reviewsIsEmpty &&
+        <p>It seems that there isn't any reviews for this arena at the moment.</p>
       }
-      {userReviews &&
+      {!reviewsIsEmpty &&
         userReviews.map(review => (
           <ReviewCard key={review.reviewId} reviewDetails={review} gymName={name}  handleSuccessfulSubmit={handleSuccessfulSubmit} />
         ))
