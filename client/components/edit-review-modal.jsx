@@ -2,7 +2,7 @@ import React, { useEffect, useState } from "react";
 import { useSelector } from "react-redux";
 
 export default function EditReviewModal(props) {
-  const { editModalIsOpen, setEditModalIsOpen, handleSuccessfulSubmit } = props;
+  const { editModalIsOpen, setEditModalIsOpen, setReviewAlreadyMade, handleSuccessfulSubmit } = props;
   const { gymName } = props.gymState;
   const { reviewId, rating, description } = props.reviewDetails
   const [review, setReview] = useState({
@@ -39,6 +39,25 @@ export default function EditReviewModal(props) {
         if (res.status === 200) {
           handleSuccessfulSubmit();
           setEditModalIsOpen(false);
+        }
+      })
+      .catch(err => console.error(err));
+  }
+
+  function handleDeleteReview(e) {
+    e.preventDefault();
+
+    fetch(`/api/reviews/${reviewId}`, {
+      method: 'DELETE',
+      headers: {
+        'access-token': window.localStorage.getItem('access-token')
+      }
+    })
+      .then(res => {
+        if (res.status === 204) {
+          handleSuccessfulSubmit();
+          setEditModalIsOpen(false);
+          setReviewAlreadyMade(false);
         }
       })
       .catch(err => console.error(err));
@@ -94,7 +113,10 @@ export default function EditReviewModal(props) {
             </span>
           </div>
           <textarea onChange={handleTextChange} className="review-form-description" name="review-form-description" id="" cols="30" rows="10" value={review.description} placeholder="Share details of your experience"></textarea>
-          <button className="review-submit-btn" type="submit">Submit</button>
+          <div>
+            <button className="review-submit-btn" type="submit">Submit</button>
+            <button onClick={handleDeleteReview} className="review-delete-btn" type="button">Delete Review</button>
+          </div>
         </form>
       </div>
     </>

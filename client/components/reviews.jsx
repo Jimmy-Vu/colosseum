@@ -10,6 +10,7 @@ export default function Reviews(props) {
   const [addModalIsOpen, setAddModalIsOpen] = useState(false);
   const [userReviews, setUserReviews] = useState([]);
   const [reviewsIsEmpty, setReviewsIsEmpty] = useState(true);
+  const [reviewAlreadyMade, setReviewAlreadyMade] = useState(false);
 
   useEffect(() => {
     fetch(`/api/reviews/${gymId}`, { method: 'GET' })
@@ -44,12 +45,18 @@ export default function Reviews(props) {
   return (
     <section className="reviews-container">
       {addModalIsOpen &&
-        <AddReviewModal gymState={{ gymId, name }} setAddModalIsOpen={setAddModalIsOpen} addModalIsOpen={addModalIsOpen} handleSuccessfulSubmit={handleSuccessfulSubmit} />
+        <AddReviewModal gymState={{ gymId, name }} setAddModalIsOpen={setAddModalIsOpen} addModalIsOpen={addModalIsOpen} setReviewAlreadyMade={setReviewAlreadyMade} handleSuccessfulSubmit={handleSuccessfulSubmit} />
       }
       <div className="reviews-container-header">
         <h3 className="reviews-title">Reviews</h3>
-        {!belongsToUser &&
+        {belongsToUser &&
+          <p>You are the owner of this arena.</p>
+        }
+        {!belongsToUser && !reviewAlreadyMade &&
           <button onClick={handleReviewBtnClick} className="reviews-add-btn">Add a Review</button>
+        }
+        {!belongsToUser && reviewAlreadyMade &&
+          <p>You have already made a review.</p>
         }
       </div>
       {reviewsIsEmpty &&
@@ -57,7 +64,7 @@ export default function Reviews(props) {
       }
       {!reviewsIsEmpty &&
         userReviews.map(review => (
-          <ReviewCard key={review.reviewId} reviewDetails={review} gymName={name}  handleSuccessfulSubmit={handleSuccessfulSubmit} />
+          <ReviewCard key={review.reviewId} reviewDetails={review} gymName={name} setReviewAlreadyMade={setReviewAlreadyMade} handleSuccessfulSubmit={handleSuccessfulSubmit} />
         ))
       }
     </section>

@@ -12,6 +12,7 @@ const jsonMiddleware = express.json();
 const authorizationMiddleware = require('./authorizationMiddleware');
 const argon2 = require('argon2');
 const jwt = require('jsonwebtoken');
+const { devNull } = require('os');
 
 const app = express();
 app.use(staticMiddleware);
@@ -376,6 +377,21 @@ app.patch('/api/reviews/:reviewId', (req, res, next) => {
   db.query(sql, params)
     .then(result => {
       res.status(200).json(result.rows[0]);;
+    })
+    .catch(err => next(err));
+});
+
+app.delete('/api/reviews/:reviewId', (req, res, next) => {
+  const reviewId = req.params.reviewId;
+  const sql = `
+    delete from "reviews"
+      where "reviewId" = $1
+  `;
+  const params = [reviewId];
+
+  db.query(sql, params)
+    .then(result => {
+      res.sendStatus(204);
     })
     .catch(err => next(err));
 });

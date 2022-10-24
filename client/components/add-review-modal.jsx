@@ -4,7 +4,7 @@ import { setAModalIsOpen, setAModalIsClosed } from "../redux/appSlice";
 
 export default function AddReviewModal(props) {
   const currentUser = useSelector(state => state.user);
-  const { addModalIsOpen, setAddModalIsOpen, handleSuccessfulSubmit } = props;
+  const { addModalIsOpen, setAddModalIsOpen, setReviewAlreadyMade, handleSuccessfulSubmit } = props;
   const { gymId, name } = props.gymState;
   const [review, setReview] = useState({
     user: '',
@@ -56,6 +56,7 @@ export default function AddReviewModal(props) {
         if (res.status === 201) {
           handleSuccessfulSubmit();
           setAddModalIsOpen(false);
+          setReviewAlreadyMade(true);
         }
       })
       .catch(err => console.error(err));

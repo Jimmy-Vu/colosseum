@@ -727,7 +727,7 @@ footer {
   color: white;
   box-shadow: 0 0 1px black;
   border: solid white 1px;
-  border-radius: 15px;
+  border-radius: 10px;
   padding-left: 1em;
   padding-right: 1em;
   padding-top: 0.25em;
@@ -755,7 +755,7 @@ footer {
   color: white;
   box-shadow: 0 0 1px black;
   border: solid white 1px;
-  border-radius: 15px;
+  border-radius: 10px;
   padding-left: 1em;
   padding-right: 1em;
   padding-top: 0.25em;
@@ -827,7 +827,22 @@ footer {
   color: white;
   box-shadow: 0 0 1px black;
   border: solid white 1px;
-  border-radius: 15px;
+  border-radius: 10px;
+  padding-left: 1em;
+  padding-right: 1em;
+  padding-top: 0.25em;
+  padding-bottom: 0.25em;
+  font-size: 1rem;
+  font-weight: 500;
+}
+.review-form .review-delete-btn {
+  margin: 0.1rem 0.1rem 0.1rem 0.1rem;
+  width: fit-content;
+  background-color: red;
+  color: white;
+  box-shadow: 0 0 1px black;
+  border: solid white 1px;
+  border-radius: 10px;
   padding-left: 1em;
   padding-right: 1em;
   padding-top: 0.25em;
