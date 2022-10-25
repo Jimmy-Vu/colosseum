@@ -18,6 +18,7 @@ import { setStateUser } from './redux/userSlice';
 
 function App(props) {
   const dispatch = useDispatch();
+  const aModalIsOpen = useSelector(state => state.app.aModalIsOpen);
 
   const [stateRoute, setStateRoute] = useState({
     route: parseRoute(window.location.hash)
@@ -27,7 +28,6 @@ function App(props) {
     window.addEventListener('hashchange', event => {
       setStateRoute({ route: parseRoute(window.location.hash) })
     });
-
     const token = window.localStorage.getItem('access-token');
     const user = token ? tokenVerify(token) : null;
     if (!user) {

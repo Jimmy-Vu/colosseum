@@ -6,6 +6,7 @@ import { useSelector } from 'react-redux';
 function AppDrawer(props) {
   const { isOpen, setDrawerIsOpen, handleSignOut } = props;
   const isLoggedIn = useSelector(state => state.app.isLoggedIn);
+  const username = useSelector(state => state.user.username);
   const transition = useTransition(isOpen, {
     from: { x: "-100%" },
     enter: { x: "0" },
@@ -20,12 +21,15 @@ function AppDrawer(props) {
             <animated.div style={style} className="menu">
               <i onClick={() => setDrawerIsOpen(false)} className="close-button fa-solid fa-xmark"></i>
               <nav className="menu__nav">
+                {isLoggedIn
+                  ? <span className="welcome-message">{`Hiya ${username}!`}</span>
+                  : null
+                }
                 <ul><a onClick={() => setDrawerIsOpen(false)} href="#listings">Arenas</a></ul>
                 <ul><a onClick={() => setDrawerIsOpen(false)} href="#create">Add An Arena</a></ul>
                 {isLoggedIn &&
                   <>
-                    {/* <ul><a href="#">Favorites</a></ul> */}
-                  <ul><a onClick={() => setDrawerIsOpen(false)} href="#account">My Account</a></ul>
+                    <ul><a onClick={() => setDrawerIsOpen(false)} href="#account">My Account</a></ul>
                   </>
                 }
                 {!isLoggedIn &&

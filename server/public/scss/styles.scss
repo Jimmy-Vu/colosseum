@@ -12,15 +12,12 @@
 @use "./pages/edit-listing.scss";
 @use "./pages/sign-in.scss";
 @use "./pages/account-page.scss";
+@use "./components/reviews.scss";
 // "xs": 0,
 // "sm": 480px,
 // "md": 720px,
 // "lg": 960px,
 // "xl": 1200px
-
-header {
-  position: sticky;
-}
 
 button {
   all: unset;
@@ -49,18 +46,22 @@ textarea {
   resize: none;
 }
 
+body {
+  display: flex;
+  flex-direction: column;
+}
+
 #root {
-  height: 100vh;
+  flex: 1;
   background-image: url(./images/colloseum_color.jpg);
   background-size: cover;
   background-position: center center;
   background-repeat: no-repeat;
-  overflow-y: auto;
 }
 
 .main-container {
   display: flex;
   flex-direction: column;
-  height: 100%;
   font-family: 'Roboto', sans-serif;
+  height: 100%;
 }

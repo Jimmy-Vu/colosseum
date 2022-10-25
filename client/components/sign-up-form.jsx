@@ -7,6 +7,7 @@ export default function SignUpForm(props) {
     password: ''
   });
   const [passShowing, setPassShowing] = useState(false);
+  const [errorMessage, setErrorMessage] = useState('');
 
   function handleChange(e) {
     setInputState(prev => ({
@@ -27,7 +28,9 @@ export default function SignUpForm(props) {
     })
       .then(res => res.json())
       .then(result => {
-        switchForm('sign-in');
+        result.error
+          ? setErrorMessage(result.error)
+          : switchForm('sign-in');
       })
       .catch(err => console.error(err));
   }
@@ -55,6 +58,7 @@ export default function SignUpForm(props) {
           </div>
           <button onClick={switchForm} type="button">
             <p style={{ textDecoration: 'underline' }}>Have an account? Click here to sign in.</p>
+            <p style={{ textAlign: 'center', color: 'red' }}>{errorMessage}</p>
           </button>
           <button className="sign-btn" type="submit">Submit</button>
         </form>

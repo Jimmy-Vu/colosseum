@@ -12,6 +12,7 @@ const jsonMiddleware = express.json();
 const authorizationMiddleware = require('./authorizationMiddleware');
 const argon2 = require('argon2');
 const jwt = require('jsonwebtoken');
+const { devNull } = require('os');
 
 const app = express();
 app.use(staticMiddleware);
@@ -30,7 +31,7 @@ app.get('/api/gyms', (req, res, next) => {
 app.get('/api/gyms/:gymId', (req, res, next) => {
   const gymId = parseInt(req.params.gymId, 10);
   if (!gymId) {
-    throw new ClientError(400, 'gradeId must be a postive integer');
+    throw new ClientError(400, 'gymId must be a postive integer');
   }
   const sql = `
   select *
@@ -42,9 +43,30 @@ app.get('/api/gyms/:gymId', (req, res, next) => {
   db.query(sql, params)
     .then(result => {
       if (!result.rows[0]) {
-        throw new ClientError(404, 'gradeId cannot be found');
+        throw new ClientError(404, 'gymId cannot be found');
       }
       return res.json(result.rows[0]);
+    })
+    .catch(err => next(err));
+});
+// Get reviews
+app.get('/api/reviews/:gymId', (req, res, next) => {
+  const gymId = parseInt(req.params.gymId, 10);
+  if (!gymId) {
+    throw new ClientError(400, 'gymId must be a postive integer');
+  }
+  const sql = `
+  select *
+      from "reviews"
+      where "gymId" = $1
+  `;
+  const params = [gymId];
+  db.query(sql, params)
+    .then(result => {
+      if (!result.rows[0]) {
+        throw new ClientError(404, 'no reviews can be found with the provided gymId');
+      }
+      return res.json(result.rows);
     })
     .catch(err => next(err));
 });
@@ -59,11 +81,26 @@ app.post('/api/users/sign-up', (req, res, next) => {
     throw new ClientError(400, 'Please provide a username and password');
     console.error('Missing username and or password');
   }
+
+  let params = [username];
+  let sql = `
+    select * from "users"
+      where "username" = $1
+  `;
+  //safeguard for already taken username
+  db.query(sql, params)
+    .then(result => {
+      if (result.rows[0]) {
+        throw new ClientError(403, 'The username is already taken. Please try another username');
+      }
+    })
+    .catch(err => next(err));
+
   argon2
     .hash(password)
     .then(hashedPassword => {
-      const params = [username, hashedPassword];
-      const sql = `
+      params = [username, hashedPassword];
+      sql = `
       insert into "users"
       ("username", "hashedPassword")
       values ($1, $2)
@@ -309,6 +346,63 @@ app.delete('/api/gyms/:gymId', (req, res, next) => {
       where "gymId" = $1
   `;
   const params = [gymId];
+
+  db.query(sql, params)
+    .then(result => {
+      res.sendStatus(204);
+    })
+    .catch(err => next(err));
+});
+
+//Review routes
+app.post('/api/reviews/:gymId', (req, res, next) => {
+  const { userId, username } = req.body.user;
+  const { rating, description } = req.body.reviewValues;
+  const gymId = req.params.gymId;
+
+  const sql = `
+    insert into "reviews" (
+      "userId",
+      "username",
+      "gymId",
+      "rating",
+      "description"
+    ) values ($1, $2, $3, $4, $5);
+  `;
+  const params = [userId, username, gymId, rating, description];
+
+  db.query(sql, params)
+    .then(result => {
+      res.sendStatus(201);
+    })
+    .catch(err => next(err));
+});
+
+app.patch('/api/reviews/:reviewId', (req, res, next) => {
+  const { rating, description } = req.body;
+  const reviewId = req.params.reviewId;
+
+  const sql = `
+    update "reviews"
+        set "rating" = $2,
+            "description" = $3
+            where "reviewId" = $1
+  `;
+  const params = [reviewId, rating, description];
+  db.query(sql, params)
+    .then(result => {
+      res.status(200).json(result.rows[0]);;
+    })
+    .catch(err => next(err));
+});
+
+app.delete('/api/reviews/:reviewId', (req, res, next) => {
+  const reviewId = req.params.reviewId;
+  const sql = `
+    delete from "reviews"
+      where "reviewId" = $1
+  `;
+  const params = [reviewId];
 
   db.query(sql, params)
     .then(result => {

@@ -43,7 +43,7 @@ export default function SignInForm(props) {
       headers: {
         'Content-Type': 'application/json'
       },
-      body: JSON.stringify({ username: 'demo', password: 'demo' })
+      body: JSON.stringify({ username: 'Demo', password: 'demo' })
     })
       .then(res => res.json())
       .then(result => {
