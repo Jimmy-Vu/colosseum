@@ -50,13 +50,13 @@ export default function Reviews(props) {
       <div className="reviews-container-header">
         <h3 className="reviews-title">Reviews</h3>
         {belongsToUser &&
-          <p>You are the owner of this arena.</p>
+          <span>You are the owner.</span>
         }
         {!belongsToUser && !reviewAlreadyMade &&
           <button onClick={handleReviewBtnClick} className="reviews-add-btn">Add a Review</button>
         }
         {!belongsToUser && reviewAlreadyMade &&
-          <p>You have already made a review.</p>
+          <span>You have already made a review.</span>
         }
       </div>
       {reviewsIsEmpty &&

@@ -81,11 +81,26 @@ app.post('/api/users/sign-up', (req, res, next) => {
     throw new ClientError(400, 'Please provide a username and password');
     console.error('Missing username and or password');
   }
+
+  let params = [username];
+  let sql = `
+    select * from "users"
+      where "username" = $1
+  `;
+  //safeguard for already taken username
+  db.query(sql, params)
+    .then(result => {
+      if (result.rows[0]) {
+        throw new ClientError(403, 'The username is already taken. Please try another username');
+      }
+    })
+    .catch(err => next(err));
+
   argon2
     .hash(password)
     .then(hashedPassword => {
-      const params = [username, hashedPassword];
-      const sql = `
+      params = [username, hashedPassword];
+      sql = `
       insert into "users"
       ("username", "hashedPassword")
       values ($1, $2)

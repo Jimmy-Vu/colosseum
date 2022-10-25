@@ -130,7 +130,7 @@ header.scrolled {
 .app-drawer .menu__nav .welcome-message {
   font-size: 2.25rem;
   font-weight: 500;
-  margin-bottom: 1rem;
+  margin-bottom: 3rem;
 }
 .app-drawer .menu__nav ul {
   border-top: solid white 1px;
