@@ -76,7 +76,7 @@ export default function Gym(props) {
           <a className="gym-image-container" href={`${gymState.imageURL}`}>
             <img className="gym-image" src={`${gymState.imageURL}`} alt="main gym image" />
           </a>
-          <MapDisplay coordinates={{ longitude: -117.825982, latitude: 33.685697 }} />
+          <MapDisplay coordinates={{ longitude: '-117.825982', latitude: '33.685697' }} />
           <div className="gym-details">
             <h3 className="gym-title">{gymState.name}</h3>
             <p className="gym-address">{gymState.address}</p>
