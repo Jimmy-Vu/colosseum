@@ -725,6 +725,7 @@ footer {
 }
 .reviews-container .reviews-container-header .reviews-title {
   font-size: 1.75rem;
+  margin-right: 2rem;
 }
 .reviews-container .reviews-container-header .reviews-add-btn {
   margin: 0.1rem 0.1rem 0.1rem 0.1rem;
