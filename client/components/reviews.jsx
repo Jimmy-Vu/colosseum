@@ -45,7 +45,13 @@ export default function Reviews(props) {
   return (
     <section className="reviews-container">
       {addModalIsOpen &&
-        <AddReviewModal gymState={{ gymId, name }} setAddModalIsOpen={setAddModalIsOpen} addModalIsOpen={addModalIsOpen} setReviewAlreadyMade={setReviewAlreadyMade} handleSuccessfulSubmit={handleSuccessfulSubmit} />
+        <AddReviewModal
+          gymState={{ gymId, name }}
+          setAddModalIsOpen={setAddModalIsOpen}
+          addModalIsOpen={addModalIsOpen}
+          setReviewAlreadyMade={setReviewAlreadyMade}
+          handleSuccessfulSubmit={handleSuccessfulSubmit}
+        />
       }
       <div className="reviews-container-header">
         <h3 className="reviews-title">Reviews</h3>
@@ -64,7 +70,13 @@ export default function Reviews(props) {
       }
       {!reviewsIsEmpty &&
         userReviews.map(review => (
-          <ReviewCard key={review.reviewId} reviewDetails={review} gymName={name} setReviewAlreadyMade={setReviewAlreadyMade} handleSuccessfulSubmit={handleSuccessfulSubmit} />
+          <ReviewCard key={review.reviewId}
+            reviewDetails={review}
+            gymName={name}
+            setReviewAlreadyMade={setReviewAlreadyMade}
+            setReviewsIsEmpty={setReviewsIsEmpty}
+            handleSuccessfulSubmit={handleSuccessfulSubmit}
+          />
         ))
       }
     </section>

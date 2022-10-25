@@ -2,7 +2,7 @@ import React, { useEffect, useState } from "react";
 import { useSelector } from "react-redux";
 
 export default function EditReviewModal(props) {
-  const { editModalIsOpen, setEditModalIsOpen, setReviewAlreadyMade, handleSuccessfulSubmit } = props;
+  const { editModalIsOpen, setEditModalIsOpen, setReviewAlreadyMade, setReviewsIsEmpty, handleSuccessfulSubmit } = props;
   const { gymName } = props.gymState;
   const { reviewId, rating, description } = props.reviewDetails
   const [review, setReview] = useState({
@@ -55,9 +55,10 @@ export default function EditReviewModal(props) {
     })
       .then(res => {
         if (res.status === 204) {
-          handleSuccessfulSubmit();
           setEditModalIsOpen(false);
+          setReviewsIsEmpty(true);
           setReviewAlreadyMade(false);
+          handleSuccessfulSubmit();
         }
       })
       .catch(err => console.error(err));

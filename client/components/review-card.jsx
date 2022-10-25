@@ -5,7 +5,7 @@ import EditReviewModal from "./edit-review-modal";
 export default function ReviewCard(props) {
   const currentUserId = useSelector(state => state.user.userId);
   const { gymId, userId, reviewId, username, rating, description } = props.reviewDetails;
-  const { handleSuccessfulSubmit, setReviewAlreadyMade, gymName } = props;
+  const { handleSuccessfulSubmit, setReviewAlreadyMade, setReviewsIsEmpty, gymName } = props;
   const [editModalIsOpen, setEditModalIsOpen] = useState(false);
   let reviewBelongsToUser = false;
   const starRating = [];
@@ -16,6 +16,7 @@ export default function ReviewCard(props) {
 
   if (currentUserId === userId) {
     reviewBelongsToUser = true;
+    setReviewAlreadyMade(true);
   } else {
     reviewBelongsToUser = false;
   }
@@ -27,7 +28,15 @@ export default function ReviewCard(props) {
   return (
     <>
       {editModalIsOpen &&
-        <EditReviewModal gymState={{ gymId, gymName }} reviewDetails={{ reviewId, rating, description }} setEditModalIsOpen={setEditModalIsOpen} editModalIsOpen={editModalIsOpen} setReviewAlreadyMade={setReviewAlreadyMade} handleSuccessfulSubmit={handleSuccessfulSubmit} />
+        <EditReviewModal
+          gymState={{ gymId, gymName }}
+          reviewDetails={{ reviewId, rating, description }}
+          setEditModalIsOpen={setEditModalIsOpen}
+          editModalIsOpen={editModalIsOpen}
+          setReviewAlreadyMade={setReviewAlreadyMade}
+          setReviewsIsEmpty={setReviewsIsEmpty}
+          handleSuccessfulSubmit={handleSuccessfulSubmit}
+        />
       }
       <div className="review-card">
         <div className="review-card-header">
