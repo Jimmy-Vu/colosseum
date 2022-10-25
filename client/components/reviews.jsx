@@ -24,11 +24,13 @@ export default function Reviews(props) {
       .catch(err => console.error(err));
   }, [])
 
-  function handleSuccessfulSubmit() {
+  function handleSuccessfulSubmit(type) {
     fetch(`/api/reviews/${gymId}`, { method: 'GET' })
       .then(result => result.json())
       .then(data => {
-        setReviewsIsEmpty(false);
+        if (type !== 'delete') {
+          setReviewsIsEmpty(false);
+        }
         setUserReviews(data);
       })
       .catch(err => console.error(err));

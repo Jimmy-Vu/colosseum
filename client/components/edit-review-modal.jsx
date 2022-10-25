@@ -58,7 +58,7 @@ export default function EditReviewModal(props) {
           setEditModalIsOpen(false);
           setReviewsIsEmpty(true);
           setReviewAlreadyMade(false);
-          handleSuccessfulSubmit();
+          handleSuccessfulSubmit('delete');
         }
       })
       .catch(err => console.error(err));
