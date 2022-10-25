@@ -258,7 +258,7 @@ app.post('/api/gyms', upload, (req, res, next) => {
   })
     .send()
     .then(res => {
-      const geoData = res.body.features[0].geometry.coordinates;
+      const geoData = res.body.features[0].geometry;
     });
   const { userId, name, address, type, description } = req.body;
   const imageURL = req.file.path;
@@ -303,7 +303,7 @@ app.patch('/api/gyms/:gymId', upload, (req, res, next) => {
   })
     .send()
     .then(res => {
-      const geoData = res.body.features[0].geometry.coordinates;
+      const geoData = res.body.features[0].geometry;
     });
   const { name, address, type, description } = req.body;
   const gymId = parseInt(req.params.gymId, 10);
