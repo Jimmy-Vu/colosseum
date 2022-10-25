@@ -12,7 +12,9 @@ const jsonMiddleware = express.json();
 const authorizationMiddleware = require('./authorizationMiddleware');
 const argon2 = require('argon2');
 const jwt = require('jsonwebtoken');
-const { devNull } = require('os');
+const mapBoxGeocoding = require('@mapbox/mapbox-sdk/services/geocoding');
+const { response } = require('express');
+const geocodingClient = mapBoxGeocoding({ accessToken: process.env.MAPBOX_TOKEN });
 
 const app = express();
 app.use(staticMiddleware);
@@ -250,6 +252,14 @@ app.post('/api/gyms/dev', (req, res, next) => {
 });
 // Post route for production database
 app.post('/api/gyms', upload, (req, res, next) => {
+  geocodingClient.forwardGeocode({
+    query: req.body.address,
+    limit: 1
+  })
+    .send()
+    .then(res => {
+      const geoData = res.body.features[0].geometry.coordinates;
+    });
   const { userId, name, address, type, description } = req.body;
   const imageURL = req.file.path;
   if (!userId || !name || !address || !type || !imageURL || !description) {
@@ -287,6 +297,14 @@ app.post('/api/gyms', upload, (req, res, next) => {
 
 // PATCH route for updating listing
 app.patch('/api/gyms/:gymId', upload, (req, res, next) => {
+  geocodingClient.forwardGeocode({
+    query: req.body.address,
+    limit: 1
+  })
+    .send()
+    .then(res => {
+      const geoData = res.body.features[0].geometry.coordinates;
+    });
   const { name, address, type, description } = req.body;
   const gymId = parseInt(req.params.gymId, 10);
   let { imageURL } = req.body;

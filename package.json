@@ -32,6 +32,7 @@
   },
   "homepage": "https://github.com/Jimmy-Vu/colosseum#readme",
   "dependencies": {
+    "@mapbox/mapbox-sdk": "^0.13.6",
     "@react-spring/web": "^9.5.2",
     "@reduxjs/toolkit": "^1.8.6",
     "argon2": "^0.29.1",
