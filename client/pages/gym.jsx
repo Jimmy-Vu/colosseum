@@ -64,6 +64,10 @@ export default function Gym(props) {
       .catch(err => console.error(err));
   }
 
+  if (gymState.userId === null) {
+    return null;
+  }
+
   return (
     <main className="gym-main">
       <div>

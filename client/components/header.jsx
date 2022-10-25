@@ -18,7 +18,7 @@ function Header(props) {
 
 
   function changeBackground() {
-    if (window.scrollY >= 50) {
+    if (window.scrollY >= 40) {
       setNavBarScrolled(true);
     } else {
       setNavBarScrolled(false);
