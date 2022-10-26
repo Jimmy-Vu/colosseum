@@ -78,6 +78,9 @@ export default function Gym(props) {
           <img className="gym-image" src={`${gymState.imageURL}`} alt="main gym image" />
         </a>
         <div className="gym-details-map-container">
+          <div className="map-container">
+            <MapDisplay coordinates={{ longitude: `${gymState.geodata.longitude}`, latitude: `${gymState.geodata.latitude}` }} />
+          </div>
           <div className="gym-details">
             <h3 className="gym-title">{gymState.name}</h3>
             <p className="gym-address">{gymState.address}</p>
@@ -85,9 +88,6 @@ export default function Gym(props) {
             <div className="gym-body">
               <p className="gym-description">{gymState.description}</p>
             </div>
-          </div>
-          <div className="map-container">
-            <MapDisplay coordinates={{ longitude: `${gymState.geodata.longitude}`, latitude: `${gymState.geodata.latitude}` }} />
           </div>
         </div>
       </div>

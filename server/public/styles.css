@@ -378,33 +378,33 @@ footer {
 .gym-main .gym-info-container .gym-details-map-container {
   display: flex;
   flex-direction: column;
+  justify-content: space-between;
   width: 100%;
   height: 100%;
+  min-height: fit-content;
+  margin-top: 1rem;
   margin-bottom: 1rem;
+  padding: 1em;
+  background-color: rgba(255, 255, 255, 0.9);
+  border-radius: 15px;
+  border: solid #D2B85A 3px;
 }
 @media (min-width: 960px) {
   .gym-main .gym-info-container .gym-details-map-container {
     margin-left: 1rem;
-    justify-content: space-between;
+    margin-bottom: 0;
   }
 }
 .gym-main .gym-info-container .gym-details-map-container .gym-details {
   display: flex;
   flex-direction: column;
   align-items: center;
-  margin-top: 1em;
-  margin-bottom: 1em;
-  padding: 1em;
-  border-radius: 15px;
-  border: solid #D2B85A 3px;
-  width: 100%;
-  min-height: fit-content;
-  background-color: rgba(255, 255, 255, 0.9);
+  margin-top: 1rem;
+  margin-bottom: 1rem;
 }
 @media (min-width: 960px) {
   .gym-main .gym-info-container .gym-details-map-container .gym-details {
     height: 50%;
-    max-height: 500px;
     margin-top: 0;
   }
 }
@@ -417,12 +417,12 @@ footer {
   margin-top: 1em;
 }
 .gym-main .gym-info-container .gym-details-map-container .map-container {
-  min-height: 150px;
+  height: 150px;
   width: 100%;
 }
 @media (min-width: 960px) {
   .gym-main .gym-info-container .gym-details-map-container .map-container {
-    height: 50%;
+    height: 40%;
   }
 }
 
@@ -905,9 +905,18 @@ textarea {
   resize: none;
 }
 
+html,
+body {
+  width: 100%;
+  height: 100%;
+  margin: 0px;
+  padding: 0px;
+}
+
 body {
   display: flex;
   flex-direction: column;
+  overflow-x: hidden;
 }
 
 #root {
