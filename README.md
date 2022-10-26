@@ -14,9 +14,10 @@ Try the application live at [colosseum.fly.dev](https://colosseum.fly.dev)
 * Webpack
 * Babel
 * Sass/Scss
+* Mapbox GL JS
 * react-spring
 * react-spinners
-* Mapbox GL JS
+* react-map-gl
 * Cloudinary
 * JavaScript (ES5/ES6)
 * HTML5
