@@ -15,6 +15,7 @@ export default function Gym(props) {
     gymId: props.gymId,
     name: '',
     address: '',
+    geodata: '',
     type: '',
     imageURL: '',
     description: ''
@@ -34,6 +35,7 @@ export default function Gym(props) {
           gymId: data.gymId,
           name: data.name,
           address: data.address,
+          geodata: JSON.parse(data.geodata),
           type: typeAdjust(data.type),
           imageURL: data.imageURL,
           description: data.description
@@ -76,7 +78,6 @@ export default function Gym(props) {
           <a className="gym-image-container" href={`${gymState.imageURL}`}>
             <img className="gym-image" src={`${gymState.imageURL}`} alt="main gym image" />
           </a>
-          <MapDisplay coordinates={{ longitude: '-117.825982', latitude: '33.685697' }} />
           <div className="gym-details">
             <h3 className="gym-title">{gymState.name}</h3>
             <p className="gym-address">{gymState.address}</p>
@@ -85,6 +86,7 @@ export default function Gym(props) {
               <p className="gym-description">{gymState.description}</p>
             </div>
           </div>
+          <MapDisplay coordinates={{ longitude: `${gymState.geodata.longitude}`, latitude: `${gymState.geodata.latitude}` }} />
         </div>
         <Reviews gymState={gymState} belongsToUser={belongsToUser} />
         {belongsToUser &&
