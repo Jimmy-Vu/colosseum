@@ -1,8 +1,10 @@
-import React from "react";
+import React, { useState } from "react";
 import Map, { Marker, NavigationControl } from "react-map-gl";
 
 export default function MapDisplay(props) {
   const { longitude, latitude } = props.coordinates;
+  const [showPopup, setShowPopup] = useState(true);
+
   return (
     <Map
       initialViewState={{
@@ -17,7 +19,8 @@ export default function MapDisplay(props) {
         latitude={latitude}
         longitude={longitude}
         anchor="bottom">
-        <Pin size={20} />
+        <Pin size={20}>
+        </Pin>
       </Marker>
       <NavigationControl />
     </Map>
