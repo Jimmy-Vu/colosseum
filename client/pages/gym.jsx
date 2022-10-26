@@ -2,6 +2,7 @@ import React, { useEffect, useState } from "react";
 import { useSelector } from "react-redux";
 import typeAdjust from "../lib/typeAdjust";
 import Reviews from "../components/reviews";
+import MapDisplay from "../components/map-display";
 
 
 export default function Gym(props) {
@@ -14,6 +15,7 @@ export default function Gym(props) {
     gymId: props.gymId,
     name: '',
     address: '',
+    geodata: '',
     type: '',
     imageURL: '',
     description: ''
@@ -33,6 +35,7 @@ export default function Gym(props) {
           gymId: data.gymId,
           name: data.name,
           address: data.address,
+          geodata: JSON.parse(data.geodata),
           type: typeAdjust(data.type),
           imageURL: data.imageURL,
           description: data.description
@@ -70,11 +73,14 @@ export default function Gym(props) {
 
   return (
     <main className="gym-main">
-      <div>
-        <div className="gym-info-container">
-          <a className="gym-image-container" href={`${gymState.imageURL}`}>
-            <img className="gym-image" src={`${gymState.imageURL}`} alt="main gym image" />
-          </a>
+      <div className="gym-info-container">
+        <a className="gym-image-container" href={`${gymState.imageURL}`}>
+          <img className="gym-image" src={`${gymState.imageURL}`} alt="main gym image" />
+        </a>
+        <div className="gym-details-map-container">
+          <div className="map-container">
+            <MapDisplay coordinates={{ longitude: `${gymState.geodata.longitude}`, latitude: `${gymState.geodata.latitude}` }} />
+          </div>
           <div className="gym-details">
             <h3 className="gym-title">{gymState.name}</h3>
             <p className="gym-address">{gymState.address}</p>
@@ -84,14 +90,14 @@ export default function Gym(props) {
             </div>
           </div>
         </div>
-        <Reviews gymState={gymState} belongsToUser={belongsToUser} />
-        {belongsToUser &&
-          <div className="gym-buttons-container">
-            <a href={`#edit?gymId=${gymState.gymId}`} className="gym-edit-btn">Edit Arena</a>
-            <button onClick={gymDelete} className="gym-delete-btn">Delete Arena</button>
-          </div>
-        }
       </div>
+      <Reviews gymState={gymState} belongsToUser={belongsToUser} />
+      {belongsToUser &&
+        <div className="gym-buttons-container">
+          <a href={`#edit?gymId=${gymState.gymId}`} className="gym-edit-btn">Edit Arena</a>
+          <button onClick={gymDelete} className="gym-delete-btn">Delete Arena</button>
+        </div>
+      }
     </main>
   );
 }

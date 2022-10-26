@@ -1,5 +1,6 @@
 require('dotenv/config');
 const path = require('path');
+const Dotenv = require('dotenv-webpack');
 
 const clientPath = path.join(__dirname, 'client');
 const serverPublicPath = path.join(__dirname, 'server/public');
@@ -47,6 +48,9 @@ module.exports = {
       '/api': `http://localhost:${process.env.PORT}`,
     }
   },
+  plugins: [
+    new Dotenv()
+  ],
   stats: 'minimal',
   performance: {
     hints: false

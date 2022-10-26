@@ -14,7 +14,7 @@ export default function Spinner(props) {
   };
 
   const overlayStyle = {
-    position: "absolute",
+    position: "fixed",
     height: "100vh",
     width: "100vw",
     backgroundColor: "rgba(0, 0, 0, 0.4)"
