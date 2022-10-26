@@ -16,6 +16,7 @@ Try the application live at [colosseum.fly.dev](https://colosseum.fly.dev)
 * Sass/Scss
 * react-spring
 * react-spinners
+* Mapbox GL JS
 * Cloudinary
 * JavaScript (ES5/ES6)
 * HTML5
@@ -31,6 +32,6 @@ Try the application live at [colosseum.fly.dev](https://colosseum.fly.dev)
 - [x] 6. Users can leave a review
 
 #### Stretch Features
-- [ ] 1. User can see location of gym on a map
+- [x] 1. User can see location of gym on a map
 - [ ] 2. User can add a gym to their favorites
 - [ ] 3. User can send a message to the gym owner
