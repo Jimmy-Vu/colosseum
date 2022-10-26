@@ -309,56 +309,65 @@ app.patch('/api/gyms/:gymId', upload, (req, res, next) => {
   })
     .send()
     .then(res => {
-      res.body.features[0].geometry;
-    });
-  const { name, address, type, description } = req.body;
-  const gymId = parseInt(req.params.gymId, 10);
-  let { imageURL } = req.body;
-  if (!imageURL && req.file) {
-    imageURL = req.file.path;
-  }
+      return {
+        longitude: res.body.features[0].geometry.coordinates[0],
+        latitude: res.body.features[0].geometry.coordinates[1]
+      };
+    })
+    .then(geodata => {
+      const { name, address, type, description } = req.body;
+      const gymId = parseInt(req.params.gymId, 10);
+      let { imageURL } = req.body;
+      if (!imageURL && req.file) {
+        imageURL = req.file.path;
+      }
 
-  if (!gymId || !name || !address || !type) {
-    throw new ClientError(401, 'Please provide a name, address, type(s), and an image');
-    console.error('Missing name, address, type, and/or image');
-  }
-  const parsedType = JSON.parse(type);
-  const typeArray = [];
-  for (let i in parsedType) {
-    if (parsedType[i] === true) {
-      typeArray.push(i);
-    }
-  }
+      if (!gymId || !name || !address || !type) {
+        throw new ClientError(401, 'Please provide a name, address, type(s), and an image');
+        console.error('Missing name, address, type, and/or image');
+      }
+      const parsedType = JSON.parse(type);
+      const typeArray = [];
+      for (let i in parsedType) {
+        if (parsedType[i] === true) {
+          typeArray.push(i);
+        }
+      }
 
-  let sql = '';
-  let params = [];
-  if (!imageURL) {
-    sql = `
-      update "gyms"
-        set "name" = $2,
-            "address" = $3,
-            "type" = $4,
-            "description" = $5
-        where "gymId" = $1
-        returning "gymId", "name", "address", "type", "description"
+      let sql = '';
+      let params = [];
+      //Checking if user updated with a new image or is keeping the old one
+      if (!imageURL) {
+        sql = `
+        update "gyms"
+          set "name" = $2,
+              "address" = $3,
+              "geodata" = $4,
+              "type" = $5,
+              "description" = $6
+          where "gymId" = $1
+          returning "gymId", "name", "address", "geodata", "type", "description"
     `;
-    params = [gymId, name, address, typeArray, description];
-  } else {
-    sql = `
-      update "gyms"
-        set "name" = $2,
-            "address" = $3,
-            "type" = $4,
-            "imageURL" = $5,
-            "description" = $6
-        where "gymId" = $1
-        returning "gymId", "name", "address", "type", "imageURL", "description"
+        params = [gymId, name, address, geodata, typeArray, description];
+      } else {
+        sql = `
+        update "gyms"
+          set "name" = $2,
+              "address" = $3,
+              "geodata" = $4,
+              "type" = $5,
+              "imageURL" = $6,
+              "description" = $7
+          where "gymId" = $1
+          returning "gymId", "name", "address", "geodata", "type", "imageURL", "description"
     `;
-    params = [gymId, name, address, typeArray, imageURL, description];
-  }
-  db.query(sql, params)
-    .then(result => {
-      res.status(200).json(result.rows[0]);
+        params = [gymId, name, address, geodata, typeArray, imageURL, description];
+      }
+      db.query(sql, params)
+        .then(result => {
+          res.status(200).json(result.rows[0]);
+        })
+        .catch(err => next(err));
     })
     .catch(err => next(err));
 });
