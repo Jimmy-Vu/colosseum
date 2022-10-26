@@ -258,41 +258,82 @@ app.post('/api/gyms', upload, (req, res, next) => {
   })
     .send()
     .then(res => {
-      const geoData = res.body.features[0].geometry;
-    });
-  const { userId, name, address, type, description } = req.body;
-  const imageURL = req.file.path;
-  if (!userId || !name || !address || !type || !imageURL || !description) {
-    throw new ClientError(400, 'Please provide a name, address, type(s), and an image');
-    console.error('Missing name, address, type, and/or image');
-  }
+      return JSON.stringify({
+        longitude: res.body.features[0].geometry.coordinates[0],
+        latitude: res.body.features[0].geometry.coordinates[1]
+      });
+    })
+    .then(geodata => {
+      const { userId, name, address, type, description } = req.body;
+      const imageURL = req.file.path;
+      if (!userId || !name || !address || !type || !imageURL || !description) {
+        throw new ClientError(400, 'Please provide a name, address, type(s), and an image');
+        console.error('Missing name, address, type, and/or image');
+      }
 
-  const parsedType = JSON.parse(type);
-  const typeArray = [];
-  for (let i in parsedType) {
-    if (parsedType[i] === true) {
-      typeArray.push(i);
-    }
-  }
+      const parsedType = JSON.parse(type);
+      const typeArray = [];
+      for (let i in parsedType) {
+        if (parsedType[i] === true) {
+          typeArray.push(i);
+        }
+      }
 
-  const sql = `
-  insert into "gyms" (
-    "userId",
-    "name",
-    "address",
-    "type",
-    "imageURL",
-    "description"
-    ) values ($1, $2, $3, $4, $5, $6)
-  returning "gymId", "name", "address", "type", "imageURL", "description"
-  `;
-
-  const params = [userId, name, address, typeArray, imageURL, description];
-  db.query(sql, params)
-    .then(result => {
-      res.status(201).json(result.rows[0]);
+      const sql = `
+        insert into "gyms" (
+          "userId",
+          "name",
+          "address",
+          "geodata",
+          "type",
+          "imageURL",
+          "description"
+          ) values ($1, $2, $3, $4, $5, $6, $7)
+        returning "gymId", "name", "address", "geodata", "type", "imageURL", "description"
+        `;
+      const params = [userId, name, address, geodata, typeArray, imageURL, description];
+      db.query(sql, params)
+        .then(result => {
+          res.status(201).json(result.rows[0]);
+        })
+        .catch(err => next(err));
     })
     .catch(err => next(err));
+
+  // const { userId, name, address, type, description } = req.body;
+  // const imageURL = req.file.path;
+  // if (!userId || !name || !address || !type || !imageURL || !description) {
+  //   throw new ClientError(400, 'Please provide a name, address, type(s), and an image');
+  //   console.error('Missing name, address, type, and/or image');
+  // }
+  // console.log('geodata:', geodata);
+  // const parsedType = JSON.parse(type);
+  // const typeArray = [];
+  // for (let i in parsedType) {
+  //   if (parsedType[i] === true) {
+  //     typeArray.push(i);
+  //   }
+  // }
+
+  // const sql = `
+  // insert into "gyms" (
+  //   "userId",
+  //   "name",
+  //   "address",
+  //   "geodata",
+  //   "type",
+  //   "imageURL",
+  //   "description"
+  //   ) values ($1, $2, $3, $4, $5, $6, $7)
+  // returning "gymId", "name", "address", "geodata", "type", "imageURL", "description"
+  // `;
+
+  // const params = [userId, name, address, geodata, typeArray, imageURL, description];
+  // db.query(sql, params)
+  //   .then(result => {
+  //     res.status(201).json(result.rows[0]);
+  //   })
+  //   .catch(err => next(err));
 });
 
 // PATCH route for updating listing
