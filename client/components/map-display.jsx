@@ -10,7 +10,7 @@ export default function MapDisplay(props) {
         latitude: latitude,
         zoom: 10
       }}
-      style={{ width: '100%', height: 200, borderRadius: 10, marginBottom: '1rem' }}
+      style={{ width: '100%', height: '100%', borderRadius: 10 }}
       mapStyle="mapbox://styles/mapbox/streets-v9"
       mapboxAccessToken={process.env.MAPBOX_TOKEN}>
       <Marker

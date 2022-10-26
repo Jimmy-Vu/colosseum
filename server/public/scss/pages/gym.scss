@@ -11,6 +11,7 @@
   flex-direction: column;
   align-items: center;
   width: 100%;
+  min-height: fit-content;
 
   padding: 1em;
   background-color: rgba(255, 255, 255, 0.5);
@@ -54,34 +55,57 @@
       }
     }
 
-    .gym-details {
+    .gym-details-map-container {
       display: flex;
       flex-direction: column;
-      align-items: center;
-      margin-top: 1em;
-      margin-bottom: 1em;
-      padding: 1em;
-      border-radius: 15px;
-      border: solid $primary 3px;
 
       width: 100%;
-      height: fit-content;
-      background-color: rgba(255, 255, 255, 0.9);
+      height: 100%;
+      margin-bottom: 1rem;
 
       @include lg {
-        margin: 0 0 0 1em;
-        height: 500px;
-        width: 60%;
+      margin-left: 1rem;
+      justify-content: space-between;
       }
 
-      .gym-title {
-        color: black;
-        font-size: 2em;
-        text-align: center;
-      }
-
-      .gym-body {
+      .gym-details {
+        display: flex;
+        flex-direction: column;
+        align-items: center;
         margin-top: 1em;
+        margin-bottom: 1em;
+        padding: 1em;
+        border-radius: 15px;
+        border: solid $primary 3px;
+
+        width: 100%;
+        min-height: fit-content;
+        background-color: rgba(255, 255, 255, 0.9);
+
+        @include lg {
+          height: 50%;
+          max-height: 500px;
+          margin-top: 0;
+        }
+
+        .gym-title {
+          color: black;
+          font-size: 2em;
+          text-align: center;
+        }
+
+        .gym-body {
+          margin-top: 1em;
+        }
+      }
+
+      .map-container{
+        min-height: 150px;
+        width: 100%;
+
+        @include lg {
+          height: 50%;
+        }
       }
     }
   }

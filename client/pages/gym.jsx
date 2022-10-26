@@ -30,7 +30,6 @@ export default function Gym(props) {
         return res.json();
       })
       .then(data => {
-        console.log(data);
         setGymState({
           userId: data.userId,
           gymId: data.gymId,
@@ -74,11 +73,11 @@ export default function Gym(props) {
 
   return (
     <main className="gym-main">
-      <div>
-        <div className="gym-info-container">
-          <a className="gym-image-container" href={`${gymState.imageURL}`}>
-            <img className="gym-image" src={`${gymState.imageURL}`} alt="main gym image" />
-          </a>
+      <div className="gym-info-container">
+        <a className="gym-image-container" href={`${gymState.imageURL}`}>
+          <img className="gym-image" src={`${gymState.imageURL}`} alt="main gym image" />
+        </a>
+        <div className="gym-details-map-container">
           <div className="gym-details">
             <h3 className="gym-title">{gymState.name}</h3>
             <p className="gym-address">{gymState.address}</p>
@@ -87,16 +86,18 @@ export default function Gym(props) {
               <p className="gym-description">{gymState.description}</p>
             </div>
           </div>
-          <MapDisplay coordinates={{ longitude: `${gymState.geodata.longitude}`, latitude: `${gymState.geodata.latitude}` }} />
-        </div>
-        <Reviews gymState={gymState} belongsToUser={belongsToUser} />
-        {belongsToUser &&
-          <div className="gym-buttons-container">
-            <a href={`#edit?gymId=${gymState.gymId}`} className="gym-edit-btn">Edit Arena</a>
-            <button onClick={gymDelete} className="gym-delete-btn">Delete Arena</button>
+          <div className="map-container">
+            <MapDisplay coordinates={{ longitude: `${gymState.geodata.longitude}`, latitude: `${gymState.geodata.latitude}` }} />
           </div>
-        }
+        </div>
       </div>
+      <Reviews gymState={gymState} belongsToUser={belongsToUser} />
+      {belongsToUser &&
+        <div className="gym-buttons-container">
+          <a href={`#edit?gymId=${gymState.gymId}`} className="gym-edit-btn">Edit Arena</a>
+          <button onClick={gymDelete} className="gym-delete-btn">Delete Arena</button>
+        </div>
+      }
     </main>
   );
 }
