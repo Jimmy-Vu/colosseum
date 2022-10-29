@@ -34,7 +34,7 @@ Try the application live at [colosseum.fly.dev](https://colosseum.fly.dev)
 
 #### Stretch Features
 - [x] 1. User can see location of gym on a map
-- [ ] 2. User can filter gyms
+- [ ] 2. User can filter and display gyms by type
 - [ ] 3. User can search for gyms
 - [ ] 4. User can add a gym to their favorites
 - [ ] 5. User can send a message to the gym owner
