@@ -41,7 +41,7 @@
     ·
     <a href="https://github.com/Jimmy-Vu/colosseum/issues">Report Bug</a>
     ·
-    <a href="https://github.com/Jimmy-Vu/colosseum/issues">Request Feature</a>
+    <a href="https://github.com/Jimmy-Vu/colosseum/issues">Make A Suggestion</a>
   </p>
 </div>
 
@@ -103,10 +103,10 @@
 
 
 And support from the following libraries and tools:
-* Argon2
-* Mapbox GL JS
-* Cloudinary
-* Fly.io
+* Argon2 - For hashing and salting passwords to be stored on the database
+* Mapbox GL JS - A tool that interacts with the MapBox API to render map components
+* Cloudinary - For hosting and storing images uploaded by the end users 
+* Fly.io - For hosting and running the application server
 
 <p align="right">(<a href="#readme-top">back to top</a>)</p>
 
