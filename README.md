@@ -39,8 +39,6 @@
     <br />
     <a href="https://colosseum.fly.dev">View Live Demo</a>
     ·
-    <a href="#usage">View Video Demo</a>
-    ·
     <a href="https://github.com/Jimmy-Vu/colosseum/issues">Report Bug</a>
     ·
     <a href="https://github.com/Jimmy-Vu/colosseum/issues">Request Feature</a>
