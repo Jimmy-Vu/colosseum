@@ -213,7 +213,7 @@ Project Link: [https://github.com/Jimmy-Vu/colosseum](https://github.com/Jimmy-V
 <!-- MARKDOWN LINKS & IMAGES -->
 <!-- https://www.markdownguide.org/basic-syntax/#reference-style-links -->
 
-[issues-shield]: https://img.shields.io/github/issues/Jimmy-Vu/colosseum.svg?style=for-the-badge
+[issues-shield]: https://img.shields.io/github/issues/Jimmy-Vu/colosseum?style=for-the-badge
 [issues-url]: https://github.com/Jimmy-Vu/colosseum/issues
 [linkedin-shield]: https://img.shields.io/badge/-LinkedIn-black.svg?style=for-the-badge&logo=linkedin&colorB=2e67c2
 [linkedin-url]: https://linkedin.com/in/JimmyVu2
