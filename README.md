@@ -224,7 +224,7 @@ Project Link: [https://github.com/Jimmy-Vu/colosseum](https://github.com/Jimmy-V
 [React-url]: https://reactjs.org/
 [Redux-toolkit]: https://img.shields.io/badge/redux_toolkit-%23593d88.svg?style=for-the-badge&logo=redux&logoColor=white
 [Redux-toolkit-url]: https://redux-toolkit.js.org/
-[Node.js]: https://img.shields.io/badge/Node-20232A?style=for-the-badge&logo=node.js&logoColor=77af63
+[Node.js]: https://img.shields.io/badge/Node.js-20232A?style=for-the-badge&logo=node.js&logoColor=77af63
 [Node.js-url]: https://nodejs.org
 [Express.js]: https://img.shields.io/badge/Express-20232A?style=for-the-badge&logo=express&logoColor=f7e01d
 [Express.js-url]: https://expressjs.com/
