@@ -104,10 +104,10 @@
 
 
 And support from the following libraries and tools:
-* Argon2 - For hashing and salting passwords to be stored on the database
-* Mapbox GL JS - A tool that interacts with the MapBox API to render map components
-* Cloudinary - For hosting and storing images uploaded by the end users 
-* Fly.io - For hosting and running the application server
+* [Argon2](https://www.npmjs.com/package/argon2) - For hashing and salting passwords to be stored on the database
+* [Mapbox GL JS](https://docs.mapbox.com/mapbox-gl-js/guides) - A library that interacts with the MapBox API to render map components
+* [Cloudinary](https://cloudinary.com) - For hosting and storing images uploaded by the end users 
+* [Fly.io](https://fly.io) - For hosting and running the application server through the provided CLI
 
 <p align="right">(<a href="#readme-top">back to top</a>)</p>
 
