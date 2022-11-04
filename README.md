@@ -205,7 +205,7 @@ Project Link: [https://github.com/Jimmy-Vu/colosseum](https://github.com/Jimmy-V
 <!-- ACKNOWLEDGMENTS -->
 ## Acknowledgments
 
-* [Unsplash](https://unsplash.com/) and their photographers for photos used in this project. The main photo used for the background of the application was taken by [Ruben Ramirez](https://unsplash.com/photos/nAb-SFzL1GM). 
+* [Unsplash](https://unsplash.com/) and their photographers for photos used in this application. The main photo used for the background of the application was taken by [Ruben Ramirez](https://unsplash.com/photos/nAb-SFzL1GM). 
 
 <p align="right">(<a href="#readme-top">back to top</a>)</p>
 
