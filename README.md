@@ -75,10 +75,10 @@
 
 <!-- ABOUT THE PROJECT -->
 ## About The Project
-<!-- Original image https://user-images.githubusercontent.com/88172055/199418985-691775c0-9479-4d32-a7c9-d3aa244e5a0e.png -->
 <p align="center">
-  <img width="800" src="https://user-images.githubusercontent.com/88172055/199898525-43a1e02a-e1d3-4efe-ae89-8d1ffbb8c0a8.png" />
+  <img width="800" src="https://user-images.githubusercontent.com/88172055/199909019-73645edd-dc82-497f-a712-21fb78e5e7ac.png" />
  </p>
+
 
 <p align="right">(<a href="#readme-top">back to top</a>)</p>
 
