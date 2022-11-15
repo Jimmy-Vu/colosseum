@@ -11,8 +11,8 @@ CREATE TABLE "public"."gyms" (
 	"gymId" serial NOT NULL,
 	"name" TEXT NOT NULL,
 	"address" TEXT NOT NULL,
-	"geodata" TEXT NOT NULL,
-	"type" TEXT NOT NULL,
+	"geometry" TEXT NOT NULL,
+	"typeOf" TEXT NOT NULL,
 	"imageURL" TEXT NOT NULL,
 	"description" TEXT NOT NULL,
 	CONSTRAINT "gyms_pk" PRIMARY KEY ("gymId")

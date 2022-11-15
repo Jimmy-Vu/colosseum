@@ -1,3 +1,5 @@
+//This code needs to be refactored to just use JSON.parse
+
 export default function editTypeAdjust(string) {
   const type = {
     commercial: false,

@@ -31,8 +31,8 @@
 insert into "gyms" (
   "name",
   "address",
-  "geodata",
-  "type",
+  "geometry",
+  "typeOf",
   "imageURL",
   "description",
   "userId"
@@ -41,7 +41,7 @@ insert into "gyms" (
   (
     'Exceed Performance',
     'Anaheim, CA',
-    '{"latitude":"33.835293","longitude":"-117.914505"}',
+    '{"type":"Point","coordinates":[33.835293,-117.914505]}',
     '{"powerlifting","weightlifting"}',
     'https://images.squarespace-cdn.com/content/v1/5f1121d3454d3d642df2c2a0/1594959199899-ZR1KADRBX6O6CCD2I3RR/IMG_8029.jpg?format=1500w',
     'Our mission at Exceed Performance is to cultivate and inspire individuals in all aspects of strength training, powerlifting, weightlifting, and overall health. We aspire to unlock the potential of our members both mentally and physically. We welcome everyone from novices to world class athletes and to share their journey of endless growth with us.',
@@ -50,7 +50,7 @@ insert into "gyms" (
   (
     'Bayside Boxing',
     'Torrance, CA',
-    '{"latitude":"33.840763","longitude":"-118.345413"}',
+    '{"type":"Point","coordinates":["33.840763","-118.345413"]}',
     'boxing',
     'https://images.unsplash.com/photo-1561532325-7d5231a2dede?ixlib=rb-1.2.1&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=1471&q=80',
     'Our mission is to train the warriors of tomorrow, no matter the gender, origins, or creed.',
@@ -59,7 +59,7 @@ insert into "gyms" (
   (
     'Regal Climbing Gym',
     'Mankato, MN',
-    '{"latitude":"44.1635775","longitude":"-93.9993996"}',
+    '{"type":"Point","coordinates":["44.1635775","-93.9993996"]}',
     'climbing',
     'https://images.unsplash.com/photo-1543398971-17eea343659e?ixlib=rb-1.2.1&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=987&q=80',
     'No height is insurmountable. We train those who will reach the peaks of the world. Call us now to start your climb.',
@@ -68,7 +68,7 @@ insert into "gyms" (
   (
     'Tiger Taekwondo',
     'Duluth, GA',
-    '{"latitude":"34.005329","longitude":"-84.144180"}',
+    '{"type":"Point","coordinates":["34.005329","-84.144180"]}',
     'taekwondo',
     'https://res.cloudinary.com/dueu3vco1/image/upload/v1666406461/Colosseum/assets/tiger-vector-logo-orange_gjxaku.png',
     'Taekwondo is a discipline that shows ways of enhancing our spirit and life through training our body and mind. Today, it has become a global sport that has gained an international reputation, and stands among the official games in the Olympics. Please stop on by for a free trial class.',

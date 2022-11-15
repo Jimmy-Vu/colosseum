@@ -259,11 +259,12 @@ app.post('/api/gyms', upload, (req, res, next) => {
     .send()
     .then(res => {
       return {
+        type: res.body.features[0].geometry.type,
         longitude: res.body.features[0].geometry.coordinates[0],
         latitude: res.body.features[0].geometry.coordinates[1]
       };
     })
-    .then(geodata => {
+    .then(geometry => {
       const { userId, name, address, type, description } = req.body;
       const imageURL = req.file.path;
       if (!userId || !name || !address || !type || !imageURL || !description) {
@@ -284,14 +285,14 @@ app.post('/api/gyms', upload, (req, res, next) => {
           "userId",
           "name",
           "address",
-          "geodata",
+          "geometry",
           "type",
           "imageURL",
           "description"
           ) values ($1, $2, $3, $4, $5, $6, $7)
-        returning "gymId", "name", "address", "geodata", "type", "imageURL", "description"
+        returning "gymId", "name", "address", "geometry", "type", "imageURL", "description"
         `;
-      const params = [userId, name, address, geodata, typeArray, imageURL, description];
+      const params = [userId, name, address, geometry, typeArray, imageURL, description];
       db.query(sql, params)
         .then(result => {
           res.status(201).json(result.rows[0]);
@@ -310,11 +311,12 @@ app.patch('/api/gyms/:gymId', upload, (req, res, next) => {
     .send()
     .then(res => {
       return {
+        type: res.body.features[0].geometry.type,
         longitude: res.body.features[0].geometry.coordinates[0],
         latitude: res.body.features[0].geometry.coordinates[1]
       };
     })
-    .then(geodata => {
+    .then(geometry => {
       const { name, address, type, description } = req.body;
       const gymId = parseInt(req.params.gymId, 10);
       let { imageURL } = req.body;
@@ -342,26 +344,26 @@ app.patch('/api/gyms/:gymId', upload, (req, res, next) => {
         update "gyms"
           set "name" = $2,
               "address" = $3,
-              "geodata" = $4,
+              "geometry" = $4,
               "type" = $5,
               "description" = $6
           where "gymId" = $1
-          returning "gymId", "name", "address", "geodata", "type", "description"
+          returning "gymId", "name", "address", "geometry", "type", "description"
     `;
-        params = [gymId, name, address, geodata, typeArray, description];
+        params = [gymId, name, address, geometry, typeArray, description];
       } else {
         sql = `
         update "gyms"
           set "name" = $2,
               "address" = $3,
-              "geodata" = $4,
+              "geometry" = $4,
               "type" = $5,
               "imageURL" = $6,
               "description" = $7
           where "gymId" = $1
-          returning "gymId", "name", "address", "geodata", "type", "imageURL", "description"
+          returning "gymId", "name", "address", "geometry", "type", "imageURL", "description"
     `;
-        params = [gymId, name, address, geodata, typeArray, imageURL, description];
+        params = [gymId, name, address, geometry, typeArray, imageURL, description];
       }
       db.query(sql, params)
         .then(result => {
