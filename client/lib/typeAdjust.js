@@ -8,7 +8,7 @@ function typeAdjust(string) {
     } else {
       splitString[i] = capitalize(splitString[i]);
     }
-    }
+  }
   return splitString.join(', ');
 }
 
