@@ -97,6 +97,7 @@
 | [![Webpack][Webpack]][Webpack-url] | Minifying and bundling all JS files into a single bundled file for the client to download|
 | [![Babel][Babel]][Babel-url] | Transpiling modern JavaScript/JSX into a compatible version that can be used in both current and older browsers or environments|
 | [![JWT][JWT]][JWT-url] | Keeping track of user sessions and authorization|
+| [![Jest][Jest]][Jest-url] | Testing pure functions through unit tests|
 | [![JavaScript][JavaScript]][JavaScript-url] | Handling logic for the application's functionality|
 | [![HTML5][HTML5]][HTML5-url] | Setting up the physical structure of the application|
 | [![CSS3][CSS3]][CSS3-url] | Applying styles to the structures of the application|
@@ -239,6 +240,8 @@ Project Link: [https://github.com/Jimmy-Vu/colosseum](https://github.com/Jimmy-V
 [Babel-url]: https://babeljs.io/
 [JWT]: https://img.shields.io/badge/JWT-black?style=for-the-badge&logo=JSON%20web%20tokens
 [JWT-url]: https://jwt.io/
+[Jest]: https://img.shields.io/badge/-jest-%23C21325?style=for-the-badge&logo=jest&logoColor=white
+[Jest-url]: https://jestjs.io/
 [HTML5]: https://img.shields.io/badge/HTML5-E34F26?style=for-the-badge&logo=html5&logoColor=white
 [HTML5-url]: https://www.w3.org/
 [CSS3]: https://img.shields.io/badge/CSS3-1572B6?style=for-the-badge&logo=css3&logoColor=white
