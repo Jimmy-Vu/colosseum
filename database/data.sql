@@ -73,7 +73,16 @@ insert into "gyms" (
     'https://res.cloudinary.com/dueu3vco1/image/upload/v1666406461/Colosseum/assets/tiger-vector-logo-orange_gjxaku.png',
     'Taekwondo is a discipline that shows ways of enhancing our spirit and life through training our body and mind. Today, it has become a global sport that has gained an international reputation, and stands among the official games in the Olympics. Please stop on by for a free trial class.',
     1
-  );
+  ),
+  (
+    'Crimson Peaks',
+    'Topeka, Kansas',
+    '{"latitude":"39.056198","longitude":"-95.695312"}',
+    'commercial',
+    'https://images.unsplash.com/photo-1593079831268-3381b0db4a77?ixlib=rb-4.0.3&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=1169&q=80',
+    'Function and Form. That is the pillars of Crimson Peaks. Welcome to your new gym. Where the do-ers get things done, one rep at a time. Come in for a free consultation with personal trainer today.',
+    1
+  );;
 
 insert into "reviews" (
   "userId",
