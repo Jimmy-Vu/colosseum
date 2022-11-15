@@ -82,6 +82,15 @@ insert into "gyms" (
     'https://images.unsplash.com/photo-1593079831268-3381b0db4a77?ixlib=rb-4.0.3&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=1169&q=80',
     'Function and Form. That is the pillars of Crimson Peaks. Welcome to your new gym. Where the do-ers get things done, one rep at a time. Come in for a free consultation with personal trainer today.',
     1
+  ),
+  (
+    'Mad Horse CrossFit',
+    'Houston, TX',
+    '{"latitude":"29.749907","longitude":"-95.358421"}',
+    'crossfit',
+    'https://images.unsplash.com/photo-1578762560042-46ad127c95ea?ixlib=rb-4.0.3&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=1470&q=80',
+    'Welcome to your new gym. Where the do-ers get things done, one rep at a time. We house some of the best athletes in the world of CrossFit. Come in for a free consultation with personal trainer today.',
+    1
   );
 
 insert into "reviews" (
