@@ -885,8 +885,71 @@ footer {
   font-weight: 500;
 }
 
+.filter {
+  width: 100%;
+}
+
+.filter__web {
+  display: none;
+}
+@media (min-width: 480px) {
+  .filter__web {
+    display: flex;
+    align-items: center;
+    height: 50px;
+    width: 100%;
+    margin-bottom: 1rem;
+    padding: 1rem;
+    border: 1px solid black;
+    border-radius: 5px;
+    background-color: lightgrey;
+  }
+}
+.filter__web .btn {
+  height: fit-content;
+  width: fit-content;
+  padding: 0.2rem;
+  border: 1px solid black;
+  border-radius: 5px;
+  color: black;
+  background-color: #e9ebed;
+}
+.filter__web .btn:hover {
+  color: white;
+  background-color: #D2B85A;
+}
+.filter__web .btn i {
+  margin-left: 1rem;
+}
+
+.filter__mobile {
+  position: fixed;
+  bottom: 2rem;
+  right: 1.5rem;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  height: 75px;
+  width: 75px;
+  border-radius: 50%;
+  border: 2px solid white;
+  background-color: #D2B85A;
+  opacity: 90%;
+}
+.filter__mobile i {
+  color: white;
+  font-size: 2rem;
+  text-shadow: 0 0 1px black;
+}
+@media (min-width: 480px) {
+  .filter__mobile {
+    display: none;
+  }
+}
+
 button {
   all: unset;
+  -webkit-tap-highlight-color: transparent;
 }
 button:hover {
   cursor: pointer;

@@ -1,0 +1,73 @@
+@use "../global/colors" as *;
+@use "../global/breakpoints" as *;
+
+.filter {
+  width: 100%;
+}
+
+.filter__web {
+  display: none;
+
+  @include sm {
+    display: flex;
+    align-items: center;
+
+    height: 50px;
+    width: 100%;
+    margin-bottom: 1rem;
+    padding: 1rem;
+
+    border: 1px solid black;
+    border-radius: 5px;
+    background-color: lightgrey;
+  }
+
+  .btn {
+    height: fit-content;
+    width: fit-content;
+    padding: 0.2rem;
+
+    border: 1px solid black;
+    border-radius: 5px;
+
+    color: black;
+    background-color: #e9ebed;
+
+    &:hover {
+      color: white;
+      background-color: $primary;
+    }
+
+    i {
+      margin-left: 1rem;
+    }
+  }
+}
+
+.filter__mobile {
+  position: fixed;
+  bottom: 2rem;
+  right: 1.5rem;
+
+  display: flex;
+  justify-content: center;
+  align-items: center;
+
+  height: 75px;
+  width: 75px;
+  border-radius: 50%;
+  border: 2px solid white;
+
+  background-color: $primary;
+  opacity: 90%;
+
+  i {
+    color:white;
+    font-size: 2rem;
+    text-shadow: 0 0 1px black;
+  }
+
+  @include sm {
+    display: none;
+  }
+}

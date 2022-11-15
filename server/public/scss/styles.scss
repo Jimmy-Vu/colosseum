@@ -13,6 +13,7 @@
 @use "./pages/sign-in.scss";
 @use "./pages/account-page.scss";
 @use "./components/reviews.scss";
+@use "./components/filter.scss";
 // "xs": 0,
 // "sm": 480px,
 // "md": 720px,
@@ -21,6 +22,7 @@
 
 button {
   all: unset;
+  -webkit-tap-highlight-color: transparent;
 
   &:hover {
     cursor: pointer;
