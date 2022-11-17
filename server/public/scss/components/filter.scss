@@ -5,7 +5,7 @@
   width: 100%;
 }
 
-.filter__web {
+.filter-web {
   display: none;
 
   @include sm {
@@ -44,30 +44,80 @@
   }
 }
 
-.filter__mobile {
-  position: fixed;
-  bottom: 2rem;
-  right: 1.5rem;
+.filter-mobile {
 
-  display: flex;
-  justify-content: center;
-  align-items: center;
+  &__btn {
+    position: fixed;
+    z-index: 6;
+    bottom: 2rem;
+    right: 1.5rem;
 
-  height: 75px;
-  width: 75px;
-  border-radius: 50%;
-  border: 2px solid white;
+    display: flex;
+    justify-content: center;
+    align-items: center;
 
-  background-color: $primary;
-  opacity: 90%;
+    height: 75px;
+    width: 75px;
+    border-radius: 50%;
+    border: 2px solid white;
 
-  i {
-    color:white;
-    font-size: 2rem;
-    text-shadow: 0 0 1px black;
+    background-color: $primary;
+    opacity: 90%;
+
+    i {
+      color: white;
+      font-size: 2rem;
+      text-shadow: 0 0 1px black;
+    }
+
+    @include sm {
+      display: none;
+    }
   }
 
-  @include sm {
-    display: none;
+  &__modal {
+    position: fixed;
+    z-index: 5;
+    top: 0;
+    left: 0;
+
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+
+    width: 100vw;
+    height: 100vh;
+    padding: 2rem;
+
+    background-color: rgba(0, 0, 0, 0.95);
+    color: white;
+  }
+
+  &__title {
+    font-size: 36px;
+  }
+
+  &__form {
+    display: flex;
+    flex-direction: column;
+
+    width: 100%;
+    padding: 1rem;
+    border-radius: 5px;
+    background-color: orange;
+
+    .types-fieldset {
+      border: 0;
+      margin-bottom: 1rem;
+    }
+
+    .submit-btn {
+      align-self: center;
+      padding: 0.25rem;
+      border: 1px solid black;
+
+      color: black;
+      background-color: white;
+    }
   }
 }
