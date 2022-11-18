@@ -3,7 +3,7 @@ import FilterMobileModal from "./filter-mobile-modal";
 
 export default function Filter(props) {
   const { handleFiltering } = props;
-  const [isOpen, setIsOpen] = useState(true);
+  const [isOpen, setIsOpen] = useState(false);
   const [filters, setFilters] = useState({
     types: {
       commercial: false,
@@ -20,10 +20,6 @@ export default function Filter(props) {
       kickboxing: false
     }
   });
-
-  useEffect(() => {
-    console.log(filters.types);
-  }, [filters])
 
   function handleClick() {
     setIsOpen(prev => !prev);

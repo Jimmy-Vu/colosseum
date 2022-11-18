@@ -11,7 +11,7 @@ export default function Listings(props) {
   useEffect(() => {
     fetch('/api/gyms', { method: 'GET' })
       .then(result => result.json())
-      .then(items => setListings({ gyms: items }))
+      .then(items => setListings(prev => ({ ...prev, gyms: items })))
       .catch(err => console.error(err));
   }, []);
 
@@ -25,7 +25,8 @@ export default function Listings(props) {
     const filteredGymsArray = [];
     for (let i = 0; i < filteredTypesArray.length; i++) {
       listings.gyms.forEach(gym => {
-        if (gym.type.includes(filteredTypesArray[i])) {
+        //check if the current gym includes the current type && check if the array doesn't already include the gym to avoid duplicate
+        if (gym.type.includes(filteredTypesArray[i]) && !filteredGymsArray.includes(gym)) {
           filteredGymsArray.push(gym);
         }
       })
@@ -42,7 +43,7 @@ export default function Listings(props) {
       <main className="listings-main">
         <a className="listings-add-btn" href="#create">Add an Arena</a>
         <Filter setIsFiltered={setIsFiltered} handleFiltering={handleFiltering} />
-        {!isFiltered || listings.filteredGyms.length === 0 &&
+        {(!isFiltered || listings.filteredGyms.length === 0) &&
           listings.gyms.map(gym => (
             <ListingCard key={gym.gymId} gym={gym} />
           ))
