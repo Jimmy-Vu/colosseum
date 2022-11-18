@@ -75,6 +75,7 @@
   color: white;
 }
 .filter-mobile__title {
+  margin-bottom: 1rem;
   font-size: 36px;
 }
 .filter-mobile__form {
@@ -83,18 +84,31 @@
   width: 100%;
   padding: 1rem;
   border-radius: 5px;
-  background-color: orange;
 }
 .filter-mobile__form .types-fieldset {
-  border: 0;
+  padding: 1rem;
   margin-bottom: 1rem;
+}
+.filter-mobile__form .types-fieldset legend {
+  font-size: 24px;
+  font-weight: 500;
+}
+.filter-mobile__form .types-fieldset .checkbox-option {
+  font-size: 20px;
 }
 .filter-mobile__form .submit-btn {
   align-self: center;
   padding: 0.25rem;
-  border: 1px solid black;
+  border: 1px solid white;
   color: black;
   background-color: white;
+  outline: #D2B85A solid;
+}
+.filter-mobile__form .submit-btn:hover {
+  transition: outline-offset 75ms ease-out;
+}
+.filter-mobile__form .submit-btn:not(:active) {
+  outline-offset: 0.25rem;
 }
 
 /*# sourceMappingURL=filter.css.map */
