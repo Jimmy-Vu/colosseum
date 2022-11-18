@@ -5,22 +5,50 @@ import ListingCard from "../components/listing-card";
 import Filter from "../components/filter";
 
 export default function Listings(props) {
-  const [state, setState] = useState({ gyms: [] });
+  const [listings, setListings] = useState({ gyms: [], filteredGyms: [] });
+  const [isFiltered, setIsFiltered] = useState(false);
 
   useEffect(() => {
     fetch('/api/gyms', { method: 'GET' })
       .then(result => result.json())
-      .then(items => setState({ gyms: items }))
+      .then(items => setListings({ gyms: items }))
       .catch(err => console.error(err));
   }, []);
+
+  function handleFiltering(types) {
+    const filteredTypesArray = [];
+    for (const property in types) {
+      if (types[property] === true) {
+        filteredTypesArray.push(property);
+      }
+    }
+    const filteredGymsArray = [];
+    for (let i = 0; i < filteredTypesArray.length; i++) {
+      listings.gyms.forEach(gym => {
+        if (gym.type.includes(filteredTypesArray[i])) {
+          filteredGymsArray.push(gym);
+        }
+      })
+    }
+    setListings(prev => ({
+      ...prev,
+      filteredGyms: filteredGymsArray
+    }));
+    setIsFiltered(true);
+  }
 
   return (
     <>
       <main className="listings-main">
         <a className="listings-add-btn" href="#create">Add an Arena</a>
-        <Filter />
-        {
-          state.gyms.map(gym => (
+        <Filter setIsFiltered={setIsFiltered} handleFiltering={handleFiltering} />
+        {!isFiltered || listings.filteredGyms.length === 0 &&
+          listings.gyms.map(gym => (
+            <ListingCard key={gym.gymId} gym={gym} />
+          ))
+        }
+        {isFiltered &&
+          listings.filteredGyms.map(gym => (
             <ListingCard key={gym.gymId} gym={gym} />
           ))
         }

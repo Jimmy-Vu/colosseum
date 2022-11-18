@@ -89,12 +89,11 @@
     height: 100vh;
     padding: 2rem;
 
-    background-color: rgba(0, 0, 0, 0.95);
+    background-color: rgba(0, 0, 0, 0.99);
     color: white;
   }
 
   &__title {
-    margin-bottom: 1rem;
     font-size: 36px;
   }
 
@@ -103,21 +102,20 @@
     flex-direction: column;
 
     width: 100%;
-    padding: 1rem;
     border-radius: 5px;
-    // background-color: orange;
 
     .types-fieldset {
       padding: 1rem;
       margin-bottom: 1rem;
 
       legend {
-        font-size: 24px;
+        font-size: 30px;
         font-weight: 500;
       }
 
       .checkbox-option {
-        font-size: 20px;
+        font-size: 24px;
+        margin-bottom: .25rem;
       }
     }
 
@@ -128,7 +126,9 @@
 
       color: black;
       background-color: white;
-      outline: $primary solid;
+      outline: white solid;
+
+      font-size: 20px;
 
       &:hover {
         transition: outline-offset 75ms ease-out;
