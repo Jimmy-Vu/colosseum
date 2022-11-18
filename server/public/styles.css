@@ -899,20 +899,23 @@ footer {
     height: 50px;
     width: 100%;
     margin-bottom: 1rem;
-    padding: 1rem;
+    padding: 1.75rem 1rem 1.75rem 1rem;
     border: 1px solid black;
-    border-radius: 5px;
-    background-color: lightgrey;
+    border-radius: 3px;
+    background-color: #fafafa;
   }
 }
 .filter-web .btn {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
   height: fit-content;
-  width: fit-content;
-  padding: 0.2rem;
+  width: 100px;
+  padding: 0.25rem;
   border: 1px solid black;
-  border-radius: 5px;
+  border-radius: 2px;
   color: black;
-  background-color: #e9ebed;
+  background-color: #f3f3f3;
 }
 .filter-web .btn:hover {
   color: white;

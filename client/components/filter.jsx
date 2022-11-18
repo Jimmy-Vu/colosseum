@@ -45,7 +45,7 @@ export default function Filter(props) {
     <div className="filter">
       <div className="filter-web">
         <button className="btn filter-web__btn">
-          Types
+          Filter
           <i className="fa-sharp fa-solid fa-caret-down"></i>
         </button>
       </div>
