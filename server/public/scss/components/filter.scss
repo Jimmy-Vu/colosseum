@@ -9,6 +9,7 @@
   display: none;
 
   @include sm {
+    position: relative;
     display: flex;
     align-items: center;
 
@@ -45,6 +46,24 @@
     i {
       margin-left: 1rem;
     }
+  }
+
+  &__dropdown {
+    position: absolute;
+    top: 40px;
+    left: 1rem;
+    z-index: 50;
+
+    display: flex;
+    flex-direction: column;
+
+    width: 16rem;
+    min-height: fit-content;
+    padding: 0.5rem;
+    margin-top: 0.5rem;
+
+    box-shadow: 0 1px 3px 0 rgba(0, 0, 0, 0.1), 0 1px 2px 0 rgba(0, 0, 0, 0.06);
+    background-color: white;
   }
 }
 
