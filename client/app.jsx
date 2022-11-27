@@ -1,7 +1,14 @@
 import React, { useEffect, useState } from "react";
 import ReactDOM from "react-dom/client";
+// Redux
+import { useSelector, useDispatch } from 'react-redux';
+import { login, logout, setMobileTrue, setMobileFalse } from './redux/appSlice';
+import { setStateUser } from './redux/userSlice';
+// Functions
 import parseRoute from "./lib/parseRoute";
 import tokenVerify from "./lib/tokenVerify";
+import checkMobileView from "./lib/checkMobileView";
+// Components
 import Home from "./pages/home";
 import NotFound from "./pages/not-found";
 import Listings from "./pages/listings";
@@ -12,19 +19,15 @@ import Footer from "./components/footer";
 import EditListing from "./pages/edit-listing";
 import Auth from "./pages/auth";
 import AccountPage from "./pages/account-page";
-import { useSelector, useDispatch } from 'react-redux';
-import { login, logout } from './redux/appSlice';
-import { setStateUser } from './redux/userSlice';
 
 function App(props) {
   const dispatch = useDispatch();
-  const aModalIsOpen = useSelector(state => state.app.aModalIsOpen);
-
   const [stateRoute, setStateRoute] = useState({
     route: parseRoute(window.location.hash)
   });
 
   useEffect(() => {
+    checkMobileView() ? dispatch(setMobileTrue()) : dispatch(setMobileFalse());
     window.addEventListener('hashchange', event => {
       setStateRoute({ route: parseRoute(window.location.hash) })
     });

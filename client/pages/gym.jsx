@@ -30,12 +30,13 @@ export default function Gym(props) {
         return res.json();
       })
       .then(data => {
+        console.log(data);
         setGymState({
           userId: data.userId,
           gymId: data.gymId,
           name: data.name,
           address: data.address,
-          geometry: JSON.parse(data.geometry),
+          geodata: JSON.parse(data.geodata),
           type: typeAdjust(data.type),
           imageURL: data.imageURL,
           description: data.description
@@ -79,7 +80,7 @@ export default function Gym(props) {
         </a>
         <div className="gym-details-map-container">
           <div className="map-container">
-            <MapDisplay coordinates={{ longitude: `${gymState.geometry.coordinates[1]}`, latitude: `${gymState.geometry.coordinates[0]}` }} />
+            <MapDisplay coordinates={{ longitude: `${gymState.geodata.longitude}`, latitude: `${gymState.geodata.latitude}` }} />
           </div>
           <div className="gym-details">
             <h3 className="gym-title">{gymState.name}</h3>
