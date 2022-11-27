@@ -21,6 +21,10 @@ export default function FilterWebDropdown(props) {
             <label htmlFor="weightlifting">Olympic Weightlifting</label>
           </div>
           <div className="checkbox-option">
+            <input type="checkbox" name="crossfit" id="crossfit" defaultChecked={filters.types.crossfit} />
+            <label htmlFor="crossfit">Crossfit</label>
+          </div>
+          <div className="checkbox-option">
             <input type="checkbox" name="climbing" id="climbing" defaultChecked={filters.types.climbing} />
             <label htmlFor="climbing">Climbing</label>
           </div>
@@ -57,7 +61,7 @@ export default function FilterWebDropdown(props) {
             <label htmlFor="wrestling">Wrestling</label>
           </div>
         </fieldset>
-        <button className="submit-btn" type="submit">Apply</button>
+        <button className="apply-btn" type="submit">Apply</button>
       </form>
     </div>
   );

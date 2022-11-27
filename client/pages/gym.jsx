@@ -30,6 +30,7 @@ export default function Gym(props) {
         return res.json();
       })
       .then(data => {
+        console.log(data);
         setGymState({
           userId: data.userId,
           gymId: data.gymId,
