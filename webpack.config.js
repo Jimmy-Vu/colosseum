@@ -6,7 +6,7 @@ const clientPath = path.join(__dirname, 'client');
 const serverPublicPath = path.join(__dirname, 'server/public');
 module.exports = {
   resolve: {
-    extensions: ['.js', '.jsx']
+    extensions: ['.js', '.jsx', '.ts', '.tsx']
   },
   entry: clientPath,
   output: {
@@ -32,6 +32,11 @@ module.exports = {
           'style-loader',
           'css-loader'
         ]
+      },
+      {
+        test: /\.tsx?$/,
+        use: 'ts-loader',
+        exclude: /node_modules/,
       }
     ]
   },
