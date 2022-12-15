@@ -1,20 +1,22 @@
 import React, { useEffect, useState } from "react";
 import { useSelector } from "react-redux";
 
-export default function AddReviewModal(props: {
+interface Props {
   addModalIsOpen: boolean;
   setAddModalIsOpen: (boolean: boolean) => void;
   setReviewAlreadyMade: (boolean: boolean) => void;
   handleSuccessfulSubmit: () => void;
-  gymState: {gymId: number; name: string}
-}) {
+  gymState: { gymId: number; name: string };
+}
+
+export default function AddReviewModal(props: Props) {
   const currentUser = useSelector(state => state.user);
   const { addModalIsOpen, setAddModalIsOpen, setReviewAlreadyMade, handleSuccessfulSubmit } = props;
   const { gymId, name } = props.gymState;
   const [review, setReview] = useState({
     user: '',
     reviewValues: {
-      rating: 0,
+      rating: '0',
       description: ''
     }
   });
@@ -26,27 +28,27 @@ export default function AddReviewModal(props: {
     }))
   }, [currentUser])
 
-  function handleRating(e) {
+  function handleRating(e: React.FormEvent<HTMLInputElement>) {
     setReview(prev => ({
       ...prev,
       reviewValues: {
         ...prev.reviewValues,
-        rating: e.target.value
+        rating: e.currentTarget.value
       }
     }));
   }
 
-  function handleTextChange(e) {
+  function handleTextChange(e: React.ChangeEvent<HTMLTextAreaElement>) {
     setReview(prev => ({
       ...prev,
       reviewValues: {
         ...prev.reviewValues,
-        description: e.target.value
+        description: e.currentTarget.value
       }
     }))
   }
 
-  function handleSubmit(e) {
+  function handleSubmit(e: React.SyntheticEvent) {
     e.preventDefault();
 
     fetch(`/api/reviews/${gymId}`, {
