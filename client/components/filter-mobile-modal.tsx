@@ -1,6 +1,27 @@
-import React, { useState } from "react";
+import React from "react";
 
-export default function FilterMobileModal(props) {
+interface Props {
+  handleCheckboxes: () => void;
+  handleSubmit: () => void;
+  filters: {
+    types: {
+      commercial: boolean;
+      powerlifting: boolean;
+      weightlifting: boolean;
+      climbing: boolean;
+      boxing: boolean;
+      ['muay-thai']: boolean;
+      taekwondo: boolean;
+      karate: boolean;
+      ['brazilian-ji-jijutsu']: boolean;
+      ['krav-maga']: boolean;
+      wrestling: boolean;
+      kickboxing: boolean;
+    }
+  }
+}
+
+export default function FilterMobileModal(props: Props) {
   const { handleCheckboxes, handleSubmit, filters } = props;
 
   return (
@@ -10,7 +31,7 @@ export default function FilterMobileModal(props) {
         <fieldset onChange={handleCheckboxes} className="types-fieldset">
           <legend>Types</legend>
           <div className="checkbox-option">
-            <input type="checkbox" name="commercial" id="commercial" defaultChecked={filters.types.commercial}/>
+            <input type="checkbox" name="commercial" id="commercial" defaultChecked={filters.types.commercial} />
             <label htmlFor="commercial">Commercial</label>
           </div>
           <div className="checkbox-option">
