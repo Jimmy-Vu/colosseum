@@ -1,5 +1,6 @@
 import React, { useEffect, useState } from "react";
 import { useSelector } from "react-redux";
+import { RootState } from "../redux/rootState";
 
 interface Props {
   addModalIsOpen: boolean;
@@ -10,7 +11,7 @@ interface Props {
 }
 
 export default function AddReviewModal(props: Props) {
-  const currentUser = useSelector(state => state.user);
+  const currentUser = useSelector((state: RootState) => state.user.username);
   const { addModalIsOpen, setAddModalIsOpen, setReviewAlreadyMade, handleSuccessfulSubmit } = props;
   const { gymId, name } = props.gymState;
   const [review, setReview] = useState({
