@@ -1,6 +1,28 @@
 import React from "react";
 
-export default function FilterWebDropdown(props) {
+interface Props {
+  handleCheckboxes: () => void;
+  handleSubmit: () => void;
+  filters: {
+    types: {
+      commercial: boolean;
+      powerlifting: boolean;
+      weightlifting: boolean;
+      crossfit: boolean;
+      climbing: boolean;
+      boxing: boolean;
+      ['muay-thai']: boolean;
+      taekwondo: boolean;
+      karate: boolean;
+      ['brazilian-ji-jijutsu']: boolean;
+      ['krav-maga']: boolean;
+      wrestling: boolean;
+      kickboxing: boolean;
+    }
+  }
+}
+
+export default function FilterWebDropdown(props: Props) {
   const { handleCheckboxes, handleSubmit, filters } = props;
 
   return (

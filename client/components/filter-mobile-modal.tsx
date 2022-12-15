@@ -8,6 +8,7 @@ interface Props {
       commercial: boolean;
       powerlifting: boolean;
       weightlifting: boolean;
+      crossfit: boolean;
       climbing: boolean;
       boxing: boolean;
       ['muay-thai']: boolean;
