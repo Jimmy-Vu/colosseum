@@ -1,8 +1,8 @@
 import React from "react";
 
 interface Props {
-  handleCheckboxes: () => void;
-  handleSubmit: () => void;
+  handleCheckboxes: (e: React.FormEvent<HTMLFieldSetElement>) => void;
+  handleSubmit: (e: React.SyntheticEvent) => void;
   filters: {
     types: {
       commercial: boolean;
