@@ -55,7 +55,7 @@ export default function AddReviewModal(props: Props) {
     fetch(`/api/reviews/${gymId}`, {
       method: 'POST',
       headers: {
-        'access-token': window.localStorage.getItem('access-token'),
+        'access-token': `${window.localStorage.getItem('access-token')}`,
         'Content-Type': 'application/json'
       },
       body: JSON.stringify(review)
