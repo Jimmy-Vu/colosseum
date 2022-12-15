@@ -1,12 +1,18 @@
 import React from "react";
 import { useTransition, animated } from '@react-spring/web';
 import { useSelector } from 'react-redux';
+import { RootState } from "../redux/rootState";
 
+interface Props {
+  isOpen: boolean;
+  setDrawerIsOpen: (boolean: boolean) => void;
+  handleSignOut: () => void;
+}
 
-function AppDrawer(props) {
+function AppDrawer(props: Props) {
   const { isOpen, setDrawerIsOpen, handleSignOut } = props;
-  const isLoggedIn = useSelector(state => state.app.isLoggedIn);
-  const username = useSelector(state => state.user.username);
+  const isLoggedIn = useSelector((state: RootState) => state.app.isLoggedIn);
+  const username = useSelector((state: RootState) => state.user.username);
   const transition = useTransition(isOpen, {
     from: { x: "-100%" },
     enter: { x: "0" },
