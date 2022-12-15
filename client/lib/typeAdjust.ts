@@ -12,7 +12,7 @@ export default function typeAdjust(string: string): string {
   return splitString.join(', ');
 }
 
-function capitalize(string: string) {
+function capitalize(string: string): string {
   if (!string) {
     return string;
   }

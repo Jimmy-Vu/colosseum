@@ -3,6 +3,6 @@ export default function parseRoute(hashRoute:string) {
     hashRoute = hashRoute.replace('#', '');
   }
   const [path, queryString] = hashRoute.split('?');
-  const params: URLSearchParams  = new URLSearchParams(queryString);
+  const params = new URLSearchParams(queryString);
   return { path, params };
 }

@@ -16,7 +16,7 @@ export default function editTypeAdjust(string:string) {
     kickboxing: false
   };
 
-  const splitString:string[] = string.replace(/[\{\}"]/g, "").split(',');
+  const splitString = string.replace(/[\{\}"]/g, "").split(',');
   for (let i = 0; i < splitString.length; i++) {
     type[splitString[i] as keyof gymType] = true;
   }
