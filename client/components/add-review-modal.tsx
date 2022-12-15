@@ -1,8 +1,13 @@
 import React, { useEffect, useState } from "react";
-import { useSelector, useDispatch } from "react-redux";
-import { setAModalIsOpen, setAModalIsClosed } from "../redux/appSlice";
+import { useSelector } from "react-redux";
 
-export default function AddReviewModal(props) {
+export default function AddReviewModal(props: {
+  addModalIsOpen: boolean;
+  setAddModalIsOpen: (boolean: boolean) => void;
+  setReviewAlreadyMade: (boolean: boolean) => void;
+  handleSuccessfulSubmit: () => void;
+  gymState: {gymId: number; name: string}
+}) {
   const currentUser = useSelector(state => state.user);
   const { addModalIsOpen, setAddModalIsOpen, setReviewAlreadyMade, handleSuccessfulSubmit } = props;
   const { gymId, name } = props.gymState;
@@ -111,7 +116,7 @@ export default function AddReviewModal(props) {
               </label>
             </span>
           </div>
-          <textarea onChange={handleTextChange} className="review-form-description" name="review-form-description" id="" cols="30" rows="10" placeholder="Share details of your experience"></textarea>
+          <textarea onChange={handleTextChange} className="review-form-description" name="review-form-description" id="" cols={30} rows={10} placeholder="Share details of your experience"></textarea>
           <button className="review-submit-btn" type="submit">Submit</button>
         </form>
       </div>
