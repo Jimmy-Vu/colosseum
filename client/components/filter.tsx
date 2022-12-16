@@ -1,3 +1,4 @@
+import { current } from "@reduxjs/toolkit";
 import React, { useState, useEffect } from "react";
 import { useSelector } from "react-redux";
 import { RootState } from "../redux/rootState";
@@ -50,12 +51,13 @@ export default function Filter(props: Props) {
     setIsOpen(prev => !prev);
   }
 
-  function handleCheckboxes(e: React.ChangeEvent<HTMLFieldSetElement>) {
+  function handleCheckboxes(e: React.FormEvent<HTMLInputElement>) {
+    const element = e.currentTarget as HTMLInputElement;
     setFilters(prev => ({
       ...prev,
       types: {
         ...prev.types,
-        [e.currentTarget.name]: e.currentTarget.checked
+        [element.name]: element.checked
       }
     }));
   }
