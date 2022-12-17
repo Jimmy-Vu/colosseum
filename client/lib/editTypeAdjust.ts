@@ -1,10 +1,11 @@
 //This code needs to be refactored to just use JSON.parse
 
 export default function editTypeAdjust(string:string) {
-  const type:gymType = {
+  const type: GymType = {
     commercial: false,
     powerlifting: false,
     weightlifting: false,
+    crossfit: false,
     climbing: false,
     boxing: false,
     ['muay-thai']: false,
@@ -18,16 +19,17 @@ export default function editTypeAdjust(string:string) {
 
   const splitString = string.replace(/[\{\}"]/g, "").split(',');
   for (let i = 0; i < splitString.length; i++) {
-    type[splitString[i] as keyof gymType] = true;
+    type[splitString[i] as keyof GymType] = true;
   }
 
   return type;
 }
 
-interface gymType {
+interface GymType {
   commercial: boolean;
   powerlifting: boolean;
   weightlifting: boolean;
+  crossfit: boolean;
   climbing: boolean;
   boxing: boolean;
   ['muay-thai']: boolean;

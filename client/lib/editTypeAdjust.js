@@ -4,6 +4,7 @@ export default function editTypeAdjust(string) {
         commercial: false,
         powerlifting: false,
         weightlifting: false,
+        crossfit: false,
         climbing: false,
         boxing: false,
         ['muay-thai']: false,
