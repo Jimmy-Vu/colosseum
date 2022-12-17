@@ -1,9 +1,15 @@
-import React, { useState } from "react";
+import React from "react";
 import Map, { Marker, NavigationControl } from "react-map-gl";
 
-export default function MapDisplay(props) {
+interface Props {
+  coordinates: {
+    longitude: number;
+    latitude: number;
+  }
+}
+
+export default function MapDisplay(props: Props) {
   const { longitude, latitude } = props.coordinates;
-  const [showPopup, setShowPopup] = useState(true);
 
   return (
     <Map
@@ -36,7 +42,7 @@ const pinStyle = {
   stroke: 'none'
 };
 
-function Pin(props) {
+function Pin(props: { size: number; children: [] }) {
   const { size = 20 } = props;
 
   return (
