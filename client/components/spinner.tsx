@@ -1,7 +1,7 @@
 import React from "react";
 import { MoonLoader } from "react-spinners";
 
-export default function Spinner(props) {
+export default function Spinner(props: { isLoading: boolean }) {
   const isLoading = props.isLoading;
   const override = {
     position: "absolute",
@@ -22,8 +22,8 @@ export default function Spinner(props) {
 
   if (isLoading) {
     return (
-      <div className="spinner-overlay" style={overlayStyle}>
-        <MoonLoader loading={isLoading} cssOverride={override} size="70px" color="#FFDB51" />
+      <div className="spinner-overlay" style={overlayStyle as React.CSSProperties}>
+        <MoonLoader loading={isLoading} cssOverride={override as React.CSSProperties} size="70px" color="#FFDB51" />
       </div>
     );
   } else {

@@ -1,8 +1,18 @@
 import React from "react";
 import typeAdjust from "../lib/typeAdjust";
 
-function ListingCard(props) {
-  const { userId, gymId, name, address, imageURL } = props.gym;
+interface Props {
+  gym: {
+    gymId: number;
+    name: string;
+    address: string;
+    imageURL: string;
+    type: string;
+  }
+}
+
+function ListingCard(props: Props) {
+  const { gymId, name, address, imageURL } = props.gym;
   let { type } = props.gym;
   type = typeAdjust(type);
 

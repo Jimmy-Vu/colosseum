@@ -1,7 +1,16 @@
 import React, { useEffect, useState } from "react";
-import { useSelector } from "react-redux";
 
-export default function EditReviewModal(props) {
+interface Props {
+  editModalIsOpen: boolean;
+  setEditModalIsOpen: (boolean: boolean) => void;
+  setReviewAlreadyMade: (boolean: boolean) => void;
+  setReviewsIsEmpty: (boolean: boolean) => void;
+  handleSuccessfulSubmit: (operation: string) => void;
+  gymState: { gymName: string };
+  reviewDetails: { reviewId: number, rating: number, description: string };
+}
+
+export default function EditReviewModal(props: Props) {
   const { editModalIsOpen, setEditModalIsOpen, setReviewAlreadyMade, setReviewsIsEmpty, handleSuccessfulSubmit } = props;
   const { gymName } = props.gymState;
   const { reviewId, rating, description } = props.reviewDetails
@@ -10,47 +19,47 @@ export default function EditReviewModal(props) {
     description: description
   });
 
-  function handleRating(e) {
+  function handleRating(e: React.FormEvent<HTMLInputElement>) {
     setReview(prev => ({
       ...prev,
-      rating: e.target.value
+      rating: parseInt(e.currentTarget.value, 10)
     }));
   }
 
-  function handleTextChange(e) {
+  function handleTextChange(e: React.ChangeEvent<HTMLTextAreaElement>) {
     setReview(prev => ({
       ...prev,
       description: e.target.value
     }))
   }
 
-  function handleSubmit(e) {
+  function handleSubmit(e: React.SyntheticEvent) {
     e.preventDefault();
 
     fetch(`/api/reviews/${reviewId}`, {
       method: 'PATCH',
       headers: {
-        'access-token': window.localStorage.getItem('access-token'),
+        'access-token': `${window.localStorage.getItem('access-token')}`,
         'Content-Type': 'application/json'
       },
       body: JSON.stringify(review)
     })
       .then(res => {
         if (res.status === 200) {
-          handleSuccessfulSubmit();
+          handleSuccessfulSubmit('success');
           setEditModalIsOpen(false);
         }
       })
       .catch(err => console.error(err));
   }
 
-  function handleDeleteReview(e) {
+  function handleDeleteReview(e: React.SyntheticEvent) {
     e.preventDefault();
 
     fetch(`/api/reviews/${reviewId}`, {
       method: 'DELETE',
       headers: {
-        'access-token': window.localStorage.getItem('access-token')
+        'access-token': `${window.localStorage.getItem('access-token')}`
       }
     })
       .then(res => {
@@ -113,7 +122,7 @@ export default function EditReviewModal(props) {
               </label>
             </span>
           </div>
-          <textarea onChange={handleTextChange} className="review-form-description" name="review-form-description" id="" cols="30" rows="10" value={review.description} placeholder="Share details of your experience"></textarea>
+          <textarea onChange={handleTextChange} className="review-form-description" name="review-form-description" id="" cols={30} rows={10} value={review.description} placeholder="Share details of your experience"></textarea>
           <div>
             <button className="review-submit-btn" type="submit">Submit</button>
             <button onClick={handleDeleteReview} className="review-delete-btn" type="button">Delete Review</button>

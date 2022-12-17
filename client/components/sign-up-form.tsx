@@ -1,25 +1,26 @@
 import React, { useState } from "react";
 
-export default function SignInForm(props) {
-  const { switchForm, handleSignIn } = props;
+export default function SignUpForm(props: { switchForm: () => void; }) {
+  const { switchForm } = props;
   const [inputState, setInputState] = useState({
     username: '',
     password: ''
   });
-  const [errorMessage, setErrorMessage] = useState('');
   const [passShowing, setPassShowing] = useState(false);
+  const [errorMessage, setErrorMessage] = useState('');
 
-  function handleChange(e) {
+  function handleChange(e: React.FormEvent<HTMLInputElement>) {
+    const element = e.target as HTMLInputElement;
     setInputState(prev => ({
       ...prev,
-      [e.target.id]: e.target.value
+      [element.id]: element.value
     }));
   }
 
-  function handleSubmit(e) {
+  function handleSubmit(e: React.SyntheticEvent) {
     e.preventDefault();
 
-    fetch('/api/users/sign-in', {
+    fetch('/api/users/sign-up', {
       method: 'POST',
       headers: {
         'Content-Type': 'application/json'
@@ -30,26 +31,7 @@ export default function SignInForm(props) {
       .then(result => {
         result.error
           ? setErrorMessage(result.error)
-          : handleSignIn(result);
-      })
-      .catch(err => console.error(err));
-  }
-
-  function handleDemoSignIn(e) {
-    e.preventDefault();
-
-    fetch('/api/users/sign-in/demo', {
-      method: 'POST',
-      headers: {
-        'Content-Type': 'application/json'
-      },
-      body: JSON.stringify({ username: 'Demo', password: 'demo' })
-    })
-      .then(res => res.json())
-      .then(result => {
-        result.error
-          ? setErrorMessage(result.error)
-          : handleSignIn(result);
+          : switchForm();
       })
       .catch(err => console.error(err));
   }
@@ -57,30 +39,31 @@ export default function SignInForm(props) {
   return (
     <main className="sign-in-main">
       <div className="sign-in-container">
-        <h2 className="sign-in-title">Sign In</h2>
+        <h2 className="sign-in-title">Register</h2>
         <form onSubmit={handleSubmit} className="sign-in-form">
           <div>
             <label htmlFor="username">Username</label>
-            <input onChange={handleChange} type="text" id="username" required />
+            <input onChange={handleChange} type="text" id="username" placeholder=" " minLength={2} required />
+            <span>Usernames needs to have a minimum length of 2 characters</span>
           </div>
           <div>
             <label htmlFor="username">Password</label>
-            <input onChange={handleChange} type={passShowing ? 'text' : 'password'} id="password" required />
+            <input onChange={handleChange} type={passShowing ? 'text' : 'password'} id="password" placeholder=" " minLength={2} required />
             {passShowing &&
               <i onClick={() => setPassShowing(false)} id="password-toggle" className="fa-solid fa-eye-slash"></i>
             }
             {!passShowing &&
               <i onClick={() => setPassShowing(true)} id="password-toggle" className="fa-solid fa-eye"></i>
             }
+            <span>Passwords needs to have a minimum length of 2 characters</span>
           </div>
           <button onClick={switchForm} type="button">
-            <p style={{ textDecoration: 'underline' }}>Don't have an account? Click here to register.</p>
+            <p style={{ textDecoration: 'underline' }}>Have an account? Click here to sign in.</p>
             <p style={{ textAlign: 'center', color: 'red' }}>{errorMessage}</p>
           </button>
           <button className="sign-btn" type="submit">Submit</button>
         </form>
-        <button onClick={handleDemoSignIn} className="demo-btn" type="button">Demo User</button>
       </div>
-    </main >
+    </main>
   );
 }

@@ -1,15 +1,23 @@
 import React, { useEffect, useState } from "react";
-import { useSelector, useDispatch } from "react-redux";
-import { setAModalIsOpen, setAModalIsClosed } from "../redux/appSlice";
+import { useSelector } from "react-redux";
+import { RootState } from "../redux/rootState";
 
-export default function AddReviewModal(props) {
-  const currentUser = useSelector(state => state.user);
+interface Props {
+  addModalIsOpen: boolean;
+  setAddModalIsOpen: (boolean: boolean) => void;
+  setReviewAlreadyMade: (boolean: boolean) => void;
+  handleSuccessfulSubmit: (operation: string) => void;
+  gymState: { gymId: number; name: string };
+}
+
+export default function AddReviewModal(props: Props) {
+  const currentUser = useSelector((state: RootState) => state.user.username);
   const { addModalIsOpen, setAddModalIsOpen, setReviewAlreadyMade, handleSuccessfulSubmit } = props;
   const { gymId, name } = props.gymState;
   const [review, setReview] = useState({
     user: '',
     reviewValues: {
-      rating: 0,
+      rating: '0',
       description: ''
     }
   });
@@ -21,40 +29,40 @@ export default function AddReviewModal(props) {
     }))
   }, [currentUser])
 
-  function handleRating(e) {
+  function handleRating(e: React.FormEvent<HTMLInputElement>) {
     setReview(prev => ({
       ...prev,
       reviewValues: {
         ...prev.reviewValues,
-        rating: e.target.value
+        rating: e.currentTarget.value
       }
     }));
   }
 
-  function handleTextChange(e) {
+  function handleTextChange(e: React.ChangeEvent<HTMLTextAreaElement>) {
     setReview(prev => ({
       ...prev,
       reviewValues: {
         ...prev.reviewValues,
-        description: e.target.value
+        description: e.currentTarget.value
       }
     }))
   }
 
-  function handleSubmit(e) {
+  function handleSubmit(e: React.SyntheticEvent) {
     e.preventDefault();
 
     fetch(`/api/reviews/${gymId}`, {
       method: 'POST',
       headers: {
-        'access-token': window.localStorage.getItem('access-token'),
+        'access-token': `${window.localStorage.getItem('access-token')}`,
         'Content-Type': 'application/json'
       },
       body: JSON.stringify(review)
     })
       .then(res => {
         if (res.status === 201) {
-          handleSuccessfulSubmit();
+          handleSuccessfulSubmit('success');
           setAddModalIsOpen(false);
           setReviewAlreadyMade(true);
         }
@@ -111,7 +119,7 @@ export default function AddReviewModal(props) {
               </label>
             </span>
           </div>
-          <textarea onChange={handleTextChange} className="review-form-description" name="review-form-description" id="" cols="30" rows="10" placeholder="Share details of your experience"></textarea>
+          <textarea onChange={handleTextChange} className="review-form-description" name="review-form-description" id="" cols={30} rows={10} placeholder="Share details of your experience"></textarea>
           <button className="review-submit-btn" type="submit">Submit</button>
         </form>
       </div>

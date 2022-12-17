@@ -1,12 +1,12 @@
 import React, { useEffect, useState } from "react";
 import AppDrawer from "./app-drawer";
-import parseRoute from "../lib/parseRoute";
-import { useSelector, useDispatch } from 'react-redux';
+import { useSelector } from 'react-redux';
+import { RootState } from "../redux/rootState";
 
-function Header(props) {
+function Header(props: { handleSignOut: () => void; }) {
   const [drawerIsOpen, setDrawerIsOpen] = useState(false);
   const [navBarScrolled, setNavBarScrolled] = useState(false);
-  const isLoggedIn = useSelector(state => state.app.isLoggedIn);
+  const isLoggedIn = useSelector((state: RootState) => state.app.isLoggedIn);
   const handleSignOut = props.handleSignOut;
 
   useEffect(() => {

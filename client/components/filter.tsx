@@ -1,17 +1,39 @@
 import React, { useState, useEffect } from "react";
 import { useSelector } from "react-redux";
+import { RootState } from "../redux/rootState";
 import FilterMobileModal from "./filter-mobile-modal";
 import FilterWebDropdown from "./filter-web-dropdown";
 
-export default function Filter(props) {
+interface Types {
+  commercial: boolean;
+  powerlifting: boolean;
+  weightlifting: boolean;
+  crossfit: boolean;
+  climbing: boolean;
+  boxing: boolean;
+  ['muay-thai']: boolean;
+  taekwondo: boolean;
+  karate: boolean;
+  ['brazilian-ji-jijutsu']: boolean;
+  ['krav-maga']: boolean;
+  wrestling: boolean;
+  kickboxing: boolean;
+}
+
+interface Props {
+  handleFiltering: (types: Types) => void;
+}
+
+export default function Filter(props: Props) {
   const { handleFiltering } = props;
-  const isMobileView = useSelector(state => state.app.isMobileView);
+  const isMobileView = useSelector((state: RootState) => state.app.isMobileView);
   const [isOpen, setIsOpen] = useState(false);
   const [filters, setFilters] = useState({
     types: {
       commercial: false,
       powerlifting: false,
       weightlifting: false,
+      crossfit: false,
       climbing: false,
       boxing: false,
       ['muay-thai']: false,
@@ -28,17 +50,18 @@ export default function Filter(props) {
     setIsOpen(prev => !prev);
   }
 
-  function handleCheckboxes(e) {
+  function handleCheckboxes(e: React.FormEvent<HTMLInputElement>) {
+    const element = e.currentTarget as HTMLInputElement;
     setFilters(prev => ({
       ...prev,
       types: {
         ...prev.types,
-        [e.target.name]: e.target.checked
+        [element.name]: element.checked
       }
     }));
   }
 
-  function handleSubmit(e) {
+  function handleSubmit(e: React.SyntheticEvent) {
     e.preventDefault();
     handleFiltering(filters.types);
     setIsOpen(false);
