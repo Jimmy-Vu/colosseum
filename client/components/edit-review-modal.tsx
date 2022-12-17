@@ -5,7 +5,7 @@ interface Props {
   setEditModalIsOpen: (boolean: boolean) => void;
   setReviewAlreadyMade: (boolean: boolean) => void;
   setReviewsIsEmpty: (boolean: boolean) => void;
-  handleSuccessfulSubmit: (string?: string) => void;
+  handleSuccessfulSubmit: (operation: string) => void;
   gymState: { gymName: string };
   reviewDetails: { reviewId: number, rating: number, description: string };
 }
@@ -46,7 +46,7 @@ export default function EditReviewModal(props: Props) {
     })
       .then(res => {
         if (res.status === 200) {
-          handleSuccessfulSubmit();
+          handleSuccessfulSubmit('success');
           setEditModalIsOpen(false);
         }
       })

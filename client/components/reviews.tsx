@@ -1,10 +1,19 @@
 import React, { useEffect, useState } from "react";
-import { useSelector, useDispatch } from "react-redux";
+import { useSelector } from "react-redux";
+import { RootState } from "../redux/rootState";
 import ReviewCard from "./review-card";
-import AddReviewModal from "../components/add-review-modal";
+import AddReviewModal from "./add-review-modal";
 
-export default function Reviews(props) {
-  const isLoggedIn = useSelector(state => state.app.isLoggedIn);
+interface Props {
+  belongsToUser: boolean;
+  gymState: {
+    gymId: number;
+    name: string;
+  }
+}
+
+export default function Reviews(props: Props) {
+  const isLoggedIn = useSelector((state: RootState) => state.app.isLoggedIn);
   const { belongsToUser } = props;
   const { gymId, name } = props.gymState;
   const [addModalIsOpen, setAddModalIsOpen] = useState(false);
@@ -24,11 +33,11 @@ export default function Reviews(props) {
       .catch(err => console.error(err));
   }, [])
 
-  function handleSuccessfulSubmit(type) {
+  function handleSuccessfulSubmit(operation: string) {
     fetch(`/api/reviews/${gymId}`, { method: 'GET' })
       .then(result => result.json())
       .then(data => {
-        if (type !== 'delete') {
+        if (operation !== 'delete') {
           setReviewsIsEmpty(false);
         }
         setUserReviews(data);
@@ -72,7 +81,7 @@ export default function Reviews(props) {
       }
       {!reviewsIsEmpty &&
         userReviews.map(review => (
-          <ReviewCard key={review.reviewId}
+          <ReviewCard key={review['reviewId']}
             reviewDetails={review}
             gymName={name}
             setReviewAlreadyMade={setReviewAlreadyMade}
