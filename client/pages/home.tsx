@@ -1,9 +1,6 @@
 import React from "react";
-import { useSelector } from "react-redux";
 
-function Home(props) {
-  const isLoggedIn = useSelector(state => state.app.isLoggedIn);
-  const username = useSelector(state => state.user.username);
+function Home(props: null) {
 
   return (
     <div className="home-container">
