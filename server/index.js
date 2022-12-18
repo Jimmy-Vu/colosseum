@@ -234,13 +234,13 @@ app.post('/api/gyms/dev', (req, res, next) => {
 
   const sql = `
   insert into "gyms" (
-    "name",
+    "gymName",
     "address",
     "type",
     "imageURL",
     "description"
     ) values ($1, $2, $3, $4, $5)
-  returning "gymId", "name", "address", "type", "imageURL", "description"
+  returning "gymId", "gymName", "address", "type", "imageURL", "description"
   `;
 
   const params = [name, address, type, imageURL, description];
@@ -282,14 +282,14 @@ app.post('/api/gyms', upload, (req, res, next) => {
       const sql = `
         insert into "gyms" (
           "userId",
-          "name",
+          "gymName",
           "address",
           "geodata",
           "type",
           "imageURL",
           "description"
           ) values ($1, $2, $3, $4, $5, $6, $7)
-        returning "gymId", "name", "address", "geodata", "type", "imageURL", "description"
+        returning "gymId", "gymName", "address", "geodata", "type", "imageURL", "description"
         `;
       const params = [userId, name, address, geodata, typeArray, imageURL, description];
       db.query(sql, params)
@@ -340,26 +340,26 @@ app.patch('/api/gyms/:gymId', upload, (req, res, next) => {
       if (!imageURL) {
         sql = `
         update "gyms"
-          set "name" = $2,
+          set "gymName" = $2,
               "address" = $3,
               "geodata" = $4,
               "type" = $5,
               "description" = $6
           where "gymId" = $1
-          returning "gymId", "name", "address", "geodata", "type", "description"
+          returning "gymId", "gymName", "address", "geodata", "type", "description"
     `;
         params = [gymId, name, address, geodata, typeArray, description];
       } else {
         sql = `
         update "gyms"
-          set "name" = $2,
+          set "gymName" = $2,
               "address" = $3,
               "geodata" = $4,
               "type" = $5,
               "imageURL" = $6,
               "description" = $7
           where "gymId" = $1
-          returning "gymId", "name", "address", "geodata", "type", "imageURL", "description"
+          returning "gymId", "gymName", "address", "geodata", "type", "imageURL", "description"
     `;
         params = [gymId, name, address, geodata, typeArray, imageURL, description];
       }

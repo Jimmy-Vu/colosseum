@@ -29,7 +29,7 @@
   );
 
 insert into "gyms" (
-  "name",
+  "gymName",
   "address",
   "geodata",
   "type",
