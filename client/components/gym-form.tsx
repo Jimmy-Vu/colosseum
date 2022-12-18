@@ -115,7 +115,6 @@ export default function GymForm(props: { setIsLoading: (boolean: boolean) => voi
     })
       .then(res => res.json())
       .then(data => {
-        console.log(data);
         setIsLoading(false);
         if (!data.gymId) {
           window.location.hash = "#not-found";
