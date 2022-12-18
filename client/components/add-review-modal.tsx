@@ -7,13 +7,13 @@ interface Props {
   setAddModalIsOpen: (boolean: boolean) => void;
   setReviewAlreadyMade: (boolean: boolean) => void;
   handleSuccessfulSubmit: (operation: string) => void;
-  gymState: { gymId: number; name: string };
+  gymState: { gymId: number; gymName: string };
 }
 
 export default function AddReviewModal(props: Props) {
   const currentUser = useSelector((state: RootState) => state.user.username);
   const { addModalIsOpen, setAddModalIsOpen, setReviewAlreadyMade, handleSuccessfulSubmit } = props;
-  const { gymId, name } = props.gymState;
+  const { gymId, gymName } = props.gymState;
   const [review, setReview] = useState({
     user: '',
     reviewValues: {

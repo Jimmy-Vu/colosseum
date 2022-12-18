@@ -1,4 +1,4 @@
-import React from "react";
+import React, { useEffect } from "react";
 import Map, { Marker, NavigationControl } from "react-map-gl";
 
 interface Props {
@@ -10,6 +10,10 @@ interface Props {
 
 export default function MapDisplay(props: Props) {
   const { longitude, latitude } = props.coordinates;
+
+  useEffect(() => {
+    console.log(props.coordinates);
+  }, [])
 
   return (
     <Map

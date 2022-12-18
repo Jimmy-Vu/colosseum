@@ -8,14 +8,14 @@ interface Props {
   belongsToUser: boolean;
   gymState: {
     gymId: number;
-    name: string;
+    gymName: string;
   }
 }
 
 export default function Reviews(props: Props) {
   const isLoggedIn = useSelector((state: RootState) => state.app.isLoggedIn);
   const { belongsToUser } = props;
-  const { gymId, name } = props.gymState;
+  const { gymId, gymName } = props.gymState;
   const [addModalIsOpen, setAddModalIsOpen] = useState(false);
   const [userReviews, setUserReviews] = useState([]);
   const [reviewsIsEmpty, setReviewsIsEmpty] = useState(true);
@@ -57,7 +57,7 @@ export default function Reviews(props: Props) {
     <section className="reviews-container">
       {addModalIsOpen &&
         <AddReviewModal
-          gymState={{ gymId, name }}
+          gymState={{ gymId, gymName }}
           setAddModalIsOpen={setAddModalIsOpen}
           addModalIsOpen={addModalIsOpen}
           setReviewAlreadyMade={setReviewAlreadyMade}
@@ -83,7 +83,7 @@ export default function Reviews(props: Props) {
         userReviews.map(review => (
           <ReviewCard key={review['reviewId']}
             reviewDetails={review}
-            gymName={name}
+            gymName={gymName}
             setReviewAlreadyMade={setReviewAlreadyMade}
             setReviewsIsEmpty={setReviewsIsEmpty}
             handleSuccessfulSubmit={handleSuccessfulSubmit}
