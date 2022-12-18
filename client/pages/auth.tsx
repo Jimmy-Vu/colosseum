@@ -2,7 +2,7 @@ import React, { useState } from "react";
 import SignInForm from "../components/sign-in-form";
 import SignUpForm from "../components/sign-up-form";
 
-export default function Auth(props) {
+export default function Auth(props: { handleSignIn: () => void; }) {
   const { handleSignIn } = props;
   const [formState, setFormState] = useState('sign-in');
 
