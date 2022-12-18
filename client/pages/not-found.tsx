@@ -1,6 +1,6 @@
 import React from "react";
 
-function NotFound(props: null) {
+function NotFound(props: {}) {
   return (
     <>
       <div className="not-found-container">
