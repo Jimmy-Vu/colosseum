@@ -1,6 +1,7 @@
+"use strict";
+Object.defineProperty(exports, "__esModule", { value: true });
 require('dotenv/config');
-const util = require('util');
-const express = require('express');
+const express = require("express");
 const db = require('./db');
 const multer = require('multer');
 const { storage } = require('./cloudinary');
@@ -13,7 +14,6 @@ const authorizationMiddleware = require('./authorizationMiddleware');
 const argon2 = require('argon2');
 const jwt = require('jsonwebtoken');
 const mapBoxGeocoding = require('@mapbox/mapbox-sdk/services/geocoding');
-const { response } = require('express');
 const geocodingClient = mapBoxGeocoding({ accessToken: process.env.MAPBOX_TOKEN });
 const app = express();
 app.use(staticMiddleware);
@@ -23,8 +23,8 @@ app.get('/api/gyms', (req, res, next) => {
       from "gyms"
   `;
     db.query(sql)
-        .then(result => res.json(result.rows))
-        .catch(err => next(err));
+        .then((result) => res.json(result.rows))
+        .catch((err) => next(err));
 });
 app.get('/api/gyms/:gymId', (req, res, next) => {
     const gymId = parseInt(req.params.gymId, 10);
@@ -38,13 +38,14 @@ app.get('/api/gyms/:gymId', (req, res, next) => {
   `;
     const params = [gymId];
     db.query(sql, params)
-        .then(result => {
+        // TODO: CREATE A GLOBAL DB RESULT INTERFACE
+        .then((result) => {
         if (!result.rows[0]) {
             throw new ClientError(404, 'gymId cannot be found');
         }
         return res.json(result.rows[0]);
     })
-        .catch(err => next(err));
+        .catch((err) => next(err));
 });
 // Get reviews
 app.get('/api/reviews/:gymId', (req, res, next) => {
@@ -59,13 +60,13 @@ app.get('/api/reviews/:gymId', (req, res, next) => {
   `;
     const params = [gymId];
     db.query(sql, params)
-        .then(result => {
+        .then((result) => {
         if (!result.rows[0]) {
             throw new ClientError(404, 'no reviews can be found with the provided gymId');
         }
         return res.json(result.rows);
     })
-        .catch(err => next(err));
+        .catch((err) => next(err));
 });
 // Mounting middleware for express app to be able to parse json requests
 app.use(jsonMiddleware);
@@ -83,15 +84,15 @@ app.post('/api/users/sign-up', (req, res, next) => {
   `;
     //safeguard for already taken username
     db.query(sql, params)
-        .then(result => {
+        .then((result) => {
         if (result.rows[0]) {
             throw new ClientError(403, 'The username is already taken. Please try another username');
         }
     })
-        .catch(err => next(err));
+        .catch((err) => next(err));
     argon2
         .hash(password)
-        .then(hashedPassword => {
+        .then((hashedPassword) => {
         params = [username, hashedPassword];
         sql = `
       insert into "users"
@@ -100,22 +101,22 @@ app.post('/api/users/sign-up', (req, res, next) => {
       returning "userId", "username"
     `;
         db.query(sql, params)
-            .then(result => {
+            .then((result) => {
             const newCredentials = result.rows[0];
             res.status(201).json(newCredentials);
         })
-            .catch(err => next(err));
+            .catch((err) => next(err));
     });
 });
 app.post('/api/users/sign-in', (req, res, next) => {
     const { username, password } = req.body;
     if (!username || !password) {
-        throw new ClientError(400, 'Please provide a username and password');
         console.error('Missing username and or password');
+        throw new ClientError(400, 'Please provide a username and password');
     }
     argon2
         .hash(password)
-        .then(hashedPassword => {
+        .then((hashedPassword) => {
         const params = [username];
         const sql = `
       select *
@@ -123,14 +124,14 @@ app.post('/api/users/sign-in', (req, res, next) => {
         where "username" = $1
     `;
         db.query(sql, params)
-            .then(result => {
+            .then((result) => {
             if (!result.rows.length) {
                 throw new ClientError(401, 'Invalid login. Please check your username and password');
             }
             const { hashedPassword, userId } = result.rows[0];
             argon2
                 .verify(hashedPassword, password)
-                .then(isMatching => {
+                .then((isMatching) => {
                 if (!isMatching) {
                     throw new ClientError(401, 'Invalid login. Please check your username and password');
                 }
@@ -141,9 +142,9 @@ app.post('/api/users/sign-in', (req, res, next) => {
                 const token = jwt.sign(payload, process.env.TOKEN_SECRET);
                 res.status(200).json({ "token": token, "user": payload });
             })
-                .catch(err => next(err));
+                .catch((err) => next(err));
         })
-            .catch(err => next(err));
+            .catch((err) => next(err));
     });
 });
 //Sign in route for demo user
@@ -155,7 +156,7 @@ app.post('/api/users/sign-in/demo', (req, res, next) => {
     }
     argon2
         .hash(password)
-        .then(hashedPassword => {
+        .then((hashedPassword) => {
         const params = [username];
         const sql = `
       select *
@@ -163,14 +164,14 @@ app.post('/api/users/sign-in/demo', (req, res, next) => {
         where "username" = $1
     `;
         db.query(sql, params)
-            .then(result => {
+            .then((result) => {
             if (!result.rows.length) {
                 throw new ClientError(401, 'Invalid login. Please check your username and password');
             }
             const { hashedPassword, userId } = result.rows[0];
             argon2
                 .verify(hashedPassword, password)
-                .then(isMatching => {
+                .then((isMatching) => {
                 if (!isMatching) {
                     throw new ClientError(401, 'Invalid login. Please check your username and password');
                 }
@@ -181,9 +182,9 @@ app.post('/api/users/sign-in/demo', (req, res, next) => {
                 const token = jwt.sign(payload, process.env.TOKEN_SECRET);
                 res.status(200).json({ "token": token, "user": payload });
             })
-                .catch(err => next(err));
+                .catch((err) => next(err));
         })
-            .catch(err => next(err));
+            .catch((err) => next(err));
     });
 });
 //Middleware for user authorization. All routes past this point requires an access token
@@ -197,21 +198,21 @@ app.get('/api/:userId/gyms', (req, res, next) => {
   `;
     const params = [userId];
     db.query(sql, params)
-        .then(result => {
+        .then((result) => {
         if (!result.rows) {
             console.error('No matches found');
             throw new ClientError(404, 'No matches found');
         }
         res.status(200).json(result.rows);
     })
-        .catch(err => next(err));
+        .catch((err) => next(err));
 });
 // Post route for dev database
 app.post('/api/gyms/dev', (req, res, next) => {
     const { userId } = req.user;
     if (!userId) {
-        throw new ClientError(400, 'Missing userId');
         console.error('Missing userId');
+        throw new ClientError(400, 'Missing userId');
     }
     const { gymName, address, type, imageURL, description } = req.body;
     if (!gymName || !address || !type || !imageURL) {
@@ -230,31 +231,32 @@ app.post('/api/gyms/dev', (req, res, next) => {
   `;
     const params = [gymName, address, type, imageURL, description];
     db.query(sql, params)
-        .then(result => {
+        .then((result) => {
         res.status(201).json(result.rows[0]);
     })
-        .catch(err => next(err));
+        .catch((err) => next(err));
 });
 // Post route for production database
+// TODO: FIND THE RIGHT TYPE FOR REQ
 app.post('/api/gyms', upload, (req, res, next) => {
     geocodingClient.forwardGeocode({
         query: req.body.address,
         limit: 1
     })
         .send()
-        .then(res => {
+        .then((res) => {
         return {
             longitude: res.body.features[0].geometry.coordinates[0],
             latitude: res.body.features[0].geometry.coordinates[1]
         };
     })
-        .then(geodata => {
+        .then((geodata) => {
         const { userId, gymName, address, type, description } = req.body;
         console.log(req.body);
         const imageURL = req.file.path;
         if (!userId || !gymName || !address || !type || !imageURL || !description) {
-            throw new ClientError(400, 'Please provide a name, address, type(s), and an image');
             console.error('Missing name, address, type, and/or image');
+            throw new ClientError(400, 'Please provide a name, address, type(s), and an image');
         }
         const parsedType = JSON.parse(type);
         const typeArray = [];
@@ -277,27 +279,28 @@ app.post('/api/gyms', upload, (req, res, next) => {
         `;
         const params = [userId, gymName, address, geodata, typeArray, imageURL, description];
         db.query(sql, params)
-            .then(result => {
+            .then((result) => {
             res.status(201).json(result.rows[0]);
         })
-            .catch(err => next(err));
+            .catch((err) => next(err));
     })
-        .catch(err => next(err));
+        .catch((err) => next(err));
 });
 // PATCH route for updating listing
+// TODO: FIND THE RIGHT TYPE FOR REQ
 app.patch('/api/gyms/:gymId', upload, (req, res, next) => {
     geocodingClient.forwardGeocode({
         query: req.body.address,
         limit: 1
     })
         .send()
-        .then(res => {
+        .then((res) => {
         return {
             longitude: res.body.features[0].geometry.coordinates[0],
             latitude: res.body.features[0].geometry.coordinates[1]
         };
     })
-        .then(geodata => {
+        .then((geodata) => {
         const { gymName, address, type, description } = req.body;
         const gymId = parseInt(req.params.gymId, 10);
         let { imageURL } = req.body;
@@ -346,12 +349,12 @@ app.patch('/api/gyms/:gymId', upload, (req, res, next) => {
             params = [gymId, gymName, address, geodata, typeArray, imageURL, description];
         }
         db.query(sql, params)
-            .then(result => {
+            .then((result) => {
             res.status(200).json(result.rows[0]);
         })
-            .catch(err => next(err));
+            .catch((err) => next(err));
     })
-        .catch(err => next(err));
+        .catch((err) => next(err));
 });
 app.delete('/api/gyms/:gymId', (req, res, next) => {
     const gymId = req.params.gymId;
@@ -361,10 +364,10 @@ app.delete('/api/gyms/:gymId', (req, res, next) => {
   `;
     const params = [gymId];
     db.query(sql, params)
-        .then(result => {
+        .then((result) => {
         res.sendStatus(204);
     })
-        .catch(err => next(err));
+        .catch((err) => next(err));
 });
 //Review routes
 app.post('/api/reviews/:gymId', (req, res, next) => {
@@ -382,10 +385,10 @@ app.post('/api/reviews/:gymId', (req, res, next) => {
   `;
     const params = [userId, username, gymId, rating, description];
     db.query(sql, params)
-        .then(result => {
+        .then((result) => {
         res.sendStatus(201);
     })
-        .catch(err => next(err));
+        .catch((err) => next(err));
 });
 app.patch('/api/reviews/:reviewId', (req, res, next) => {
     const { rating, description } = req.body;
@@ -398,11 +401,11 @@ app.patch('/api/reviews/:reviewId', (req, res, next) => {
   `;
     const params = [reviewId, rating, description];
     db.query(sql, params)
-        .then(result => {
+        .then((result) => {
         res.status(200).json(result.rows[0]);
         ;
     })
-        .catch(err => next(err));
+        .catch((err) => next(err));
 });
 app.delete('/api/reviews/:reviewId', (req, res, next) => {
     const reviewId = req.params.reviewId;
@@ -412,10 +415,10 @@ app.delete('/api/reviews/:reviewId', (req, res, next) => {
   `;
     const params = [reviewId];
     db.query(sql, params)
-        .then(result => {
+        .then((result) => {
         res.sendStatus(204);
     })
-        .catch(err => next(err));
+        .catch((err) => next(err));
 });
 app.use(errorMiddleware);
 app.listen(process.env.PORT, () => {
