@@ -1,4 +1,6 @@
-export default function typeAdjust(string) {
+"use strict";
+Object.defineProperty(exports, "__esModule", { value: true });
+function typeAdjust(string) {
     const splitString = string.replace(/[\{\}"]/g, "").split(',');
     for (let i = 0; i < splitString.length; i++) {
         if (splitString[i].includes('-')) {
@@ -12,6 +14,7 @@ export default function typeAdjust(string) {
     }
     return splitString.join(', ');
 }
+exports.default = typeAdjust;
 function capitalize(string) {
     if (!string) {
         return string;

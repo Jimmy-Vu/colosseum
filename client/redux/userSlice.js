@@ -1,9 +1,12 @@
-import { createSlice } from '@reduxjs/toolkit';
+"use strict";
+Object.defineProperty(exports, "__esModule", { value: true });
+exports.setStateUser = exports.userSlice = void 0;
+const toolkit_1 = require("@reduxjs/toolkit");
 const initialState = {
     userId: '',
     username: ''
 };
-export const userSlice = createSlice({
+exports.userSlice = (0, toolkit_1.createSlice)({
     name: 'user',
     initialState,
     reducers: {
@@ -13,5 +16,5 @@ export const userSlice = createSlice({
         },
     }
 });
-export const { setStateUser } = userSlice.actions;
-export default userSlice.reducer;
+exports.setStateUser = exports.userSlice.actions.setStateUser;
+exports.default = exports.userSlice.reducer;
