@@ -1,11 +1,39 @@
 import React, { useEffect, useState } from "react";
-import Header from "../components/header";
-import Footer from "../components/footer";
 import ListingCard from "../components/listing-card";
 import Filter from "../components/filter";
 
-export default function Listings(props) {
-  const [listings, setListings] = useState({ gyms: [], filteredGyms: [] });
+interface ListingsType {
+  gyms: GymInfo[];
+  filteredGyms: GymInfo[];
+}
+
+interface GymInfo {
+  type: string;
+  gymId: number;
+  gymName: string;
+  address: string;
+  imageURL: string;
+}
+
+interface Types {
+  commercial: boolean;
+  powerlifting: boolean;
+  weightlifting: boolean;
+  crossfit: boolean;
+  climbing: boolean;
+  boxing: boolean;
+  ['muay-thai']: boolean;
+  taekwondo: boolean;
+  karate: boolean;
+  ['brazilian-ji-jijutsu']: boolean;
+  ['krav-maga']: boolean;
+  wrestling: boolean;
+  kickboxing: boolean;
+  [index: string]: any;
+}
+
+export default function Listings(props: null) {
+  const [listings, setListings] = useState<ListingsType>({ gyms: [], filteredGyms: [] });
   const [isFiltered, setIsFiltered] = useState(false);
 
   useEffect(() => {
@@ -15,14 +43,14 @@ export default function Listings(props) {
       .catch(err => console.error(err));
   }, []);
 
-  function handleFiltering(types) {
-    const filteredTypesArray = [];
-    for (const property in types) {
+  function handleFiltering(types: Types) {
+    const filteredTypesArray: string[] = [];
+    for (let property in types) {
       if (types[property] === true) {
         filteredTypesArray.push(property);
       }
     }
-    const filteredGymsArray = [];
+    const filteredGymsArray: GymInfo[] = [];
     for (let i = 0; i < filteredTypesArray.length; i++) {
       listings.gyms.forEach(gym => {
         //check if the current gym includes the current type && check if the array doesn't already include the gym to avoid duplicate
@@ -42,7 +70,7 @@ export default function Listings(props) {
     <>
       <main className="listings-main">
         <a className="listings-add-btn" href="#create">Add an Arena</a>
-        <Filter setIsFiltered={setIsFiltered} handleFiltering={handleFiltering} />
+        <Filter handleFiltering={handleFiltering} />
         {(!isFiltered || listings.filteredGyms.length === 0) &&
           listings.gyms.map(gym => (
             <ListingCard key={gym.gymId} gym={gym} />

@@ -4,7 +4,7 @@ import typeAdjust from "../lib/typeAdjust";
 interface Props {
   gym: {
     gymId: number;
-    name: string;
+    gymName: string;
     address: string;
     imageURL: string;
     type: string;
@@ -12,7 +12,7 @@ interface Props {
 }
 
 function ListingCard(props: Props) {
-  const { gymId, name, address, imageURL } = props.gym;
+  const { gymId, gymName, address, imageURL } = props.gym;
   let { type } = props.gym;
   type = typeAdjust(type);
 
@@ -21,7 +21,7 @@ function ListingCard(props: Props) {
       <div className="card">
         <img className="card-image" src={imageURL} alt="Main gym picture" />
         <div className="card-body">
-          <h5 className="card-title">{name}</h5>
+          <h5 className="card-title">{gymName}</h5>
           <p className="card-address">{address}</p>
           <p className="card-type">{`Type: ${type}`}</p>
         </div>
