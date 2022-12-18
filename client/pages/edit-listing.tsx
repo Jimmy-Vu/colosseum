@@ -1,9 +1,8 @@
-import React, { useEffect, useState } from "react";
-import GymForm from "../components/gym-form";
+import React, { useState } from "react";
 import GymFormEdit from "../components/gym-form-edit";
 import Spinner from "../components/spinner";
 
-export default function EditListing(props) {
+export default function EditListing(props: { gymId: number }) {
   const [isLoading, setIsLoading] = useState(false);
   const gymId = props.gymId;
 

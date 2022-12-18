@@ -1,4 +1,4 @@
-import React from "react";
+import React, { useEffect } from "react";
 import Map, { Marker, NavigationControl } from "react-map-gl";
 
 interface Props {

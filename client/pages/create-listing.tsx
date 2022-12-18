@@ -1,11 +1,13 @@
 import React, { useEffect, useState } from "react";
+import { useSelector } from 'react-redux';
+import { RootState } from "../redux/rootState";
 import GymForm from "../components/gym-form";
 import Spinner from "../components/spinner";
-import { useSelector } from 'react-redux';
 
-function CreateListing(props) {
+
+function CreateListing(props: null) {
   const [isLoading, setIsLoading] = useState(false);
-  const isLoggedIn = useSelector(state => state.app.isLoggedIn);
+  const isLoggedIn = useSelector((state: RootState) => state.app.isLoggedIn);
 
   useEffect(() => {
     if (!isLoggedIn) {
