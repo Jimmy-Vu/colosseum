@@ -5,7 +5,7 @@ import GymForm from "../components/gym-form";
 import Spinner from "../components/spinner";
 
 
-function CreateListing(props: null) {
+function CreateListing(props: {}) {
   const [isLoading, setIsLoading] = useState(false);
   const isLoggedIn = useSelector((state: RootState) => state.app.isLoggedIn);
 

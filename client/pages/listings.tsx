@@ -32,7 +32,7 @@ interface Types {
   [index: string]: any;
 }
 
-export default function Listings(props: null) {
+export default function Listings(props: {}) {
   const [listings, setListings] = useState<ListingsType>({ gyms: [], filteredGyms: [] });
   const [isFiltered, setIsFiltered] = useState(false);
 

@@ -1,6 +1,6 @@
 import React from "react";
 
-function Home(props: null) {
+function Home(props: {}) {
 
   return (
     <div className="home-container">

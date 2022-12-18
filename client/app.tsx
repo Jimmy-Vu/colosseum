@@ -1,7 +1,7 @@
 import React, { useEffect, useState } from "react";
 import ReactDOM from "react-dom/client";
 // Redux
-import { useSelector, useDispatch } from 'react-redux';
+import { useDispatch } from 'react-redux';
 import { login, logout, setMobileTrue, setMobileFalse } from './redux/appSlice';
 import { setStateUser } from './redux/userSlice';
 // Functions
@@ -20,15 +20,22 @@ import EditListing from "./pages/edit-listing";
 import Auth from "./pages/auth";
 import AccountPage from "./pages/account-page";
 
-function App(props) {
+interface StateRoute {
+  route: {
+    path: string;
+    params: URLSearchParams;
+  }
+}
+
+function App(props: {}) {
   const dispatch = useDispatch();
-  const [stateRoute, setStateRoute] = useState({
+  const [stateRoute, setStateRoute] = useState<StateRoute>({
     route: parseRoute(window.location.hash)
   });
 
   useEffect(() => {
     checkMobileView() ? dispatch(setMobileTrue()) : dispatch(setMobileFalse());
-    window.addEventListener('hashchange', event => {
+    window.addEventListener('hashchange', () => {
       setStateRoute({ route: parseRoute(window.location.hash) })
     });
     const token = window.localStorage.getItem('access-token');
@@ -41,7 +48,7 @@ function App(props) {
     }
   }, []);
 
-  function handleSignIn(result) {
+  function handleSignIn(result: { user: string; token: string }) {
     const { user, token } = result;
     window.localStorage.setItem('access-token', token);
     dispatch(setStateUser(user));
@@ -57,12 +64,12 @@ function App(props) {
   }
 
   const { route } = stateRoute;
-  let gymId = '';
+  let gymId = 0;
   switch (route.path) {
     case '':
       return (
         <div className="main-container">
-          <Header handleSignOut={handleSignOut} setStateRoute={setStateRoute} />
+          <Header handleSignOut={handleSignOut} />
           <Home />
           <Footer />
         </div>
@@ -70,16 +77,16 @@ function App(props) {
     case "listings":
       return (
         <div className="main-container">
-          <Header handleSignOut={handleSignOut} setStateRoute={setStateRoute} />
+          <Header handleSignOut={handleSignOut} />
           <Listings />
           <Footer />
         </div>
       );
     case "gyms":
-      gymId = route.params.get('gymId');
+      gymId = parseInt(route.params.get('gymId') as string, 10);
       return (
         <div className="main-container">
-          <Header handleSignOut={handleSignOut} setStateRoute={setStateRoute} />
+          <Header handleSignOut={handleSignOut} />
           <Gym gymId={gymId} />
           <Footer />
         </div>
@@ -87,16 +94,16 @@ function App(props) {
     case "create":
       return (
         <div className="main-container">
-          <Header handleSignOut={handleSignOut} setStateRoute={setStateRoute} />
+          <Header handleSignOut={handleSignOut} />
           <CreateListing />
           <Footer />
         </div>
       );
     case "edit":
-      gymId = route.params.get('gymId');
+      gymId = parseInt(route.params.get('gymId') as string, 10)
       return (
         <div className="main-container">
-          <Header handleSignOut={handleSignOut} setStateRoute={setStateRoute} />
+          <Header handleSignOut={handleSignOut} />
           <EditListing gymId={gymId} />
           <Footer />
         </div>
@@ -104,7 +111,7 @@ function App(props) {
     case "auth":
       return (
         <div className="main-container">
-          <Header handleSignOut={handleSignOut} setStateRoute={setStateRoute} />
+          <Header handleSignOut={handleSignOut} />
           <Auth handleSignIn={handleSignIn} />
           <Footer />
         </div>
@@ -112,7 +119,7 @@ function App(props) {
     case "account":
       return (
         <div className="main-container">
-          <Header handleSignOut={handleSignOut} setStateRoute={setStateRoute} />
+          <Header handleSignOut={handleSignOut} />
           <AccountPage />
           <Footer />
         </div>
@@ -121,7 +128,7 @@ function App(props) {
     default:
       return (
         <div className="main-container">
-          <Header handleSignOut={handleSignOut} setStateRoute={setStateRoute} />
+          <Header handleSignOut={handleSignOut} />
           <NotFound />
           <Footer />
         </div>

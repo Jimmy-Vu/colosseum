@@ -13,7 +13,7 @@ interface AccountItems {
   }[];
 }
 
-export default function AccountPage(props: null) {
+export default function AccountPage(props: {}) {
   const { userId: currentUserId, username: currentUsername } = useSelector((state: RootState) => state.user);
   const [accountItems, setAccountItems] = useState<AccountItems>({
     personalGyms: []
