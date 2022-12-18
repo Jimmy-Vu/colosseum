@@ -11,10 +11,6 @@ interface Props {
 export default function MapDisplay(props: Props) {
   const { longitude, latitude } = props.coordinates;
 
-  useEffect(() => {
-    console.log(props.coordinates);
-  }, [])
-
   return (
     <Map
       initialViewState={{

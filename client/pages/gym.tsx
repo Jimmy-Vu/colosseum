@@ -48,7 +48,6 @@ export default function Gym(props: { gymId: number }) {
         return res.json();
       })
       .then(data => {
-        console.log(data);
         setGymState({
           userId: data.userId,
           gymId: data.gymId,
@@ -65,7 +64,7 @@ export default function Gym(props: { gymId: number }) {
   }, [])
 
   useEffect(() => {
-    if (currentUserId === `${gymState.userId}`) {
+    if (parseInt(currentUserId, 10) === gymState.userId) {
       setBelongsToUser(true);
     } else {
       setBelongsToUser(false);

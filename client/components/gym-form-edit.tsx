@@ -3,7 +3,7 @@ import editTypeAdjust from "../lib/editTypeAdjust";
 
 interface Inputs {
   userId: string;
-  name: string;
+  gymName: string;
   address: string;
   type: GymType;
   image: File | string;
@@ -31,7 +31,7 @@ export default function GymFormEdit(props: { setIsLoading: (boolean: boolean) =>
   const setIsLoading = props.setIsLoading;
   const [inputs, setInputs] = useState<Inputs>({
     userId: '',
-    name: '',
+    gymName: '',
     address: '',
     type: {
       commercial: false,
@@ -58,7 +58,7 @@ export default function GymFormEdit(props: { setIsLoading: (boolean: boolean) =>
       .then(data => {
         setInputs({
           userId: data.userId,
-          name: data.name,
+          gymName: data.gymName,
           address: data.address,
           type: editTypeAdjust(data.type),
           image: data.imageURL,
@@ -105,7 +105,7 @@ export default function GymFormEdit(props: { setIsLoading: (boolean: boolean) =>
     setIsLoading(true);
     const formData = new FormData();
     formData.append('userId', inputs.userId);
-    formData.append('name', inputs.name);
+    formData.append('gymName', inputs.gymName);
     formData.append('address', inputs.address);
     formData.append('type', JSON.stringify(inputs.type));
     formData.append('image', inputs.image);
@@ -134,7 +134,7 @@ export default function GymFormEdit(props: { setIsLoading: (boolean: boolean) =>
     <form className="create-form" onSubmit={handleSubmit} encType="multipart/form-data">
       <div className="text-inputs">
         <label className="name-label" htmlFor="name">Name</label>
-        <input className="name-input" onChange={handleChange} type="text" name="name" id="name" value={inputs.name} required />
+        <input className="name-input" onChange={handleChange} type="text" name="name" id="name" value={inputs.gymName} required />
         <label className="address-label" htmlFor="address">Address</label>
         <input className="address-input" onChange={handleChange} type="text" name="address" id="address" value={inputs.address} required />
         <label className="description-label" htmlFor="description">Description</label>
@@ -143,55 +143,55 @@ export default function GymFormEdit(props: { setIsLoading: (boolean: boolean) =>
       <fieldset id="type" className="specialization-fieldset">
         <legend>Choose the type of specialization(s) of the arena:</legend>
         <div className="checkbox-option">
-          <input type="checkbox" name="commercial" id="commercial" onClick={handleCheckboxes} checked={inputs.type.commercial} />
+          <input type="checkbox" name="commercial" id="commercial" onChange={handleCheckboxes} checked={inputs.type.commercial} />
           <label htmlFor="commercial">Commercial</label>
         </div>
         <div className="checkbox-option">
-          <input type="checkbox" name="powerlifting" id="powerlifting" onClick={handleCheckboxes} checked={inputs.type.powerlifting} />
+          <input type="checkbox" name="powerlifting" id="powerlifting" onChange={handleCheckboxes} checked={inputs.type.powerlifting} />
           <label htmlFor="powerlifting">Powerlifting</label>
         </div>
         <div className="checkbox-option">
-          <input type="checkbox" name="weightlifting" id="weightlifting" onClick={handleCheckboxes} checked={inputs.type.weightlifting} />
+          <input type="checkbox" name="weightlifting" id="weightlifting" onChange={handleCheckboxes} checked={inputs.type.weightlifting} />
           <label htmlFor="weightlifting">Olympic Weightlifting</label>
         </div>
         <div className="checkbox-option">
-          <input type="checkbox" name="crossfit" id="crossfit" onClick={handleCheckboxes} checked={inputs.type.crossfit} />
+          <input type="checkbox" name="crossfit" id="crossfit" onChange={handleCheckboxes} checked={inputs.type.crossfit} />
           <label htmlFor="crossfit">Crossfit</label>
         </div>
         <div className="checkbox-option">
-          <input type="checkbox" name="climbing" id="climbing" onClick={handleCheckboxes} checked={inputs.type.climbing} />
+          <input type="checkbox" name="climbing" id="climbing" onChange={handleCheckboxes} checked={inputs.type.climbing} />
           <label htmlFor="climbing">Climbing</label>
         </div>
         <div className="checkbox-option">
-          <input type="checkbox" name="boxing" id="boxing" onClick={handleCheckboxes} checked={inputs.type.boxing} />
+          <input type="checkbox" name="boxing" id="boxing" onChange={handleCheckboxes} checked={inputs.type.boxing} />
           <label htmlFor="boxing">Boxing</label>
         </div>
         <div className="checkbox-option">
-          <input type="checkbox" name="kickboxing" id="kickboxing" onClick={handleCheckboxes} checked={inputs.type.kickboxing} />
+          <input type="checkbox" name="kickboxing" id="kickboxing" onChange={handleCheckboxes} checked={inputs.type.kickboxing} />
           <label htmlFor="kickboxing">Kickboxing</label>
         </div>
         <div className="checkbox-option">
-          <input type="checkbox" name="muay-thai" id="muay-thai" onClick={handleCheckboxes} checked={inputs.type['muay-thai']} />
+          <input type="checkbox" name="muay-thai" id="muay-thai" onChange={handleCheckboxes} checked={inputs.type['muay-thai']} />
           <label htmlFor="muay-thai">Muay Thai</label>
         </div>
         <div className="checkbox-option">
-          <input type="checkbox" name="taekwondo" id="taekwondo" onClick={handleCheckboxes} checked={inputs.type.taekwondo} />
+          <input type="checkbox" name="taekwondo" id="taekwondo" onChange={handleCheckboxes} checked={inputs.type.taekwondo} />
           <label htmlFor="taekwondo">Taekwondo</label>
         </div>
         <div className="checkbox-option">
-          <input type="checkbox" name="karate" id="karate" onClick={handleCheckboxes} checked={inputs.type.karate} />
+          <input type="checkbox" name="karate" id="karate" onChange={handleCheckboxes} checked={inputs.type.karate} />
           <label htmlFor="karate">Karate</label>
         </div>
         <div className="checkbox-option">
-          <input type="checkbox" name="brazilian-ji-jijutsu" onClick={handleCheckboxes} id="brazilian-ji-jijutsu" checked={inputs.type['brazilian-ji-jijutsu']} />
+          <input type="checkbox" name="brazilian-ji-jijutsu" onChange={handleCheckboxes} id="brazilian-ji-jijutsu" checked={inputs.type['brazilian-ji-jijutsu']} />
           <label htmlFor="brazilian-ji-jijutsu">Brazilian Ji Jijutsu</label>
         </div>
         <div className="checkbox-option">
-          <input type="checkbox" name="krav-maga" id="krav-maga" onClick={handleCheckboxes} checked={inputs.type['krav-maga']} />
+          <input type="checkbox" name="krav-maga" id="krav-maga" onChange={handleCheckboxes} checked={inputs.type['krav-maga']} />
           <label htmlFor="krav-maga">Krav Maga</label>
         </div>
         <div className="checkbox-option">
-          <input type="checkbox" name="wrestling" id="wrestling" onClick={handleCheckboxes} checked={inputs.type.wrestling} />
+          <input type="checkbox" name="wrestling" id="wrestling" onChange={handleCheckboxes} checked={inputs.type.wrestling} />
           <label htmlFor="wrestling">Wrestling</label>
         </div>
       </fieldset>

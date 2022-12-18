@@ -226,8 +226,8 @@ app.post('/api/gyms/dev', (req, res, next) => {
     throw new ClientError(400, 'Missing userId');
     console.error('Missing userId');
   }
-  const { name, address, type, imageURL, description } = req.body;
-  if (!name || !address || !type || !imageURL) {
+  const { gymName, address, type, imageURL, description } = req.body;
+  if (!gymName || !address || !type || !imageURL) {
     console.error('Missing name, address, type, and/or image');
     throw new ClientError(400, 'Please provide a name, address, type(s), and an image');
   }
@@ -243,7 +243,7 @@ app.post('/api/gyms/dev', (req, res, next) => {
   returning "gymId", "gymName", "address", "type", "imageURL", "description"
   `;
 
-  const params = [name, address, type, imageURL, description];
+  const params = [gymName, address, type, imageURL, description];
   db.query(sql, params)
     .then(result => {
       res.status(201).json(result.rows[0]);
@@ -264,9 +264,10 @@ app.post('/api/gyms', upload, (req, res, next) => {
       };
     })
     .then(geodata => {
-      const { userId, name, address, type, description } = req.body;
+      const { userId, gymName, address, type, description } = req.body;
+      console.log(req.body);
       const imageURL = req.file.path;
-      if (!userId || !name || !address || !type || !imageURL || !description) {
+      if (!userId || !gymName || !address || !type || !imageURL || !description) {
         throw new ClientError(400, 'Please provide a name, address, type(s), and an image');
         console.error('Missing name, address, type, and/or image');
       }
@@ -291,7 +292,7 @@ app.post('/api/gyms', upload, (req, res, next) => {
           ) values ($1, $2, $3, $4, $5, $6, $7)
         returning "gymId", "gymName", "address", "geodata", "type", "imageURL", "description"
         `;
-      const params = [userId, name, address, geodata, typeArray, imageURL, description];
+      const params = [userId, gymName, address, geodata, typeArray, imageURL, description];
       db.query(sql, params)
         .then(result => {
           res.status(201).json(result.rows[0]);
@@ -315,14 +316,14 @@ app.patch('/api/gyms/:gymId', upload, (req, res, next) => {
       };
     })
     .then(geodata => {
-      const { name, address, type, description } = req.body;
+      const { gymName, address, type, description } = req.body;
       const gymId = parseInt(req.params.gymId, 10);
       let { imageURL } = req.body;
       if (!imageURL && req.file) {
         imageURL = req.file.path;
       }
 
-      if (!gymId || !name || !address || !type) {
+      if (!gymId || !gymName || !address || !type) {
         throw new ClientError(401, 'Please provide a name, address, type(s), and an image');
         console.error('Missing name, address, type, and/or image');
       }
@@ -348,7 +349,7 @@ app.patch('/api/gyms/:gymId', upload, (req, res, next) => {
           where "gymId" = $1
           returning "gymId", "gymName", "address", "geodata", "type", "description"
     `;
-        params = [gymId, name, address, geodata, typeArray, description];
+        params = [gymId, gymName, address, geodata, typeArray, description];
       } else {
         sql = `
         update "gyms"
@@ -361,7 +362,7 @@ app.patch('/api/gyms/:gymId', upload, (req, res, next) => {
           where "gymId" = $1
           returning "gymId", "gymName", "address", "geodata", "type", "imageURL", "description"
     `;
-        params = [gymId, name, address, geodata, typeArray, imageURL, description];
+        params = [gymId, gymName, address, geodata, typeArray, imageURL, description];
       }
       db.query(sql, params)
         .then(result => {

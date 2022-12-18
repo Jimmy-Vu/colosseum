@@ -4,7 +4,7 @@ import { useSelector } from "react-redux";
 
 interface Inputs {
   userId: string;
-  name: string;
+  gymName: string;
   address: string;
   type: GymType | string | Blob;
   image: File | string;
@@ -32,7 +32,7 @@ export default function GymForm(props: { setIsLoading: (boolean: boolean) => voi
   const setIsLoading = props.setIsLoading;
   const [inputs, setInputs] = useState<Inputs>({
     userId: '',
-    name: '',
+    gymName: '',
     address: '',
     type: {
       commercial: false,
@@ -100,7 +100,7 @@ export default function GymForm(props: { setIsLoading: (boolean: boolean) => voi
     //   formData.set(`${i}`, `${inputs[i as keyof Inputs]}`);
     // }
     formData.append('userId', inputs.userId);
-    formData.append('name', inputs.name);
+    formData.append('gymName', inputs.gymName);
     formData.append('address', inputs.address);
     formData.append('type', inputs.type);
     formData.append('image', inputs.image);
@@ -115,6 +115,7 @@ export default function GymForm(props: { setIsLoading: (boolean: boolean) => voi
     })
       .then(res => res.json())
       .then(data => {
+        console.log(data);
         setIsLoading(false);
         if (!data.gymId) {
           window.location.hash = "#not-found";
@@ -129,7 +130,7 @@ export default function GymForm(props: { setIsLoading: (boolean: boolean) => voi
     <form className="create-form" onSubmit={handleSubmit} encType="multipart/form-data">
       <div className="text-inputs">
         <label className="name-label" htmlFor="name">Name</label>
-        <input className="name-input" onChange={handleChange} type="text" name="name" id="name" required />
+        <input className="name-input" onChange={handleChange} type="text" name="gymName" id="gymName" required />
         <label className="address-label" htmlFor="address">Address</label>
         <input className="address-input" onChange={handleChange} type="text" name="address" id="address" required />
         <label className="description-label" htmlFor="description">Description</label>

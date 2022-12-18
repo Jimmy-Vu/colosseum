@@ -35,7 +35,7 @@
     "@mapbox/mapbox-sdk": "^0.13.6",
     "@react-spring/web": "^9.5.2",
     "@reduxjs/toolkit": "^1.8.6",
-    "argon2": "^0.29.1",
+    "argon2": "^0.30.2",
     "dotenv": "^16.0.1",
     "dotenv-webpack": "^8.0.1",
     "eslint": "^8.29.0",
