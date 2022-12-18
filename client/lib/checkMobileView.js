@@ -1,4 +1,6 @@
-export default function checkMobileView() {
+"use strict";
+Object.defineProperty(exports, "__esModule", { value: true });
+function checkMobileView() {
     if (window.innerWidth < 480) {
         return true;
     }
@@ -6,3 +8,4 @@ export default function checkMobileView() {
         return false;
     }
 }
+exports.default = checkMobileView;

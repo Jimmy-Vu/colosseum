@@ -1,4 +1,6 @@
-export default function parseRoute(hashRoute) {
+"use strict";
+Object.defineProperty(exports, "__esModule", { value: true });
+function parseRoute(hashRoute) {
     if (hashRoute.startsWith('#')) {
         hashRoute = hashRoute.replace('#', '');
     }
@@ -6,3 +8,4 @@ export default function parseRoute(hashRoute) {
     const params = new URLSearchParams(queryString);
     return { path, params };
 }
+exports.default = parseRoute;

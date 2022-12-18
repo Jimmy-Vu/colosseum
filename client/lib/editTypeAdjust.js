@@ -1,5 +1,7 @@
+"use strict";
 //This code needs to be refactored to just use JSON.parse
-export default function editTypeAdjust(string) {
+Object.defineProperty(exports, "__esModule", { value: true });
+function editTypeAdjust(string) {
     const type = {
         commercial: false,
         powerlifting: false,
@@ -21,3 +23,4 @@ export default function editTypeAdjust(string) {
     }
     return type;
 }
+exports.default = editTypeAdjust;
