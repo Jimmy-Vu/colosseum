@@ -91,6 +91,7 @@
 | [![React][React.js]][React-url] | Creating and rendering UI components into a larger application|
 | [![Redux Toolkit][Redux-toolkit]][Redux-toolkit-url] | Managing the global state of the application |
 | [![Node.js][Node.js]][Node.js-url] | Executing JavaScript code outside the web browser on the local machine|
+| [![TypeScript][TypeScript]][TypeScript-url] | Extending JavaScript with type safety |
 | [![Express.js][Express.js]][Express.js-url] | Handling routes and API requests from the client|
 | [![PostgreSQL][PostgreSQL]][PostgreSQL-url] | Used as the database of choice for storing and working with relational data |
 | [![Sass/Scss][Sass]][Sass-url] | Expanding on the foundations of CSS with useful features such as variables, nested rules, mixins, imports, and inheritance |
@@ -98,6 +99,7 @@
 | [![Babel][Babel]][Babel-url] | Transpiling modern JavaScript/JSX into a compatible version that can be used in both current and older browsers or environments|
 | [![JWT][JWT]][JWT-url] | Keeping track of user sessions and authorization|
 | [![Jest][Jest]][Jest-url] | Testing pure functions through unit tests|
+| [![Playwright][Playwright]][Playwright-url] | End to end testing of application's functionality|
 | [![JavaScript][JavaScript]][JavaScript-url] | Handling logic for the application's functionality|
 | [![HTML5][HTML5]][HTML5-url] | Setting up the physical structure of the application|
 | [![CSS3][CSS3]][CSS3-url] | Applying styles to the structures of the application|
@@ -242,9 +244,13 @@ Project Link: [https://github.com/Jimmy-Vu/colosseum](https://github.com/Jimmy-V
 [JWT-url]: https://jwt.io/
 [Jest]: https://img.shields.io/badge/-jest-%23C21325?style=for-the-badge&logo=jest&logoColor=white
 [Jest-url]: https://jestjs.io/
+[Playwright]: https://img.shields.io/badge/-playwright-%23E5E5E5?style=for-the-badge&logo=playwright&logoColor=058a5e
+[Playwright-url]: https://playwright.dev/
 [HTML5]: https://img.shields.io/badge/HTML5-E34F26?style=for-the-badge&logo=html5&logoColor=white
 [HTML5-url]: https://www.w3.org/
 [CSS3]: https://img.shields.io/badge/CSS3-1572B6?style=for-the-badge&logo=css3&logoColor=white
 [CSS3-url]: https://www.w3.org/
 [JavaScript]: https://img.shields.io/badge/JavaScript-F7DF1E?style=for-the-badge&logo=javascript&logoColor=black
 [JavaScript-url]: https://www.ecma-international.org/publications-and-standards/standards/ecma-262/
+[TypeScript]: https://img.shields.io/badge/typescript-%23007ACC.svg?style=for-the-badge&logo=typescript&logoColor=white
+[TypeScript-url]: https://www.typescriptlang.org/
