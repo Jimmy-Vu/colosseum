@@ -24,9 +24,11 @@ function AppDrawer(props: Props) {
       {transition((style, item) =>
         item ? (
           <>
-            <animated.div style={style} className="menu">
-              <i onClick={() => setDrawerIsOpen(false)} className="close-button fa-solid fa-xmark"></i>
-              <nav className="menu__nav">
+            <animated.div style={style} className="menu" aria-label="sidebar menu">
+              <button onClick={() => setDrawerIsOpen(false)} aria-label="close sidebar menu" >
+                <i className="close-button fa-solid fa-xmark"></i>
+              </button>
+              <nav className="menu__nav" aria-label="menu navigation">
                 {isLoggedIn
                   ? <span className="welcome-message">{`Hiya ${username}!`}</span>
                   : null
@@ -38,11 +40,10 @@ function AppDrawer(props: Props) {
                     <ul><a onClick={() => setDrawerIsOpen(false)} href="#account">My Account</a></ul>
                   </>
                 }
-                {!isLoggedIn &&
-                  <a onClick={() => setDrawerIsOpen(false)} className="nav__sign-in-btn" href="#auth">Sign In</a>
-                }
-                {isLoggedIn &&
-                  <a onClick={() => { setDrawerIsOpen(false); handleSignOut(); }} className="nav__sign-in-btn">Sign Out</a>
+                { /* Sign in/sign out button that will only show on mobile using CSS media queries */
+                  isLoggedIn
+                    ? <a onClick={() => { setDrawerIsOpen(false); handleSignOut(); }} className="nav__sign-in-btn">Sign Out</a>
+                    : <a onClick={() => setDrawerIsOpen(false)} className="nav__sign-in-btn" href="#auth">Sign In</a>
                 }
               </nav>
             </animated.div>

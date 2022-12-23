@@ -33,7 +33,7 @@ function Header(props: { handleSignOut: () => void; }) {
     <header className={navBarScrolled ? 'scrolled' : ''}>
       <AppDrawer handleSignOut={handleSignOut} isOpen={drawerIsOpen} setDrawerIsOpen={setDrawerIsOpen}></AppDrawer>
       <div className="navbar">
-        <button onClick={() => setDrawerIsOpen(prevState => !prevState)} type="button">
+        <button onClick={() => setDrawerIsOpen(prevState => !prevState)} aria-label="open sidebar menu" type="button">
           <i className="menu-button fa-solid fa-bars"></i>
         </button>
         <a href="#"><h1 className="navbar__title">COLOSSEUM</h1></a>

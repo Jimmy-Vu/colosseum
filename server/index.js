@@ -1,7 +1,10 @@
 "use strict";
+var __importDefault = (this && this.__importDefault) || function (mod) {
+    return (mod && mod.__esModule) ? mod : { "default": mod };
+};
 Object.defineProperty(exports, "__esModule", { value: true });
 require('dotenv/config');
-const express = require("express");
+const express_1 = __importDefault(require("express"));
 const db = require('./db');
 const multer = require('multer');
 const { storage } = require('./cloudinary');
@@ -9,13 +12,13 @@ const upload = multer({ storage }).single('image');
 const ClientError = require('./client-error');
 const errorMiddleware = require('./error-middleware');
 const staticMiddleware = require('./static-middleware');
-const jsonMiddleware = express.json();
+const jsonMiddleware = express_1.default.json();
 const authorizationMiddleware = require('./authorizationMiddleware');
 const argon2 = require('argon2');
 const jwt = require('jsonwebtoken');
 const mapBoxGeocoding = require('@mapbox/mapbox-sdk/services/geocoding');
 const geocodingClient = mapBoxGeocoding({ accessToken: process.env.MAPBOX_TOKEN });
-const app = express();
+const app = (0, express_1.default)();
 app.use(staticMiddleware);
 app.get('/api/gyms', (req, res, next) => {
     const sql = `
