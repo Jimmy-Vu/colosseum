@@ -9,7 +9,7 @@ CREATE SCHEMA "public";
 CREATE TABLE "public"."gyms" (
 	"userId" integer NOT NULL,
 	"gymId" serial NOT NULL,
-	"name" TEXT NOT NULL,
+	"gymName" TEXT NOT NULL,
 	"address" TEXT NOT NULL,
 	"geodata" TEXT NOT NULL,
 	"type" TEXT NOT NULL,

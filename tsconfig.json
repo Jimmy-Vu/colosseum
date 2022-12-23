@@ -1,0 +1,16 @@
+{
+   "compilerOptions": {
+    "noImplicitAny": true,
+    "module": "CommonJS",
+    "target": "ES2015",
+    "jsx": "react",
+    "allowJs": true,
+    "moduleResolution": "node",
+    "skipLibCheck": true,
+    "allowSyntheticDefaultImports": true,
+    "esModuleInterop": true
+  },
+  "include": ["**/*.ts"],
+  "exclude": ["node_modules", "**/*.spec.ts"],
+  "files":["types.d.ts"]
+}
