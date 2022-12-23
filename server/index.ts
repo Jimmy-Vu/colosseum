@@ -1,6 +1,6 @@
 require('dotenv/config');
-import * as express from "express";
-import { Request } from "express";
+import express from "express";
+import { Request, Response, NextFunction } from "express";
 const db = require('./db');
 const multer = require('multer');
 const { storage } = require('./cloudinary');
@@ -16,7 +16,7 @@ const mapBoxGeocoding = require('@mapbox/mapbox-sdk/services/geocoding');
 const geocodingClient = mapBoxGeocoding({ accessToken: process.env.MAPBOX_TOKEN });
 const app = express();
 app.use(staticMiddleware);
-app.get('/api/gyms', (req, res, next) => {
+app.get('/api/gyms', (req: Request, res: Response, next: NextFunction) => {
     const sql = `
   select *
       from "gyms"
@@ -25,7 +25,7 @@ app.get('/api/gyms', (req, res, next) => {
         .then((result: { rows: [] }) => res.json(result.rows))
         .catch((err: Error) => next(err));
 });
-app.get('/api/gyms/:gymId', (req, res, next) => {
+app.get('/api/gyms/:gymId', (req: Request, res: Response, next: NextFunction) => {
     const gymId = parseInt(req.params.gymId, 10);
     if (!gymId) {
         throw new ClientError(400, 'gymId must be a postive integer');
@@ -47,7 +47,7 @@ app.get('/api/gyms/:gymId', (req, res, next) => {
         .catch((err: Error) => next(err));
 });
 // Get reviews
-app.get('/api/reviews/:gymId', (req, res, next) => {
+app.get('/api/reviews/:gymId', (req: Request, res: Response, next: NextFunction) => {
     const gymId = parseInt(req.params.gymId, 10);
     if (!gymId) {
         throw new ClientError(400, 'gymId must be a postive integer');
@@ -70,7 +70,7 @@ app.get('/api/reviews/:gymId', (req, res, next) => {
 // Mounting middleware for express app to be able to parse json requests
 app.use(jsonMiddleware);
 //Routes for user authentications
-app.post('/api/users/sign-up', (req, res, next) => {
+app.post('/api/users/sign-up', (req: Request, res: Response, next: NextFunction) => {
     const { username, password } = req.body;
     if (!username || !password) {
         throw new ClientError(400, 'Please provide a username and password');
@@ -107,7 +107,7 @@ app.post('/api/users/sign-up', (req, res, next) => {
                 .catch((err: Error) => next(err));
         });
 });
-app.post('/api/users/sign-in', (req, res, next) => {
+app.post('/api/users/sign-in', (req: Request, res: Response, next: NextFunction) => {
     const { username, password } = req.body;
     if (!username || !password) {
         console.error('Missing username and or password');
@@ -147,7 +147,7 @@ app.post('/api/users/sign-in', (req, res, next) => {
         });
 });
 //Sign in route for demo user
-app.post('/api/users/sign-in/demo', (req, res, next) => {
+app.post('/api/users/sign-in/demo', (req: Request, res: Response, next: NextFunction) => {
     const { username, password } = req.body;
     if (!username || !password) {
         throw new ClientError(400, 'Please provide a username and password');
@@ -188,7 +188,7 @@ app.post('/api/users/sign-in/demo', (req, res, next) => {
 });
 //Middleware for user authorization. All routes past this point requires an access token
 app.use(authorizationMiddleware);
-app.get('/api/:userId/gyms', (req, res, next) => {
+app.get('/api/:userId/gyms', (req: Request, res: Response, next: NextFunction) => {
     const userId = req.params.userId;
     const sql = `
   select *
@@ -207,7 +207,7 @@ app.get('/api/:userId/gyms', (req, res, next) => {
         .catch((err: Error) => next(err));
 });
 // Post route for dev database
-app.post('/api/gyms/dev', (req, res, next) => {
+app.post('/api/gyms/dev', (req: Request, res: Response, next: NextFunction) => {
     const { userId } = req.user;
     if (!userId) {
         console.error('Missing userId');
@@ -237,7 +237,7 @@ app.post('/api/gyms/dev', (req, res, next) => {
 });
 // Post route for production database
 // TODO: FIND THE RIGHT TYPE FOR REQ
-app.post('/api/gyms', upload, (req: any, res, next) => {
+app.post('/api/gyms', upload, (req: any, res: Response, next: NextFunction) => {
     geocodingClient.forwardGeocode({
         query: req.body.address,
         limit: 1
@@ -287,7 +287,7 @@ app.post('/api/gyms', upload, (req: any, res, next) => {
 });
 // PATCH route for updating listing
 // TODO: FIND THE RIGHT TYPE FOR REQ
-app.patch('/api/gyms/:gymId', upload, (req: any, res, next) => {
+app.patch('/api/gyms/:gymId', upload, (req: any, res: Response, next: NextFunction) => {
     geocodingClient.forwardGeocode({
         query: req.body.address,
         limit: 1
@@ -355,7 +355,7 @@ app.patch('/api/gyms/:gymId', upload, (req: any, res, next) => {
         })
         .catch((err: Error) => next(err));
 });
-app.delete('/api/gyms/:gymId', (req, res, next) => {
+app.delete('/api/gyms/:gymId', (req: Request, res: Response, next: NextFunction) => {
     const gymId = req.params.gymId;
     const sql = `
     delete from "gyms"
@@ -369,7 +369,7 @@ app.delete('/api/gyms/:gymId', (req, res, next) => {
         .catch((err: Error) => next(err));
 });
 //Review routes
-app.post('/api/reviews/:gymId', (req, res, next) => {
+app.post('/api/reviews/:gymId', (req: Request, res: Response, next: NextFunction) => {
     const { userId, username } = req.body.user;
     const { rating, description } = req.body.reviewValues;
     const gymId = req.params.gymId;
@@ -389,7 +389,7 @@ app.post('/api/reviews/:gymId', (req, res, next) => {
         })
         .catch((err: Error) => next(err));
 });
-app.patch('/api/reviews/:reviewId', (req, res, next) => {
+app.patch('/api/reviews/:reviewId', (req: Request, res: Response, next: NextFunction) => {
     const { rating, description } = req.body;
     const reviewId = req.params.reviewId;
     const sql = `
@@ -406,7 +406,7 @@ app.patch('/api/reviews/:reviewId', (req, res, next) => {
         })
         .catch((err: Error) => next(err));
 });
-app.delete('/api/reviews/:reviewId', (req, res, next) => {
+app.delete('/api/reviews/:reviewId', (req: Request, res: Response, next: NextFunction) => {
     const reviewId = req.params.reviewId;
     const sql = `
     delete from "reviews"
