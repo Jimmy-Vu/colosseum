@@ -13,7 +13,7 @@ test.describe('homepage navigation', () => {
   });
 
   test('homepage navigates successfully to listings page', async ({ page }) => {
-    // create a locator
+    // create a locator for the listing button
     const findYourArena = page.getByRole('link', { name: 'Find Your Arena' });
     // Expect an attribute "to be strictly equal" to the value.
     await expect(findYourArena).toHaveAttribute('href', '#listings');
@@ -24,15 +24,13 @@ test.describe('homepage navigation', () => {
   })
 
   test('homepage navigates successfully to sign in page', async ({ page }) => {
-    // create a locator
-    const signIn = page.getByText('Sign In');
-    // Click the sign-in link.
+    // create a locator for the sign in button
+    const signIn = page.getByRole('link', { name: 'Sign In' });
     await signIn.click();
-    // Expects the URL to contain intro.
-    await expect(page).toHaveURL(/.*auth/);
+    await expect(page).toHaveURL(/#auth/);
   });
 
-  test('side menu opens properly', async ({ page }) => {
+  test('side menu opens and displays properly', async ({ page }) => {
     await page.getByRole('button', { name: 'open sidebar menu' }).click();
     const menuNav = page.getByRole('navigation', { name: 'menu navigation' });
     expect(menuNav).toBeVisible;
