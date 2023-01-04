@@ -19,7 +19,7 @@ if (environment === 'dev') {
 const cities = require('./cities');
 const { descriptors, nouns, types } = require('./nameSeeds');
 
-const sample = array => array[Math.floor(Math.random() * array.length)];
+const sample = (array: []) => array[Math.floor(Math.random() * array.length)];
 const seedData = async () => {
   for (let i = 0; i < 1; i++) {
     let image = '';
@@ -28,7 +28,8 @@ const seedData = async () => {
     unsplash.photos.getRandom({
       collectionIds: ['AZyVw2W8P1E']
     })
-      .then(result => {
+      .then((result: {
+        errors: [0]; response: { urls: { regular: string } } }) => {
         if (result.errors) {
           console.error('Unsplash result error:', result.errors[0])
         } else {
@@ -49,7 +50,7 @@ const seedData = async () => {
             .catch(err => console.error('Fetch error:', err));
         }
       })
-      .catch(err => console.log('Unsplash Error:', err));
+      .catch((err: Error) => console.log('Unsplash Error:', err));
   }
 }
 
