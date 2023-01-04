@@ -4,4 +4,4 @@ server/public/**/*.map
 /test-results/
 /playwright-report/
 /playwright/.cache/
-/**/*.js
+**/*.js
