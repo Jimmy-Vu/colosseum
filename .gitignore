@@ -5,3 +5,4 @@ server/public/**/*.map
 /playwright-report/
 /playwright/.cache/
 **/*.js
+*.js
