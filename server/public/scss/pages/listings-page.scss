@@ -10,14 +10,18 @@
   display: flex;
   align-self: center;
   flex-direction: column;
-  align-items: center;
+  justify-content: center;
 
   width: 100%;
-  max-width: 780px;
+  max-width: 750px;
   height: 100%;
   margin-top: 0.5rem;
   padding-left: 1rem;
   padding-right: 1rem;
+
+  @include xl {
+    max-width: 1150px;
+  }
 
   .listings-add-btn {
     align-self: flex-end;
@@ -39,12 +43,20 @@
   }
 
   .cards-container {
-    @include sm {
-      display: grid;
-      justify-items: center;
-      grid-template-columns: repeat(3, 1fr);
-      row-gap: 25px;
-      width: 1150px;
+    display: grid;
+    justify-content: center;
+    grid-template-columns: repeat(1, 350px);
+    column-gap: 25px;
+    row-gap: 25px;
+    width: 100%;
+
+    @include md {
+      grid-template-columns: repeat(2, 350px);
+      justify-content: space-between;
+    }
+
+    @include xl {
+      grid-template-columns: repeat(3, 350px);
     }
   }
 }

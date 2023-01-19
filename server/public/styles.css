@@ -223,13 +223,18 @@ footer {
   display: flex;
   align-self: center;
   flex-direction: column;
-  align-items: center;
+  justify-content: center;
   width: 100%;
-  max-width: 780px;
+  max-width: 750px;
   height: 100%;
   margin-top: 0.5rem;
   padding-left: 1rem;
   padding-right: 1rem;
+}
+@media (min-width: 1200px) {
+  .listings-main {
+    max-width: 1150px;
+  }
 }
 .listings-main .listings-add-btn {
   align-self: flex-end;
@@ -247,13 +252,23 @@ footer {
   font-size: 1.25rem;
   font-weight: 500;
 }
-@media (min-width: 480px) {
+.listings-main .cards-container {
+  display: grid;
+  justify-content: center;
+  grid-template-columns: repeat(1, 350px);
+  column-gap: 25px;
+  row-gap: 25px;
+  width: 100%;
+}
+@media (min-width: 720px) {
   .listings-main .cards-container {
-    display: grid;
-    justify-items: center;
-    grid-template-columns: repeat(3, 1fr);
-    row-gap: 25px;
-    width: 1150px;
+    grid-template-columns: repeat(2, 350px);
+    justify-content: space-between;
+  }
+}
+@media (min-width: 1200px) {
+  .listings-main .cards-container {
+    grid-template-columns: repeat(3, 350px);
   }
 }
 
@@ -864,8 +879,15 @@ footer {
   font-weight: 500;
 }
 
-.filter {
-  width: 100%;
+@media (min-width: 480px) {
+  .filter {
+    align-self: center;
+  }
+}
+@media (min-width: 720px) {
+  .filter {
+    align-self: start;
+  }
 }
 
 .filter-web {
@@ -877,7 +899,7 @@ footer {
     display: flex;
     align-items: center;
     height: 50px;
-    width: 100%;
+    width: 350px;
     margin-bottom: 1rem;
     padding: 1.75rem 1rem 1.75rem 1rem;
     border: 1px solid black;
@@ -1059,7 +1081,7 @@ body {
 
 #root {
   flex: 1;
-  background-image: url(./images/colloseum_color.jpg);
+  background-color: #FEFDFB;
   background-size: cover;
   background-position: center center;
   background-repeat: no-repeat;
