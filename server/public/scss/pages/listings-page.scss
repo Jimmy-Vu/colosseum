@@ -18,23 +18,33 @@
   margin-top: 0.5rem;
   padding-left: 1rem;
   padding-right: 1rem;
-}
 
-.listings-add-btn {
-  align-self: flex-end;
-  margin: 1rem 0.1rem 1rem 0.1rem;
-  width: fit-content;
+  .listings-add-btn {
+    align-self: flex-end;
+    margin: 1rem 0.1rem 1rem 0.1rem;
+    width: fit-content;
 
-  background-color: $primary;
-  color: white !important;
-  box-shadow: 0 0 1px black;
-  border: solid white 1px;
-  border-radius: 15px;
-  padding-left: 1em;
-  padding-right: 1em;
-  padding-top: 0.25em;
-  padding-bottom: 0.25em;
+    background-color: $primary;
+    color: white !important;
+    box-shadow: 0 0 1px black;
+    border: solid white 1px;
+    border-radius: 15px;
+    padding-left: 1em;
+    padding-right: 1em;
+    padding-top: 0.25em;
+    padding-bottom: 0.25em;
 
-  font-size: 1.25rem;
-  font-weight: 500;
+    font-size: 1.25rem;
+    font-weight: 500;
+  }
+
+  .cards-container {
+    @include sm {
+      display: grid;
+      justify-items: center;
+      grid-template-columns: repeat(3, 1fr);
+      row-gap: 25px;
+      width: 1150px;
+    }
+  }
 }

@@ -10,8 +10,7 @@
   padding-left: 1rem;
   padding-right: 1rem;
 }
-
-.listings-add-btn {
+.listings-main .listings-add-btn {
   align-self: flex-end;
   margin: 1rem 0.1rem 1rem 0.1rem;
   width: fit-content;
@@ -26,6 +25,15 @@
   padding-bottom: 0.25em;
   font-size: 1.25rem;
   font-weight: 500;
+}
+@media (min-width: 480px) {
+  .listings-main .cards-container {
+    display: grid;
+    justify-items: center;
+    grid-template-columns: repeat(3, 1fr);
+    row-gap: 25px;
+    width: 1150px;
+  }
 }
 
 /*# sourceMappingURL=listings-page.css.map */
