@@ -48,7 +48,6 @@
     &:hover {
       transition-duration: 250ms;
       background-color: $secondary;
-      // scale: 1.01;
     }
 
     @include sm {
