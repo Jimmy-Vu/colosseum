@@ -71,16 +71,18 @@ export default function Listings(props: {}) {
       <main className="listings-main">
         <a className="listings-add-btn" href="#create">Add an Arena</a>
         <Filter handleFiltering={handleFiltering} />
-        {(!isFiltered || listings.filteredGyms.length === 0) &&
-          listings.gyms.map(gym => (
-            <ListingCard key={gym.gymId} gym={gym} />
-          ))
-        }
-        {isFiltered &&
-          listings.filteredGyms.map(gym => (
-            <ListingCard key={gym.gymId} gym={gym} />
-          ))
-        }
+        <div className="cards-container">
+          {(!isFiltered || listings.filteredGyms.length === 0) &&
+            listings.gyms.map(gym => (
+              <ListingCard key={gym.gymId} gym={gym} />
+            ))
+          }
+          {isFiltered &&
+            listings.filteredGyms.map(gym => (
+              <ListingCard key={gym.gymId} gym={gym} />
+            ))
+          }
+        </div>
       </main>
     </>
   );

@@ -74,6 +74,7 @@ export default function Filter(props: Props) {
           Filter
           <i className="fa-sharp fa-solid fa-caret-down"></i>
         </button>
+        <a className="filter-add-btn" href="#create">Add an Arena</a>
         {isOpen && !isMobileView &&
           <FilterWebDropdown handleCheckboxes={handleCheckboxes} handleSubmit={handleSubmit} filters={filters} />
         }

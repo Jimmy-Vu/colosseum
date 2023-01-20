@@ -10,31 +10,60 @@
   display: flex;
   align-self: center;
   flex-direction: column;
-  align-items: center;
+
   width: 100%;
-  max-width: 780px;
+  max-width: 350px;
   height: 100%;
-  margin-top: 0.5rem;
+  margin-top: 1rem;
 
-  padding-left: 1rem;
-  padding-right: 1rem;
-}
+  @include sm {
+    max-width: 750px;
+  }
 
-.listings-add-btn {
-  align-self: flex-end;
-  margin: 1rem 0.1rem 1rem 0.1rem;
-  width: fit-content;
+  @include xl {
+    max-width: 1150px;
+  }
 
-  background-color: $primary;
-  color: white !important;
-  box-shadow: 0 0 1px black;
-  border: solid white 1px;
-  border-radius: 15px;
-  padding-left: 1em;
-  padding-right: 1em;
-  padding-top: 0.25em;
-  padding-bottom: 0.25em;
+  .listings-add-btn {
+    align-self: flex-end;
+    margin: 1rem 0.1rem 1rem 0.1rem;
+    width: fit-content;
 
-  font-size: 1.25rem;
-  font-weight: 500;
+    background-color: $primary;
+    color: white !important;
+    box-shadow: 0 0 1px black;
+    border: solid white 1px;
+    border-radius: 5px;
+    padding-left: 1em;
+    padding-right: 1em;
+    padding-top: 0.25em;
+    padding-bottom: 0.25em;
+
+    font-size: 20px;
+    font-weight: 500;
+
+    @include sm {
+      display: none;
+    }
+  }
+
+  .cards-container {
+    display: grid;
+    justify-content: center;
+    grid-template-columns: repeat(1, 350px);
+    column-gap: 25px;
+    row-gap: 25px;
+
+    width: 100%;
+    margin-bottom: 1.5rem;
+
+    @include md {
+      grid-template-columns: repeat(2, 350px);
+      justify-content: space-between;
+    }
+
+    @include xl {
+      grid-template-columns: repeat(3, 350px);
+    }
+  }
 }

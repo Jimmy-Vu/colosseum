@@ -223,16 +223,22 @@ footer {
   display: flex;
   align-self: center;
   flex-direction: column;
-  align-items: center;
   width: 100%;
-  max-width: 780px;
+  max-width: 350px;
   height: 100%;
-  margin-top: 0.5rem;
-  padding-left: 1rem;
-  padding-right: 1rem;
+  margin-top: 1rem;
 }
-
-.listings-add-btn {
+@media (min-width: 480px) {
+  .listings-main {
+    max-width: 750px;
+  }
+}
+@media (min-width: 1200px) {
+  .listings-main {
+    max-width: 1150px;
+  }
+}
+.listings-main .listings-add-btn {
   align-self: flex-end;
   margin: 1rem 0.1rem 1rem 0.1rem;
   width: fit-content;
@@ -240,33 +246,66 @@ footer {
   color: white !important;
   box-shadow: 0 0 1px black;
   border: solid white 1px;
-  border-radius: 15px;
+  border-radius: 5px;
   padding-left: 1em;
   padding-right: 1em;
   padding-top: 0.25em;
   padding-bottom: 0.25em;
-  font-size: 1.25rem;
+  font-size: 20px;
   font-weight: 500;
+}
+@media (min-width: 480px) {
+  .listings-main .listings-add-btn {
+    display: none;
+  }
+}
+.listings-main .cards-container {
+  display: grid;
+  justify-content: center;
+  grid-template-columns: repeat(1, 350px);
+  column-gap: 25px;
+  row-gap: 25px;
+  width: 100%;
+  margin-bottom: 1.5rem;
+}
+@media (min-width: 720px) {
+  .listings-main .cards-container {
+    grid-template-columns: repeat(2, 350px);
+    justify-content: space-between;
+  }
+}
+@media (min-width: 1200px) {
+  .listings-main .cards-container {
+    grid-template-columns: repeat(3, 350px);
+  }
 }
 
 .card-anchor {
   display: flex;
   justify-content: center;
-  width: 100%;
-  height: fit-content;
-  max-height: 200px;
+  width: 350px;
+  height: 350px;
   margin-bottom: 1rem;
+}
+@media (min-width: 480px) {
+  .card-anchor {
+    margin-bottom: 0;
+  }
 }
 
 .card {
   display: flex;
-  align-items: center;
+  flex-direction: column;
   background-color: white;
-  border: solid 5px #D2B85A;
+  box-shadow: 1px 2px 3px 4px rgba(0, 0, 0, 0.25);
+  transition-duration: 0.25s;
   border-radius: 15px;
   height: 100%;
   width: 100%;
-  padding: 1em;
+}
+.card:hover {
+  scale: 1.01;
+  box-shadow: 1px 2px 3px 6px rgba(210, 184, 90, 0.5);
 }
 @media (min-width: 480px) {
   .card {
@@ -275,31 +314,16 @@ footer {
 }
 .card-image {
   object-fit: cover;
-  height: 100px;
-  min-height: 100px;
-  width: 100px;
-  min-width: 100px;
-  border-radius: 15px;
+  height: 60%;
+  width: 100%;
+  border-radius: 15px 15px 0 0;
 }
 .card-body {
   display: flex;
   flex-direction: column;
-  margin-left: 3rem;
-}
-@media (min-width: 720px) {
-  .card-body {
-    margin-left: 6rem;
-  }
-}
-@media (min-width: 960px) {
-  .card-body {
-    margin-left: 8rem;
-  }
-}
-@media (min-width: 1200px) {
-  .card-body {
-    margin-left: 10rem;
-  }
+  flex-grow: 1;
+  justify-content: center;
+  text-align: center;
 }
 .card-title {
   color: black;
@@ -868,8 +892,15 @@ footer {
   font-weight: 500;
 }
 
-.filter {
-  width: 100%;
+@media (min-width: 480px) {
+  .filter {
+    align-self: center;
+  }
+}
+@media (min-width: 720px) {
+  .filter {
+    align-self: start;
+  }
 }
 
 .filter-web {
@@ -879,15 +910,35 @@ footer {
   .filter-web {
     position: relative;
     display: flex;
+    justify-content: space-between;
     align-items: center;
     height: 50px;
-    width: 100%;
+    width: 350px;
     margin-bottom: 1rem;
     padding: 1.75rem 1rem 1.75rem 1rem;
-    border: 1px solid black;
-    border-radius: 3px;
-    background-color: #fafafa;
+    box-shadow: 1px 2px 3px 4px rgba(0, 0, 0, 0.25);
+    border-radius: 5px;
+    background-color: #F3F3F3;
   }
+}
+.filter-web .filter-add-btn {
+  margin: 1rem 0.1rem 1rem 0.1rem;
+  width: fit-content;
+  background-color: #D2B85A;
+  color: white !important;
+  box-shadow: 0 0 1px black;
+  border: solid white 1px;
+  border-radius: 5px;
+  padding-left: 1em;
+  padding-right: 1em;
+  padding-top: 0.25em;
+  padding-bottom: 0.25em;
+  font-size: 16px;
+  font-weight: 500;
+}
+.filter-web .filter-add-btn:hover {
+  transition-duration: 100ms;
+  background-color: #BFA246;
 }
 .filter-web .btn {
   display: flex;
@@ -945,7 +996,7 @@ footer {
 }
 .filter-web__form .apply-btn:hover {
   transition-duration: 100ms;
-  background-color: #FBC901;
+  background-color: #BFA246;
 }
 
 .filter-mobile__btn {
@@ -1063,7 +1114,7 @@ body {
 
 #root {
   flex: 1;
-  background-image: url(./images/colloseum_color.jpg);
+  background-color: #FEFDFB;
   background-size: cover;
   background-position: center center;
   background-repeat: no-repeat;
@@ -1072,7 +1123,7 @@ body {
 .main-container {
   display: flex;
   flex-direction: column;
-  font-family: "Roboto", sans-serif;
+  font-family: "Open Sans", sans-serif;
   height: 100%;
   overflow-y: auto;
 }
