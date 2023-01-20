@@ -66,8 +66,9 @@ header {
     text-shadow: 0 0 2px black;
   }
   .navbar__sign-in:hover {
-    transition-duration: 100ms;
+    transition-duration: 250ms;
     background-color: #BFA246;
+    scale: 1.01;
   }
 }
 
