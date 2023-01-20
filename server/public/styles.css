@@ -20,6 +20,10 @@ header {
   margin-top: 0.23em;
   text-shadow: 1px 1px 1px black;
 }
+.navbar .menu-button:hover {
+  transition-duration: 250ms;
+  color: #BFA246;
+}
 @media (min-width: 720px) {
   .navbar .menu-button {
     font-size: 3rem;

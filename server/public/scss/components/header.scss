@@ -24,6 +24,11 @@ header {
     margin-top: .23em;
     text-shadow: 1px 1px 1px black;
 
+    &:hover {
+      transition-duration: 250ms;
+      color: $secondary;
+    }
+
     @include md {
       font-size: 3rem;
     }
