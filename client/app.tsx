@@ -71,7 +71,7 @@ function App(props: {}) {
         <div className="main-container">
           <Header handleSignOut={handleSignOut} />
           <Home />
-          <Footer />
+          {/* <Footer /> */}
         </div>
       );
     case "listings":
