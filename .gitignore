@@ -1,7 +1,6 @@
 .env
 node_modules
-**/*.map
-server/**/*.map
+*.map
 /test-results/
 /playwright-report/
 /playwright/.cache/
