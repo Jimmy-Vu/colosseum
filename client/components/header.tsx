@@ -9,22 +9,6 @@ function Header(props: { handleSignOut: () => void; }) {
   const isLoggedIn = useSelector((state: RootState) => state.app.isLoggedIn);
   const handleSignOut = props.handleSignOut;
 
-  useEffect(() => {
-    window.addEventListener('scroll', changeBackground);
-    return () => {
-      window.removeEventListener('scroll', changeBackground);
-    };
-  }, [window.scrollY]);
-
-
-  function changeBackground() {
-    if (window.scrollY >= 40) {
-      setNavBarScrolled(true);
-    } else {
-      setNavBarScrolled(false);
-    }
-  }
-
   function handleSignInClick() {
     window.location.hash = '#auth';
   }
