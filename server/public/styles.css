@@ -2,10 +2,6 @@ header {
   position: sticky;
   top: 0;
   z-index: 4;
-  background-color: transparent;
-  transition: background-color 400ms;
-}
-header.scrolled {
   background-color: black;
   border-bottom: 2px solid #D2B85A;
 }
@@ -23,6 +19,10 @@ header.scrolled {
   color: #D2B85A;
   margin-top: 0.23em;
   text-shadow: 1px 1px 1px black;
+}
+.navbar .menu-button:hover {
+  transition-duration: 250ms;
+  color: #BFA246;
 }
 @media (min-width: 720px) {
   .navbar .menu-button {
@@ -68,6 +68,11 @@ header.scrolled {
     font-size: 1.5rem;
     font-weight: 500;
     text-shadow: 0 0 2px black;
+  }
+  .navbar__sign-in:hover {
+    transition-duration: 250ms;
+    background-color: #BFA246;
+    scale: 1.01;
   }
 }
 
@@ -1115,17 +1120,14 @@ body {
 #root {
   flex: 1;
   background-color: #FEFDFB;
-  background-size: cover;
-  background-position: center center;
-  background-repeat: no-repeat;
 }
 
 .main-container {
+  position: relative;
   display: flex;
   flex-direction: column;
   font-family: "Open Sans", sans-serif;
   height: 100%;
-  overflow-y: auto;
 }
 
 /*# sourceMappingURL=styles.css.map */

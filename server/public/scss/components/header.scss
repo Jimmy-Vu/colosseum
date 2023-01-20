@@ -5,13 +5,8 @@ header {
   position: sticky;
   top: 0;
   z-index: 4;
-  background-color: transparent;
-  transition: background-color 400ms;
-
-  &.scrolled {
-    background-color: black;
-    border-bottom: 2px solid $primary;
-  }
+  background-color: black;
+  border-bottom: 2px solid $primary;
 }
 
 .navbar {
@@ -28,6 +23,11 @@ header {
     color: $primary;
     margin-top: .23em;
     text-shadow: 1px 1px 1px black;
+
+    &:hover {
+      transition-duration: 250ms;
+      color: $secondary;
+    }
 
     @include md {
       font-size: 3rem;
@@ -73,6 +73,12 @@ header {
       font-size: 1.5rem;
       font-weight: 500;
       text-shadow: 0 0 2px black;
+
+      &:hover {
+        transition-duration: 250ms;
+        background-color: $secondary;
+        scale: 1.01;
+      }
     }
   }
 }
