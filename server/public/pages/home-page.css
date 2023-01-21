@@ -6,25 +6,38 @@
   display: flex;
   flex-direction: column;
 }
+@media (min-width: 960px) {
+  .home__main {
+    flex-direction: row-reverse;
+  }
+}
 .home__hero {
-  height: 50%;
+  height: 30%;
   background-image: url(./images/colosseum_color.jpg);
   background-size: cover;
   background-position: center center;
   background-repeat: no-repeat;
 }
+@media (min-width: 960px) {
+  .home__hero {
+    height: 100%;
+    width: 40%;
+  }
+}
 .home__welcome-section {
   display: flex;
   flex-direction: column;
-  height: 50%;
+  justify-content: center;
+  height: 70%;
   width: 100%;
-  padding: 1rem;
+  padding: 2rem;
   background-color: #FEFDFB;
 }
-@media (min-width: 720px) {
+@media (min-width: 960px) {
   .home__welcome-section {
     height: 100%;
     width: 60%;
+    padding: 0 7rem 0 7rem;
   }
 }
 .home__welcome-section__description {
@@ -40,14 +53,29 @@
     font-size: 60px;
   }
 }
+@media (min-width: 1200px) {
+  .home__welcome-section__description__title {
+    font-size: 72px;
+  }
+}
 .home__welcome-section__description__text {
   margin-bottom: 1rem;
-  font-size: 20px;
+  font-size: 22px;
 }
 @media (min-width: 720px) {
   .home__welcome-section__description__text {
-    font-size: 36px;
+    font-size: 24px;
   }
+}
+.home__welcome-section__description__list {
+  margin-bottom: 1rem;
+  list-style: none;
+  font-size: 18px;
+}
+.home__welcome-section__description__list .fa-circle-chevron-right {
+  margin-right: 0.5rem;
+  font-size: 20px;
+  color: #D2B85A;
 }
 .home__find-btn {
   display: flex;
@@ -55,29 +83,23 @@
   justify-content: center;
   align-items: center;
   border-radius: 5px;
-  padding: 0.25em 0.5em;
+  padding: 0.75rem 1rem;
   width: fit-content;
   height: fit-content;
   background-color: #D2B85A;
   color: white !important;
   font-family: "Oswald", sans-serif;
-  font-size: 36px;
+  font-size: 28px;
   font-weight: 500;
   text-shadow: 0 0 2px black;
-  box-shadow: 1px 2px 3px 4px rgba(0, 0, 0, 0.25);
 }
 .home__find-btn:hover {
   transition-duration: 250ms;
   background-color: #BFA246;
 }
-@media (min-width: 480px) {
+@media (min-width: 960px) {
   .home__find-btn {
-    margin-bottom: 8rem;
-  }
-}
-@media (min-width: 720px) {
-  .home__find-btn {
-    font-size: 2.5rem;
+    align-self: initial;
   }
 }
 

@@ -15,30 +15,41 @@
     height: 100%;
     display: flex;
     flex-direction: column;
+
+    @include lg {
+      flex-direction: row-reverse;
+    }
   }
 
   &__hero {
-    height: 50%;
+    height: 30%;
 
     background-image: url(./images/colosseum_color.jpg);
     background-size: cover;
     background-position: center center;
     background-repeat: no-repeat;
+
+    @include lg {
+      height: 100%;
+      width: 40%;
+    }
   }
 
   &__welcome-section {
     display: flex;
     flex-direction: column;
+    justify-content: center;
 
-    height: 50%;
+    height: 70%;
     width: 100%;
-    padding: 1rem;
+    padding: 2rem;
 
     background-color: $bg-main;
 
-    @include md {
+    @include lg {
       height: 100%;
       width: 60%;
+      padding: 0 7rem 0 7rem;
     }
 
     &__description {
@@ -48,16 +59,34 @@
         margin-bottom: 1rem;
         font-size: 36px;
         font-weight: 800;
+
         @include md {
           font-size: 60px;
+        }
+
+        @include xl {
+          font-size: 72px;
         }
       }
 
       &__text {
         margin-bottom: 1rem;
-        font-size: 20px;
+        font-size: 22px;
+
         @include md {
-          font-size: 36px;
+          font-size: 24px;
+        }
+      }
+
+      &__list {
+        margin-bottom: 1rem;
+        list-style: none;
+        font-size: 18px;
+
+        .fa-circle-chevron-right {
+          margin-right: 0.5rem;
+          font-size: 20px;
+          color: $primary;
         }
       }
     }
@@ -70,29 +99,24 @@
     align-items: center;
 
     border-radius: 5px;
-    padding: 0.25em 0.5em;
+    padding: 0.75rem 1rem;
     width: fit-content;
     height: fit-content;
 
     background-color: $primary;
     color: white !important;
     font-family: 'Oswald', sans-serif;
-    font-size: 36px;
+    font-size: 28px;
     font-weight: 500;
     text-shadow: 0 0 2px black;
-    box-shadow: 1px 2px 3px 4px rgba(0, 0, 0, 0.25);
 
     &:hover {
       transition-duration: 250ms;
       background-color: $secondary;
     }
 
-    @include sm {
-      margin-bottom: 8rem;
-    }
-
-    @include md {
-      font-size: 2.5rem;
+    @include lg {
+      align-self: initial;
     }
   }
 }
