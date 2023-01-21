@@ -1,50 +1,82 @@
-.home-container {
+.home__container {
   height: 100%;
-  background-image: url(./images/colloseum_color.jpg);
+}
+.home__main {
+  height: 100%;
+  display: flex;
+  flex-direction: column;
+}
+.home__hero {
+  height: 50%;
+  background-image: url(./images/colosseum_color.jpg);
   background-size: cover;
   background-position: center center;
   background-repeat: no-repeat;
 }
-
-.home-main {
-  height: 100%;
+.home__welcome-section {
   display: flex;
   flex-direction: column;
-  justify-content: center;
-  align-items: center;
+  height: 50%;
+  width: 100%;
+  padding: 1rem;
+  background-color: #FEFDFB;
 }
-.home-main .home-description {
+@media (min-width: 720px) {
+  .home__welcome-section {
+    height: 100%;
+    width: 60%;
+  }
+}
+.home__welcome-section__description {
+  color: #0f0d09;
+}
+.home__welcome-section__description__title {
   margin-bottom: 1rem;
-  text-align: center;
-  font-size: 24px;
-  font-weight: 400;
+  font-size: 36px;
+  font-weight: 800;
 }
-.home-main .home-search-btn {
+@media (min-width: 720px) {
+  .home__welcome-section__description__title {
+    font-size: 60px;
+  }
+}
+.home__welcome-section__description__text {
+  margin-bottom: 1rem;
+  font-size: 20px;
+}
+@media (min-width: 720px) {
+  .home__welcome-section__description__text {
+    font-size: 36px;
+  }
+}
+.home__find-btn {
   display: flex;
+  align-self: center;
   justify-content: center;
   align-items: center;
-  margin-bottom: 12rem;
-  border-radius: 14px;
+  border-radius: 5px;
   padding: 0.25em 0.5em;
+  width: fit-content;
+  height: fit-content;
   background-color: #D2B85A;
-  color: white;
+  color: white !important;
   font-family: "Oswald", sans-serif;
-  font-size: 2.5rem;
+  font-size: 36px;
   font-weight: 500;
   text-shadow: 0 0 2px black;
   box-shadow: 1px 2px 3px 4px rgba(0, 0, 0, 0.25);
 }
-.home-main .home-search-btn:hover {
+.home__find-btn:hover {
   transition-duration: 250ms;
   background-color: #BFA246;
 }
 @media (min-width: 480px) {
-  .home-main .home-search-btn {
+  .home__find-btn {
     margin-bottom: 8rem;
   }
 }
 @media (min-width: 720px) {
-  .home-main .home-search-btn {
+  .home__find-btn {
     font-size: 2.5rem;
   }
 }

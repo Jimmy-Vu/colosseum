@@ -3,13 +3,17 @@ import React from "react";
 function Home(props: {}) {
 
   return (
-    <div className="home-container">
-      <main className="home-main">
-        <section className="home-description">
-          {/* <p>{Welcome to Colosseum!}</p> */}
-          {/* <p>Your first steps into self betterment awaits.</p> */}
+    <div className="home__container">
+      <main className="home__main">
+        <section className="home__hero"></section>
+        <section className="home__welcome-section">
+          <div className="home__welcome-section__description">
+            <h1 className="home__welcome-section__description__title">Discover the best <br />
+            gyms on Earth.</h1>
+            <p className="home__welcome-section__description__text">Colosseum presents an exclusive selection of the finest gyms around the globe. Your first steps into self betterment awaits.</p>
+          </div>
+          <a className="home__find-btn" href="#listings">Find Your Arena</a>
         </section>
-        <a className="home-search-btn" href="#listings">Find Your Arena</a>
       </main>
     </div>
   );

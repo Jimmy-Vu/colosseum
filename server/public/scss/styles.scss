@@ -64,17 +64,13 @@ body {
 
 #root {
   flex: 1;
-  // background-image: url(./images/colloseum_color.jpg);
-  background-color: #FEFDFB;
-  // background-size: cover;
-  // background-position: center center;
-  // background-repeat: no-repeat;
+  background-color: $bg-main;
 }
 
 .main-container {
   position: relative;
   display: flex;
   flex-direction: column;
-  font-family: 'Open Sans', sans-serif;
+  font-family: 'Manrope', sans-serif;
   height: 100%;
 }
