@@ -31,48 +31,41 @@ header {
 }
 .navbar__title {
   font-family: "Oswald", sans-serif;
-  font-size: 3.5rem;
+  font-size: 3rem;
   color: white;
   text-shadow: 0 4px 4px black;
 }
 .navbar__title a {
   color: white;
 }
-@media (min-width: 720px) {
-  .navbar__title {
-    font-size: 3rem;
-    width: fit-content;
-    margin-left: 1.5em;
-  }
-}
 @media (min-width: 960px) {
   .navbar__title {
-    font-size: 5rem;
+    font-size: 4rem;
     margin-left: 1em;
   }
 }
-.navbar__sign-in {
+.navbar__sign-in-btn {
   display: none;
+  justify-content: center;
+  align-items: center;
+  width: 120px;
+  height: 42px;
+  border-radius: 6px;
+  background-color: #D2B85A;
+  color: white;
+  font-family: "Oswald", sans-serif;
+  font-weight: 500;
+  text-shadow: 0 0 2px black;
+}
+.navbar__sign-in-btn:hover {
+  transition-duration: 250ms;
+  background-color: #BFA246;
+  scale: 1.01;
 }
 @media (min-width: 720px) {
-  .navbar__sign-in {
+  .navbar__sign-in-btn {
     display: flex;
-    justify-content: center;
-    align-items: center;
-    width: 150px;
-    height: 3rem;
-    border-radius: 6px;
-    background-color: #D2B85A;
-    color: white;
-    font-family: "Oswald", sans-serif;
     font-size: 1.5rem;
-    font-weight: 500;
-    text-shadow: 0 0 2px black;
-  }
-  .navbar__sign-in:hover {
-    transition-duration: 250ms;
-    background-color: #BFA246;
-    scale: 1.01;
   }
 }
 
@@ -182,45 +175,108 @@ footer {
   color: white;
 }
 
-.home-container {
+.home__container {
   height: 100%;
 }
-
-.home-main {
+.home__main {
   height: 100%;
   display: flex;
   flex-direction: column;
-  justify-content: center;
-  align-items: center;
 }
-.home-main .home-description {
-  margin-bottom: 1rem;
-  text-align: center;
-  font-size: 24px;
-  font-weight: 400;
+@media (min-width: 960px) {
+  .home__main {
+    flex-direction: row-reverse;
+  }
 }
-.home-main .home-search-btn {
+.home__hero {
+  height: 30%;
+  background-image: url(./images/colosseum_color.jpg);
+  background-size: cover;
+  background-position: center center;
+  background-repeat: no-repeat;
+}
+@media (min-width: 960px) {
+  .home__hero {
+    height: 100%;
+    width: 40%;
+  }
+}
+.home__welcome-section {
   display: flex;
+  flex-direction: column;
+  justify-content: center;
+  height: 70%;
+  width: 100%;
+  padding: 2rem;
+  background-color: #FEFDFB;
+}
+@media (min-width: 960px) {
+  .home__welcome-section {
+    height: 100%;
+    width: 60%;
+    padding: 0 7rem 0 7rem;
+  }
+}
+.home__welcome-section__description {
+  color: #0f0d09;
+}
+.home__welcome-section__description__title {
+  margin-bottom: 1rem;
+  font-size: 36px;
+  font-weight: 800;
+}
+@media (min-width: 720px) {
+  .home__welcome-section__description__title {
+    font-size: 60px;
+  }
+}
+@media (min-width: 1200px) {
+  .home__welcome-section__description__title {
+    font-size: 72px;
+  }
+}
+.home__welcome-section__description__text {
+  margin-bottom: 1rem;
+  font-size: 22px;
+}
+@media (min-width: 720px) {
+  .home__welcome-section__description__text {
+    font-size: 24px;
+  }
+}
+.home__welcome-section__description__list {
+  margin-bottom: 1rem;
+  list-style: none;
+  font-size: 18px;
+}
+.home__welcome-section__description__list .fa-circle-chevron-right {
+  margin-right: 0.5rem;
+  font-size: 20px;
+  color: #D2B85A;
+}
+.home__find-btn {
+  display: flex;
+  align-self: center;
   justify-content: center;
   align-items: center;
-  margin-bottom: 12rem;
-  border-radius: 14px;
-  padding: 0.25em 0.5em;
+  border-radius: 5px;
+  padding: 0.75rem 1rem;
+  width: fit-content;
+  height: fit-content;
   background-color: #D2B85A;
-  color: white;
+  color: white !important;
   font-family: "Oswald", sans-serif;
-  font-size: 2.5rem;
+  font-size: 28px;
   font-weight: 500;
   text-shadow: 0 0 2px black;
 }
-@media (min-width: 480px) {
-  .home-main .home-search-btn {
-    margin-bottom: 8rem;
-  }
+.home__find-btn:hover {
+  transition-duration: 250ms;
+  background-color: #BFA246;
 }
-@media (min-width: 720px) {
-  .home-main .home-search-btn {
-    font-size: 2.5rem;
+@media (min-width: 960px) {
+  .home__find-btn {
+    align-self: initial;
   }
 }
 
@@ -1126,7 +1182,7 @@ body {
   position: relative;
   display: flex;
   flex-direction: column;
-  font-family: "Open Sans", sans-serif;
+  font-family: "Manrope", sans-serif;
   height: 100%;
 }
 
