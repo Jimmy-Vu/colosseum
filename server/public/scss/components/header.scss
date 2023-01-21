@@ -36,7 +36,7 @@ header {
 
   &__title {
     font-family: 'Oswald', sans-serif;
-    font-size: 3.5rem;
+    font-size: 3rem;
     color: white;
     text-shadow: 0 4px 4px black;
 
@@ -44,41 +44,35 @@ header {
       color: white;
     }
 
-    @include md {
-      font-size: 3rem;
-      width: fit-content;
-      margin-left: 1.5em;
-    }
-
     @include lg {
-      font-size: 5rem;
+      font-size: 4rem;
       margin-left: 1em;
     }
   }
 
-  &__sign-in {
+  &__sign-in-btn {
     display: none;
+    justify-content: center;
+    align-items: center;
+    width: 120px;
+    height: 42px;
+    border-radius: 6px;
+
+    background-color: $primary;
+    color: white;
+    font-family: 'Oswald', sans-serif;
+    font-weight: 500;
+    text-shadow: 0 0 2px black;
+
+    &:hover {
+      transition-duration: 250ms;
+      background-color: $secondary;
+      scale: 1.01;
+    }
 
     @include md {
       display: flex;
-      justify-content: center;
-      align-items: center;
-      width: 150px;
-      height: 3rem;
-      border-radius: 6px;
-
-      background-color: $primary;
-      color: white;
-      font-family: 'Oswald', sans-serif;
       font-size: 1.5rem;
-      font-weight: 500;
-      text-shadow: 0 0 2px black;
-
-      &:hover {
-        transition-duration: 250ms;
-        background-color: $secondary;
-        scale: 1.01;
-      }
     }
   }
 }
