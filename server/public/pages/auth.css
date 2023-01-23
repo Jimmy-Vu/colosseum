@@ -1,4 +1,4 @@
-.sign-in-main {
+.auth-main {
   display: flex;
   align-items: center;
   justify-content: center;
@@ -6,7 +6,7 @@
   padding: 1rem;
 }
 
-.sign-in-container {
+.auth-container {
   display: flex;
   flex-direction: column;
   align-items: center;
@@ -18,33 +18,33 @@
   background-color: rgba(255, 255, 255, 0.9);
   border-radius: 15px;
 }
-.sign-in-container .sign-in-title {
+.auth-container .auth-title {
   font-size: 36px;
 }
-.sign-in-container .sign-in-form {
+.auth-container .auth-form {
   display: flex;
   flex-direction: column;
   width: 100%;
 }
-.sign-in-container .sign-in-form label {
+.auth-container .auth-form label {
   font-weight: 500;
 }
-.sign-in-container .sign-in-form input {
+.auth-container .auth-form input {
   width: 100%;
 }
-.sign-in-container .sign-in-form span {
+.auth-container .auth-form span {
   font-size: 14px;
   color: red;
   display: none;
 }
-.sign-in-container .sign-in-form input:not(:focus):not(:placeholder-shown):invalid ~ span {
+.auth-container .auth-form input:not(:focus):not(:placeholder-shown):invalid ~ span {
   display: block;
 }
-.sign-in-container .sign-in-form #password-toggle {
+.auth-container .auth-form #password-toggle {
   margin-left: -30px;
   cursor: pointer;
 }
-.sign-in-container .sign-in-form .sign-btn {
+.auth-container .auth-form .auth-btn {
   align-self: center;
   text-align: center;
   margin: 1em 0.5em 0.25em 0.1em;
@@ -60,7 +60,7 @@
   padding-bottom: 0.25em;
   font-size: 1.25rem;
 }
-.sign-in-container .demo-btn {
+.auth-container .demo-btn {
   align-self: center;
   text-align: center;
   margin: 1em 0.5em 0.25em 0.1em;
@@ -77,4 +77,4 @@
   font-size: 1rem;
 }
 
-/*# sourceMappingURL=sign-in.css.map */
+/*# sourceMappingURL=auth.css.map */

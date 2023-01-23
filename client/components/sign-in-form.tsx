@@ -1,4 +1,4 @@
-import React, { ReactText, useState } from "react";
+import React, { useState } from "react";
 
 interface Props {
   switchForm: () => void;
@@ -61,10 +61,10 @@ export default function SignInForm(props: Props) {
   }
 
   return (
-    <main className="sign-in-main">
-      <div className="sign-in-container">
-        <h2 className="sign-in-title">Sign In</h2>
-        <form onSubmit={handleSubmit} className="sign-in-form">
+    <main className="auth-main">
+      <div className="auth-container">
+        <h2 className="auth-title">Sign In</h2>
+        <form onSubmit={handleSubmit} className="auth-form">
           <div>
             <label htmlFor="username">Username</label>
             <input onChange={handleChange} type="text" id="username" required />
@@ -83,7 +83,7 @@ export default function SignInForm(props: Props) {
             <p style={{ textDecoration: 'underline' }}>Don't have an account? Click here to register.</p>
             <p style={{ textAlign: 'center', color: 'red' }}>{errorMessage}</p>
           </button>
-          <button className="sign-btn" type="submit">Submit</button>
+          <button className="auth-btn" type="submit">Submit</button>
         </form>
         <button onClick={handleDemoSignIn} className="demo-btn" type="button">Demo User</button>
       </div>
