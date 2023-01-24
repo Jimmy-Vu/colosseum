@@ -1,26 +1,11 @@
 import React, { useState } from "react";
-import SignInForm from "../components/sign-in-form";
-import SignUpForm from "../components/sign-up-form";
+import AuthForm from "../components/auth-form";
 
-export default function Auth(props: { handleSignIn: (result: { user: string; token: string }) => void; }) {
-  const { handleSignIn } = props;
+export default function Auth(props: { handleSignInSuccess: (result: { user: string; token: string }) => void; }) {
+  const { handleSignInSuccess } = props;
   const [formState, setFormState] = useState('sign-in');
 
-  function switchForm() {
-    if (formState === 'sign-in') {
-      setFormState('sign-up');
-    } else {
-      setFormState('sign-in');
-    }
-  }
-
-  if (formState === 'sign-in') {
-    return (
-      <SignInForm switchForm={switchForm} handleSignIn={handleSignIn} />
-    );
-  } else {
-    return (
-      <SignUpForm switchForm={switchForm} />
-    );
-  }
+  return (
+    <AuthForm formState={formState} setFormState={setFormState} handleSignInSuccess={handleSignInSuccess} />
+  )
 }
