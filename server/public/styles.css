@@ -407,7 +407,7 @@ footer {
   .gym__main {
     align-self: center;
     justify-content: center;
-    max-width: 1600px;
+    max-width: 1200px;
   }
 }
 .gym__container {
@@ -433,7 +433,7 @@ footer {
   .gym__image-container {
     max-height: 500px;
     height: 500px;
-    width: 40%;
+    width: 60%;
   }
 }
 .gym__image-container .gym-image {
@@ -446,7 +446,7 @@ footer {
 .gym__details {
   display: flex;
   flex-direction: column;
-  width: 100%;
+  width: 40%;
   height: 100%;
   min-height: fit-content;
   margin-top: 1rem;
