@@ -6,36 +6,37 @@
 // "lg": 960px,
 // "xl": 1200px
 
-.auth-main {
-  display: flex;
-  align-items: center;
-  justify-content: center;
+.auth {
+  &__main {
+    display: flex;
+    align-items: center;
+    justify-content: center;
 
-  height: 100%;
-  padding: 1rem;
-}
+    height: 100%;
+    padding: 1rem;
+  }
 
-.auth-container {
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-  justify-content: center;
+  &__container {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
 
-  height: 400px;
-  width: 100%;
-  max-width: 500px;
-  padding: 2rem;
-  border-radius: 15px;
+    height: 400px;
+    width: 100%;
+    max-width: 500px;
+    padding: 2rem;
+    border-radius: 15px;
 
-  background-color: #F5F5F5;
-  box-shadow: 1px 2px 3px 4px rgba(0, 0, 0, 0.25);
+    background-color: #F5F5F5;
+    box-shadow: 1px 2px 3px 4px rgba(0, 0, 0, 0.25);
+  }
 
-
-  .auth-title {
+  &__title {
     font-size: 36px;
   }
 
-  .auth-form {
+  &__form {
     display: flex;
     flex-direction: column;
     width: 100%;
@@ -61,12 +62,18 @@
     #password-toggle {
       margin-left: -30px;
       cursor: pointer;
+
+      &:hover {
+        transition-duration: 250ms;
+        scale: 1.10;
+      }
     }
 
     .auth__button-row {
       display: flex;
-      justify-content: center;
-      .auth-btn {
+      justify-content: space-evenly;
+
+      .auth__submit-btn {
         text-align: center;
 
         margin: 1em .5em 0.25em 0.1em;
@@ -82,9 +89,15 @@
         color: white;
         box-shadow: 0 0 1px black;
         font-size: 1.25rem;
+
+        &:hover {
+          transition-duration: 250ms;
+          background-color: $secondary;
+          scale: 1.01;
+        }
       }
 
-      .demo-btn {
+      .auth__demo-btn {
         text-align: center;
 
         margin: 1em .5em 0.25em 0.1em;
@@ -100,6 +113,12 @@
         color: white;
         box-shadow: 0 0 1px black;
         font-size: 1.25rem;
+
+        &:hover {
+          transition-duration: 250ms;
+          background-color: #333333;
+          scale: 1.01;
+        }
       }
     }
   }

@@ -3,7 +3,7 @@ import React from "react";
 function Footer(props: {}) {
   return (
     <footer>
-      <span>&copy;Colosseum 2022</span>
+      <span>&copy;Colosseum 2023</span>
     </footer>
   );
 }

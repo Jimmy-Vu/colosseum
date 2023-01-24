@@ -48,7 +48,7 @@ function App(props: {}) {
     }
   }, []);
 
-  function handleSignIn(result: { user: string; token: string }) {
+  function handleSignInSuccess(result: { user: string; token: string }) {
     const { user, token } = result;
     window.localStorage.setItem('access-token', token);
     dispatch(setStateUser(user));
@@ -112,7 +112,7 @@ function App(props: {}) {
       return (
         <div className="main-container">
           <Header handleSignOut={handleSignOut} />
-          <Auth handleSignIn={handleSignIn} />
+          <Auth handleSignInSuccess={handleSignInSuccess} />
           <Footer />
         </div>
       );

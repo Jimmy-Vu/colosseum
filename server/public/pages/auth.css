@@ -1,12 +1,11 @@
-.auth-main {
+.auth__main {
   display: flex;
   align-items: center;
   justify-content: center;
   height: 100%;
   padding: 1rem;
 }
-
-.auth-container {
+.auth__container {
   display: flex;
   flex-direction: column;
   align-items: center;
@@ -19,37 +18,41 @@
   background-color: #F5F5F5;
   box-shadow: 1px 2px 3px 4px rgba(0, 0, 0, 0.25);
 }
-.auth-container .auth-title {
+.auth__title {
   font-size: 36px;
 }
-.auth-container .auth-form {
+.auth__form {
   display: flex;
   flex-direction: column;
   width: 100%;
 }
-.auth-container .auth-form label {
+.auth__form label {
   font-weight: 500;
 }
-.auth-container .auth-form input {
+.auth__form input {
   width: 100%;
 }
-.auth-container .auth-form span {
+.auth__form span {
   font-size: 14px;
   color: red;
   display: none;
 }
-.auth-container .auth-form input:not(:focus):not(:placeholder-shown):invalid ~ span {
+.auth__form input:not(:focus):not(:placeholder-shown):invalid ~ span {
   display: block;
 }
-.auth-container .auth-form #password-toggle {
+.auth__form #password-toggle {
   margin-left: -30px;
   cursor: pointer;
 }
-.auth-container .auth-form .auth__button-row {
-  display: flex;
-  justify-content: center;
+.auth__form #password-toggle:hover {
+  transition-duration: 250ms;
+  scale: 1.1;
 }
-.auth-container .auth-form .auth__button-row .auth-btn {
+.auth__form .auth__button-row {
+  display: flex;
+  justify-content: space-evenly;
+}
+.auth__form .auth__button-row .auth__submit-btn {
   text-align: center;
   margin: 1em 0.5em 0.25em 0.1em;
   width: 85px;
@@ -64,7 +67,12 @@
   box-shadow: 0 0 1px black;
   font-size: 1.25rem;
 }
-.auth-container .auth-form .auth__button-row .demo-btn {
+.auth__form .auth__button-row .auth__submit-btn:hover {
+  transition-duration: 250ms;
+  background-color: #BFA246;
+  scale: 1.01;
+}
+.auth__form .auth__button-row .auth__demo-btn {
   text-align: center;
   margin: 1em 0.5em 0.25em 0.1em;
   width: fit-content;
@@ -78,6 +86,11 @@
   color: white;
   box-shadow: 0 0 1px black;
   font-size: 1.25rem;
+}
+.auth__form .auth__button-row .auth__demo-btn:hover {
+  transition-duration: 250ms;
+  background-color: #333333;
+  scale: 1.01;
 }
 
 /*# sourceMappingURL=auth.css.map */
