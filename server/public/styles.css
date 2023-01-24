@@ -416,24 +416,29 @@ footer {
   align-items: center;
   width: 100%;
   height: fit-content;
+  margin-bottom: 1rem;
+  padding: 1rem;
+  border-radius: 18px;
+  box-shadow: 1px 2px 3px 4px rgba(0, 0, 0, 0.25);
+  background-color: #F5F5F5;
 }
 @media (min-width: 960px) {
   .gym__container {
     flex-direction: row;
-    margin-bottom: 1rem;
   }
 }
 .gym__image-container {
   width: 100%;
-  min-height: 300px;
+  height: 300px;
+  margin-bottom: 1rem;
   border-radius: 18px;
-  box-shadow: 1px 2px 3px 4px rgba(0, 0, 0, 0.25);
 }
 @media (min-width: 960px) {
   .gym__image-container {
-    max-height: 500px;
-    height: 500px;
-    width: 60%;
+    height: 100%;
+    max-height: 600px;
+    width: 50%;
+    margin: 0;
   }
 }
 .gym__image-container .gym-image {
@@ -443,24 +448,25 @@ footer {
   object-position: 50% 50%;
   border-radius: 15px;
 }
+@media (min-width: 960px) {
+  .gym__image-container .gym-image {
+    border-radius: 15px 0 0 15px;
+  }
+}
 .gym__details {
   display: flex;
   flex-direction: column;
-  width: 40%;
-  height: 100%;
+  width: 100%;
   min-height: fit-content;
-  margin-top: 1rem;
   margin-bottom: 1rem;
-  padding: 1em;
-  border-radius: 15px;
-  background-color: #F5F5F5;
-  box-shadow: 1px 2px 3px 4px rgba(0, 0, 0, 0.25);
 }
 @media (min-width: 960px) {
   .gym__details {
+    height: 100%;
+    width: 50%;
     margin-left: 1rem;
     margin-bottom: 0;
-    margin-top: 0rem;
+    border: 1px solid red;
   }
 }
 .gym__details__map {
@@ -521,8 +527,13 @@ footer {
   border: solid white 1px;
   border-radius: 5px;
   padding: 0.25rem 0.75rem;
-  font-size: 18px;
+  font-size: 14px;
   font-weight: 500;
+}
+@media (min-width: 960px) {
+  .gym__buttons__edit-btn {
+    font-size: 18px;
+  }
 }
 .gym__buttons__edit-btn:hover {
   transition-duration: 250ms;
@@ -539,8 +550,13 @@ footer {
   border: solid white 1px;
   border-radius: 5px;
   padding: 0 0.75rem;
-  font-size: 18px;
+  font-size: 14px;
   font-weight: 500;
+}
+@media (min-width: 960px) {
+  .gym__buttons__delete-btn {
+    font-size: 18px;
+  }
 }
 .gym__buttons__delete-btn:hover {
   transition-duration: 250ms;

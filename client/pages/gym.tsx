@@ -136,15 +136,21 @@ export default function Gym(props: { gymId: number }) {
               <p className="gym__about__type">{`Type: ${gymState.type}`}</p>
               <p className="gym__about__description">{gymState.description}</p>
             </div>
+            {belongsToUser &&
+              <div className="gym__buttons">
+                <a href={`#edit?gymId=${gymState.gymId}`} className="gym__buttons__edit-btn">Edit Arena</a>
+                <button onClick={gymDelete} className="gym__buttons__delete-btn">Delete Arena</button>
+              </div>
+            }
           </div>
         </div>
         <Reviews gymState={gymState} belongsToUser={belongsToUser} />
-        {belongsToUser &&
+        {/* {belongsToUser &&
           <div className="gym__buttons">
             <a href={`#edit?gymId=${gymState.gymId}`} className="gym__buttons__edit-btn">Edit Arena</a>
             <button onClick={gymDelete} className="gym__buttons__delete-btn">Delete Arena</button>
           </div>
-        }
+        } */}
       </main>
     );
   }
