@@ -64,18 +64,12 @@ export default function Gym(props: { gymId: number }) {
   }, [])
 
   useEffect(() => {
-    console.log('currentUserId:', currentUserId);
-    console.log('gymState.userId:', gymState.userId);
     if (parseInt(currentUserId, 10) === gymState.userId) {
       setBelongsToUser(true);
     } else {
       setBelongsToUser(false);
     }
-  }, [gymState.gymId])
-
-  useEffect(() => {
-    console.log('belongsToUser:', belongsToUser);
-  }, [belongsToUser])
+  }, [gymState])
 
   function gymDelete(e: React.SyntheticEvent) {
     fetch(`/api/gyms/${gymState.gymId}`, {
