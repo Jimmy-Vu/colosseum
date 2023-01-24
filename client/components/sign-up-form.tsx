@@ -37,10 +37,10 @@ export default function SignUpForm(props: { switchForm: () => void; }) {
   }
 
   return (
-    <main className="sign-in-main">
-      <div className="sign-in-container">
-        <h2 className="sign-in-title">Register</h2>
-        <form onSubmit={handleSubmit} className="sign-in-form">
+    <main className="auth-main">
+      <div className="auth-container">
+        <h2 className="auth-title">Register</h2>
+        <form onSubmit={handleSubmit} className="auth-form">
           <div>
             <label htmlFor="username">Username</label>
             <input onChange={handleChange} type="text" id="username" placeholder=" " minLength={2} required />
@@ -61,7 +61,7 @@ export default function SignUpForm(props: { switchForm: () => void; }) {
             <p style={{ textDecoration: 'underline' }}>Have an account? Click here to sign in.</p>
             <p style={{ textAlign: 'center', color: 'red' }}>{errorMessage}</p>
           </button>
-          <button className="sign-btn" type="submit">Submit</button>
+          <button className="auth-btn" type="submit">Submit</button>
         </form>
       </div>
     </main>

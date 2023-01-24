@@ -25,8 +25,11 @@
   width: 100%;
   max-width: 500px;
   padding: 2rem;
-  background-color: rgba(255, 255, 255, 0.9);
   border-radius: 15px;
+
+  background-color: #F5F5F5;
+  box-shadow: 1px 2px 3px 4px rgba(0, 0, 0, 0.25);
+
 
   .auth-title {
     font-size: 36px;
@@ -60,40 +63,44 @@
       cursor: pointer;
     }
 
-    .auth-btn {
-      align-self: center;
-      text-align: center;
-      margin: 1em .5em 0.25em 0.1em;
-      width: 85px;
+    .auth__button-row {
+      display: flex;
+      justify-content: center;
+      .auth-btn {
+        text-align: center;
 
-      background-color: $primary;
-      color: white;
-      box-shadow: 0 0 1px black;
-      border: solid white 1px;
-      border-radius: 15px;
-      padding-left: 1em;
-      padding-right: 1em;
-      padding-top: 0.25em;
-      padding-bottom: 0.25em;
-      font-size: 1.25rem;
+        margin: 1em .5em 0.25em 0.1em;
+        width: 85px;
+        padding-left: 1em;
+        padding-right: 1em;
+        padding-top: 0.25em;
+        padding-bottom: 0.25em;
+
+        border: solid white 1px;
+        border-radius: 5px;
+        background-color: $primary;
+        color: white;
+        box-shadow: 0 0 1px black;
+        font-size: 1.25rem;
+      }
+
+      .demo-btn {
+        text-align: center;
+
+        margin: 1em .5em 0.25em 0.1em;
+        width: fit-content;
+        padding-left: 1em;
+        padding-right: 1em;
+        padding-top: 0.25em;
+        padding-bottom: 0.25em;
+
+        border: solid white 1px;
+        border-radius: 5px;
+        background-color: black;
+        color: white;
+        box-shadow: 0 0 1px black;
+        font-size: 1.25rem;
+      }
     }
-  }
-
-  .demo-btn {
-    align-self: center;
-      text-align: center;
-      margin: 1em .5em 0.25em 0.1em;
-      width: 85px;
-
-      background-color: black;
-      color: white;
-      box-shadow: 0 0 1px black;
-      border: solid white 1px;
-      border-radius: 15px;
-      padding-left: 1em;
-      padding-right: 1em;
-      padding-top: 0.25em;
-      padding-bottom: 0.25em;
-      font-size: 1rem;
   }
 }

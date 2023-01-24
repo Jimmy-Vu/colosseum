@@ -171,7 +171,7 @@ header {
 
 footer {
   text-align: center;
-  background-color: rgba(0, 0, 0, 0.15);
+  background-color: #333333;
   color: white;
 }
 
@@ -714,8 +714,9 @@ footer {
   width: 100%;
   max-width: 500px;
   padding: 2rem;
-  background-color: rgba(255, 255, 255, 0.9);
   border-radius: 15px;
+  background-color: #F5F5F5;
+  box-shadow: 1px 2px 3px 4px rgba(0, 0, 0, 0.25);
 }
 .auth-container .auth-title {
   font-size: 36px;
@@ -743,37 +744,39 @@ footer {
   margin-left: -30px;
   cursor: pointer;
 }
-.auth-container .auth-form .auth-btn {
-  align-self: center;
+.auth-container .auth-form .auth__button-row {
+  display: flex;
+  justify-content: center;
+}
+.auth-container .auth-form .auth__button-row .auth-btn {
   text-align: center;
   margin: 1em 0.5em 0.25em 0.1em;
   width: 85px;
+  padding-left: 1em;
+  padding-right: 1em;
+  padding-top: 0.25em;
+  padding-bottom: 0.25em;
+  border: solid white 1px;
+  border-radius: 5px;
   background-color: #D2B85A;
   color: white;
   box-shadow: 0 0 1px black;
-  border: solid white 1px;
-  border-radius: 15px;
+  font-size: 1.25rem;
+}
+.auth-container .auth-form .auth__button-row .demo-btn {
+  text-align: center;
+  margin: 1em 0.5em 0.25em 0.1em;
+  width: fit-content;
   padding-left: 1em;
   padding-right: 1em;
   padding-top: 0.25em;
   padding-bottom: 0.25em;
-  font-size: 1.25rem;
-}
-.auth-container .demo-btn {
-  align-self: center;
-  text-align: center;
-  margin: 1em 0.5em 0.25em 0.1em;
-  width: 85px;
+  border: solid white 1px;
+  border-radius: 5px;
   background-color: black;
   color: white;
   box-shadow: 0 0 1px black;
-  border: solid white 1px;
-  border-radius: 15px;
-  padding-left: 1em;
-  padding-right: 1em;
-  padding-top: 0.25em;
-  padding-bottom: 0.25em;
-  font-size: 1rem;
+  font-size: 1.25rem;
 }
 
 .account-main {

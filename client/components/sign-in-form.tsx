@@ -83,9 +83,12 @@ export default function SignInForm(props: Props) {
             <p style={{ textDecoration: 'underline' }}>Don't have an account? Click here to register.</p>
             <p style={{ textAlign: 'center', color: 'red' }}>{errorMessage}</p>
           </button>
-          <button className="auth-btn" type="submit">Submit</button>
+          <div className="auth__button-row">
+            <button className="auth-btn" type="submit">Submit</button>
+            <button onClick={handleDemoSignIn} className="demo-btn" type="button">Demo User</button>
+          </div>
         </form>
-        <button onClick={handleDemoSignIn} className="demo-btn" type="button">Demo User</button>
+        {/* <button onClick={handleDemoSignIn} className="demo-btn" type="button">Demo User</button> */}
       </div>
     </main >
   );
