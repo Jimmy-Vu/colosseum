@@ -91,7 +91,7 @@ export default function AuthForm(props: Props) {
               <input onChange={handleChange} type="text" id="username" required />
             </div>
             <div>
-              <label htmlFor="username">Password</label>
+              <label htmlFor="password">Password</label>
               <input onChange={handleChange} type={passShowing ? 'text' : 'password'} id="password" required />
               {passShowing &&
                 <i onClick={() => setPassShowing(false)} id="password-toggle" className="fa-solid fa-eye-slash"></i>
@@ -121,10 +121,10 @@ export default function AuthForm(props: Props) {
             <div>
               <label htmlFor="username">Username</label>
               <input onChange={handleChange} type="text" id="username" placeholder=" " minLength={3} required />
-              <span>Usernames needs to have a minimum length of 3 characters</span>
+              <span className="auth__form__error">Usernames needs to have a minimum length of 3 characters</span>
             </div>
             <div>
-              <label htmlFor="username">Password</label>
+              <label htmlFor="password">Password</label>
               <input onChange={handleChange} type={passShowing ? 'text' : 'password'} id="password" placeholder=" " minLength={3} required />
               {passShowing &&
                 <i onClick={() => setPassShowing(false)} id="password-toggle" className="fa-solid fa-eye-slash"></i>
@@ -132,7 +132,7 @@ export default function AuthForm(props: Props) {
               {!passShowing &&
                 <i onClick={() => setPassShowing(true)} id="password-toggle" className="fa-solid fa-eye"></i>
               }
-              <span>Passwords needs to have a minimum length of 2 characters</span>
+              <span className="auth__form__error">Passwords needs to have a minimum length of 2 characters</span>
             </div>
             <button onClick={() => setFormState('sign-in')} type="button">
               <p style={{ textDecoration: 'underline' }}>Have an account? Click here to sign in.</p>

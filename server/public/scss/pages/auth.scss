@@ -55,6 +55,7 @@
       display: none;
     }
 
+    //for the span error message underneath the input box to display when the input no longer under focus from the user
     input:not(:focus):not(:placeholder-shown):invalid~span {
       display: block;
     }
