@@ -1,21 +1,20 @@
-.gym-main {
+.gym__main {
   display: flex;
   flex-direction: column;
   align-items: center;
-  width: 100%;
-  min-height: fit-content;
   height: 100%;
+  min-height: fit-content;
+  width: 100%;
   padding: 1em;
-  background-color: rgba(255, 255, 255, 0.5);
 }
 @media (min-width: 720px) {
-  .gym-main {
+  .gym__main {
     align-self: center;
     justify-content: center;
     max-width: 1600px;
   }
 }
-.gym-main .gym-info-container {
+.gym__container {
   display: flex;
   flex-direction: column;
   align-items: center;
@@ -23,32 +22,32 @@
   height: fit-content;
 }
 @media (min-width: 960px) {
-  .gym-main .gym-info-container {
+  .gym__container {
     flex-direction: row;
     margin-bottom: 1rem;
   }
 }
-.gym-main .gym-info-container .gym-image-container {
+.gym__image-container {
   width: 100%;
   min-height: 300px;
-  border: solid #D2B85A 3px;
   border-radius: 18px;
+  box-shadow: 1px 2px 3px 4px rgba(0, 0, 0, 0.25);
 }
 @media (min-width: 960px) {
-  .gym-main .gym-info-container .gym-image-container {
+  .gym__image-container {
     max-height: 500px;
     height: 500px;
     width: 40%;
   }
 }
-.gym-main .gym-info-container .gym-image-container .gym-image {
+.gym__image-container .gym-image {
   height: 100%;
   width: 100%;
   object-fit: cover;
   object-position: 50% 50%;
   border-radius: 15px;
 }
-.gym-main .gym-info-container .gym-details-map-container {
+.gym__details {
   display: flex;
   flex-direction: column;
   width: 100%;
@@ -57,18 +56,28 @@
   margin-top: 1rem;
   margin-bottom: 1rem;
   padding: 1em;
-  background-color: rgba(255, 255, 255, 0.9);
   border-radius: 15px;
-  border: solid #D2B85A 3px;
+  background-color: #F5F5F5;
+  box-shadow: 1px 2px 3px 4px rgba(0, 0, 0, 0.25);
 }
 @media (min-width: 960px) {
-  .gym-main .gym-info-container .gym-details-map-container {
+  .gym__details {
     margin-left: 1rem;
     margin-bottom: 0;
     margin-top: 0rem;
   }
 }
-.gym-main .gym-info-container .gym-details-map-container .gym-details {
+.gym__details__map {
+  min-height: 200px;
+  max-height: 300px;
+  width: 100%;
+}
+@media (min-width: 960px) {
+  .gym__details__map {
+    height: 40%;
+  }
+}
+.gym__about {
   display: flex;
   flex-direction: column;
   align-items: center;
@@ -76,41 +85,36 @@
   margin-bottom: 1rem;
 }
 @media (min-width: 960px) {
-  .gym-main .gym-info-container .gym-details-map-container .gym-details {
+  .gym__about {
     height: 50%;
     margin-top: 0;
   }
 }
-.gym-main .gym-info-container .gym-details-map-container .gym-details .gym-title {
-  color: black;
-  font-size: 2em;
+.gym__about__title {
+  margin-top: 1rem;
   text-align: center;
+  color: black;
+  font-size: 36px;
 }
-.gym-main .gym-info-container .gym-details-map-container .gym-details .gym-body {
-  margin-top: 1em;
+.gym__about__type {
+  margin-bottom: 1rem;
 }
-.gym-main .gym-info-container .gym-details-map-container .map-container {
-  min-height: 200px;
-  max-height: 300px;
-  width: 100%;
+.gym__about__description {
+  font-size: 18px;
 }
-@media (min-width: 960px) {
-  .gym-main .gym-info-container .gym-details-map-container .map-container {
-    height: 40%;
-  }
-}
-
-.gym-buttons-container {
+.gym__buttons {
   display: flex;
   justify-content: space-between;
   width: 100%;
+  background-color: red;
+  height: 100px;
 }
 @media (min-width: 960px) {
-  .gym-buttons-container {
+  .gym__buttons {
     justify-content: flex-end;
   }
 }
-.gym-buttons-container .gym-edit-btn {
+.gym__buttons__edit-btn {
   margin: 1rem 0.1rem 1rem 0.1rem;
   width: fit-content;
   background-color: #D2B85A;
@@ -125,7 +129,7 @@
   font-size: 1.25rem;
   font-weight: 500;
 }
-.gym-buttons-container .gym-delete-btn {
+.gym__buttons__delete-btn {
   margin: 1rem 0.1rem 1rem 0.1rem;
   width: fit-content;
   background-color: red;

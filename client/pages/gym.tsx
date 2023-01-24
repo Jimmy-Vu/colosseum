@@ -64,12 +64,18 @@ export default function Gym(props: { gymId: number }) {
   }, [])
 
   useEffect(() => {
+    console.log('currentUserId:', currentUserId);
+    console.log('gymState.userId:', gymState.userId);
     if (parseInt(currentUserId, 10) === gymState.userId) {
       setBelongsToUser(true);
     } else {
       setBelongsToUser(false);
     }
   }, [gymState.gymId])
+
+  useEffect(() => {
+    console.log('belongsToUser:', belongsToUser);
+  }, [belongsToUser])
 
   function gymDelete(e: React.SyntheticEvent) {
     fetch(`/api/gyms/${gymState.gymId}`, {
@@ -90,30 +96,30 @@ export default function Gym(props: { gymId: number }) {
     return (
       <>
         <Spinner isLoading={isLoading} />
-        <main className="gym-main">
-          <div className="gym-info-container">
-            <a className="gym-image-container" href={`${gymState.imageURL}`}>
+        <main className="gym__main">
+          <div className="gym__container">
+            <a className="gym__image-container" href={`${gymState.imageURL}`}>
               <img className="gym-image" src={`${gymState.imageURL}`} alt="main gym image" />
             </a>
-            <div className="gym-details-map-container">
-              <div className="map-container">
+            <div className="gym__details">
+              <div className="gym__details__map">
                 <MapDisplay coordinates={{ longitude: gymState.geodata.longitude, latitude: gymState.geodata.latitude }} />
               </div>
-              <div className="gym-details">
-                <h3 className="gym-title">{gymState.gymName}</h3>
-                <p className="gym-address">{gymState.address}</p>
-                <p className="gym-type">{`Type: ${gymState.type}`}</p>
+              <div className="gym__about">
+                <h3 className="gym__about__title">{gymState.gymName}</h3>
+                <p className="gym__about__address">{gymState.address}</p>
+                <p className="gym__about__type">{`Type: ${gymState.type}`}</p>
                 <div className="gym-body">
-                  <p className="gym-description">{gymState.description}</p>
+                  <p className="gym__about__description">{gymState.description}</p>
                 </div>
               </div>
             </div>
           </div>
           <Reviews gymState={gymState} belongsToUser={belongsToUser} />
           {belongsToUser &&
-            <div className="gym-buttons-container">
-              <a href={`#edit?gymId=${gymState.gymId}`} className="gym-edit-btn">Edit Arena</a>
-              <button onClick={gymDelete} className="gym-delete-btn">Delete Arena</button>
+            <div className="gym__buttons">
+              <a href={`#edit?gymId=${gymState.gymId}`} className="gym__buttons__edit-btn">Edit Arena</a>
+              <button onClick={gymDelete} className="gym__buttons__delete-btn">Delete Arena</button>
             </div>
           }
         </main>
@@ -121,30 +127,28 @@ export default function Gym(props: { gymId: number }) {
     );
   } else {
     return (
-      <main className="gym-main">
-        <div className="gym-info-container">
-          <a className="gym-image-container" href={`${gymState.imageURL}`}>
+      <main className="gym__main">
+        <div className="gym__container">
+          <a className="gym__image-container" href={`${gymState.imageURL}`}>
             <img className="gym-image" src={`${gymState.imageURL}`} alt="main gym image" />
           </a>
-          <div className="gym-details-map-container">
-            <div className="map-container">
+          <div className="gym__details">
+            <div className="gym__details__map">
               <MapDisplay coordinates={{ longitude: gymState.geodata.longitude, latitude: gymState.geodata.latitude }} />
             </div>
-            <div className="gym-details">
-              <h3 className="gym-title">{gymState.gymName}</h3>
-              <p className="gym-address">{gymState.address}</p>
-              <p className="gym-type">{`Type: ${gymState.type}`}</p>
-              <div className="gym-body">
-                <p className="gym-description">{gymState.description}</p>
-              </div>
+            <div className="gym__about">
+              <h3 className="gym__about__title">{gymState.gymName}</h3>
+              <p className="gym__about__address">{gymState.address}</p>
+              <p className="gym__about__type">{`Type: ${gymState.type}`}</p>
+              <p className="gym__about__description">{gymState.description}</p>
             </div>
           </div>
         </div>
         <Reviews gymState={gymState} belongsToUser={belongsToUser} />
         {belongsToUser &&
-          <div className="gym-buttons-container">
-            <a href={`#edit?gymId=${gymState.gymId}`} className="gym-edit-btn">Edit Arena</a>
-            <button onClick={gymDelete} className="gym-delete-btn">Delete Arena</button>
+          <div className="gym__buttons">
+            <a href={`#edit?gymId=${gymState.gymId}`} className="gym__buttons__edit-btn">Edit Arena</a>
+            <button onClick={gymDelete} className="gym__buttons__delete-btn">Delete Arena</button>
           </div>
         }
       </main>
