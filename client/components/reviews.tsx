@@ -16,7 +16,7 @@ export default function Reviews(props: Props) {
   const isLoggedIn = useSelector((state: RootState) => state.app.isLoggedIn);
   const { belongsToUser } = props;
   const { gymId, gymName } = props.gymState;
-  const [addModalIsOpen, setAddModalIsOpen] = useState(true);
+  const [addModalIsOpen, setAddModalIsOpen] = useState(false);
   const [userReviews, setUserReviews] = useState([]);
   const [reviewsIsEmpty, setReviewsIsEmpty] = useState(true);
   const [reviewAlreadyMade, setReviewAlreadyMade] = useState(false);
