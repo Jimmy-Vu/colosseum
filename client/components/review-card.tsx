@@ -57,21 +57,21 @@ export default function ReviewCard(props: Props) {
         />
       }
       <div className="review-card">
-        <div className="review-card-header">
+        <div className="review-card__header">
           <div>
-            <h3 className="review-username">{username}</h3>
-            <h4 className="review-rating">
+            <h3 className="review-card__username">{username}</h3>
+            <h4 className="review-card__rating">
               <span>{`${rating}/5`}</span>
-              <span className="rating-stars">{starRating}</span>
+              <span className="review-card__rating__stars">{starRating}</span>
             </h4>
           </div>
           {reviewBelongsToUser &&
             <div>
-              <button onClick={handleEditBtnClick} className="review-edit-btn">Edit Review</button>
+              <button onClick={handleEditBtnClick} className="review-card__edit-btn">Edit Review</button>
             </div>
           }
         </div>
-        <p className="review-description">{description}</p>
+        <p className="review-card__description">{description}</p>
       </div>
     </>
   );

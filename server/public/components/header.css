@@ -50,10 +50,10 @@ header {
   align-items: center;
   width: 120px;
   height: 42px;
-  border-radius: 6px;
+  border-radius: 5px;
   background-color: #D2B85A;
   color: white;
-  font-family: "Oswald", sans-serif;
+  font-family: "Manrope", sans-serif;
   font-weight: 500;
   text-shadow: 0 0 2px black;
 }
@@ -65,7 +65,7 @@ header {
 @media (min-width: 720px) {
   .navbar__sign-in-btn {
     display: flex;
-    font-size: 1.5rem;
+    font-size: 20px;
   }
 }
 
