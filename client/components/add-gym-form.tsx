@@ -190,11 +190,11 @@ export default function AddGymForm(props: { setIsLoading: (boolean: boolean) => 
           <label className="checkbox-option__label" htmlFor="wrestling">Wrestling</label>
         </div>
       </fieldset>
-      <div className="upload-submit-container">
-        <label htmlFor="image">Choose an image for the gym</label>
-        <input onChange={handleUpload} id="image" type="file" accept="image/*" />
-        <button className="create__form__submit-btn" type="submit">Submit</button>
+      <div className="upload__container">
+        <label className="upload__label" htmlFor="image">Choose an image for the gym:</label>
+        <input className="upload__input" onChange={handleUpload} id="image" type="file" accept="image/*" />
       </div>
+      <button className="create__form__submit-btn" type="submit">Submit</button>
     </form>
   );
 }
