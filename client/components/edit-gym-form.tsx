@@ -1,12 +1,11 @@
 import React, { useEffect, useState } from "react";
-import { RootState } from "../redux/rootState";
-import { useSelector } from "react-redux";
+import editTypeAdjust from "../lib/editTypeAdjust";
 
 interface Inputs {
   userId: string;
   gymName: string;
   address: string;
-  type: GymType | string | Blob;
+  type: GymType;
   image: File | string;
   description: string;
 }
@@ -27,8 +26,8 @@ interface GymType {
   kickboxing: boolean;
 }
 
-export default function GymForm(props: { setIsLoading: (boolean: boolean) => void; }) {
-  const currentUserId = useSelector((state: RootState) => state.user.userId);
+
+export default function EditGymForm(props: { setIsLoading: (boolean: boolean) => void; gymId: number; }) {
   const setIsLoading = props.setIsLoading;
   const [inputs, setInputs] = useState<Inputs>({
     userId: '',
@@ -54,8 +53,20 @@ export default function GymForm(props: { setIsLoading: (boolean: boolean) => voi
   });
 
   useEffect(() => {
-    setInputs(prev => ({ ...prev, userId: currentUserId }));
-  }, [currentUserId])
+    fetch(`/api/gyms/${props.gymId}`, { method: 'GET' })
+      .then(res => res.json())
+      .then(data => {
+        setInputs({
+          userId: data.userId,
+          gymName: data.gymName,
+          address: data.address,
+          type: editTypeAdjust(data.type),
+          image: data.imageURL,
+          description: data.description
+        });
+      })
+      .catch(err => console.error('Error during fetch get route:', err))
+  }, []);
 
   function handleChange(e: React.FormEvent<HTMLInputElement>) {
     const element = e.target as HTMLInputElement;
@@ -78,7 +89,7 @@ export default function GymForm(props: { setIsLoading: (boolean: boolean) => voi
     setInputs(prev => ({
       ...prev,
       type: {
-        ...prev.type as GymType,
+        ...prev.type,
         [element.id]: element.checked
       }
     }));
@@ -92,22 +103,16 @@ export default function GymForm(props: { setIsLoading: (boolean: boolean) => voi
   function handleSubmit(e: React.SyntheticEvent) {
     e.preventDefault();
     setIsLoading(true);
-    inputs.type = JSON.stringify(inputs.type);
     const formData = new FormData();
-
-    /* Taking out to attempt manual setting of formData */
-    // for (let i in inputs) {
-    //   formData.set(`${i}`, `${inputs[i as keyof Inputs]}`);
-    // }
     formData.append('userId', inputs.userId);
     formData.append('gymName', inputs.gymName);
     formData.append('address', inputs.address);
-    formData.append('type', inputs.type);
+    formData.append('type', JSON.stringify(inputs.type));
     formData.append('image', inputs.image);
     formData.append('description', inputs.description);
 
-    fetch('/api/gyms', {
-      method: 'POST',
+    fetch(`/api/gyms/${props.gymId}`, {
+      method: 'PATCH',
       headers: {
         'access-token': `${window.localStorage.getItem('access-token')}`
       },
@@ -116,7 +121,7 @@ export default function GymForm(props: { setIsLoading: (boolean: boolean) => voi
       .then(res => res.json())
       .then(data => {
         setIsLoading(false);
-        if (!data.gymId) {
+        if (!data.gymId || data.gymId === undefined) {
           window.location.hash = "#not-found";
         } else {
           window.location.hash = `#gyms?gymId=${data.gymId}`;
@@ -129,70 +134,78 @@ export default function GymForm(props: { setIsLoading: (boolean: boolean) => voi
     <form className="create-form" onSubmit={handleSubmit} encType="multipart/form-data">
       <div className="text-inputs">
         <label className="name-label" htmlFor="name">Name</label>
-        <input className="name-input" onChange={handleChange} type="text" name="gymName" id="gymName" required />
+        <input className="name-input" onChange={handleChange} type="text" name="name" id="name" value={inputs.gymName} required />
         <label className="address-label" htmlFor="address">Address</label>
-        <input className="address-input" onChange={handleChange} type="text" name="address" id="address" required />
+        <input className="address-input" onChange={handleChange} type="text" name="address" id="address" value={inputs.address} required />
         <label className="description-label" htmlFor="description">Description</label>
-        <textarea className="description-input" onChange={handleChangeTextArea} name="description" id="description" cols={30} rows={5} required></textarea>
+        <textarea className="description-input" onChange={handleChangeTextArea} name="description" id="description" value={inputs.description} cols={30} rows={5} required></textarea>
       </div>
       <fieldset id="type" className="specialization-fieldset">
         <legend>Choose the type of specialization(s) of the arena:</legend>
         <div className="checkbox-option">
-          <input onClick={handleCheckboxes} type="checkbox" name="commercial" id="commercial" />
+          <input type="checkbox" name="commercial" id="commercial" onChange={handleCheckboxes} checked={inputs.type.commercial} />
           <label htmlFor="commercial">Commercial</label>
         </div>
         <div className="checkbox-option">
-          <input onClick={handleCheckboxes} type="checkbox" name="powerlifting" id="powerlifting" />
+          <input type="checkbox" name="powerlifting" id="powerlifting" onChange={handleCheckboxes} checked={inputs.type.powerlifting} />
           <label htmlFor="powerlifting">Powerlifting</label>
         </div>
         <div className="checkbox-option">
-          <input onClick={handleCheckboxes} type="checkbox" name="weightlifting" id="weightlifting" />
+          <input type="checkbox" name="weightlifting" id="weightlifting" onChange={handleCheckboxes} checked={inputs.type.weightlifting} />
           <label htmlFor="weightlifting">Olympic Weightlifting</label>
         </div>
         <div className="checkbox-option">
-          <input onClick={handleCheckboxes} type="checkbox" name="crossfit" id="crossfit" />
+          <input type="checkbox" name="crossfit" id="crossfit" onChange={handleCheckboxes} checked={inputs.type.crossfit} />
           <label htmlFor="crossfit">Crossfit</label>
         </div>
         <div className="checkbox-option">
-          <input onClick={handleCheckboxes} type="checkbox" name="climbing" id="climbing" />
+          <input type="checkbox" name="climbing" id="climbing" onChange={handleCheckboxes} checked={inputs.type.climbing} />
           <label htmlFor="climbing">Climbing</label>
         </div>
         <div className="checkbox-option">
-          <input onClick={handleCheckboxes} type="checkbox" name="boxing" id="boxing" />
+          <input type="checkbox" name="boxing" id="boxing" onChange={handleCheckboxes} checked={inputs.type.boxing} />
           <label htmlFor="boxing">Boxing</label>
         </div>
         <div className="checkbox-option">
-          <input onClick={handleCheckboxes} type="checkbox" name="kickboxing" id="kickboxing" />
+          <input type="checkbox" name="kickboxing" id="kickboxing" onChange={handleCheckboxes} checked={inputs.type.kickboxing} />
           <label htmlFor="kickboxing">Kickboxing</label>
         </div>
         <div className="checkbox-option">
-          <input onClick={handleCheckboxes} type="checkbox" name="muay-thai" id="muay-thai" />
+          <input type="checkbox" name="muay-thai" id="muay-thai" onChange={handleCheckboxes} checked={inputs.type['muay-thai']} />
           <label htmlFor="muay-thai">Muay Thai</label>
         </div>
         <div className="checkbox-option">
-          <input onClick={handleCheckboxes} type="checkbox" name="taekwondo" id="taekwondo" />
+          <input type="checkbox" name="taekwondo" id="taekwondo" onChange={handleCheckboxes} checked={inputs.type.taekwondo} />
           <label htmlFor="taekwondo">Taekwondo</label>
         </div>
         <div className="checkbox-option">
-          <input onClick={handleCheckboxes} type="checkbox" name="karate" id="karate" />
+          <input type="checkbox" name="karate" id="karate" onChange={handleCheckboxes} checked={inputs.type.karate} />
           <label htmlFor="karate">Karate</label>
         </div>
         <div className="checkbox-option">
-          <input onClick={handleCheckboxes} type="checkbox" name="brazilian-ji-jijutsu" id="brazilian-ji-jijutsu" />
+          <input type="checkbox" name="brazilian-ji-jijutsu" onChange={handleCheckboxes} id="brazilian-ji-jijutsu" checked={inputs.type['brazilian-ji-jijutsu']} />
           <label htmlFor="brazilian-ji-jijutsu">Brazilian Ji Jijutsu</label>
         </div>
         <div className="checkbox-option">
-          <input onClick={handleCheckboxes} type="checkbox" name="krav-maga" id="krav-maga" />
+          <input type="checkbox" name="krav-maga" id="krav-maga" onChange={handleCheckboxes} checked={inputs.type['krav-maga']} />
           <label htmlFor="krav-maga">Krav Maga</label>
         </div>
         <div className="checkbox-option">
-          <input onClick={handleCheckboxes} type="checkbox" name="wrestling" id="wrestling" />
+          <input type="checkbox" name="wrestling" id="wrestling" onChange={handleCheckboxes} checked={inputs.type.wrestling} />
           <label htmlFor="wrestling">Wrestling</label>
         </div>
       </fieldset>
       <div className="upload-submit-container">
-        <label htmlFor="image">Choose an image for the gym</label>
-        <input onChange={handleUpload} id="image" type="file" accept="image/*" />
+        <div className="edit-img-container">
+          <div className="edit-img-input">
+            <label htmlFor="image">Choose a new image for the gym</label>
+            <input onChange={handleUpload} id="image" type="file" accept="image/*" defaultValue={`${inputs.image}`} />
+          </div>
+          <figure>
+            <figcaption className="edit-img-caption">Original Photo</figcaption>
+            <img className="edit-img-preview" src={`${inputs.image}`} alt="Main gym image" />
+          </figure>
+        </div>
         <button className="submit-button" type="submit">Submit</button>
       </div>
     </form>

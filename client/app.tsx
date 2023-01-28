@@ -13,10 +13,10 @@ import Home from "./pages/home";
 import NotFound from "./pages/not-found";
 import Listings from "./pages/listings";
 import Gym from "./pages/gym";
-import CreateListing from "./pages/create-listing";
+import CreateGymListing from "./pages/create-gym-listing";
 import Header from "./components/header";
 import Footer from "./components/footer";
-import EditListing from "./pages/edit-listing";
+import EditGymListing from "./pages/edit-gym-listing";
 import Auth from "./pages/auth";
 import AccountPage from "./pages/account-page";
 
@@ -95,7 +95,7 @@ function App(props: {}) {
       return (
         <div className="main-container">
           <Header handleSignOut={handleSignOut} />
-          <CreateListing />
+          <CreateGymListing />
           <Footer />
         </div>
       );
@@ -104,7 +104,7 @@ function App(props: {}) {
       return (
         <div className="main-container">
           <Header handleSignOut={handleSignOut} />
-          <EditListing gymId={gymId} />
+          <EditGymListing gymId={gymId} />
           <Footer />
         </div>
       );
