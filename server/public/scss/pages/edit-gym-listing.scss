@@ -1,33 +1,48 @@
 @use "../global/breakpoints" as *;
+@use "../global/colors" as *;
 
-.edit-img-container {
+.edit-img__container {
   width: 100%;
   display: flex;
   flex-direction: column;
-  align-items: center;
 
-  @include md {
-    flex-direction: row;
-    justify-content: center;
-  }
 
-  .edit-img-input {
-    margin-bottom: 1rem;
-    margin-left: -2rem;
+  .upload__container {
+    display: flex;
+    flex-direction: column;
 
-    @include sm {
-      margin-left: 0rem;
+    &__input::file-selector-button {
+      margin: 0.25rem .5rem 0.25rem 0.1rem;
+      padding-left: 1rem;
+      padding-right: 1rem;
+      padding-top: 0.25rem;
+      padding-bottom: 0.25rem;
+
+      box-shadow: 0 0 1px black;
+      border: solid white 1px;
+      border-radius: 15px;
+
+      background-color: $primary;
+      color: white;
+      cursor: pointer;
+
+      &:hover {
+        background-color: $secondary;
+        scale: 1.01;
+      }
     }
   }
 
-  figure {
-    text-align: center;
+  &__figure {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
 
-    .edit-img-caption {
+    .figure__caption {
       font-weight: bold;
     }
 
-    .edit-img-preview {
+    .figure__preview {
       max-height: 150px;
 
       @include md {

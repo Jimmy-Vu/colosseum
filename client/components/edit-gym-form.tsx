@@ -131,83 +131,81 @@ export default function EditGymForm(props: { setIsLoading: (boolean: boolean) =>
   }
 
   return (
-    <form className="edit__form" onSubmit={handleSubmit} encType="multipart/form-data">
-      <div className="text-inputs">
-        <label className="name-label" htmlFor="name">Name</label>
-        <input className="name-input" onChange={handleChange} type="text" name="name" id="name" value={inputs.gymName} required />
-        <label className="address-label" htmlFor="address">Address</label>
-        <input className="address-input" onChange={handleChange} type="text" name="address" id="address" value={inputs.address} required />
-        <label className="description-label" htmlFor="description">Description</label>
+    <form className="create__form" onSubmit={handleSubmit} encType="multipart/form-data">
+      <div className="create__form__text-inputs">
+        <label className="text-inputs__name-label" htmlFor="name">Name</label>
+        <input className="text-inputs__name-input" onChange={handleChange} type="text" name="name" id="name" value={inputs.gymName} required />
+        <label className="text-inputs__address-label" htmlFor="address">Address</label>
+        <input className="text-inputs__address-input" onChange={handleChange} type="text" name="address" id="address" value={inputs.address} required />
+        <label className="text-inputs__description-label" htmlFor="description">Description</label>
         <textarea className="description-input" onChange={handleChangeTextArea} name="description" id="description" value={inputs.description} cols={30} rows={5} required></textarea>
       </div>
-      <fieldset id="type" className="specialization-fieldset">
-        <legend>Choose the type of specialization(s) of the arena:</legend>
-        <div className="checkbox-option">
-          <input type="checkbox" name="commercial" id="commercial" onChange={handleCheckboxes} checked={inputs.type.commercial} />
-          <label htmlFor="commercial">Commercial</label>
+      <fieldset id="type" className="create__form__specialization">
+        <legend className="specialization__legend">Choose the type of specialization(s) of the arena:</legend>
+        <div className="specialization__checkbox-option">
+          <input className="checkbox-option__input" type="checkbox" name="commercial" id="commercial" onChange={handleCheckboxes} checked={inputs.type.commercial} />
+          <label className="checkbox-option__label" htmlFor="commercial">Commercial</label>
         </div>
-        <div className="checkbox-option">
-          <input type="checkbox" name="powerlifting" id="powerlifting" onChange={handleCheckboxes} checked={inputs.type.powerlifting} />
-          <label htmlFor="powerlifting">Powerlifting</label>
+        <div className="specialization__checkbox-option">
+          <input className="checkbox-option__input" type="checkbox" name="powerlifting" id="powerlifting" onChange={handleCheckboxes} checked={inputs.type.powerlifting} />
+          <label className="checkbox-option__label" htmlFor="powerlifting">Powerlifting</label>
         </div>
-        <div className="checkbox-option">
-          <input type="checkbox" name="weightlifting" id="weightlifting" onChange={handleCheckboxes} checked={inputs.type.weightlifting} />
-          <label htmlFor="weightlifting">Olympic Weightlifting</label>
+        <div className="specialization__checkbox-option">
+          <input className="checkbox-option__input" type="checkbox" name="weightlifting" id="weightlifting" onChange={handleCheckboxes} checked={inputs.type.weightlifting} />
+          <label className="checkbox-option__label" htmlFor="weightlifting">Olympic Weightlifting</label>
         </div>
-        <div className="checkbox-option">
-          <input type="checkbox" name="crossfit" id="crossfit" onChange={handleCheckboxes} checked={inputs.type.crossfit} />
-          <label htmlFor="crossfit">Crossfit</label>
+        <div className="specialization__checkbox-option">
+          <input className="checkbox-option__input" type="checkbox" name="crossfit" id="crossfit" onChange={handleCheckboxes} checked={inputs.type.crossfit} />
+          <label className="checkbox-option__label" htmlFor="crossfit">Crossfit</label>
         </div>
-        <div className="checkbox-option">
-          <input type="checkbox" name="climbing" id="climbing" onChange={handleCheckboxes} checked={inputs.type.climbing} />
-          <label htmlFor="climbing">Climbing</label>
+        <div className="specialization__checkbox-option">
+          <input className="checkbox-option__input" type="checkbox" name="climbing" id="climbing" onChange={handleCheckboxes} checked={inputs.type.climbing} />
+          <label className="checkbox-option__label" htmlFor="climbing">Climbing</label>
         </div>
-        <div className="checkbox-option">
-          <input type="checkbox" name="boxing" id="boxing" onChange={handleCheckboxes} checked={inputs.type.boxing} />
-          <label htmlFor="boxing">Boxing</label>
+        <div className="specialization__checkbox-option">
+          <input className="checkbox-option__input" type="checkbox" name="boxing" id="boxing" onChange={handleCheckboxes} checked={inputs.type.boxing} />
+          <label className="checkbox-option__label" htmlFor="boxing">Boxing</label>
         </div>
-        <div className="checkbox-option">
-          <input type="checkbox" name="kickboxing" id="kickboxing" onChange={handleCheckboxes} checked={inputs.type.kickboxing} />
-          <label htmlFor="kickboxing">Kickboxing</label>
+        <div className="specialization__checkbox-option">
+          <input className="checkbox-option__input" type="checkbox" name="kickboxing" id="kickboxing" onChange={handleCheckboxes} checked={inputs.type.kickboxing} />
+          <label className="checkbox-option__label" htmlFor="kickboxing">Kickboxing</label>
         </div>
-        <div className="checkbox-option">
-          <input type="checkbox" name="muay-thai" id="muay-thai" onChange={handleCheckboxes} checked={inputs.type['muay-thai']} />
-          <label htmlFor="muay-thai">Muay Thai</label>
+        <div className="specialization__checkbox-option">
+          <input className="checkbox-option__input" type="checkbox" name="muay-thai" id="muay-thai" onChange={handleCheckboxes} checked={inputs.type['muay-thai']} />
+          <label className="checkbox-option__label" htmlFor="muay-thai">Muay Thai</label>
         </div>
-        <div className="checkbox-option">
-          <input type="checkbox" name="taekwondo" id="taekwondo" onChange={handleCheckboxes} checked={inputs.type.taekwondo} />
-          <label htmlFor="taekwondo">Taekwondo</label>
+        <div className="specialization__checkbox-option">
+          <input className="checkbox-option__input" type="checkbox" name="taekwondo" id="taekwondo" onChange={handleCheckboxes} checked={inputs.type.taekwondo} />
+          <label className="checkbox-option__label" htmlFor="taekwondo">Taekwondo</label>
         </div>
-        <div className="checkbox-option">
-          <input type="checkbox" name="karate" id="karate" onChange={handleCheckboxes} checked={inputs.type.karate} />
-          <label htmlFor="karate">Karate</label>
+        <div className="specialization__checkbox-option">
+          <input className="checkbox-option__input" type="checkbox" name="karate" id="karate" onChange={handleCheckboxes} checked={inputs.type.karate} />
+          <label className="checkbox-option__label" htmlFor="karate">Karate</label>
         </div>
-        <div className="checkbox-option">
-          <input type="checkbox" name="brazilian-ji-jijutsu" onChange={handleCheckboxes} id="brazilian-ji-jijutsu" checked={inputs.type['brazilian-ji-jijutsu']} />
-          <label htmlFor="brazilian-ji-jijutsu">Brazilian Ji Jijutsu</label>
+        <div className="specialization__checkbox-option">
+          <input className="checkbox-option__input" type="checkbox" name="brazilian-ji-jijutsu" onChange={handleCheckboxes} id="brazilian-ji-jijutsu" checked={inputs.type['brazilian-ji-jijutsu']} />
+          <label className="checkbox-option__label" htmlFor="brazilian-ji-jijutsu">Brazilian Ji Jijutsu</label>
         </div>
-        <div className="checkbox-option">
-          <input type="checkbox" name="krav-maga" id="krav-maga" onChange={handleCheckboxes} checked={inputs.type['krav-maga']} />
-          <label htmlFor="krav-maga">Krav Maga</label>
+        <div className="specialization__checkbox-option">
+          <input className="checkbox-option__input" type="checkbox" name="krav-maga" id="krav-maga" onChange={handleCheckboxes} checked={inputs.type['krav-maga']} />
+          <label className="checkbox-option__label" htmlFor="krav-maga">Krav Maga</label>
         </div>
-        <div className="checkbox-option">
-          <input type="checkbox" name="wrestling" id="wrestling" onChange={handleCheckboxes} checked={inputs.type.wrestling} />
-          <label htmlFor="wrestling">Wrestling</label>
+        <div className="specialization__checkbox-option">
+          <input className="checkbox-option__input" type="checkbox" name="wrestling" id="wrestling" onChange={handleCheckboxes} checked={inputs.type.wrestling} />
+          <label className="checkbox-option__label" htmlFor="wrestling">Wrestling</label>
         </div>
       </fieldset>
-      <div className="upload-submit-container">
-        <div className="edit-img-container">
-          <div className="edit-img-input">
-            <label htmlFor="image">Choose a new image for the gym</label>
-            <input onChange={handleUpload} id="image" type="file" accept="image/*" defaultValue={`${inputs.image}`} />
+        <div className="edit-img__container">
+          <div className="upload__container">
+            <label className="upload__label" htmlFor="image">Choose a new image for the gym (Optional):</label>
+          <input className="upload__input" onChange={handleUpload} id="image" type="file" accept="image/*" defaultValue={`${inputs.image}`} />
           </div>
-          <figure>
-            <figcaption className="edit-img-caption">Original Photo</figcaption>
-            <img className="edit-img-preview" src={`${inputs.image}`} alt="Main gym image" />
+          <figure className="edit-img__figure">
+            <figcaption className="figure__caption">Original Photo</figcaption>
+            <img className="figure__preview" src={`${inputs.image}`} alt="Main gym image" />
           </figure>
         </div>
-        <button className="edit__form__submit-btn" type="submit">Submit</button>
-      </div>
+      <button className="create__form__submit-btn" type="submit">Submit</button>
     </form>
   );
 }
