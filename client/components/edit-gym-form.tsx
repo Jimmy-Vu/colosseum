@@ -131,7 +131,7 @@ export default function EditGymForm(props: { setIsLoading: (boolean: boolean) =>
   }
 
   return (
-    <form className="create-form" onSubmit={handleSubmit} encType="multipart/form-data">
+    <form className="edit__form" onSubmit={handleSubmit} encType="multipart/form-data">
       <div className="text-inputs">
         <label className="name-label" htmlFor="name">Name</label>
         <input className="name-input" onChange={handleChange} type="text" name="name" id="name" value={inputs.gymName} required />
@@ -206,7 +206,7 @@ export default function EditGymForm(props: { setIsLoading: (boolean: boolean) =>
             <img className="edit-img-preview" src={`${inputs.image}`} alt="Main gym image" />
           </figure>
         </div>
-        <button className="submit-button" type="submit">Submit</button>
+        <button className="edit__form__submit-btn" type="submit">Submit</button>
       </div>
     </form>
   );

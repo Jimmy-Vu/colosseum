@@ -616,87 +616,91 @@ footer {
   height: 100%;
 }
 
-.create-main {
-  height: 100%;
+.create__main {
   display: flex;
   justify-content: center;
   align-items: center;
+  height: 100%;
   padding-top: 1rem;
+  margin-top: 1rem;
+  margin-bottom: 2em;
 }
 
-.create-form {
+.create__form {
   display: flex;
   flex-direction: column;
   height: 100%;
   max-height: fit-content;
   padding: 1em;
   margin: 1em;
-  background-color: rgba(255, 255, 255, 0.9);
+  background-color: #F5F5F5;
+  box-shadow: 1px 2px 2px 2px rgba(0, 0, 0, 0.25);
   border-radius: 15px;
   overflow-y: auto;
 }
 @media (min-width: 720px) {
-  .create-form {
-    width: 80%;
+  .create__form {
+    width: 100%;
+    max-width: 800px;
   }
 }
-@media (min-width: 960px) {
-  .create-form {
-    width: 60%;
-  }
-}
-.create-form .text-inputs {
+.create__form__text-inputs {
   display: flex;
   flex-direction: column;
+  margin-bottom: 1rem;
 }
 @media (min-width: 720px) {
-  .create-form .text-inputs {
+  .create__form__text-inputs {
     width: 100%;
   }
 }
-.create-form .text-inputs .name-label,
-.create-form .text-inputs .address-label,
-.create-form .text-inputs .description-label {
+.create__form__text-inputs .text-inputs__name-label,
+.create__form__text-inputs .text-inputs__address-label,
+.create__form__text-inputs .text-inputs__description-label {
   font-weight: 600;
-  margin-left: 0.15em;
 }
-.create-form .text-inputs .name-input,
-.create-form .text-inputs .address-input {
+.create__form__text-inputs .text-inputs__name-input,
+.create__form__text-inputs .text-inputs__address-input {
   margin-bottom: 1em;
 }
-.create-form .specialization-fieldset {
-  margin-top: 2em;
+.create__form__specialization {
+  min-height: 150px;
   margin-bottom: 1em;
   border: 0;
   overflow-y: auto;
-  min-height: 150px;
 }
 @media (min-width: 720px) {
-  .create-form .specialization-fieldset {
+  .create__form__specialization {
     display: flex;
     flex-direction: column;
-    margin-top: 0;
     width: 100%;
   }
 }
-.create-form .specialization-fieldset legend {
+.create__form__specialization .specialization__legend {
   font-weight: 600;
 }
-.create-form .upload-submit-container {
+.create__form__specialization .specialization__checkbox-option .checkbox-option__label {
+  margin-left: 0.5em;
+}
+.create__form__specialization .specialization__checkbox-option .checkbox-option__input:hover,
+.create__form__specialization .specialization__checkbox-option .checkbox-option__label:hover {
+  cursor: pointer;
+}
+.create__form .upload-submit-container {
   display: flex;
   flex-direction: column;
   width: 100%;
 }
 @media (min-width: 720px) {
-  .create-form .upload-submit-container {
+  .create__form .upload-submit-container {
     align-items: center;
   }
 }
-.create-form .upload-submit-container label {
+.create__form .upload-submit-container label {
   display: block;
   font-weight: 600;
 }
-.create-form .upload-submit-container input::file-selector-button {
+.create__form .upload-submit-container input::file-selector-button {
   margin: 0.25em 0.5em 0.25em 0.1em;
   background-color: #D2B85A;
   color: white;
@@ -708,7 +712,7 @@ footer {
   padding-top: 0.25em;
   padding-bottom: 0.25em;
 }
-.create-form .upload-submit-container .submit-button {
+.create__form__submit-btn {
   align-self: center;
   text-align: center;
   margin: 1em 0.5em 0.25em 0.1em;
@@ -722,10 +726,6 @@ footer {
   padding-right: 1em;
   padding-top: 0.25em;
   padding-bottom: 0.25em;
-}
-
-.checkbox-option label {
-  margin-left: 0.5em;
 }
 
 .edit-img-container {

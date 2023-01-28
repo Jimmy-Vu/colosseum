@@ -8,7 +8,7 @@ export default function EditGymListing(props: { gymId: number }) {
 
   return (
     <>
-      <main className="create-main">
+      <main className="create__main">
         <EditGymForm gymId={gymId} setIsLoading={setIsLoading} />
       </main>
       <Spinner isLoading={isLoading} />

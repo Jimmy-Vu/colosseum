@@ -13,7 +13,7 @@ import Home from "./pages/home";
 import NotFound from "./pages/not-found";
 import Listings from "./pages/listings";
 import Gym from "./pages/gym";
-import CreateGymListing from "./pages/create-gym-listing";
+import AddGymListing from "./pages/add-gym-listing";
 import Header from "./components/header";
 import Footer from "./components/footer";
 import EditGymListing from "./pages/edit-gym-listing";
@@ -95,7 +95,7 @@ function App(props: {}) {
       return (
         <div className="main-container">
           <Header handleSignOut={handleSignOut} />
-          <CreateGymListing />
+          <AddGymListing />
           <Footer />
         </div>
       );

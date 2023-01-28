@@ -7,70 +7,84 @@
 // "lg": 960px,
 // "xl": 1200px
 
-.create-main {
-  height: 100%;
+.create__main {
   display: flex;
   justify-content: center;
   align-items: center;
+
+  height: 100%;
   padding-top: 1rem;
+  margin-top: 1rem;
+  margin-bottom: 2em;
 }
 
-.create-form {
+.create__form {
   display: flex;
   flex-direction: column;
+
   height: 100%;
   max-height: fit-content;
   padding: 1em;
   margin: 1em;
-  background-color: rgba(255, 255, 255, 0.9);
+
+  background-color: $bg-secondary;
+  box-shadow: 1px 2px 2px 2px rgba(0, 0, 0, 0.25);
   border-radius: 15px;
   overflow-y: auto;
 
   @include md {
-    width: 80%;
+    width: 100%;
+    max-width: 800px;
   }
 
-  @include lg {
-    width: 60%;
-  }
-
-  .text-inputs {
+  &__text-inputs {
     display: flex;
     flex-direction: column;
+    margin-bottom: 1rem;
 
     @include md {
       width: 100%;
     }
 
-    .name-label,
-    .address-label,
-    .description-label {
+    .text-inputs__name-label,
+    .text-inputs__address-label,
+    .text-inputs__description-label {
       font-weight: 600;
-      margin-left: 0.15em;
     }
 
-    .name-input,
-    .address-input {
+    .text-inputs__name-input,
+    .text-inputs__address-input {
       margin-bottom: 1em;
     }
   }
 
-  .specialization-fieldset {
-    margin-top: 2em;
+  &__specialization {
+    min-height: 150px;
     margin-bottom: 1em;
     border: 0;
     overflow-y: auto;
-    min-height: 150px;
 
     @include md {
       display: flex;
       flex-direction: column;
-      margin-top: 0;
       width: 100%;
     }
 
-    legend {
+    .specialization__legend {
       font-weight: 600;
+    }
+
+    .specialization__checkbox-option {
+      .checkbox-option__label {
+        margin-left: 0.5em;
+      }
+
+      .checkbox-option__input,
+      .checkbox-option__label {
+        &:hover {
+          cursor: pointer;
+        }
+      }
     }
   }
 
@@ -102,28 +116,22 @@
       padding-top: 0.25em;
       padding-bottom: 0.25em;
     }
-
-    .submit-button {
-      align-self: center;
-      text-align: center;
-      margin: 1em .5em 0.25em 0.1em;
-      width: 85px;
-
-      background-color: $primary;
-      color: white;
-      box-shadow: 0 0 1px black;
-      border: solid white 1px;
-      border-radius: 15px;
-      padding-left: 1em;
-      padding-right: 1em;
-      padding-top: 0.25em;
-      padding-bottom: 0.25em;
-    }
   }
-}
 
-.checkbox-option {
-  label {
-    margin-left: 0.5em;
+  &__submit-btn {
+    align-self: center;
+    text-align: center;
+    margin: 1em .5em 0.25em 0.1em;
+    width: 85px;
+
+    background-color: $primary;
+    color: white;
+    box-shadow: 0 0 1px black;
+    border: solid white 1px;
+    border-radius: 15px;
+    padding-left: 1em;
+    padding-right: 1em;
+    padding-top: 0.25em;
+    padding-bottom: 0.25em;
   }
 }

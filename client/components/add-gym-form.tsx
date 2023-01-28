@@ -126,74 +126,74 @@ export default function AddGymForm(props: { setIsLoading: (boolean: boolean) => 
   }
 
   return (
-    <form className="create-form" onSubmit={handleSubmit} encType="multipart/form-data">
-      <div className="text-inputs">
-        <label className="name-label" htmlFor="name">Name</label>
-        <input className="name-input" onChange={handleChange} type="text" name="gymName" id="gymName" required />
-        <label className="address-label" htmlFor="address">Address</label>
-        <input className="address-input" onChange={handleChange} type="text" name="address" id="address" required />
-        <label className="description-label" htmlFor="description">Description</label>
+    <form className="create__form" onSubmit={handleSubmit} encType="multipart/form-data">
+      <div className="create__form__text-inputs">
+        <label className="text-inputs__name-label" htmlFor="name">Name</label>
+        <input className="text-inputs__name-input" onChange={handleChange} type="text" name="gymName" id="gymName" required />
+        <label className="text-inputs__address-label" htmlFor="address">Address</label>
+        <input className="text-inputs__address-input" onChange={handleChange} type="text" name="address" id="address" required />
+        <label className="text-inputs__description-label" htmlFor="description">Description</label>
         <textarea className="description-input" onChange={handleChangeTextArea} name="description" id="description" cols={30} rows={5} required></textarea>
       </div>
-      <fieldset id="type" className="specialization-fieldset">
-        <legend>Choose the type of specialization(s) of the arena:</legend>
-        <div className="checkbox-option">
-          <input onClick={handleCheckboxes} type="checkbox" name="commercial" id="commercial" />
-          <label htmlFor="commercial">Commercial</label>
+      <fieldset id="type" className="create__form__specialization">
+        <legend className="specialization__legend">Choose the type of specialization(s) of the arena:</legend>
+        <div className="specialization__checkbox-option">
+          <input className="checkbox-option__input" onClick={handleCheckboxes} type="checkbox" name="commercial" id="commercial" />
+          <label className="checkbox-option__label" htmlFor="commercial">Commercial</label>
         </div>
-        <div className="checkbox-option">
-          <input onClick={handleCheckboxes} type="checkbox" name="powerlifting" id="powerlifting" />
-          <label htmlFor="powerlifting">Powerlifting</label>
+        <div className="specialization__checkbox-option">
+          <input className="checkbox-option__input" onClick={handleCheckboxes} type="checkbox" name="powerlifting" id="powerlifting" />
+          <label className="checkbox-option__label" htmlFor="powerlifting">Powerlifting</label>
         </div>
-        <div className="checkbox-option">
-          <input onClick={handleCheckboxes} type="checkbox" name="weightlifting" id="weightlifting" />
-          <label htmlFor="weightlifting">Olympic Weightlifting</label>
+        <div className="specialization__checkbox-option">
+          <input className="checkbox-option__input" onClick={handleCheckboxes} type="checkbox" name="weightlifting" id="weightlifting" />
+          <label className="checkbox-option__label" htmlFor="weightlifting">Olympic Weightlifting</label>
         </div>
-        <div className="checkbox-option">
-          <input onClick={handleCheckboxes} type="checkbox" name="crossfit" id="crossfit" />
-          <label htmlFor="crossfit">Crossfit</label>
+        <div className="specialization__checkbox-option">
+          <input className="checkbox-option__input" onClick={handleCheckboxes} type="checkbox" name="crossfit" id="crossfit" />
+          <label className="checkbox-option__label" htmlFor="crossfit">Crossfit</label>
         </div>
-        <div className="checkbox-option">
-          <input onClick={handleCheckboxes} type="checkbox" name="climbing" id="climbing" />
-          <label htmlFor="climbing">Climbing</label>
+        <div className="specialization__checkbox-option">
+          <input className="checkbox-option__input" onClick={handleCheckboxes} type="checkbox" name="climbing" id="climbing" />
+          <label className="checkbox-option__label" htmlFor="climbing">Climbing</label>
         </div>
-        <div className="checkbox-option">
-          <input onClick={handleCheckboxes} type="checkbox" name="boxing" id="boxing" />
-          <label htmlFor="boxing">Boxing</label>
+        <div className="specialization__checkbox-option">
+          <input className="checkbox-option__input" onClick={handleCheckboxes} type="checkbox" name="boxing" id="boxing" />
+          <label className="checkbox-option__label" htmlFor="boxing">Boxing</label>
         </div>
-        <div className="checkbox-option">
-          <input onClick={handleCheckboxes} type="checkbox" name="kickboxing" id="kickboxing" />
-          <label htmlFor="kickboxing">Kickboxing</label>
+        <div className="specialization__checkbox-option">
+          <input className="checkbox-option__input" onClick={handleCheckboxes} type="checkbox" name="kickboxing" id="kickboxing" />
+          <label className="checkbox-option__label" htmlFor="kickboxing">Kickboxing</label>
         </div>
-        <div className="checkbox-option">
-          <input onClick={handleCheckboxes} type="checkbox" name="muay-thai" id="muay-thai" />
-          <label htmlFor="muay-thai">Muay Thai</label>
+        <div className="specialization__checkbox-option">
+          <input className="checkbox-option__input" onClick={handleCheckboxes} type="checkbox" name="muay-thai" id="muay-thai" />
+          <label className="checkbox-option__label" htmlFor="muay-thai">Muay Thai</label>
         </div>
-        <div className="checkbox-option">
-          <input onClick={handleCheckboxes} type="checkbox" name="taekwondo" id="taekwondo" />
-          <label htmlFor="taekwondo">Taekwondo</label>
+        <div className="specialization__checkbox-option">
+          <input className="checkbox-option__input" onClick={handleCheckboxes} type="checkbox" name="taekwondo" id="taekwondo" />
+          <label className="checkbox-option__label" htmlFor="taekwondo">Taekwondo</label>
         </div>
-        <div className="checkbox-option">
-          <input onClick={handleCheckboxes} type="checkbox" name="karate" id="karate" />
-          <label htmlFor="karate">Karate</label>
+        <div className="specialization__checkbox-option">
+          <input className="checkbox-option__input" onClick={handleCheckboxes} type="checkbox" name="karate" id="karate" />
+          <label className="checkbox-option__label" htmlFor="karate">Karate</label>
         </div>
-        <div className="checkbox-option">
-          <input onClick={handleCheckboxes} type="checkbox" name="brazilian-ji-jijutsu" id="brazilian-ji-jijutsu" />
-          <label htmlFor="brazilian-ji-jijutsu">Brazilian Ji Jijutsu</label>
+        <div className="specialization__checkbox-option">
+          <input className="checkbox-option__input" onClick={handleCheckboxes} type="checkbox" name="brazilian-ji-jijutsu" id="brazilian-ji-jijutsu" />
+          <label className="checkbox-option__label" htmlFor="brazilian-ji-jijutsu">Brazilian Ji Jijutsu</label>
         </div>
-        <div className="checkbox-option">
-          <input onClick={handleCheckboxes} type="checkbox" name="krav-maga" id="krav-maga" />
-          <label htmlFor="krav-maga">Krav Maga</label>
+        <div className="specialization__checkbox-option">
+          <input className="checkbox-option__input" onClick={handleCheckboxes} type="checkbox" name="krav-maga" id="krav-maga" />
+          <label className="checkbox-option__label" htmlFor="krav-maga">Krav Maga</label>
         </div>
-        <div className="checkbox-option">
-          <input onClick={handleCheckboxes} type="checkbox" name="wrestling" id="wrestling" />
-          <label htmlFor="wrestling">Wrestling</label>
+        <div className="specialization__checkbox-option">
+          <input className="checkbox-option__input" onClick={handleCheckboxes} type="checkbox" name="wrestling" id="wrestling" />
+          <label className="checkbox-option__label" htmlFor="wrestling">Wrestling</label>
         </div>
       </fieldset>
       <div className="upload-submit-container">
         <label htmlFor="image">Choose an image for the gym</label>
         <input onChange={handleUpload} id="image" type="file" accept="image/*" />
-        <button className="submit-button" type="submit">Submit</button>
+        <button className="create__form__submit-btn" type="submit">Submit</button>
       </div>
     </form>
   );
