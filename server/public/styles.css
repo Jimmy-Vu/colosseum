@@ -621,9 +621,8 @@ footer {
   justify-content: center;
   align-items: center;
   height: 100%;
-  padding-top: 1rem;
-  margin-top: 1rem;
-  margin-bottom: 2em;
+  margin-top: 2rem;
+  margin-bottom: 2rem;
 }
 
 .create__form {
@@ -631,8 +630,8 @@ footer {
   flex-direction: column;
   height: 100%;
   max-height: fit-content;
-  padding: 1em;
-  margin: 1em;
+  padding: 1rem;
+  margin: 1rem;
   background-color: #F5F5F5;
   box-shadow: 1px 2px 2px 2px rgba(0, 0, 0, 0.25);
   border-radius: 15px;
@@ -641,7 +640,7 @@ footer {
 @media (min-width: 720px) {
   .create__form {
     width: 100%;
-    max-width: 800px;
+    max-width: 700px;
   }
 }
 .create__form__text-inputs {
@@ -661,11 +660,11 @@ footer {
 }
 .create__form__text-inputs .text-inputs__name-input,
 .create__form__text-inputs .text-inputs__address-input {
-  margin-bottom: 1em;
+  margin-bottom: 1rem;
 }
 .create__form__specialization {
   min-height: 150px;
-  margin-bottom: 1em;
+  margin-bottom: 1rem;
   border: 0;
   overflow-y: auto;
 }
@@ -703,11 +702,11 @@ footer {
   margin-right: 1rem;
 }
 .create__form .upload__input::file-selector-button {
-  margin: 0.25em 0.5em 0.25em 0.1em;
-  padding-left: 1em;
-  padding-right: 1em;
-  padding-top: 0.25em;
-  padding-bottom: 0.25em;
+  margin: 0.25rem 0.5rem 0.25rem 0.1rem;
+  padding-left: 1rem;
+  padding-right: 1rem;
+  padding-top: 0.25rem;
+  padding-bottom: 0.25rem;
   box-shadow: 0 0 1px black;
   border: solid white 1px;
   border-radius: 15px;
@@ -722,11 +721,11 @@ footer {
 .create__form__submit-btn {
   align-self: center;
   text-align: center;
-  margin: 1em 0.5em 0.25em 0.1em;
-  padding-left: 1em;
-  padding-right: 1em;
-  padding-top: 0.25em;
-  padding-bottom: 0.25em;
+  margin: 1rem 0.5rem 0.25rem 0.1rem;
+  padding-left: 1rem;
+  padding-right: 1rem;
+  padding-top: 0.25rem;
+  padding-bottom: 0.25rem;
   border: solid white 1px;
   border-radius: 5px;
   box-shadow: 0 0 1px black;
