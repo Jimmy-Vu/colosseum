@@ -132,6 +132,7 @@ export default function EditGymForm(props: { setIsLoading: (boolean: boolean) =>
 
   return (
     <form className="create__form" onSubmit={handleSubmit} encType="multipart/form-data">
+      <h1 className="create__form__heading">Edit An Arena</h1>
       <div className="create__form__text-inputs">
         <label className="text-inputs__name-label" htmlFor="name">Name</label>
         <input className="text-inputs__name-input" onChange={handleChange} type="text" name="name" id="name" value={inputs.gymName} required />
@@ -197,7 +198,7 @@ export default function EditGymForm(props: { setIsLoading: (boolean: boolean) =>
       </fieldset>
       <div className="edit-img__container">
         <div className="upload__container">
-          <label className="upload__label" htmlFor="image">Choose a new image for the gym (Optional):</label>
+          <label className="upload__label" htmlFor="image">Choose a new image for the gym (optional):</label>
           <input className="upload__input" onChange={handleUpload} id="image" type="file" accept="image/*" defaultValue={`${inputs.image}`} />
         </div>
         <figure className="edit-img__figure">

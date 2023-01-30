@@ -36,6 +36,9 @@
     max-width: 700px;
   }
 
+  &__heading {
+    text-align: center;
+  }
   &__text-inputs {
     display: flex;
     flex-direction: column;
@@ -142,7 +145,7 @@
     box-shadow: 0 0 1px black;
     background-color: $primary;
     color: white;
-    font-size: 18px;
+    font-size: 20px;
 
     &:hover {
       background-color: $secondary;
