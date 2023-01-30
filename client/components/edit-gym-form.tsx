@@ -132,8 +132,8 @@ export default function EditGymForm(props: { setIsLoading: (boolean: boolean) =>
 
   return (
     <form className="create__form" onSubmit={handleSubmit} encType="multipart/form-data">
-      <h1 className="create__form__heading">Edit An Arena</h1>
-      <div className="create__form__text-inputs">
+      <h1 className="create__form-heading">Edit An Arena</h1>
+      <div className="create__form-text-inputs">
         <label className="text-inputs__name-label" htmlFor="name">Name</label>
         <input className="text-inputs__name-input" onChange={handleChange} type="text" name="name" id="name" value={inputs.gymName} required />
         <label className="text-inputs__address-label" htmlFor="address">Address</label>

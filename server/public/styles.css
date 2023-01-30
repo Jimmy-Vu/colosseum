@@ -643,26 +643,26 @@ footer {
     max-width: 700px;
   }
 }
-.create__form__heading {
+.create__form-heading {
   text-align: center;
 }
-.create__form__text-inputs {
+.create__form-text-inputs {
   display: flex;
   flex-direction: column;
   margin-bottom: 1rem;
 }
 @media (min-width: 720px) {
-  .create__form__text-inputs {
+  .create__form-text-inputs {
     width: 100%;
   }
 }
-.create__form__text-inputs .text-inputs__name-label,
-.create__form__text-inputs .text-inputs__address-label,
-.create__form__text-inputs .text-inputs__description-label {
+.create__form-text-inputs .text-inputs__name-label,
+.create__form-text-inputs .text-inputs__address-label,
+.create__form-text-inputs .text-inputs__description-label {
   font-weight: 600;
 }
-.create__form__text-inputs .text-inputs__name-input,
-.create__form__text-inputs .text-inputs__address-input {
+.create__form-text-inputs .text-inputs__name-input,
+.create__form-text-inputs .text-inputs__address-input {
   margin-bottom: 1rem;
 }
 .create__form__specialization {
