@@ -1,0 +1,158 @@
+@use "../global/colors" as *;
+@use "../global/breakpoints" as *;
+
+// "xs": 0,
+// "sm": 480px,
+// "md": 720px,
+// "lg": 960px,
+// "xl": 1200px
+
+.create__main {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+
+  height: 100%;
+  margin-top: 2rem;
+  margin-bottom: 2rem;
+}
+
+.create__form {
+  display: flex;
+  flex-direction: column;
+
+  height: 100%;
+  max-height: fit-content;
+  padding: 1rem;
+  margin: 1rem;
+
+  background-color: $bg-secondary;
+  box-shadow: 1px 2px 2px 2px rgba(0, 0, 0, 0.25);
+  border-radius: 15px;
+  overflow-y: auto;
+
+  @include md {
+    width: 100%;
+    max-width: 700px;
+  }
+
+  &-heading {
+    text-align: center;
+  }
+
+  &-text-inputs {
+    display: flex;
+    flex-direction: column;
+    margin-bottom: 1rem;
+
+    @include md {
+      width: 100%;
+    }
+
+    .text-inputs__name-label,
+    .text-inputs__address-label,
+    .text-inputs__description-label {
+      font-weight: 600;
+    }
+
+    .text-inputs__name-input,
+    .text-inputs__address-input {
+      margin-bottom: 1rem;
+    }
+  }
+
+  &__specialization {
+    min-height: 150px;
+    margin-bottom: 1rem;
+    border: 0;
+    overflow-y: auto;
+
+    @include md {
+      display: flex;
+      flex-direction: column;
+      width: 100%;
+    }
+
+    .specialization {
+      &__legend {
+        font-weight: 600;
+      }
+
+      &__checkbox-option {
+        .checkbox-option__label {
+          margin-left: 0.5rem;
+        }
+
+        .checkbox-option__input,
+        .checkbox-option__label {
+          &:hover {
+            cursor: pointer;
+          }
+        }
+      }
+    }
+  }
+
+  .upload {
+    &__container {
+      display: flex;
+      flex-direction: column;
+      width: 100%;
+
+      @include md {
+        flex-direction: row;
+        align-items: center;
+      }
+    }
+
+    &__label {
+      display: block;
+      font-weight: 600;
+      margin-right: 1rem;
+    }
+
+    &__input::file-selector-button {
+      margin: 0.25rem .5rem 0.25rem 0.1rem;
+      padding-left: 1rem;
+      padding-right: 1rem;
+      padding-top: 0.25rem;
+      padding-bottom: 0.25rem;
+
+      box-shadow: 0 0 1px black;
+      border: solid white 1px;
+      border-radius: 15px;
+
+      background-color: $primary;
+      color: white;
+      cursor: pointer;
+
+      &:hover {
+        background-color: $secondary;
+        scale: 1.01;
+      }
+    }
+  }
+
+  &__submit-btn {
+    align-self: center;
+    text-align: center;
+
+    margin: 1rem .5rem 0.25rem 0.1rem;
+    padding-left: 1rem;
+    padding-right: 1rem;
+    padding-top: 0.25rem;
+    padding-bottom: 0.25rem;
+
+    border: solid white 1px;
+    border-radius: 5px;
+    box-shadow: 0 0 1px black;
+    background-color: $primary;
+    color: white;
+    font-size: 20px;
+
+    &:hover {
+      background-color: $secondary;
+      scale: 1.01;
+    }
+  }
+}
