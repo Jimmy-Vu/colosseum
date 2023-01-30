@@ -6,10 +6,18 @@
   display: flex;
   flex-direction: column;
 
+  @include lg {
+    flex-direction: row;
+    align-items: center;
+  }
 
   .upload__container {
     display: flex;
     flex-direction: column;
+
+    @include lg {
+      width: 60%;
+    }
 
     &__input::file-selector-button {
       margin: 0.25rem .5rem 0.25rem 0.1rem;
@@ -33,24 +41,24 @@
     }
   }
 
-  &__figure {
+  .edit-img__figure {
     display: flex;
     flex-direction: column;
     align-items: center;
+
+    @include lg {
+      width: 40%;
+    }
 
     .figure__caption {
       font-weight: bold;
     }
 
-    .figure__preview {
-      max-height: 150px;
+    .figure__img-preview {
+      max-height: 300px;
 
-      @include md {
-        max-height: 200px;
-      }
-
-      @include xl {
-        max-height: 250px;
+      @include lg {
+        max-height: 600px;
       }
     }
   }

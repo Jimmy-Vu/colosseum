@@ -195,16 +195,16 @@ export default function EditGymForm(props: { setIsLoading: (boolean: boolean) =>
           <label className="checkbox-option__label" htmlFor="wrestling">Wrestling</label>
         </div>
       </fieldset>
-        <div className="edit-img__container">
-          <div className="upload__container">
-            <label className="upload__label" htmlFor="image">Choose a new image for the gym (Optional):</label>
+      <div className="edit-img__container">
+        <div className="upload__container">
+          <label className="upload__label" htmlFor="image">Choose a new image for the gym (Optional):</label>
           <input className="upload__input" onChange={handleUpload} id="image" type="file" accept="image/*" defaultValue={`${inputs.image}`} />
-          </div>
-          <figure className="edit-img__figure">
-            <figcaption className="figure__caption">Original Photo</figcaption>
-            <img className="figure__preview" src={`${inputs.image}`} alt="Main gym image" />
-          </figure>
         </div>
+        <figure className="edit-img__figure">
+          <figcaption className="figure__caption">Original Photo</figcaption>
+          <a href={`${inputs.image}`} target="_blank"><img className="figure__img-preview" src={`${inputs.image}`} alt="Main gym image" /></a>
+        </figure>
+      </div>
       <button className="create__form__submit-btn" type="submit">Submit</button>
     </form>
   );
