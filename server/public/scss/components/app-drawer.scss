@@ -38,13 +38,12 @@
 
     .close-button {
       cursor: pointer;
-      font-size: 4rem;
+      font-size: 50px;
       color: $primary;
       margin-top: .6rem;
       text-shadow: 1px 1px 1px black;
 
       @include md {
-        font-size: 4rem;
         margin-top: 1.27rem;
       }
     }

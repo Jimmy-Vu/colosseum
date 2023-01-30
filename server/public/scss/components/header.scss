@@ -19,7 +19,7 @@ header {
   color: white;
 
   .menu-button {
-    font-size: 3rem;
+    font-size: 40px;
     color: $primary;
     margin-top: .23em;
     text-shadow: 1px 1px 1px black;
@@ -27,10 +27,6 @@ header {
     &:hover {
       transition-duration: 250ms;
       color: $secondary;
-    }
-
-    @include md {
-      font-size: 3rem;
     }
   }
 
