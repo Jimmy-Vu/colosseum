@@ -1,4 +1,4 @@
-import React from "react";
+import React, { useEffect } from "react";
 import { useTransition, animated } from '@react-spring/web';
 import { useSelector } from 'react-redux';
 import { RootState } from "../redux/rootState";
@@ -19,6 +19,10 @@ function AppDrawer(props: Props) {
     leave: { x: "-100%" }
   });
 
+  // for displaying breadcrumbs of the current active page
+  // TODO: Remove this once React.Router is implemented
+  let currentPage = window.location.hash;
+
   return (
     <div className="app-drawer">
       {transition((style, item) =>
@@ -33,13 +37,16 @@ function AppDrawer(props: Props) {
                   ? <span className="welcome-message">{`Hiya ${username}!`}</span>
                   : null
                 }
-                <ul><a onClick={() => setDrawerIsOpen(false)} href="#listings">Arenas</a></ul>
-                <ul><a onClick={() => setDrawerIsOpen(false)} href="#create">Add An Arena</a></ul>
-                {isLoggedIn &&
-                  <>
-                    <ul><a onClick={() => setDrawerIsOpen(false)} href="#account">My Account</a></ul>
-                  </>
-                }
+                <ul>
+                  <li className={(currentPage === '') ? "active" : ""}><a onClick={() => setDrawerIsOpen(false)} href="#">Home</a></li>
+                  <li className={(currentPage === '#listings') ? "active" : ""}><a onClick={() => setDrawerIsOpen(false)} href="#listings">Arenas</a></li>
+                  <li className={(currentPage === '#create') ? "active" : ""}><a onClick={() => setDrawerIsOpen(false)} href="#create">Add An Arena</a></li>
+                  {isLoggedIn &&
+                    <>
+                      <li className={(currentPage === '#account') ? "active" : ""}><a onClick={() => setDrawerIsOpen(false)} href="#account">My Account</a></li>
+                    </>
+                  }
+                </ul>
                 { /* Sign in/sign out button that will only show on mobile using CSS media queries */
                   isLoggedIn
                     ? <a onClick={() => { setDrawerIsOpen(false); handleSignOut(); }} className="nav__sign-in-btn">Sign Out</a>
@@ -47,7 +54,7 @@ function AppDrawer(props: Props) {
                 }
               </nav>
             </animated.div>
-            <div onClick={() => setDrawerIsOpen(false)} className="drawer-overlay"></div>
+            <div onClick={() => setDrawerIsOpen(false)} className={isOpen ? "drawer-overlay--active" : "drawer-overlay--inactive"}></div>
           </>
         ) : '')
       }
