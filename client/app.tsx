@@ -66,7 +66,7 @@ function App(props: {}) {
   const { route } = stateRoute;
   let gymId = 0;
   switch (route.path) {
-    case '':
+    case "":
       return (
         <div className="main-container">
           <Header handleSignOut={handleSignOut} />

@@ -4,7 +4,7 @@ import { useSelector } from 'react-redux';
 import { RootState } from "../redux/rootState";
 
 function Header(props: { handleSignOut: () => void; }) {
-  const [drawerIsOpen, setDrawerIsOpen] = useState(false);
+  const [drawerIsOpen, setDrawerIsOpen] = useState(true);
   const [navBarScrolled, setNavBarScrolled] = useState(false);
   const isLoggedIn = useSelector((state: RootState) => state.app.isLoggedIn);
   const handleSignOut = props.handleSignOut;

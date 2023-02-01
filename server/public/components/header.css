@@ -15,7 +15,7 @@ header {
   color: white;
 }
 .navbar .menu-button {
-  font-size: 3rem;
+  font-size: 40px;
   color: #D2B85A;
   margin-top: 0.23em;
   text-shadow: 1px 1px 1px black;
@@ -23,11 +23,6 @@ header {
 .navbar .menu-button:hover {
   transition-duration: 250ms;
   color: #BFA246;
-}
-@media (min-width: 720px) {
-  .navbar .menu-button {
-    font-size: 3rem;
-  }
 }
 .navbar__title {
   font-family: "Oswald", sans-serif;
