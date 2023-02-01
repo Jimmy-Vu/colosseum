@@ -35,13 +35,15 @@ export default function AccountPage(props: {}) {
 
   return (
     <>
-      <main className="account-main">
-        <h2 className="account-title">Your Arenas</h2>
-        {
-          accountItems.personalGyms.map(gym => (
-            <ListingCard key={gym.gymId} gym={gym} />
-          ))
-        }
+      <main className="account__main">
+        <h1 className="account__title">Your Arenas</h1>
+        <div className="account__cards-container">
+          {
+            accountItems.personalGyms.map(gym => (
+              <ListingCard key={gym.gymId} gym={gym} />
+            ))
+          }
+        </div>
       </main>
     </>
   );

@@ -11,11 +11,13 @@ interface Props {
 }
 
 export default function AddReviewModal(props: Props) {
-  const currentUser = useSelector((state: RootState) => state.user.username);
+  const currentUsername = useSelector((state: RootState) => state.user.username);
+  const currentUserId = useSelector((state: RootState) => state.user.userId);
   const { addModalIsOpen, setAddModalIsOpen, setReviewAlreadyMade, handleSuccessfulSubmit } = props;
   const { gymId, gymName } = props.gymState;
   const [review, setReview] = useState({
-    user: '',
+    username: '',
+    userId: '',
     reviewValues: {
       rating: '0',
       description: ''
@@ -25,16 +27,17 @@ export default function AddReviewModal(props: Props) {
   useEffect(() => {
     setReview(prev => ({
       ...prev,
-      user: currentUser
+      username: currentUsername,
+      userId: currentUserId
     }))
-  }, [currentUser])
+  }, [currentUsername])
 
-  function handleRating(e: React.FormEvent<HTMLInputElement>) {
+  function handleRating(e: React.BaseSyntheticEvent) {
     setReview(prev => ({
       ...prev,
       reviewValues: {
         ...prev.reviewValues,
-        rating: e.currentTarget.value
+        rating: e.target.value
       }
     }));
   }
@@ -44,7 +47,7 @@ export default function AddReviewModal(props: Props) {
       ...prev,
       reviewValues: {
         ...prev.reviewValues,
-        description: e.currentTarget.value
+        description: e.target.value
       }
     }))
   }
@@ -72,56 +75,58 @@ export default function AddReviewModal(props: Props) {
 
   return (
     <>{addModalIsOpen &&
-      <div onClick={() => setAddModalIsOpen(false)} className="modal-tint"></div>
+      <div onClick={() => setAddModalIsOpen(false)} className="review-modal__tint"></div>
     }
-      <div className="review-add-modal">
-        <h2 className="review-add-title">{`Review of ${name}`}</h2>
-        <form onSubmit={handleSubmit} className="review-form">
-          <div className="review-form-rating">
-            <span className="star-rating">
-              <input onClick={handleRating} type="radio" name="rating" id="one-star" value={1} />
-              <label htmlFor="one-star">
-                <i className="fa-solid fa-star"></i>
-              </label>
-            </span>
-            <span className="star-rating">
-              <input onClick={handleRating} type="radio" name="rating" id="two-star" value={2} />
-              <label htmlFor="two-star">
-                <i className="fa-solid fa-star"></i>
-                <i className="fa-solid fa-star"></i>
-              </label>
-            </span>
-            <span className="star-rating">
-              <input onClick={handleRating} type="radio" name="rating" id="three-star" value={3} />
-              <label htmlFor="three-star">
-                <i className="fa-solid fa-star"></i>
-                <i className="fa-solid fa-star"></i>
-                <i className="fa-solid fa-star"></i>
-              </label>
-            </span>
-            <span className="star-rating">
-              <input onClick={handleRating} type="radio" name="rating" id="four-star" value={4} />
-              <label htmlFor="four-star">
-                <i className="fa-solid fa-star"></i>
-                <i className="fa-solid fa-star"></i>
-                <i className="fa-solid fa-star"></i>
-                <i className="fa-solid fa-star"></i>
-              </label>
-            </span>
-            <span className="star-rating">
-              <input onClick={handleRating} type="radio" name="rating" id="five-star" value={5} />
-              <label htmlFor="five-star">
-                <i className="fa-solid fa-star"></i>
-                <i className="fa-solid fa-star"></i>
-                <i className="fa-solid fa-star"></i>
-                <i className="fa-solid fa-star"></i>
-                <i className="fa-solid fa-star"></i>
-              </label>
-            </span>
-          </div>
-          <textarea onChange={handleTextChange} className="review-form-description" name="review-form-description" id="" cols={30} rows={10} placeholder="Share details of your experience"></textarea>
-          <button className="review-submit-btn" type="submit">Submit</button>
-        </form>
+      <div className="review-modal">
+        <div className="review-modal__container">
+          <h2 className="review-modal__title">{`Review of ${gymName}`}</h2>
+          <form onSubmit={handleSubmit} className="review-form">
+            <div className="review-form__rating">
+              <span className="star-rating">
+                <input onClick={handleRating} type="radio" name="rating" id="one-star" value={1} />
+                <label htmlFor="one-star">
+                  <i className="fa-solid fa-star"></i>
+                </label>
+              </span>
+              <span className="star-rating">
+                <input onClick={handleRating} type="radio" name="rating" id="two-star" value={2} />
+                <label htmlFor="two-star">
+                  <i className="fa-solid fa-star"></i>
+                  <i className="fa-solid fa-star"></i>
+                </label>
+              </span>
+              <span className="star-rating">
+                <input onClick={handleRating} type="radio" name="rating" id="three-star" value={3} />
+                <label htmlFor="three-star">
+                  <i className="fa-solid fa-star"></i>
+                  <i className="fa-solid fa-star"></i>
+                  <i className="fa-solid fa-star"></i>
+                </label>
+              </span>
+              <span className="star-rating">
+                <input onClick={handleRating} type="radio" name="rating" id="four-star" value={4} />
+                <label htmlFor="four-star">
+                  <i className="fa-solid fa-star"></i>
+                  <i className="fa-solid fa-star"></i>
+                  <i className="fa-solid fa-star"></i>
+                  <i className="fa-solid fa-star"></i>
+                </label>
+              </span>
+              <span className="star-rating">
+                <input onClick={handleRating} type="radio" name="rating" id="five-star" value={5} />
+                <label htmlFor="five-star">
+                  <i className="fa-solid fa-star"></i>
+                  <i className="fa-solid fa-star"></i>
+                  <i className="fa-solid fa-star"></i>
+                  <i className="fa-solid fa-star"></i>
+                  <i className="fa-solid fa-star"></i>
+                </label>
+              </span>
+            </div>
+            <textarea onChange={handleTextChange} className="review-form__description" name="review-form-description" id="" cols={30} rows={10} placeholder="Share details of your experience"></textarea>
+            <button className="review-form__submit-btn" type="submit">Submit</button>
+          </form>
+        </div>
       </div>
     </>
   );

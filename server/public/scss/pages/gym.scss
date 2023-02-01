@@ -6,157 +6,244 @@
 // "lg": 960px,
 // "xl": 1200px
 
-.gym-main {
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-  width: 100%;
-  min-height: fit-content;
-  height: 100%;
+$primary-box-shadow: 1px 1px 2px 2px rgba(0, 0, 0, 0.25);
 
-  padding: 1em;
-  background-color: rgba(255, 255, 255, 0.5);
-
-  @include md {
-    align-self: center;
-    justify-content: center;
-    max-width: 1600px;
-  }
-
-  .gym-info-container {
+.gym {
+  &__main {
     display: flex;
     flex-direction: column;
     align-items: center;
+
+    height: 100%;
+    min-height: fit-content;
+    width: 100%;
+    padding: 1rem;
+
+    @include md {
+      align-self: center;
+      justify-content: center;
+      max-width: 1100px;
+    }
+  }
+
+  &__back-btn {
+    display: flex;
+    align-self: flex-start;
+    align-items: center;
+
+    height: 40px !important;
+    min-width: fit-content;
+    margin-bottom: 1rem;
+
+    background-color: $primary;
+    color: white !important;
+    box-shadow: $primary-box-shadow;
+    border: solid white 1px;
+    border-radius: 5px;
+    padding: 0.25rem 0.75rem;
+
+    font-size: 14px;
+    font-weight: 500;
+
+    @include lg {
+      font-size: 20px;
+    }
+
+    &:hover {
+      transition-duration: 250ms;
+      background-color: $secondary;
+      scale: 1.01;
+    }
+
+    .fa-chevron-left {
+      margin-right: 1rem;
+    }
+  }
+
+  &__container {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+
     width: 100%;
     height: fit-content;
+    margin-bottom: 1rem;
+    padding: 1rem;
+
+    border-radius: 18px;
+    box-shadow: $primary-box-shadow;
+    background-color: $bg-secondary;
 
     @include lg {
       flex-direction: row;
-      margin-bottom: 1rem;
+      padding: 0;
+
+      box-shadow: none;
+      background-color: transparent;
+    }
+  }
+
+  &__image-container {
+    width: 100%;
+    height: 300px;
+    margin-bottom: 1rem;
+    border-radius: 18px;
+
+    @include lg {
+      height: 100%;
+      max-height: 600px;
+      width: 50%;
+      margin: 0;
     }
 
-    .gym-image-container {
+    .gym-image {
+      height: 100%;
       width: 100%;
-      min-height: 300px;
-      border: solid $primary 3px;
-      border-radius: 18px;
+      object-fit: cover;
+      object-position: 50% 50%;
+      border-radius: 15px;
 
       @include lg {
-        max-height: 500px;
-        height: 500px;
-        width: 40%;
-      }
-
-      .gym-image {
-        height: 100%;
-        width: 100%;
-        object-fit: cover;
-        object-position: 50% 50%;
-        border-radius: 15px;
+        box-shadow: $primary-box-shadow;
       }
     }
+  }
 
-    .gym-details-map-container {
-      display: flex;
+  &__details {
+    display: flex;
+    flex-direction: column;
+
+    width: 100%;
+    height: 100%;
+    min-height: fit-content;
+
+    @include lg {
       flex-direction: column;
 
-      width: 100%;
       height: 100%;
-      min-height: fit-content;
-      margin-top: 1rem;
-      margin-bottom: 1rem;
-      padding: 1em;
+      width: 50%;
+      margin-left: 1rem;
+      margin-bottom: 0;
+      padding: 1rem;
 
-      background-color: rgba(255, 255, 255, 0.9);
       border-radius: 15px;
-      border: solid $primary 3px;
+      box-shadow: $primary-box-shadow;
+      background-color: $bg-secondary;
+    }
+
+    &__inner-container {
+      display: flex;
+      flex-direction: column-reverse;
+      height: 100%;
 
       @include lg {
-        margin-left: 1rem;
-        margin-bottom: 0;
-        margin-top: 0rem;
-      }
-
-      .gym-details {
-        display: flex;
         flex-direction: column;
-        align-items: center;
-        margin-top: 1rem;
-        margin-bottom: 1rem;
-
-
-        @include lg {
-          height: 50%;
-          margin-top: 0;
-        }
-
-        .gym-title {
-          color: black;
-          font-size: 2em;
-          text-align: center;
-        }
-
-        .gym-body {
-          margin-top: 1em;
-        }
       }
+    }
 
-      .map-container {
-        min-height: 200px;
-        max-height: 300px;
-        width: 100%;
+    &__map {
+      min-height: 200px;
+      max-height: 300px;
+      width: 100%;
+      margin-bottom: 1rem;
 
-        @include lg {
-          height: 40%;
-        }
+      @include lg {
+        height: 40%;
       }
     }
   }
-}
 
-.gym-buttons-container {
-  display: flex;
-  justify-content: space-between;
-  width: 100%;
+  &__about {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    margin-bottom: 1rem;
 
-  @include lg {
-    justify-content: flex-end;
+    @include lg {
+      height: 60%;
+      margin-top: 0;
+    }
+
+    &__title {
+      text-align: center;
+      color: black;
+      font-size: 36px;
+    }
+
+    &__type {
+      margin-bottom: 1rem;
+    }
+
+    &__description {
+      font-size: 18px;
+    }
   }
 
-  .gym-edit-btn {
-    margin: 1rem 0.1rem 1rem 0.1rem;
-    width: fit-content;
+  &__buttons {
+    display: flex;
+    justify-content: space-between;
+    width: 100%;
+    padding-top: 1rem;
 
-    background-color: $primary;
-    color: white;
-    box-shadow: 0 0 1px black;
-    border: solid white 1px;
-    border-radius: 15px;
-    padding-left: 1em;
-    padding-right: 1em;
-    padding-top: 0.25em;
-    padding-bottom: 0.25em;
+    border-top: 1px solid grey;
 
-    font-size: 1.25rem;
-    font-weight: 500;
+    @include lg {
+      justify-content: flex-end;
+    }
+
+    &__edit-btn {
+      display: flex;
+      align-items: center;
+
+      height: 50px !important;
+      min-width: fit-content;
+      margin-right: 1rem;
+      padding: 0.25rem 0.75rem;
+
+      background-color: $primary;
+      color: white !important;
+      box-shadow: $primary-box-shadow;
+      border: solid white 1px;
+      border-radius: 5px;
+
+      font-size: 14px;
+      font-weight: 500;
+
+      @include lg {
+        font-size: 18px;
+      }
+
+      &:hover {
+        transition-duration: 250ms;
+        background-color: $secondary;
+        scale: 1.01;
+      }
+    }
+
+    &__delete-btn {
+      height: 50px;
+      min-width: fit-content;
+            padding: 0 0.75rem;
+
+      background-color: #ff3333;
+      color: white;
+      box-shadow: $primary-box-shadow;
+      border: solid white 1px;
+      border-radius: 5px;
+
+      font-size: 14px;
+      font-weight: 500;
+
+      @include lg {
+        font-size: 18px;
+      }
+
+      &:hover {
+        transition-duration: 250ms;
+        background-color: #ff0000;
+        scale: 1.01;
+      }
+    }
+
   }
-
-  .gym-delete-btn {
-    margin: 1rem 0.1rem 1rem 0.1rem;
-    width: fit-content;
-
-    background-color: red;
-    color: white;
-    box-shadow: 0 0 1px black;
-    border: solid white 1px;
-    border-radius: 15px;
-    padding-left: 1em;
-    padding-right: 1em;
-    padding-top: 0.25em;
-    padding-bottom: 0.25em;
-
-    font-size: 1.25rem;
-    font-weight: 500;
-  }
-
 }

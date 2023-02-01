@@ -1,0 +1,126 @@
+@use "../global/colors" as *;
+@use "../global/breakpoints" as *;
+// "xs": 0,
+// "sm": 480px,
+// "md": 720px,
+// "lg": 960px,
+// "xl": 1200px
+
+.auth {
+  &__main {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+
+    height: 100%;
+    padding: 1rem;
+  }
+
+  &__container {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+
+    height: 400px;
+    width: 100%;
+    max-width: 500px;
+    padding: 2rem;
+    border-radius: 15px;
+
+    background-color: $bg-secondary;
+    box-shadow: 1px 2px 3px 4px rgba(0, 0, 0, 0.25);
+  }
+
+  &__title {
+    font-size: 36px;
+  }
+
+  &__form {
+    display: flex;
+    flex-direction: column;
+    width: 100%;
+
+    label {
+      font-weight: 500;
+    }
+
+    input {
+      width: 100%;
+    }
+
+    span {
+      font-size: 14px;
+      color: red;
+      display: none;
+    }
+
+    //for the span error message underneath the input box to display when the input no longer under focus from the user
+    input:not(:focus):not(:placeholder-shown):invalid~span {
+      display: block;
+    }
+
+    #password-toggle {
+      margin-left: -30px;
+      cursor: pointer;
+
+      &:hover {
+        transition-duration: 250ms;
+        scale: 1.10;
+      }
+    }
+
+    .auth__button-row {
+      display: flex;
+      justify-content: space-evenly;
+
+      .auth__submit-btn {
+        text-align: center;
+
+        margin: 1em .5em 0.25em 0.1em;
+        width: 85px;
+        padding-left: 1em;
+        padding-right: 1em;
+        padding-top: 0.25em;
+        padding-bottom: 0.25em;
+
+        border: solid white 1px;
+        border-radius: 5px;
+        background-color: $primary;
+        color: white;
+        box-shadow: 0 0 1px black;
+        font-size: 1.25rem;
+
+        &:hover {
+          transition-duration: 250ms;
+          background-color: $secondary;
+          scale: 1.01;
+        }
+      }
+
+      .auth__demo-btn {
+        text-align: center;
+
+        margin: 1em .5em 0.25em 0.1em;
+        width: fit-content;
+        padding-left: 1em;
+        padding-right: 1em;
+        padding-top: 0.25em;
+        padding-bottom: 0.25em;
+
+        border: solid white 1px;
+        border-radius: 5px;
+        background-color: black;
+        color: white;
+        box-shadow: 0 0 1px black;
+        font-size: 1.25rem;
+
+        &:hover {
+          transition-duration: 250ms;
+          background-color: #333333;
+          scale: 1.01;
+        }
+      }
+    }
+  }
+}

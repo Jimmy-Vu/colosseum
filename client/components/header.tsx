@@ -9,22 +9,6 @@ function Header(props: { handleSignOut: () => void; }) {
   const isLoggedIn = useSelector((state: RootState) => state.app.isLoggedIn);
   const handleSignOut = props.handleSignOut;
 
-  useEffect(() => {
-    window.addEventListener('scroll', changeBackground);
-    return () => {
-      window.removeEventListener('scroll', changeBackground);
-    };
-  }, [window.scrollY]);
-
-
-  function changeBackground() {
-    if (window.scrollY >= 40) {
-      setNavBarScrolled(true);
-    } else {
-      setNavBarScrolled(false);
-    }
-  }
-
   function handleSignInClick() {
     window.location.hash = '#auth';
   }
@@ -38,8 +22,8 @@ function Header(props: { handleSignOut: () => void; }) {
         </button>
         <a href="#"><h1 className="navbar__title">COLOSSEUM</h1></a>
         {isLoggedIn
-          ? <a onClick={handleSignOut} href="#auth" className="navbar__sign-in">Sign Out</a>
-          : <a onClick={handleSignInClick} href="#auth" className="navbar__sign-in">Sign In</a>
+          ? <a onClick={handleSignOut} href="#auth" className="navbar__sign-in-btn">Sign Out</a>
+          : <a onClick={handleSignInClick} href="#auth" className="navbar__sign-in-btn">Sign In</a>
         }
       </div>
     </header>

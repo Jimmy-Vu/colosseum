@@ -13,10 +13,10 @@ import Home from "./pages/home";
 import NotFound from "./pages/not-found";
 import Listings from "./pages/listings";
 import Gym from "./pages/gym";
-import CreateListing from "./pages/create-listing";
+import AddGymListing from "./pages/add-gym-listing";
 import Header from "./components/header";
 import Footer from "./components/footer";
-import EditListing from "./pages/edit-listing";
+import EditGymListing from "./pages/edit-gym-listing";
 import Auth from "./pages/auth";
 import AccountPage from "./pages/account-page";
 
@@ -48,7 +48,7 @@ function App(props: {}) {
     }
   }, []);
 
-  function handleSignIn(result: { user: string; token: string }) {
+  function handleSignInSuccess(result: { user: string; token: string }) {
     const { user, token } = result;
     window.localStorage.setItem('access-token', token);
     dispatch(setStateUser(user));
@@ -66,12 +66,12 @@ function App(props: {}) {
   const { route } = stateRoute;
   let gymId = 0;
   switch (route.path) {
-    case '':
+    case "":
       return (
         <div className="main-container">
           <Header handleSignOut={handleSignOut} />
           <Home />
-          <Footer />
+          {/* <Footer /> */}
         </div>
       );
     case "listings":
@@ -95,7 +95,7 @@ function App(props: {}) {
       return (
         <div className="main-container">
           <Header handleSignOut={handleSignOut} />
-          <CreateListing />
+          <AddGymListing />
           <Footer />
         </div>
       );
@@ -104,7 +104,7 @@ function App(props: {}) {
       return (
         <div className="main-container">
           <Header handleSignOut={handleSignOut} />
-          <EditListing gymId={gymId} />
+          <EditGymListing gymId={gymId} />
           <Footer />
         </div>
       );
@@ -112,7 +112,7 @@ function App(props: {}) {
       return (
         <div className="main-container">
           <Header handleSignOut={handleSignOut} />
-          <Auth handleSignIn={handleSignIn} />
+          <Auth handleSignInSuccess={handleSignInSuccess} />
           <Footer />
         </div>
       );

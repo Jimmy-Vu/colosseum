@@ -2,7 +2,13 @@
 @use "../global/breakpoints" as *;
 
 .filter {
-  width: 100%;
+  @include sm {
+    align-self: center;
+  }
+
+  @include md {
+    align-self: start;
+  }
 }
 
 .filter-web {
@@ -11,16 +17,40 @@
   @include sm {
     position: relative;
     display: flex;
+    justify-content: space-between;
     align-items: center;
 
     height: 50px;
-    width: 100%;
+    width: 350px;
     margin-bottom: 1rem;
     padding: 1.75rem 1rem 1.75rem 1rem;
 
-    border: 1px solid black;
-    border-radius: 3px;
-    background-color: #fafafa;
+    box-shadow: 1px 2px 3px 4px rgba(0, 0, 0, 0.25);
+    border-radius: 5px;
+    background-color: #F3F3F3;
+  }
+
+  .filter-add-btn {
+    margin: 1rem 0.1rem 1rem 0.1rem;
+    width: fit-content;
+
+    background-color: $primary;
+    color: white !important;
+    box-shadow: 0 0 1px black;
+    border: solid white 1px;
+    border-radius: 5px;
+    padding-left: 1em;
+    padding-right: 1em;
+    padding-top: 0.25em;
+    padding-bottom: 0.25em;
+
+    font-size: 16px;
+    font-weight: 500;
+
+    &:hover {
+      transition-duration: 100ms;
+      background-color: $secondary;
+    }
   }
 
   .btn {
@@ -73,6 +103,13 @@
     legend {
       font-size: 1.2rem;
       font-weight: 500;
+    }
+
+    .checkbox-option {
+      margin-left: 0.5rem;
+      label {
+        margin-left: 0.5rem;
+      }
     }
 
     .apply-btn {
@@ -171,6 +208,10 @@
       .checkbox-option {
         font-size: 24px;
         margin-bottom: .25rem;
+
+        label {
+          margin-left: 0.5rem;
+        }
       }
     }
 

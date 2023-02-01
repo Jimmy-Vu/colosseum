@@ -1,19 +1,21 @@
+@charset "UTF-8";
 .app-drawer {
   display: flex;
-  width: 100%;
   position: absolute;
+  width: 100%;
   color: white;
 }
 .app-drawer--hidden {
   display: none;
 }
 .app-drawer .menu {
-  background-color: rgba(0, 0, 0, 0.97);
+  flex-grow: 2;
+  z-index: 5;
   width: 100%;
   height: 100vh;
-  flex-grow: 2;
   padding-left: 1rem;
   padding-right: 1rem;
+  background-color: rgba(0, 0, 0, 0.97);
 }
 @media (min-width: 720px) {
   .app-drawer .menu {
@@ -27,14 +29,13 @@
 }
 .app-drawer .menu .close-button {
   cursor: pointer;
-  font-size: 4rem;
+  font-size: 50px;
   color: #D2B85A;
   margin-top: 0.6rem;
   text-shadow: 1px 1px 1px black;
 }
 @media (min-width: 720px) {
   .app-drawer .menu .close-button {
-    font-size: 4rem;
     margin-top: 1.27rem;
   }
 }
@@ -43,7 +44,6 @@
   flex-direction: column;
   align-items: center;
   color: white;
-  width: 100%;
   margin-top: 2rem;
   padding-left: 3rem;
   padding-right: 3rem;
@@ -61,6 +61,10 @@
   margin-bottom: 3rem;
 }
 .app-drawer .menu__nav ul {
+  width: 100%;
+  list-style: none;
+}
+.app-drawer .menu__nav ul li {
   border-top: solid white 1px;
   width: 100%;
   padding-top: 0.5em;
@@ -68,9 +72,21 @@
   font-size: 2em;
   text-align: center;
 }
-.app-drawer .menu__nav ul:last-of-type {
+.app-drawer .menu__nav ul li:last-of-type {
   border-bottom: solid white 1px;
   margin-bottom: 3rem;
+}
+.app-drawer .menu__nav ul li.active::before {
+  display: inline-block;
+  text-rendering: auto;
+  -webkit-font-smoothing: antialiased;
+  font: var(--fa-font-solid);
+  content: "\f0da ";
+  color: #D2B85A;
+  margin-left: -1rem;
+}
+.app-drawer .menu__nav ul li a:hover {
+  text-decoration: underline;
 }
 .app-drawer .menu__nav .nav__sign-in-btn {
   display: flex;
@@ -81,8 +97,8 @@
   border-radius: 6px;
   background-color: #D2B85A;
   color: white;
-  font-family: "Oswald", sans-serif;
-  font-size: 2rem;
+  font-family: "Manrope", sans-serif;
+  font-size: 24px;
   font-weight: 500;
   text-shadow: 0 0 2px black;
 }
@@ -91,11 +107,20 @@
     display: none;
   }
 }
+.app-drawer .drawer-overlay--active {
+  position: fixed;
+  z-index: 4;
+  width: 100%;
+  background-color: rgba(0, 0, 0, 0.5);
+}
 @media (min-width: 720px) {
-  .app-drawer .drawer-overlay {
+  .app-drawer .drawer-overlay--active {
     height: 100vh;
     flex-grow: 1;
   }
+}
+.app-drawer .drawer-overlay--inactive {
+  display: none;
 }
 
 /*# sourceMappingURL=app-drawer.css.map */

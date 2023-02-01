@@ -54,7 +54,7 @@ export default function Reviews(props: Props) {
   }
 
   return (
-    <section className="reviews-container">
+    <section className="reviews__container">
       {addModalIsOpen &&
         <AddReviewModal
           gymState={{ gymId, gymName }}
@@ -64,13 +64,13 @@ export default function Reviews(props: Props) {
           handleSuccessfulSubmit={handleSuccessfulSubmit}
         />
       }
-      <div className="reviews-container-header">
-        <h3 className="reviews-title">Reviews</h3>
+      <div className="reviews__header">
+        <h3 className="reviews__header__title">Reviews</h3>
         {belongsToUser &&
           <span>You are the owner.</span>
         }
         {!belongsToUser && !reviewAlreadyMade &&
-          <button onClick={handleReviewBtnClick} className="reviews-add-btn">Add a Review</button>
+          <button onClick={handleReviewBtnClick} className="reviews__header__add-btn">Add a Review</button>
         }
         {!belongsToUser && reviewAlreadyMade &&
           <span>You have already made a review.</span>

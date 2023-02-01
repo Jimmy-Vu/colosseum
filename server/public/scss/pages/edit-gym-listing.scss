@@ -1,0 +1,73 @@
+@use "../global/breakpoints" as *;
+@use "../global/colors" as *;
+
+.edit-img__container {
+  display: flex;
+  flex-direction: column;
+
+  width: 100%;
+  margin-bottom: 1rem;
+
+  @include lg {
+    flex-direction: row;
+    align-items: center;
+  }
+
+  .upload__container {
+    display: flex;
+    flex-direction: column;
+    align-items: flex-start;
+
+    @include lg {
+      width: 60%;
+    }
+
+    &__input::file-selector-button {
+      margin: 0.25rem .5rem 0.25rem 0.1rem;
+      padding-left: 1rem;
+      padding-right: 1rem;
+      padding-top: 0.25rem;
+      padding-bottom: 0.25rem;
+
+      box-shadow: 0 0 1px black;
+      border: solid white 1px;
+      border-radius: 15px;
+
+      background-color: $primary;
+      color: white;
+      cursor: pointer;
+
+      &:hover {
+        background-color: $secondary;
+        scale: 1.01;
+      }
+    }
+  }
+
+  .edit-img__figure {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+
+    @include lg {
+      width: 40%;
+    }
+
+    .figure__caption {
+      font-weight: bold;
+    }
+
+    .figure__img-preview {
+      max-height: 300px;
+      border-radius: 5px;
+
+      &:hover {
+        scale: 1.01;
+      }
+
+      @include lg {
+        max-height: 600px;
+      }
+    }
+  }
+}

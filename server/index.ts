@@ -107,6 +107,7 @@ app.post('/api/users/sign-up', (req: Request, res: Response, next: NextFunction)
                 .catch((err: Error) => next(err));
         });
 });
+
 app.post('/api/users/sign-in', (req: Request, res: Response, next: NextFunction) => {
     const { username, password } = req.body;
     if (!username || !password) {
@@ -206,6 +207,7 @@ app.get('/api/:userId/gyms', (req: Request, res: Response, next: NextFunction) =
         })
         .catch((err: Error) => next(err));
 });
+
 // Post route for dev database
 app.post('/api/gyms/dev', (req: Request, res: Response, next: NextFunction) => {
     const { userId } = req.user;
@@ -285,6 +287,7 @@ app.post('/api/gyms', upload, (req: any, res: Response, next: NextFunction) => {
         })
         .catch((err: Error) => next(err));
 });
+
 // PATCH route for updating listing
 // TODO: FIND THE RIGHT TYPE FOR REQ
 app.patch('/api/gyms/:gymId', upload, (req: any, res: Response, next: NextFunction) => {
@@ -355,6 +358,7 @@ app.patch('/api/gyms/:gymId', upload, (req: any, res: Response, next: NextFuncti
         })
         .catch((err: Error) => next(err));
 });
+
 app.delete('/api/gyms/:gymId', (req: Request, res: Response, next: NextFunction) => {
     const gymId = req.params.gymId;
     const sql = `
@@ -368,9 +372,10 @@ app.delete('/api/gyms/:gymId', (req: Request, res: Response, next: NextFunction)
         })
         .catch((err: Error) => next(err));
 });
+
 //Review routes
 app.post('/api/reviews/:gymId', (req: Request, res: Response, next: NextFunction) => {
-    const { userId, username } = req.body.user;
+    const { userId, username } = req.body;
     const { rating, description } = req.body.reviewValues;
     const gymId = req.params.gymId;
     const sql = `

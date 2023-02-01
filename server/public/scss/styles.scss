@@ -8,9 +8,9 @@
 @use "./components/listing-card.scss";
 @use "./pages/gym.scss";
 @use "./pages/not-found.scss";
-@use "./pages/create-listing.scss";
-@use "./pages/edit-listing.scss";
-@use "./pages/sign-in.scss";
+@use "./pages/add-gym-listing.scss";
+@use "./pages/edit-gym-listing.scss";
+@use "./pages/auth.scss";
 @use "./pages/account-page.scss";
 @use "./components/reviews.scss";
 @use "./components/filter.scss";
@@ -64,16 +64,13 @@ body {
 
 #root {
   flex: 1;
-  background-image: url(./images/colloseum_color.jpg);
-  background-size: cover;
-  background-position: center center;
-  background-repeat: no-repeat;
+  background-color: $bg-main;
 }
 
 .main-container {
+  position: relative;
   display: flex;
   flex-direction: column;
-  font-family: 'Roboto', sans-serif;
+  font-family: 'Manrope', sans-serif;
   height: 100%;
-  overflow-y: auto;
 }
