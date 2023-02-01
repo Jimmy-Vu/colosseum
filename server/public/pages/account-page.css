@@ -1,31 +1,33 @@
-.account-main {
+.account__main {
   display: flex;
-  align-self: center;
   flex-direction: column;
-  align-items: center;
   width: 100%;
   height: 100%;
-  overflow-y: scroll;
   margin-top: 0.5rem;
-  padding-left: 1rem;
-  padding-right: 1rem;
+}
+.account__title {
+  text-align: center;
+  margin-bottom: 1rem;
+  font-size: 36px;
+}
+.account__cards-container {
+  display: grid;
+  justify-content: center;
+  grid-template-columns: repeat(1, 350px);
+  column-gap: 25px;
+  row-gap: 25px;
+  width: 100%;
+  margin-bottom: 1.5rem;
 }
 @media (min-width: 720px) {
-  .account-main {
-    padding-left: 3rem;
-    padding-right: 3rem;
-  }
-}
-@media (min-width: 960px) {
-  .account-main {
-    padding-left: 10rem;
-    padding-right: 10rem;
+  .account__cards-container {
+    grid-template-columns: repeat(2, 350px);
+    justify-content: space-evenly;
   }
 }
 @media (min-width: 1200px) {
-  .account-main {
-    padding-left: 20rem;
-    padding-right: 20rem;
+  .account__cards-container {
+    grid-template-columns: repeat(3, 350px);
   }
 }
 
