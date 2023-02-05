@@ -115,7 +115,7 @@ insert into "gyms" (
     'Warrior Muay Thai',
     'New York, NY',
     '{"latitude":"40.730610","longitude":"-73.935242"}',
-    'muay thai',
+    'muay-thai',
     'https://images.unsplash.com/photo-1612261125197-6ab43f72f1c0?ixlib=rb-4.0.3&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=774&q=80',
     'Warrior Muay Thai is a state-of-the-art training facility dedicated to the art of Muay Thai. Our experienced instructors provide personalized training to help students reach their full potential. With a spacious training area, a full range of equipment, and a welcoming atmosphere, Warrior Muay Thai is the perfect place to learn and perfect the sport of Muay Thai.',
     2
