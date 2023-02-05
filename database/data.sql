@@ -242,4 +242,19 @@ values(
   6,
   4,
   'Mad Horse is a great gym for families. My kids love the youth fitness program and I appreciate the variety of classes offered. The staff is always friendly and helpful. Overall, a great gym for the whole family!'
+),
+-- Warrior Muay Thai
+(
+  6,
+  'Shallan',
+  7,
+  2,
+  'I was really excited to start training at Warrior Muay Thai, but I was disappointed with my experience. The equipment is outdated and the facilities are not well-maintained. The instructors can be unprofessional and lack enthusiasm. I would not recommend Warrior Muay Thai to anyone looking for a high-quality Muay Thai gym.'
+),
+(
+  10,
+  'Susebron',
+  8,
+  4,
+  'I''ve been a member at Iron Palace MMA for several months now and I''ve been thoroughly impressed. The facilities are state-of-the-art and the staff is knowledgeable and friendly. I love the variety of classes offered, from boxing to Brazilian Jiu Jitsu, there''s something for everyone. The only downside is the class sizes can be quite large, but the quality of the instruction more than makes up for it. I highly recommend Iron Palace MMA to anyone looking to train in martial arts.'
 );
