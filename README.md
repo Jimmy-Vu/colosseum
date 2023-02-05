@@ -72,11 +72,10 @@
 </details>
 
 
-
 <!-- ABOUT THE PROJECT -->
 ## About The Project
 <p align="center">
-  <img width="800" src="https://user-images.githubusercontent.com/88172055/199909019-73645edd-dc82-497f-a712-21fb78e5e7ac.png" />
+  <img width="800" src="https://user-images.githubusercontent.com/88172055/216796880-42f9aaa5-d980-4808-9cd8-5d0fe8be0c43.png" />
  </p>
 
 
