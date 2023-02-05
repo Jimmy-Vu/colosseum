@@ -251,6 +251,7 @@ values(
   2,
   'I was really excited to start training at Warrior Muay Thai, but I was disappointed with my experience. The equipment is outdated and the facilities are not well-maintained. The instructors can be unprofessional and lack enthusiasm. I would not recommend Warrior Muay Thai to anyone looking for a high-quality Muay Thai gym.'
 ),
+-- Iron Palace MMA
 (
   10,
   'Susebron',
