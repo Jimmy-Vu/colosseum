@@ -90,7 +90,13 @@ export default function Gym(props: { gymId: number }) {
     return (
       <>
         <Spinner isLoading={isLoading} />
-        <main className="gym__main"></main>
+        <main className="gym__main">
+          <a href={'#listings'} className="gym__back-btn"><i className="fa-solid fa-chevron-left"></i>Back to Arenas</a>
+          <div className="gym__container">
+            <a className="gym__image-container" href={`${gymState.imageURL}`}>
+            </a>
+          </div>
+        </main>
       </>
     );
   } else {
