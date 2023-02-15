@@ -310,8 +310,8 @@ app.patch('/api/gyms/:gymId', upload, (req: any, res: Response, next: NextFuncti
                 imageURL = req.file.path;
             }
             if (!gymId || !gymName || !address || !type) {
-                throw new ClientError(401, 'Please provide a name, address, type(s), and an image');
                 console.error('Missing name, address, type, and/or image');
+                throw new ClientError(401, 'Please provide a name, address, type(s), and an image');
             }
             const parsedType = JSON.parse(type);
             const typeArray = [];
