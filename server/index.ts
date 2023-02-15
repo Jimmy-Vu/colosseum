@@ -73,8 +73,8 @@ app.use(jsonMiddleware);
 app.post('/api/users/sign-up', (req: Request, res: Response, next: NextFunction) => {
     const { username, password } = req.body;
     if (!username || !password) {
-        throw new ClientError(400, 'Please provide a username and password');
         console.error('Missing username and or password');
+        throw new ClientError(400, 'Please provide a username and password');
     }
     let params = [username];
     let sql = `
@@ -151,8 +151,8 @@ app.post('/api/users/sign-in', (req: Request, res: Response, next: NextFunction)
 app.post('/api/users/sign-in/demo', (req: Request, res: Response, next: NextFunction) => {
     const { username, password } = req.body;
     if (!username || !password) {
-        throw new ClientError(400, 'Please provide a username and password');
         console.error('Missing username and or password');
+        throw new ClientError(400, 'Please provide a username and password');
     }
     argon2
         .hash(password)
