@@ -167,7 +167,8 @@ To get a local copy up and running follow these simple example steps.
 <!-- USAGE EXAMPLES -->
 ## Usage
 
-Work in Progress
+<!-- ![Colossum Quick Demo](https://user-images.githubusercontent.com/88172055/221325148-9edd28c5-6422-4723-98f4-60d0b60630fe.gif) -->
+<img height="500" src="https://user-images.githubusercontent.com/88172055/221325148-9edd28c5-6422-4723-98f4-60d0b60630fe.gif" />
 
 <p align="right">(<a href="#readme-top">back to top</a>)</p>
 
