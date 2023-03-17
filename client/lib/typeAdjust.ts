@@ -2,7 +2,7 @@ export default function typeAdjust(string: string): string {
   const splitString = string.replace(/[\{\}"]/g, "").split(',');
   for (let i = 0; i < splitString.length; i++) {
     if (splitString[i].includes('-')) {
-      let subArray:string[];
+      let subArray:string[] = [];
       splitString[i].split('-').forEach(word => subArray.push(capitalize(word)));
       splitString[i] = subArray.join(' ');
     } else {
