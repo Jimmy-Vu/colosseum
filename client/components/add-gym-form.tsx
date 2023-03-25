@@ -91,6 +91,11 @@ export default function AddGymForm(props: { setIsLoading: (boolean: boolean) => 
 
   function handleSubmit(e: React.SyntheticEvent) {
     e.preventDefault();
+    const atLeastOneBoxChecked = Object.values(inputs.type).some(type => type === true);
+    const imageChosen = !(inputs.image === '')
+    if (!atLeastOneBoxChecked || !imageChosen) {
+      return;
+    }
     setIsLoading(true);
     inputs.type = JSON.stringify(inputs.type);
     const formData = new FormData();
