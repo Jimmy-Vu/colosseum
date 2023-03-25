@@ -761,6 +761,9 @@ footer {
   background-color: #BFA246;
   scale: 1.01;
 }
+.create__form .gym__form__error {
+  color: red;
+}
 
 .edit-img__container {
   display: flex;
