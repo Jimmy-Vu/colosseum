@@ -31,6 +31,10 @@ export default function AddGymForm(props: { setIsLoading: (boolean: boolean) => 
   const currentUserId = useSelector((state: RootState) => state.user.userId);
   const setIsLoading = props.setIsLoading;
   const [atLeastOneBoxChecked, setAtLeastOneBoxChecked] = useState(false);
+  const [errors, setErrors] = useState({
+    types: false,
+    image: false
+  })
 
   const [inputs, setInputs] = useState<Inputs>({
     userId: '',
@@ -102,10 +106,19 @@ export default function AddGymForm(props: { setIsLoading: (boolean: boolean) => 
   function handleSubmit(e: React.SyntheticEvent) {
     e.preventDefault();
     if (!atLeastOneBoxChecked) {
+      setErrors(prev => ({
+        ...prev,
+        types: true
+      }));
       return;
     }
+
     const imageChosen = !(inputs.image === '')
     if (!imageChosen) {
+      setErrors(prev => ({
+        ...prev,
+        image: true
+      }));
       return;
     }
 
@@ -155,7 +168,7 @@ export default function AddGymForm(props: { setIsLoading: (boolean: boolean) => 
         <textarea className="description-input" onChange={handleChangeTextArea} name="description" id="description" cols={30} rows={5} required></textarea>
       </div>
       <fieldset id="type" className="create__form__specialization">
-        {!atLeastOneBoxChecked && <span className="gym__form__error">Please choose at least one type.</span>}
+        {errors.types && <span className="gym__form__error">Please choose at least one type.</span>}
         <legend className="specialization__legend">Choose the type of specialization(s) of the arena:</legend>
         <div className="specialization__checkbox-option">
           <input className="checkbox-option__input" onClick={handleCheckboxes} type="checkbox" name="commercial" id="commercial" />
@@ -213,7 +226,7 @@ export default function AddGymForm(props: { setIsLoading: (boolean: boolean) => 
       <div className="upload__container">
         <div className="upload__text">
           <label className="upload__label" htmlFor="image">Choose an image for the gym:</label>
-          {/* {formErrors.image && <span className="gym__form__error">An image is required.</span>} */}
+          {errors.image && <span className="gym__form__error">An image is required.</span>}
         </div>
         <input className="upload__input" onChange={handleUpload} id="image" type="file" accept="image/*" />
       </div>
