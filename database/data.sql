@@ -1,3 +1,4 @@
+-- USERS
   insert into "users" (
     "username",
     "hashedPassword"
@@ -21,12 +22,30 @@
   ),
   (
     'Vivenna',
-    'Vi123'
+    'vi123'
   ),
   (
     'Shallan',
-    'Shal123'
+    'shal123'
+  ),
+  (
+    'Wayne',
+    'wa123'
+  ),
+  (
+    'Vasher',
+    'va123'
+  ),
+  (
+    'Teofil',
+    'te123'
+  ),
+  (
+    'Susebron',
+    'su123'
   );
+
+  -- GYMS
 
 insert into "gyms" (
   "gymName",
@@ -39,12 +58,12 @@ insert into "gyms" (
   )
   values
   (
-    'Exceed Performance',
+    'Beyond Performance',
     'Anaheim, CA',
     '{"latitude":"33.835293","longitude":"-117.914505"}',
     '{"powerlifting","weightlifting"}',
-    'https://images.squarespace-cdn.com/content/v1/5f1121d3454d3d642df2c2a0/1594959199899-ZR1KADRBX6O6CCD2I3RR/IMG_8029.jpg?format=1500w',
-    'Our mission at Exceed Performance is to cultivate and inspire individuals in all aspects of strength training, powerlifting, weightlifting, and overall health. We aspire to unlock the potential of our members both mentally and physically. We welcome everyone from novices to world class athletes and to share their journey of endless growth with us.',
+    'https://images.unsplash.com/photo-1671321666765-f4630f7eb5f6?ixlib=rb-4.0.3&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=1770&q=80',
+    'Our mission at Beyond Performance is to cultivate and inspire individuals in all aspects of strength training, powerlifting, weightlifting, and overall health. We aspire to unlock the potential of our members both mentally and physically. We welcome everyone from novices to world class athletes and to share their journey of endless growth with us.',
     1
   ),
   (
@@ -84,14 +103,34 @@ insert into "gyms" (
     1
   ),
   (
-    'Mad Horse CrossFit',
+    'Mad Horse Crossfit',
     'Houston, TX',
     '{"latitude":"29.749907","longitude":"-95.358421"}',
     'crossfit',
     'https://images.unsplash.com/photo-1578762560042-46ad127c95ea?ixlib=rb-4.0.3&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=1470&q=80',
     'Welcome to your new gym. Where the do-ers get things done, one rep at a time. We house some of the best athletes in the world of CrossFit. Come in for a free consultation with personal trainer today.',
     1
+  ),
+  (
+    'Warrior Muay Thai',
+    'New York, NY',
+    '{"latitude":"40.730610","longitude":"-73.935242"}',
+    'muay-thai',
+    'https://images.unsplash.com/photo-1612261125197-6ab43f72f1c0?ixlib=rb-4.0.3&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=774&q=80',
+    'Warrior Muay Thai is a state-of-the-art training facility dedicated to the art of Muay Thai. Our experienced instructors provide personalized training to help students reach their full potential. With a spacious training area, a full range of equipment, and a welcoming atmosphere, Warrior Muay Thai is the perfect place to learn and perfect the sport of Muay Thai.',
+    2
+  ),
+  (
+    'Iron Palace MMA',
+    'Los Angeles, CA',
+    '{"latitude":"34.052235","longitude":"-118.243683"}',
+    '{"boxing","kickboxing","muay-thai","brazilian-ji-jijutsu","wrestling"}',
+    'https://images.unsplash.com/photo-1569514234036-af76a871db4b?ixlib=rb-4.0.3&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=2940&q=80',
+    'Iron Palace MMA is the ultimate destination for anyone looking to master the art of martial arts. Our state-of-the-art facilities and experienced instructors offer a comprehensive range of training in boxing, kickboxing, Muay Thai, Brazilian Jiu Jitsu, and wrestling. Come and experience the excitement of Iron Palace MMA and take your training to the next level.',
+    2
   );
+
+-- REVIEWS
 
 insert into "reviews" (
   "userId",
@@ -100,6 +139,7 @@ insert into "reviews" (
   "rating",
   "description"
 )
+-- Beyond Performance
 values(
   3,
   'Vin',
@@ -121,6 +161,7 @@ values(
   4,
   'I love the 24 hour access for members!'
 ),
+-- Bayside Boxing
 (
   2,
   'Demo',
@@ -142,6 +183,7 @@ values(
   3,
   'I appreciate the work and attention that the coaches put into each fighter here. The only issue is that how much focus they''re putting on the Philly Shell defense. That style is not meant for everyone.'
 ),
+-- Regal Climbing Gym
 (
   3,
   'Vin',
@@ -162,4 +204,58 @@ values(
   3,
   4,
   'They have really interesting walls. Great place to practice your sends'
+),
+-- Tiger Taekwondo
+(
+  7,
+  'Wayne',
+  4,
+  3,
+  'I recently joined Tiger Taekwondo and I''ve been enjoying my time here. The instructors are knowledgeable and patient, and the facilities are clean and well-maintained. However, the class sizes can be quite large and the schedule could be more flexible. Overall, it''s a good place to learn Taekwondo.'
+),
+(
+  1,
+  'Kaladin',
+  4,
+  5,
+  'I''ve been training at Tiger Taekwondo for several years now and I can''t imagine training anywhere else. The instructors are incredible, the facilities are world-class, and the classes are always challenging and rewarding. I have nothing but good things to say about Tiger Taekwondo.'
+),
+(
+  8,
+  'Vasher',
+  4,
+  4,
+  'Tiger Taekwondo is a fantastic place to train. The instructors are friendly and knowledgeable, and the classes are always challenging and fun. The facilities are top-notch and the schedule is flexible. I highly recommend it.'
+),
+-- Crimson Peaks
+(
+  9,
+  'Teofil',
+  5,
+  2,
+  'I''ve been a member here for a few months and I''m disappointed with the cleanliness of the gym. The equipment is not always cleaned after use and the bathrooms are often dirty. The staff is friendly, but the facilities need some improvement.'
+),
+-- Mad Horse Crossfit
+(
+  10,
+  'Susebron',
+  6,
+  4,
+  'Mad Horse is a great gym for families. My kids love the youth fitness program and I appreciate the variety of classes offered. The staff is always friendly and helpful. Overall, a great gym for the whole family!'
+),
+-- Warrior Muay Thai
+(
+  6,
+  'Shallan',
+  7,
+  2,
+  'I was really excited to start training at Warrior Muay Thai, but I was disappointed with my experience. The equipment is outdated and the facilities are not well-maintained. The instructors can be unprofessional and lack enthusiasm. I would not recommend Warrior Muay Thai to anyone looking for a high-quality Muay Thai gym.'
+),
+-- Iron Palace MMA
+(
+  10,
+  'Susebron',
+  8,
+  4,
+  'I''ve been a member at Iron Palace MMA for several months now and I''ve been thoroughly impressed. The facilities are state-of-the-art and the staff is knowledgeable and friendly. I love the variety of classes offered, from boxing to Brazilian Jiu Jitsu, there''s something for everyone. The only downside is the class sizes can be quite large, but the quality of the instruction more than makes up for it. I highly recommend Iron Palace MMA to anyone looking to train in martial arts.'
 );

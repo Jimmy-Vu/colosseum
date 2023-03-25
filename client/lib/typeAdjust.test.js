@@ -7,3 +7,7 @@ test('take an array in JSON format and return an joined string of each elment wi
 test('crossfit', () => {
   expect(typeAdjust('crossfit')).toEqual('Crossfit');
 });
+
+test('muay-thai', () => {
+  expect(typeAdjust('muay-thai')).toEqual('Muay Thai');
+});

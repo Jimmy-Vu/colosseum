@@ -91,31 +91,11 @@ export default function Gym(props: { gymId: number }) {
       <>
         <Spinner isLoading={isLoading} />
         <main className="gym__main">
+          <a href={'#listings'} className="gym__back-btn"><i className="fa-solid fa-chevron-left"></i>Back to Arenas</a>
           <div className="gym__container">
             <a className="gym__image-container" href={`${gymState.imageURL}`}>
-              <img className="gym-image" src={`${gymState.imageURL}`} alt="main gym image" />
             </a>
-            <div className="gym__details">
-              <div className="gym__details__map">
-                <MapDisplay coordinates={{ longitude: gymState.geodata.longitude, latitude: gymState.geodata.latitude }} />
-              </div>
-              <div className="gym__about">
-                <h3 className="gym__about__title">{gymState.gymName}</h3>
-                <p className="gym__about__address">{gymState.address}</p>
-                <p className="gym__about__type">{`Type: ${gymState.type}`}</p>
-                <div className="gym-body">
-                  <p className="gym__about__description">{gymState.description}</p>
-                </div>
-              </div>
-            </div>
           </div>
-          <Reviews gymState={gymState} belongsToUser={belongsToUser} />
-          {belongsToUser &&
-            <div className="gym__buttons">
-              <a href={`#edit?gymId=${gymState.gymId}`} className="gym__buttons__edit-btn">Edit Arena</a>
-              <button onClick={gymDelete} className="gym__buttons__delete-btn">Delete Arena</button>
-            </div>
-          }
         </main>
       </>
     );
