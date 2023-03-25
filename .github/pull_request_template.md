@@ -1,4 +1,4 @@
-<!--- Thank you for submitting a pull request! Please use the following template to draft your PR. If you have any questions, please do not hesitate to ask- we are happy to help. -->
+<!--- Thank you for submitting a pull request! Please use the following template to draft your PR. -->
 
 ## Description
 <!--- Describe your changes -->
