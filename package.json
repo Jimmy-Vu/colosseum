@@ -13,7 +13,7 @@
     "dev:sass": "sass --watch server/public/scss:server/public",
     "dev:server": "nodemon server/index.js",
     "db:import": "bash scripts/db-import.bash",
-    "test": "jest --watch"
+    "test": "jest client/lib --watch"
   },
   "scriptComments": {
     "seed": "Seeds the gyms table in the database with dummy data",
@@ -66,6 +66,7 @@
     "babel-jest": "^29.3.1",
     "babel-loader": "^8.2.5",
     "jest": "^29.3.1",
+    "jest-environment-jsdom": "^29.5.0",
     "nodemon": "^2.0.19",
     "npm-run-all": "^4.1.5",
     "react-test-renderer": "^18.2.0",

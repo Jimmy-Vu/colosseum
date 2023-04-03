@@ -17,9 +17,14 @@ function editTypeAdjust(string) {
         wrestling: false,
         kickboxing: false
     };
-    const splitString = string.replace(/[\{\}"]/g, "").split(',');
+    if (string === '') {
+        return type;
+    }
+    const splitString = string.replace(/"|\{|\}/g, "").split(',');
     for (let i = 0; i < splitString.length; i++) {
-        type[splitString[i]] = true;
+        if (splitString[i] in type) {
+            type[splitString[i]] = true;
+        }
     }
     return type;
 }
