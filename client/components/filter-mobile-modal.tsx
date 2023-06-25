@@ -44,6 +44,10 @@ export default function FilterMobileModal(props: Props) {
             <label htmlFor="weightlifting">Olympic Weightlifting</label>
           </div>
           <div className="checkbox-option">
+            <input onClick={handleCheckboxes} type="checkbox" name="crossfit" id="crossfit" defaultChecked={filters.types.crossfit} />
+            <label htmlFor="crossfit">Crossfit</label>
+          </div>
+          <div className="checkbox-option">
             <input onClick={handleCheckboxes}  type="checkbox" name="climbing" id="climbing" defaultChecked={filters.types.climbing} />
             <label htmlFor="climbing">Climbing</label>
           </div>
