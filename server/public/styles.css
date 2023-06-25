@@ -209,7 +209,8 @@ footer {
   }
 }
 .home__hero {
-  height: 30%;
+  width: 100%;
+  height: 200px;
   background-image: url(./images/colosseum_color.jpg);
   background-size: cover;
   background-position: center center;
@@ -225,7 +226,7 @@ footer {
   display: flex;
   flex-direction: column;
   justify-content: center;
-  height: 70%;
+  min-height: fit-content;
   width: 100%;
   padding: 2rem;
   background-color: #FEFDFB;
