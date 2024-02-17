@@ -7,3 +7,5 @@ node_modules
 **/*.js
 *.js
 *.css
+**/*.DS_Store
+*.DS_Store
